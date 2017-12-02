@@ -16,6 +16,11 @@
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "webpack": "^3.9.1"
+    },
+    "dependencies": {
+        "npm-watch": "^0.3.0",
+        "watch": "^1.0.2"
     }
 }
