@@ -16,6 +16,4 @@
 // });
 
 
-Route::get('/', function () {
-    return view('layouts.body');
-});
+Route::get('/', 'StartController@homePage');

@@ -1,3 +1,3 @@
     <div>
-        <br>Footer - Test
+        <!-- <br>Footer - Test -->
     </div>

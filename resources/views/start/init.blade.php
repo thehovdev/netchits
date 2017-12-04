@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 
     <head>
@@ -11,4 +12,5 @@
     <footer>
         @include('layouts.footer')
     </footer>
+
 </html>
