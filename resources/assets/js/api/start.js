@@ -1,25 +1,66 @@
+Route = {
+    host : '/',
+    login : '/api/auth/login',
+}
+
 $(document).ready(function() {
 
     $('#signup-button').click(function() {
-        Api.signup();
+        Api.showSignup();
     });
 
     $('#signin-button').click(function() {
-        Api.signin();
+        Api.showSignin();
     });
+
+    $('#signin-submit-button').click(function() {
+        Api.makeSignin();
+    });
+
+    $('#signup-submit-button').click(function() {
+        Api.makeSignup();
+    });
+
 });
 
 
 Api = {
 
-    signin : function() {
-        $('.login-container').hide();
-        $('.register-container').show();
+    showSignin : function() {
+        $('.signup-container').hide();
+        $('.signin-container').show();
     },
 
-    signup : function() {
-        $('.register-container').hide();
-        $('.login-container').show();
-     }
+    showSignup : function() {
+        $('.signin-container').hide();
+        $('.signup-container').show();
+    },
+
+    makeSignin : function() {
+        var userEmail = $('.signin-container #signin-email').val();
+        var userPassword = $('.signin-container #signin-password').val();
+
+        // alert(userEmail);
+        // alert(userPassword);
+    },
+
+    makeSignup : function() {
+        var userEmail = $('.signup-container #signup-email').val();
+        var userPassword = $('.signup-container #signup-password').val();
+
+        $.ajax({
+          method: "GET",
+          url: Route.login,
+          data: {
+            userEmail: userEmail,
+            userPassword: userPassword
+            }
+        }).done(function(data) {
+            alert(data.status);
+        });
+
+        // alert(userEmail);
+        // alert(userPassword)
+    }
 
 }

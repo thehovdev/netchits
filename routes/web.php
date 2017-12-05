@@ -17,3 +17,6 @@
 
 
 Route::get('/', 'StartController@homePage');
+
+
+Route::any('/api/auth/login', 'Api\Auth\LoginController@login');

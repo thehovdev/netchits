@@ -8350,12 +8350,12 @@ button.close {
   }
 }
 
-.login-container {
+.signin-container {
   display: none;
   width: 30%;
 }
 
-.register-container {
+.signup-container {
   display: none;
   width: 30%;
 }

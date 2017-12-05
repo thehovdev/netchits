@@ -753,9 +753,9 @@ module.exports = __webpack_require__(36);
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(47);
+__webpack_require__(9);
 
-__webpack_require__(46);
+__webpack_require__(35);
 
 // window.Vue = require('vue');
 //
@@ -766,7 +766,64 @@ __webpack_require__(46);
 // });
 
 /***/ }),
-/* 9 */,
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+window._ = __webpack_require__(10);
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+  window.$ = window.jQuery = __webpack_require__(13);
+
+  __webpack_require__(14);
+} catch (e) {}
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+window.axios = __webpack_require__(15);
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+
+// import Echo from 'laravel-echo'
+
+// window.Pusher = require('pusher-js');
+
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'your-pusher-key'
+// });
+
+/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31637,107 +31694,79 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 35 */,
-/* 36 */
+/* 35 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
-/***/ (function(module, exports) {
+Route = {
+    host: '/',
+    login: '/api/auth/login'
+};
 
 $(document).ready(function () {
 
     $('#signup-button').click(function () {
-        Api.signup();
+        Api.showSignup();
     });
 
     $('#signin-button').click(function () {
-        Api.signin();
+        Api.showSignin();
+    });
+
+    $('#signin-submit-button').click(function () {
+        Api.makeSignin();
+    });
+
+    $('#signup-submit-button').click(function () {
+        Api.makeSignup();
     });
 });
 
 Api = {
 
-    signin: function signin() {
-        $('.login-container').hide();
-        $('.register-container').show();
+    showSignin: function showSignin() {
+        $('.signup-container').hide();
+        $('.signin-container').show();
     },
 
-    signup: function signup() {
-        $('.register-container').hide();
-        $('.login-container').show();
+    showSignup: function showSignup() {
+        $('.signin-container').hide();
+        $('.signup-container').show();
+    },
+
+    makeSignin: function makeSignin() {
+        var userEmail = $('.signin-container #signin-email').val();
+        var userPassword = $('.signin-container #signin-password').val();
+
+        // alert(userEmail);
+        // alert(userPassword);
+    },
+
+    makeSignup: function makeSignup() {
+        var userEmail = $('.signup-container #signup-email').val();
+        var userPassword = $('.signup-container #signup-password').val();
+
+        $.ajax({
+            method: "GET",
+            url: Route.login,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+            alert(data.status);
+        });
+
+        // alert(userEmail);
+        // alert(userPassword)
     }
 
 };
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 36 */
+/***/ (function(module, exports) {
 
-
-window._ = __webpack_require__(10);
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-try {
-  window.$ = window.jQuery = __webpack_require__(13);
-
-  __webpack_require__(14);
-} catch (e) {}
-
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-window.axios = __webpack_require__(15);
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-/**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
- */
-
-var token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-
-// import Echo from 'laravel-echo'
-
-// window.Pusher = require('pusher-js');
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
