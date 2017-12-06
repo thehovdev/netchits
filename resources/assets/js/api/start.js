@@ -1,10 +1,6 @@
-Route = {
-    host : '/',
-    login : '/api/auth/login',
-}
-
 $(document).ready(function() {
 
+//--------------------Auth Header Buttons--------------------------//
     $('#signup-button').click(function() {
         Api.showSignup();
     });
@@ -12,7 +8,10 @@ $(document).ready(function() {
     $('#signin-button').click(function() {
         Api.showSignin();
     });
+//--------------------Auth Header Buttons--------------------------//
 
+
+//--------------------Auth Form Buttons----------------------------//
     $('#signin-submit-button').click(function() {
         Api.makeSignin();
     });
@@ -20,6 +19,7 @@ $(document).ready(function() {
     $('#signup-submit-button').click(function() {
         Api.makeSignup();
     });
+//-------------------Auth Form Buttons----------------------------//
 
 });
 
@@ -37,30 +37,19 @@ Api = {
     },
 
     makeSignin : function() {
-        var userEmail = $('.signin-container #signin-email').val();
-        var userPassword = $('.signin-container #signin-password').val();
+        requst = [];
+        request['userEmail'] = $('.signin-container #signin-email').val();
+        request['userPassword'] = $('.signin-container #signin-password').val();
 
-        // alert(userEmail);
-        // alert(userPassword);
+        Ajax.sendSignin(request);
     },
 
     makeSignup : function() {
-        var userEmail = $('.signup-container #signup-email').val();
-        var userPassword = $('.signup-container #signup-password').val();
+        request = [];
+        request['userEmail'] = $('.signup-container #signup-email').val();
+        request['userPassword'] = $('.signup-container #signup-password').val();
 
-        $.ajax({
-          method: "GET",
-          url: Route.login,
-          data: {
-            userEmail: userEmail,
-            userPassword: userPassword
-            }
-        }).done(function(data) {
-            alert(data.status);
-        });
-
-        // alert(userEmail);
-        // alert(userPassword)
+        Ajax.sendSignup(request);
     }
 
 }
