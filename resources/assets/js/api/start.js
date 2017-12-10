@@ -37,11 +37,20 @@ Api = {
     },
 
     makeSignin : function() {
-        requst = [];
+
+
+        request = [];
         request['userEmail'] = $('.signin-container #signin-email').val();
         request['userPassword'] = $('.signin-container #signin-password').val();
 
+
+        alert(request['userEmail']);
+        alert(request['userPassword']);
+
+
         Ajax.sendSignin(request);
+
+
     },
 
     makeSignup : function() {

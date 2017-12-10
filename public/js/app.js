@@ -746,7 +746,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(8);
-module.exports = __webpack_require__(36);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
@@ -756,13 +756,13 @@ module.exports = __webpack_require__(36);
 __webpack_require__(9);
 
 //роуты приложения для javascript кода, как web.php для php кода
-__webpack_require__(51);
+__webpack_require__(35);
 
 //объект Ajax, тут хранятся ajax методы
-__webpack_require__(48);
+__webpack_require__(36);
 
 //стартовый скрипт
-__webpack_require__(35);
+__webpack_require__(37);
 
 // window.Vue = require('vue');
 //
@@ -31704,6 +31704,55 @@ module.exports = function spread(callback) {
 /* 35 */
 /***/ (function(module, exports) {
 
+Route = {
+    host: '/',
+    signIn: '/api/auth/signIn', // Api/Auth/SignInController@signIn
+    signUp: '/api/auth/signUp' // Api/Auth/SignUpController@signUp
+};
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+Ajax = {
+
+    sendSignup: function sendSignup(request) {
+        $.ajax({
+            method: "GET",
+            url: Route.signUp,
+            data: {
+                userEmail: request.userEmail,
+                userPassword: request.userPassword
+            }
+        }).done(function (data) {
+            alert(data.status);
+            alert(data.msg);
+        });
+    },
+
+    sendSignin: function sendSignin(request) {
+        // alert('send');
+        alert(request.userEmail);
+        alert(request.userPassword);
+
+        $.ajax({
+            method: "GET",
+            url: Route.signIn,
+            data: {
+                userEmail: request.userEmail,
+                userPassword: request.userPassword
+            }
+        }).done(function (data) {
+            alert(data.status);
+            alert(data.msg);
+        });
+    }
+};
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
 $(document).ready(function () {
 
     //--------------------Auth Header Buttons--------------------------//
@@ -31741,9 +31790,13 @@ Api = {
     },
 
     makeSignin: function makeSignin() {
-        requst = [];
+
+        request = [];
         request['userEmail'] = $('.signin-container #signin-email').val();
         request['userPassword'] = $('.signin-container #signin-password').val();
+
+        alert(request['userEmail']);
+        alert(request['userPassword']);
 
         Ajax.sendSignin(request);
     },
@@ -31759,51 +31812,10 @@ Api = {
 };
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ (function(module, exports) {
-
-Ajax = {
-    sendSignup: function sendSignup(request) {
-        $.ajax({
-            method: "GET",
-            url: Route.login,
-            data: {
-                userEmail: request.userEmail,
-                userPassword: request.userPassword
-            }
-        }).done(function (data) {
-            alert(data.status);
-        });
-    }
-};
-
-/***/ }),
-/* 49 */,
-/* 50 */,
-/* 51 */
-/***/ (function(module, exports) {
-
-Route = {
-    host: '/',
-    login: '/api/auth/login' // Api/Auth/LoginController@login
-};
 
 /***/ })
 /******/ ]);

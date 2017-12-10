@@ -1,4 +1,5 @@
 Route = {
     host : '/',
-    login : '/api/auth/login', // Api/Auth/LoginController@login
+    signIn : '/api/auth/signIn', // Api/Auth/SignInController@signIn
+    signUp : '/api/auth/signUp', // Api/Auth/SignUpController@signUp
 }
