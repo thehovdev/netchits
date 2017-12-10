@@ -44,10 +44,6 @@ Api = {
         request['userPassword'] = $('.signin-container #signin-password').val();
 
 
-        alert(request['userEmail']);
-        alert(request['userPassword']);
-
-
         Ajax.sendSignin(request);
 
 
