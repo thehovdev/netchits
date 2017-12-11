@@ -27,6 +27,9 @@ class UsersModel extends Model
         }
 
         $this->result['status'] = 1;
+        $this->result['email'] = $email;
+
+
         return $this->result;
         // -----------------RESULT ----------------//
 
@@ -60,6 +63,8 @@ class UsersModel extends Model
 
         $this->result['status'] = 1;
         $this->result['msg'] = 'succes';
+        $this->result['email'] = $email;
+
         return $this->result;
         // -----------------RESULT ----------------//
 
@@ -75,6 +80,8 @@ class UsersModel extends Model
 
         $this->result['status'] = 1;
         $this->result['msg'] = 'success';
+        $this->result['email'] = $usersData['email'];
+
         return $this->result;
     }
 }

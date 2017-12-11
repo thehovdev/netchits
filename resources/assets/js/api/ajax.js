@@ -1,37 +1,42 @@
 Ajax = {
 
-    sendSignup : function(request) {
+    sendSignup : function() {
+
+        userEmail = $('.signup-container #signup-email').val();
+        userPassword = $('.signup-container #signup-password').val();
+
         $.ajax({
-          method: "GET",
+          headers: Route.header,
           url: Route.signUp,
+          method: "GET",
           data: {
-            userEmail: request.userEmail,
-            userPassword: request.userPassword
+            userEmail: userEmail,
+            userPassword: userPassword,
             }
         }).done(function(data) {
-            alert(data.status);
-            alert(data.msg);
+
+            Api.makeSignup(data);
+
         });
     },
 
+    sendSignin : function() {
 
-    sendSignin : function(request) {
-        // alert('send');
-        alert(request.userEmail);
-        alert(request.userPassword);
-
-
+        userEmail = $('.signin-container #signin-email').val();
+        userPassword = $('.signin-container #signin-password').val();
 
         $.ajax({
-          method: "GET",
+          headers: Route.header,
           url: Route.signIn,
+          method: "GET",
           data: {
-            userEmail: request.userEmail,
-            userPassword: request.userPassword
+            userEmail: userEmail,
+            userPassword: userPassword
             }
         }).done(function(data) {
-            alert(data.status);
-            alert(data.msg);
+
+            Api.makeSignin(data);
+
         });
     },
 }

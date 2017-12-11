@@ -13,11 +13,12 @@ $(document).ready(function() {
 
 //--------------------Auth Form Buttons----------------------------//
     $('#signin-submit-button').click(function() {
-        Api.makeSignin();
+        Ajax.sendSignin();
     });
 
     $('#signup-submit-button').click(function() {
-        Api.makeSignup();
+        Ajax.sendSignup();
+
     });
 //-------------------Auth Form Buttons----------------------------//
 
@@ -36,25 +37,38 @@ Api = {
         $('.signup-container').show();
     },
 
-    makeSignin : function() {
+    makeSignin : function(data) {
 
+        var status = data.status;
+        var msg = data.msg;
 
-        request = [];
-        request['userEmail'] = $('.signin-container #signin-email').val();
-        request['userPassword'] = $('.signin-container #signin-password').val();
+        if(status == 0) {
+            alert(msg);
+            return false;
+        }
 
+        $('.mainPage').hide();
+        $('.profilePage').show();
 
-        Ajax.sendSignin(request);
-
+        $('#header-username').text(data.email);
 
     },
 
-    makeSignup : function() {
-        request = [];
-        request['userEmail'] = $('.signup-container #signup-email').val();
-        request['userPassword'] = $('.signup-container #signup-password').val();
+    makeSignup : function(data) {
 
-        Ajax.sendSignup(request);
+        var status = data.status;
+        var msg = data.msg;
+
+        if(status == 0) {
+            alert(msg);
+            return false;
+        }
+
+        $('.mainPage').hide();
+        $('.profilePage').show();
+
+        $('#header-username').text(data.email);
+
     }
 
 }

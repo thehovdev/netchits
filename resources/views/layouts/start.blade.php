@@ -1,7 +1,7 @@
 @extends('start.init')
 
 @section('content')
-<section pageId="mainPage">
+<section class="mainPage">
 
     <div class="container signin-container">
         <form>
@@ -38,4 +38,11 @@
     </div>
 
 </section>
+
+
+<section class="profilePage" hidden>
+    User Profile
+</section>
+
+
 @endsection

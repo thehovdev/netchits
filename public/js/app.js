@@ -753,24 +753,17 @@ module.exports = __webpack_require__(38);
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// bootstrap
 __webpack_require__(9);
-
-//роуты приложения для javascript кода, как web.php для php кода
-__webpack_require__(35);
-
-//объект Ajax, тут хранятся ajax методы
-__webpack_require__(36);
 
 //стартовый скрипт
 __webpack_require__(37);
 
-// window.Vue = require('vue');
-//
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
+//объект Ajax, тут хранятся ajax методы
+__webpack_require__(36);
+
+//роуты приложения для javascript кода, как web.php для php кода
+__webpack_require__(35);
 
 /***/ }),
 /* 9 */
@@ -31705,6 +31698,7 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports) {
 
 Route = {
+    header: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
     host: '/',
     signIn: '/api/auth/signIn', // Api/Auth/SignInController@signIn
     signUp: '/api/auth/signUp' // Api/Auth/SignUpController@signUp
@@ -31716,35 +31710,41 @@ Route = {
 
 Ajax = {
 
-    sendSignup: function sendSignup(request) {
+    sendSignup: function sendSignup() {
+
+        userEmail = $('.signup-container #signup-email').val();
+        userPassword = $('.signup-container #signup-password').val();
+
         $.ajax({
-            method: "GET",
+            headers: Route.header,
             url: Route.signUp,
+            method: "GET",
             data: {
-                userEmail: request.userEmail,
-                userPassword: request.userPassword
+                userEmail: userEmail,
+                userPassword: userPassword
             }
         }).done(function (data) {
-            alert(data.status);
-            alert(data.msg);
+
+            Api.makeSignup(data);
         });
     },
 
-    sendSignin: function sendSignin(request) {
-        // alert('send');
-        alert(request.userEmail);
-        alert(request.userPassword);
+    sendSignin: function sendSignin() {
+
+        userEmail = $('.signin-container #signin-email').val();
+        userPassword = $('.signin-container #signin-password').val();
 
         $.ajax({
-            method: "GET",
+            headers: Route.header,
             url: Route.signIn,
+            method: "GET",
             data: {
-                userEmail: request.userEmail,
-                userPassword: request.userPassword
+                userEmail: userEmail,
+                userPassword: userPassword
             }
         }).done(function (data) {
-            alert(data.status);
-            alert(data.msg);
+
+            Api.makeSignin(data);
         });
     }
 };
@@ -31768,11 +31768,11 @@ $(document).ready(function () {
 
     //--------------------Auth Form Buttons----------------------------//
     $('#signin-submit-button').click(function () {
-        Api.makeSignin();
+        Ajax.sendSignin();
     });
 
     $('#signup-submit-button').click(function () {
-        Api.makeSignup();
+        Ajax.sendSignup();
     });
     //-------------------Auth Form Buttons----------------------------//
 });
@@ -31789,24 +31789,36 @@ Api = {
         $('.signup-container').show();
     },
 
-    makeSignin: function makeSignin() {
+    makeSignin: function makeSignin(data) {
 
-        request = [];
-        request['userEmail'] = $('.signin-container #signin-email').val();
-        request['userPassword'] = $('.signin-container #signin-password').val();
+        var status = data.status;
+        var msg = data.msg;
 
-        alert(request['userEmail']);
-        alert(request['userPassword']);
+        if (status == 0) {
+            alert(msg);
+            return false;
+        }
 
-        Ajax.sendSignin(request);
+        $('.mainPage').hide();
+        $('.profilePage').show();
+
+        $('#header-username').text(data.email);
     },
 
-    makeSignup: function makeSignup() {
-        request = [];
-        request['userEmail'] = $('.signup-container #signup-email').val();
-        request['userPassword'] = $('.signup-container #signup-password').val();
+    makeSignup: function makeSignup(data) {
 
-        Ajax.sendSignup(request);
+        var status = data.status;
+        var msg = data.msg;
+
+        if (status == 0) {
+            alert(msg);
+            return false;
+        }
+
+        $('.mainPage').hide();
+        $('.profilePage').show();
+
+        $('#header-username').text(data.email);
     }
 
 };
