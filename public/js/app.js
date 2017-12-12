@@ -31743,8 +31743,6 @@ Api = {
             return false;
         }
 
-        console.info(data);
-
         $('.mainPage').hide();
         $('.profilePage').show();
 
@@ -31806,7 +31804,6 @@ Ajax = {
                 userPassword: userPassword
             }
         }).done(function (data) {
-
             Api.makeSignin(data);
         });
     }

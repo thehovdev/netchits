@@ -32,11 +32,7 @@ Ajax = {
             userPassword: userPassword
             }
         }).done(function(data) {
-
             Api.makeSignin(data);
-
         });
-
-
     },
 }
