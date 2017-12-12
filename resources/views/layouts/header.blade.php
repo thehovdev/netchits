@@ -19,9 +19,9 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user" id="header-username"></span></a></li>
-            <li><a href="#signup" id="signup-button"><span class="glyphicon glyphicon-new-window"></span> Sign Up</a></li>
-            <li><a href="#signin" id="signin-button"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+            <li><a style="cursor:pointer;"><span class="glyphicon glyphicon-user" id="header-username"></span></a></li>
+            <li><a id="signup-button" style="cursor:pointer;"><span class="glyphicon glyphicon-new-window"></span> Sign Up</a></li>
+            <li><a id="signin-button" style="cursor:pointer;"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
         </ul>
 
 

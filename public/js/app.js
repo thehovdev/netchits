@@ -757,13 +757,13 @@ module.exports = __webpack_require__(38);
 __webpack_require__(9);
 
 //стартовый скрипт
-__webpack_require__(37);
+__webpack_require__(35);
 
 //объект Ajax, тут хранятся ajax методы
 __webpack_require__(36);
 
 //роуты приложения для javascript кода, как web.php для php кода
-__webpack_require__(35);
+__webpack_require__(37);
 
 /***/ }),
 /* 9 */
@@ -31697,62 +31697,6 @@ module.exports = function spread(callback) {
 /* 35 */
 /***/ (function(module, exports) {
 
-Route = {
-    header: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-    host: '/',
-    signIn: '/api/auth/signIn', // Api/Auth/SignInController@signIn
-    signUp: '/api/auth/signUp' // Api/Auth/SignUpController@signUp
-};
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports) {
-
-Ajax = {
-
-    sendSignup: function sendSignup() {
-
-        userEmail = $('.signup-container #signup-email').val();
-        userPassword = $('.signup-container #signup-password').val();
-
-        $.ajax({
-            headers: Route.header,
-            url: Route.signUp,
-            method: "GET",
-            data: {
-                userEmail: userEmail,
-                userPassword: userPassword
-            }
-        }).done(function (data) {
-
-            Api.makeSignup(data);
-        });
-    },
-
-    sendSignin: function sendSignin() {
-
-        userEmail = $('.signin-container #signin-email').val();
-        userPassword = $('.signin-container #signin-password').val();
-
-        $.ajax({
-            headers: Route.header,
-            url: Route.signIn,
-            method: "GET",
-            data: {
-                userEmail: userEmail,
-                userPassword: userPassword
-            }
-        }).done(function (data) {
-
-            Api.makeSignin(data);
-        });
-    }
-};
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports) {
-
 $(document).ready(function () {
 
     //--------------------Auth Header Buttons--------------------------//
@@ -31799,6 +31743,8 @@ Api = {
             return false;
         }
 
+        console.info(data);
+
         $('.mainPage').hide();
         $('.profilePage').show();
 
@@ -31821,6 +31767,63 @@ Api = {
         $('#header-username').text(data.email);
     }
 
+};
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+Ajax = {
+
+    sendSignup: function sendSignup() {
+
+        userEmail = $('.signup-container #signup-email').val();
+        userPassword = $('.signup-container #signup-password').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signUp,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+
+            Api.makeSignup(data);
+        });
+    },
+
+    sendSignin: function sendSignin() {
+
+        userEmail = $('.signin-container #signin-email').val();
+        userPassword = $('.signin-container #signin-password').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signIn,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+
+            Api.makeSignin(data);
+        });
+    }
+};
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+Route = {
+  header: {
+    "Accept": "application/json",
+    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+  },
+  host: '/',
+  signIn: '/api/auth/signIn', // Api/Auth/SignInController@signIn
+  signUp: '/api/auth/signUp' // Api/Auth/SignUpController@signUp
 };
 
 /***/ }),

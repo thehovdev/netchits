@@ -47,10 +47,13 @@ Api = {
             return false;
         }
 
+        console.info(data);
+
         $('.mainPage').hide();
         $('.profilePage').show();
 
         $('#header-username').text(data.email);
+
 
     },
 

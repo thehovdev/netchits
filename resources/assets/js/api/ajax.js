@@ -8,7 +8,6 @@ Ajax = {
         $.ajax({
           headers: Route.header,
           url: Route.signUp,
-          method: "GET",
           data: {
             userEmail: userEmail,
             userPassword: userPassword,
@@ -28,7 +27,6 @@ Ajax = {
         $.ajax({
           headers: Route.header,
           url: Route.signIn,
-          method: "GET",
           data: {
             userEmail: userEmail,
             userPassword: userPassword
@@ -38,5 +36,7 @@ Ajax = {
             Api.makeSignin(data);
 
         });
+
+
     },
 }

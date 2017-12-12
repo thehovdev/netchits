@@ -22,11 +22,9 @@ class SignInController extends Controller
 
         $usersModel = new UsersModel;
 
-
         $userData = [];
         $userData['email'] = $request->userEmail;
         $userData['password'] = $request->userPassword;
-
 
         // Step 1 : Check if User Exists
         $result = $usersModel->checkSignIn($userData);
