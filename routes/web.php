@@ -17,5 +17,7 @@
 
 
 Route::any('/', 'StartController@homePage');
+Route::any('/api/test', 'TestController@test');
 Route::any('/api/auth/signUp', 'Api\Auth\SignUpController@signUp');
 Route::any('/api/auth/signIn', 'Api\Auth\SignInController@signIn');
+Route::any('/api/auth/signOut', 'Api\Auth\SignOutController@signOut');

@@ -8,18 +8,22 @@ $(document).ready(function() {
     $('#signin-button').click(function() {
         Api.showSignin();
     });
+
+    $('#signout-button').click(function() {
+        Api.makeSignout();
+    });
 //--------------------Auth Header Buttons--------------------------//
 
 
 //--------------------Auth Form Buttons----------------------------//
     $('#signin-submit-button').click(function() {
-        Ajax.sendSignin();
+        Api.makeSignin();
     });
 
     $('#signup-submit-button').click(function() {
-        Ajax.sendSignup();
-
+        Api.makeSignup();
     });
+
 //-------------------Auth Form Buttons----------------------------//
 
 });
@@ -37,37 +41,95 @@ Api = {
         $('.signup-container').show();
     },
 
-    makeSignin : function(data) {
 
-        var status = data.status;
-        var msg = data.msg;
 
-        if(status == 0) {
-            alert(msg);
-            return false;
-        }
+    makeSignup : function() {
 
-        $('.mainPage').hide();
-        $('.profilePage').show();
+        userEmail = $('.signup-container #signup-email').val();
+        userPassword = $('.signup-container #signup-password').val();
 
-        $('#header-username').text(data.email);
+        $.ajax({
+          headers: Route.header,
+          url: Route.signUp,
+          data: {
+            userEmail: userEmail,
+            userPassword: userPassword,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                $('.parent').html(data.html);
+            }
+        });
     },
 
-    makeSignup : function(data) {
+    makeSignin : function() {
 
-        var status = data.status;
-        var msg = data.msg;
+        userEmail = $('.signin-container #signin-email').val();
+        userPassword = $('.signin-container #signin-password').val();
 
-        if(status == 0) {
-            alert(msg);
-            return false;
-        }
+        $.ajax({
+          headers: Route.header,
+          url: Route.signIn,
+          data: {
+            userEmail: userEmail,
+            userPassword: userPassword
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                $('.parent').html(data.html);
+            }
+        });
+    },
 
-        $('.mainPage').hide();
-        $('.profilePage').show();
 
-        $('#header-username').text(data.email);
+    makeSignout : function() {
 
-    }
+        $.ajax({
+          headers: Route.header,
+          url: Route.signOut,
+        }).done(function(data) {
+            if(data.status == 1) {
+                // $('.parent').html(data.html);
+                window.location.replace("/");
+
+            }
+        });
+    },
+
+
+
+
+    // makeSignin : function(data) {
+    //
+    //     var status = data.status;
+    //     var msg = data.msg;
+    //
+        // if(status == 0) {
+        //     alert(msg);
+        //     return false;
+        // }
+    //
+    //     $('.mainPage').hide();
+    //     $('.profilePage').show();
+    //
+    //     $('#header-username').text(data.email);
+    // },
+    //
+    // makeSignup : function(data) {
+    //
+    //     var status = data.status;
+    //     var msg = data.msg;
+    //
+    //     if(status == 0) {
+    //         alert(msg);
+    //         return false;
+    //     }
+    //
+    //     $('.mainPage').hide();
+    //     $('.profilePage').show();
+    //
+    //     $('#header-username').text(data.email);
+    //
+    // }
 
 }

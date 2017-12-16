@@ -29,7 +29,21 @@ class SignInController extends Controller
         // Step 1 : Check if User Exists
         $result = $usersModel->checkSignIn($userData);
 
-        return $result;
+        // Step 2 : Auth User
+        $cookieTime = strtotime( '+7 days' );
+        $cookieDir = '/';
+
+        setcookie("auth", "success", $cookieTime, $cookieDir);
+        setcookie("email", $result['email'], $cookieTime, $cookieDir);
+        setcookie("secret", $result['secret'], $cookieTime, $cookieDir);
+
+        // return $result;
+        $result['html'] = view('user.profile')
+            ->with("username", $result['email'])
+            ->render();
+
+        return response()->json($result);
+
     }
 
 }

@@ -63,7 +63,8 @@ class UsersModel extends Model
 
         $this->result['status'] = 1;
         $this->result['msg'] = 'succes';
-        $this->result['email'] = $email;
+        $this->result['email'] = $checkUser->email;
+        $this->result['secret'] = $checkUser->secret;
 
         return $this->result;
         // -----------------RESULT ----------------//
@@ -74,13 +75,17 @@ class UsersModel extends Model
 
     public function addUser($usersData) {
 
+        // insert to database
         $this->email = $usersData['email'];
         $this->password = $usersData['password'];
+        $this->secret = $usersData['secret'];
         $this->save();
 
+        // return result
         $this->result['status'] = 1;
         $this->result['msg'] = 'success';
         $this->result['email'] = $usersData['email'];
+        $this->result['secret'] = $usersData['secret'];
 
         return $this->result;
     }
