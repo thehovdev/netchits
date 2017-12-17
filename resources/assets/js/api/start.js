@@ -91,7 +91,6 @@ Api = {
             if(data.status == 1) {
                 // $('.parent').html(data.html);
                 window.location.replace("/");
-
             }
         });
     },

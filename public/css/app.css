@@ -8364,3 +8364,24 @@ button.close {
   cursor: pointer;
 }
 
+.chits-parent {
+  text-align: center;
+  height: auto;
+}
+
+.chits-parent div {
+  height: 150px;
+}
+
+.chits-column {
+  margin-left: 6%;
+}
+
+.chits-add-row {
+  margin-bottom: 50px;
+}
+
+.chits-add-column {
+  margin-left: 5%;
+}
+

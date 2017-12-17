@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="parent">
-    
+
     <section class="mainPage">
 
         <nav class="navbar">
@@ -16,7 +16,6 @@
                     <li><a id="signup-button" style="cursor:pointer;"><span class="glyphicon glyphicon-new-window"></span> Sign Up</a></li>
                     <li><a id="signin-button" style="cursor:pointer;"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
                 </ul>
-
 
             </div>
         </nav>
