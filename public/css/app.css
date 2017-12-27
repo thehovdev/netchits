@@ -8364,17 +8364,40 @@ button.close {
   cursor: pointer;
 }
 
-.chits-parent {
+a {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+.chits-list {
   text-align: center;
   height: auto;
 }
 
-.chits-parent div {
-  height: 150px;
+.chits-list div {
+  height: 100px;
 }
 
 .chits-column {
   margin-left: 6%;
+  margin-top: 80px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background: #757575;
+}
+
+.chits-column-image {
+  margin-left: 6%;
+  margin-top: 80px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .chits-add-row {
@@ -8383,5 +8406,56 @@ button.close {
 
 .chits-add-column {
   margin-left: 5%;
+}
+
+.chits-child {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.button-delete {
+  margin-top: 10px;
+}
+
+.opg_title {
+  display: block;
+  margin: auto;
+  padding-top: 15px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 0.7em;
+  width: 100%;
+  height: 40px !important;
+  color: white;
+}
+
+.opg_sitename {
+  display: block;
+  margin: auto;
+  padding-top: 10px;
+  width: 80%;
+  height: 40px !important;
+  color: white;
+}
+
+.opg-image {
+  display: block;
+  float: left;
+  width: 20%;
+  height: 40%;
+}
+
+.category-parent {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -50px;
+  width: 20%;
+}
+
+.category-block {
+  text-align: center;
 }
 

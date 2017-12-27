@@ -72,10 +72,8 @@ class SignUpController extends Controller
         setcookie("secret", $result['secret'], $cookieTime, $cookieDir);
 
 
-        $result['html'] = view('user.profile')
-            ->with("username", $result['email'])
-            ->render();
-
-        return response()->json($result);
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
     }
 }

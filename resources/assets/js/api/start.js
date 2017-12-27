@@ -26,10 +26,77 @@ $(document).ready(function() {
 
 //-------------------Auth Form Buttons----------------------------//
 
+
+
+//-------------------- User Evemts ----------------------------//
+    $("#chits-add-button").click(function () {
+        Api.addChits();
+    })
+
+
+    // (если элементы динамически обновляются на странице ) надо добавлять
+    // $(document).on к началу события
+    // делегирование
+
+
+    $(document).on('click', '.chits-delete-button', function() {
+        //находим id поста, который надо удалить
+        var id = $(this).closest('div').attr('id')
+        Api.deleteChits(id);
+    });
+
+
+
+
+
+
+//-------------------- User Evemts ----------------------------//
+
 });
 
 
 Api = {
+
+    addChits : function () {
+        chitsAddress = $("#chits-address-input").val();
+        if(chitsAddress == "") {
+            alert("address not be empty");
+        }
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.addChits,
+          data: {
+            chitsAddress: chitsAddress,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                $('.chits-list').html(data.html);
+            }
+        });
+        return false;
+    },
+
+    deleteChits : function(chitsId) {
+
+        if(chitsId == "") {
+            alert("deleted item not be empty");
+        }
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.deleteChits,
+          data: {
+            chitsId: chitsId,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                $('.chits-list').html(data.html);
+            }
+        });
+        return false;
+    },
+
 
     showSignin : function() {
         $('.signup-container').hide();
@@ -57,7 +124,8 @@ Api = {
             }
         }).done(function(data) {
             if(data.status == 1) {
-                $('.parent').html(data.html);
+                // $('.parent').html(data.html);
+                window.location.replace("/");
             }
         });
     },
@@ -76,7 +144,8 @@ Api = {
             }
         }).done(function(data) {
             if(data.status == 1) {
-                $('.parent').html(data.html);
+                // $('.parent').html(data.html);
+                window.location.replace("/");
             }
         });
     },
@@ -95,40 +164,5 @@ Api = {
         });
     },
 
-
-
-
-    // makeSignin : function(data) {
-    //
-    //     var status = data.status;
-    //     var msg = data.msg;
-    //
-        // if(status == 0) {
-        //     alert(msg);
-        //     return false;
-        // }
-    //
-    //     $('.mainPage').hide();
-    //     $('.profilePage').show();
-    //
-    //     $('#header-username').text(data.email);
-    // },
-    //
-    // makeSignup : function(data) {
-    //
-    //     var status = data.status;
-    //     var msg = data.msg;
-    //
-    //     if(status == 0) {
-    //         alert(msg);
-    //         return false;
-    //     }
-    //
-    //     $('.mainPage').hide();
-    //     $('.profilePage').show();
-    //
-    //     $('#header-username').text(data.email);
-    //
-    // }
 
 }

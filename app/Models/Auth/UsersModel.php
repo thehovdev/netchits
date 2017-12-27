@@ -89,4 +89,18 @@ class UsersModel extends Model
 
         return $this->result;
     }
+
+    public function getUser() {
+
+        $email = $_COOKIE['email'];
+        $secret = $_COOKIE['secret'];
+
+        $user = $this->where([
+            ['email', '=', $email],
+            ['secret', '=', $secret]
+        ])->first();
+
+        return $user;
+    }
+    
 }
