@@ -51,7 +51,7 @@ Api = {
 
     $(document).on('click', '.chits-delete-button', function() {
         //находим id поста, который надо удалить
-        var id = $(this).closest('div').attr('id')
+        var id = $(this).closest('div.chits-column-parent').attr('id')
         Api.deleteChits(id);
     });
 

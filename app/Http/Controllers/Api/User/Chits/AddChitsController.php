@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Data\DataController;
 //-------------------App Models---------------------//
 use App\Models\Auth\UsersModel;
 use App\Models\User\ChitsModel;
+use App\Models\User\ChitsGroupModel;
 //-------------------App Models---------------------//
 
 use App\Http\Lib\OpenGraph;
@@ -25,6 +26,7 @@ class AddChitsController extends Controller
     // SECTION : Models & Controllers
         $usersModel = new UsersModel;
         $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
 
         $dataController = new DataController;
     // SECTION : Request
@@ -42,6 +44,7 @@ class AddChitsController extends Controller
 
 
         $userChits = $chitsModel->getUserChits($user);
+        $userGroups = $chitsGroupModel->getUserGroups($user);
 
 
 
@@ -50,7 +53,8 @@ class AddChitsController extends Controller
         $result['msg'] = 'success';
         $result['html'] = view('user.chits.chits-list')
             ->with("user", $user)
-            ->with("userChits", $userChits)
+            ->with("userChits", @$userChits)
+            ->with("userGroups", @$userGroups)
             ->render();
 
 

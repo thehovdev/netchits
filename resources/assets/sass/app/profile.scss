@@ -16,25 +16,26 @@ a:visited {
 
 .chits-list div {
     // background: gray;
-    height: 100px;
+    // height: 150px;
 }
 
-.chits-column {
-    margin-left: 6%;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+.chits-column-block {
+    height: 100px !important;
     background: #757575;
 }
 
 
 
 
-.chits-column-image{
-    margin-top: 20px;
-    margin-bottom: 20px;
+.chits-column-parent{
     margin-left: 6%;
     padding-left: 0px !important;
     padding-right: 0px !important;
+}
+
+
+.chits-column-image{
+    height: 100px !important;
 }
 
 
@@ -45,7 +46,13 @@ a:visited {
 // }
 
 .chits-add-row {
-    margin-bottom: 20px;
+    padding: 10px 0;
+    height: auto !important;
+}
+
+.chits-add-group-row {
+    padding: 10px 0;
+    height: auto !important;
 }
 
 .chits-add-column {
@@ -101,6 +108,7 @@ a:visited {
 .row-group {
     display: block;
     height: 60px !important;
+    margin: 50px auto;
 }
 
 
@@ -116,6 +124,12 @@ a:visited {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.panel-group {
+    width: 10% !important;
+    margin: auto;
+}
+
 
 
 // .group-panel {

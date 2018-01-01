@@ -65,16 +65,18 @@ class ChitsModel extends Model
             ['userid', '=', $user['id']],
         ])->get();
 
-        $chits = [];
-        foreach ($userChits as $userChit) {
-            $chits[$userChit->id]['id'] = $userChit->id;
-            $chits[$userChit->id]['user_id'] = $userChit->userid;
-            $chits[$userChit->id]['group_id'] = $userChit->group_id;
-            $chits[$userChit->id]['opg_sitename'] = $userChit->opg_sitename;
-            $chits[$userChit->id]['opg_title'] = $userChit->opg_title;
-            $chits[$userChit->id]['opg_image'] = $userChit->opg_image;
-        }
-        return $chits;
+        return $userChits;
+
+        // $chits = [];
+        // foreach ($userChits as $userChit) {
+        //     $chits[$userChit->id]['id'] = $userChit->id;
+        //     $chits[$userChit->id]['user_id'] = $userChit->userid;
+        //     $chits[$userChit->id]['group_id'] = $userChit->group_id;
+        //     $chits[$userChit->id]['opg_sitename'] = $userChit->opg_sitename;
+        //     $chits[$userChit->id]['opg_title'] = $userChit->opg_title;
+        //     $chits[$userChit->id]['opg_image'] = $userChit->opg_image;
+        // }
+        // return $chits;
     }
 
 
@@ -109,6 +111,20 @@ class ChitsModel extends Model
         }
 
         return $userChitArr;
+    }
+
+    public function has_default_chits($user) {
+    
+        $userChits = $this->where([
+            ['userid', '=', $user['id']],
+            ['group_id', '=', NULL]
+        ])->first();
+
+        if(is_null($userChits)) {
+            return false;
+        }
+
+        return true;
     }
 
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Data\DataController;
 //-------------------App Models---------------------//
 use App\Models\Auth\UsersModel;
 use App\Models\User\ChitsModel;
+use App\Models\User\ChitsGroupModel;
 //-------------------App Models---------------------//
 
 class DeleteChitsController extends Controller
@@ -21,6 +22,8 @@ class DeleteChitsController extends Controller
         // SECTION : Models
             $usersModel = new UsersModel;
             $chitsModel = new ChitsModel;
+            $chitsGroupModel = new ChitsGroupModel;
+
         // SECTION : Request
             $chitsId = $request->chitsId;
         // SECTION : Logics
@@ -43,13 +46,15 @@ class DeleteChitsController extends Controller
 
 
             $userChits = $chitsModel->getUserChits($user);
+            $userGroups = $chitsGroupModel->getUserGroups($user);
 
 
             $result['status'] = 1;
             $result['msg'] = 'success';
             $result['html'] = view('user.chits.chits-list')
                 ->with("user", $user)
-                ->with("userChits", $userChits)
+                ->with("userChits", @$userChits)
+                ->with("userGroups", @$userGroups)
                 ->render();
 
 
