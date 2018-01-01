@@ -756,14 +756,17 @@ module.exports = __webpack_require__(38);
 // bootstrap
 __webpack_require__(9);
 
-//стартовый скрипт
-__webpack_require__(35);
+$(document).ready(function () {
 
-//объект Ajax, тут хранятся ajax методы
-__webpack_require__(36);
+  //стартовый скрипт
+  __webpack_require__(35);
+  //объект Ajax, тут хранятся ajax методы
+  __webpack_require__(36);
+  //роуты приложения для javascript кода, как web.php для php кода
+  __webpack_require__(37);
 
-//роуты приложения для javascript кода, как web.php для php кода
-__webpack_require__(37);
+  Api.prepare();
+});
 
 /***/ }),
 /* 9 */
@@ -31697,58 +31700,68 @@ module.exports = function spread(callback) {
 /* 35 */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-
-    //--------------------Auth Header Buttons--------------------------//
-    $('#signup-button').click(function () {
-        Api.showSignup();
-    });
-
-    $('#signin-button').click(function () {
-        Api.showSignin();
-    });
-
-    $('#signout-button').click(function () {
-        Api.makeSignout();
-    });
-    //--------------------Auth Header Buttons--------------------------//
-
-
-    //--------------------Auth Form Buttons----------------------------//
-    $('#signin-submit-button').click(function () {
-        Api.makeSignin();
-    });
-
-    $('#signup-submit-button').click(function () {
-        Api.makeSignup();
-    });
-
-    //-------------------Auth Form Buttons----------------------------//
-
-
-    //-------------------- User Evemts ----------------------------//
-    $("#chits-add-button").click(function () {
-        Api.addChits();
-    });
-
-    // (если элементы динамически обновляются на странице ) надо добавлять
-    // $(document).on к началу события
-    // делегирование
-
-
-    $(document).on('click', '.chits-delete-button', function () {
-        //находим id поста, который надо удалить
-        var id = $(this).closest('div').attr('id');
-        Api.deleteChits(id);
-    });
-
-    //-------------------- User Evemts ----------------------------//
-});
-
 Api = {
 
+    prepare: function prepare() {
+        Api.boot();
+    },
+
+    boot: function boot() {
+
+        //--------------------Auth Header Buttons--------------------------//
+        $('#signup-button').click(function () {
+            Api.showSignup();
+        });
+
+        $('#signin-button').click(function () {
+            Api.showSignin();
+        });
+
+        $('#signout-button').click(function () {
+            Api.makeSignout();
+        });
+        //--------------------Auth Header Buttons--------------------------//
+
+
+        //--------------------Auth Form Buttons----------------------------//
+        $('#signin-submit-button').click(function () {
+            Api.makeSignin();
+        });
+
+        $('#signup-submit-button').click(function () {
+            Api.makeSignup();
+        });
+
+        //-------------------Auth Form Buttons----------------------------//
+
+
+        //-------------------- User Evemts ----------------------------//
+        $("#chits-add-button").click(function () {
+            Api.addChits();
+        });
+
+        $("#chits-group-button").click(function () {
+            Api.addGroup();
+        });
+
+        // (если элементы динамически обновляются на странице ) надо добавлять
+        // $(document).on к началу события
+        // делегирование
+
+        $(document).on('click', '.chits-delete-button', function () {
+            //находим id поста, который надо удалить
+            var id = $(this).closest('div').attr('id');
+            Api.deleteChits(id);
+        });
+    },
+
+    //-------------------- User Evemts ----------------------------//
+
+
+    // Api = {
+
     addChits: function addChits() {
-        chitsAddress = $("#chits-address-input").val();
+        var chitsAddress = $("#chits-address-input").val();
         if (chitsAddress == "") {
             alert("address not be empty");
         }
@@ -31764,6 +31777,31 @@ Api = {
                 $('.chits-list').html(data.html);
             }
         });
+
+        return false;
+    },
+
+    addGroup: function addGroup() {
+        var chitsGroup = $("#chits-group-input").val();
+        if (chitsGroup == "") {
+            alert("group name not be empty");
+        }
+
+        // alert(chitsGroup);
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.addGroup,
+            data: {
+                chitsGroup: chitsGroup
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                alert(data.status);
+                // $('.chits-list').html(data.html);
+            }
+        });
+
         return false;
     },
 
@@ -31910,9 +31948,9 @@ Route = {
   signOut: '/api/auth/signOut', //signOut
 
   addChits: '/api/user/addChits', //add new Chits
+  addGroup: '/api/user/addGroup', //add new Group
   deleteChits: '/api/user/deleteChits', //delete Chits
   showChits: '/api/user/showChits' //show Chits
-
 };
 
 /***/ }),

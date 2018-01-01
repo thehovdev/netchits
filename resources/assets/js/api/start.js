@@ -1,4 +1,11 @@
-$(document).ready(function() {
+Api = {
+
+    prepare:function() {
+        Api.boot();
+    },
+
+    boot:function() {
+
 
 //--------------------Auth Header Buttons--------------------------//
     $('#signup-button').click(function() {
@@ -31,13 +38,16 @@ $(document).ready(function() {
 //-------------------- User Evemts ----------------------------//
     $("#chits-add-button").click(function () {
         Api.addChits();
-    })
+    });
+
+    $("#chits-group-button").click(function() {
+        Api.addGroup();
+    });
 
 
     // (если элементы динамически обновляются на странице ) надо добавлять
     // $(document).on к началу события
     // делегирование
-
 
     $(document).on('click', '.chits-delete-button', function() {
         //находим id поста, который надо удалить
@@ -45,20 +55,16 @@ $(document).ready(function() {
         Api.deleteChits(id);
     });
 
-
-
-
-
+},
 
 //-------------------- User Evemts ----------------------------//
 
-});
 
 
-Api = {
+// Api = {
 
     addChits : function () {
-        chitsAddress = $("#chits-address-input").val();
+        var chitsAddress = $("#chits-address-input").val();
         if(chitsAddress == "") {
             alert("address not be empty");
         }
@@ -74,6 +80,31 @@ Api = {
                 $('.chits-list').html(data.html);
             }
         });
+
+        return false;
+    },
+
+    addGroup : function () {
+        var chitsGroup = $("#chits-group-input").val();
+        if(chitsGroup == "") {
+            alert("group name not be empty");
+        }
+
+        // alert(chitsGroup);
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.addGroup,
+          data: {
+            chitsGroup: chitsGroup,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                alert(data.status);
+                // $('.chits-list').html(data.html);
+            }
+        });
+
         return false;
     },
 

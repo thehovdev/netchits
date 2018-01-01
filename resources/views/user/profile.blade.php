@@ -35,41 +35,27 @@
                       <input type="text" class="form-control" id="chits-address-input" placeholder="https://netchits.com">
                     </div>
                 </div>
+            </div>
 
+            <div class="row chits-category-row">
                 <div class="chits-category">
                     <div class="col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                        <button type="button" class="btn btn-primary" id="chits-add-button">Add Category</button>
+                        <button type="button" class="btn btn-primary" id="chits-group-button">Add Group</button>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2">
                         <div class="form-group">
-                          <input type="text" class="form-control" id="chits-address-input" placeholder="https://netchits.com">
+                            <input type="text" class="form-control" id="chits-group-input" placeholder="https://netchits.com">
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="panel panel-default category-parent">
-              <div class="panel-body">
-                  <div class="category-block">Default Category</div>
-              </div>
             </div>
 
 
             <div class="row chits-row">
+
                 <div class="chits-list">
                     @include("user.chits.chits-list")
                 </div>
-
-
-                {{-- <div class="chits-list">
-                    @foreach ($userChits as $userChit)
-                        <div class="chits-column bg-primary col-lg-3 col-md-3 col-sm-3">
-                                <a class="chits-child" href="{{ $userChit->address }}">{{ $userChit->address }}</a>
-                        </div>
-                    @endforeach
-                </div> --}}
-
             </div>
         </div>
     </section>

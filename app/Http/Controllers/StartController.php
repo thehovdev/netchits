@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\Data\DataController;
 //-------------------App Models---------------------//
 use App\Models\Auth\UsersModel;
 use App\Models\User\ChitsModel;
+use App\Models\User\ChitsGroupModel;
+
 //-------------------App Models---------------------//
 
 class StartController extends Controller
@@ -21,6 +23,7 @@ class StartController extends Controller
         // SECTION : Models
         $usersModel = new UsersModel;
         $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
 
         // SECTION : Logics
         if(!isset($_COOKIE['auth']) && @$_COOKIE['auth'] !== 'success') {
@@ -28,11 +31,14 @@ class StartController extends Controller
         } else {
 
             $user = $usersModel->getUser();
+            $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
+
 
             return view("user.profile")
                 ->with("user", $user)
-                ->with("userChits", $userChits);
+                ->with("userChits", @$userChits)
+                ->with("userGroups", @$userGroups);
         }
     }
 }

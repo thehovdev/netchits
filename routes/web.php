@@ -29,9 +29,16 @@ Route::any('/api/auth/signIn', 'Api\Auth\SignInController@signIn');
 Route::any('/api/auth/signOut', 'Api\Auth\SignOutController@signOut');
 
 
+// --------------- CHITS ------------------- //
 // Add New Chits
 Route::any('/api/user/addChits', 'Api\User\Chits\AddChitsController@addChits');
 // Delete Chits
 Route::any('/api/user/deleteChits', 'Api\User\Chits\DeleteChitsController@deleteChits');
 // Show Chits
 Route::any('/api/user/showChits', 'Api\User\Chits\ShowChitsController@showChits');
+// --------------- CHITS ------------------- //
+
+// --------------- GROUPS ------------------- //
+// Add New group
+Route::any('/api/user/addGroup', 'Api\User\Chits\GroupController@addGroup');
+// --------------- GROUPS ------------------- //

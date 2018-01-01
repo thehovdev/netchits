@@ -61,13 +61,56 @@ class ChitsModel extends Model
     }
 
     public function getUserChits($user) {
-
         $userChits = $this->where([
             ['userid', '=', $user['id']],
         ])->get();
 
-        return $userChits;
+        $chits = [];
+        foreach ($userChits as $userChit) {
+            $chits[$userChit->id]['id'] = $userChit->id;
+            $chits[$userChit->id]['user_id'] = $userChit->userid;
+            $chits[$userChit->id]['group_id'] = $userChit->group_id;
+            $chits[$userChit->id]['opg_sitename'] = $userChit->opg_sitename;
+            $chits[$userChit->id]['opg_title'] = $userChit->opg_title;
+            $chits[$userChit->id]['opg_image'] = $userChit->opg_image;
+        }
+        return $chits;
     }
+
+
+    public function getChitsByGroup($user, $id) {
+        $chitsByGroup = $this->where([
+            ['userid', '=', $user['id']],
+            ['group_id', '=', $id],
+        ])->get();
+
+        return $chitsByGroup;
+    }
+
+
+    public function getUserChitsByGroup($user, $userGroups) {
+
+        $userChits = [];
+        $userChitArr = [];
+        foreach ($userGroups as $userGroup) {
+            $userChits[$userGroup['name']] = $this->where([
+                ['userid', '=', $user['id']],
+                ['group_id', '=', $userGroup['id']],
+            ])->get();
+
+            foreach ($userChits[$userGroup['name']] as $userChit) {
+                $userChitArr[$userChit->id]['id'] = $userChit->id;
+                $userChitArr[$userChit->id]['user_id'] = $userChit->userid;
+                $userChitArr[$userChit->id]['group_id'] = $userChit->group_id;
+                $userChitArr[$userChit->id]['opg_sitename'] = $userChit->opg_sitename;
+                $userChitArr[$userChit->id]['opg_title'] = $userChit->opg_title;
+                $userChitArr[$userChit->id]['opg_image'] = $userChit->opg_image;
+            }
+        }
+
+        return $userChitArr;
+    }
+
 
     public function is_userchits($user, $chitsId) {
 

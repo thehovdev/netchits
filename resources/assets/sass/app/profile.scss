@@ -21,7 +21,6 @@ a:visited {
 
 .chits-column {
     margin-left: 6%;
-    margin-top: 80px;
     padding-left: 0px !important;
     padding-right: 0px !important;
     background: #757575;
@@ -31,11 +30,11 @@ a:visited {
 
 
 .chits-column-image{
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 6%;
-    margin-top: 80px;
     padding-left: 0px !important;
     padding-right: 0px !important;
-
 }
 
 
@@ -46,7 +45,7 @@ a:visited {
 // }
 
 .chits-add-row {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .chits-add-column {
@@ -98,16 +97,34 @@ a:visited {
     height: 40%;
 }
 
-.category-parent {
+
+.row-group {
     display: block;
-
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom: -50px;
-
-    width: 20%;
+    height: 60px !important;
 }
 
-.category-block {
-    text-align: center;
+
+.row-chits-list {
+    display: block;
+    height: auto !important;
 }
+
+.group-column {
+    display: block;
+    height: 40px !important;
+    line-height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+// .group-panel {
+//     display: block;
+//     margin-top: 20px !important;
+//     margin-bottom: 20px !important;
+//     height: 60px !important;
+// }
+//
+// .group-block {
+//     text-align: center;
+// }

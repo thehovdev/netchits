@@ -10,7 +10,7 @@ Route = {
     signOut : '/api/auth/signOut', //signOut
 
     addChits : '/api/user/addChits', //add new Chits
+    addGroup : '/api/user/addGroup', //add new Group
     deleteChits : '/api/user/deleteChits', //delete Chits
     showChits : '/api/user/showChits', //show Chits
-
 }
