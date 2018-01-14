@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\User\Chits;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,33 +12,27 @@ use App\Http\Controllers\Api\Data\DataController;
 //-------------------App Models---------------------//
 use App\Models\Auth\UsersModel;
 use App\Models\User\ChitsModel;
-use App\Models\User\ChitsGroupModel;
-
 //-------------------App Models---------------------//
 
-class StartController extends Controller
+class ShowChitsController extends Controller
 {
-    public function homePage() {
+    public function showChits() {
 
         // SECTION : Models
-        $usersModel = new UsersModel;
-        $chitsModel = new ChitsModel;
-        $chitsGroupModel = new ChitsGroupModel;
+            $usersModel = new UsersModel;
+            $chitsModel = new ChitsModel;
 
         // SECTION : Logics
-        if(!isset($_COOKIE['auth']) && @$_COOKIE['auth'] !== 'success') {
-                return view("layouts.start");
-        } else {
 
             $user = $usersModel->getUser();
-            $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
 
-
-            return view("user.profile")
+            $result = view('user.profile')
                 ->with("user", $user)
-                ->with("userChits", @$userChits)
-                ->with("userGroups", @$userGroups);
-        }
+                ->with("userChits", $userChits)
+                ->render();
+
+            return response()->json($result);
+
     }
 }

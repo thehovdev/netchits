@@ -753,17 +753,26 @@ module.exports = __webpack_require__(38);
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(9);
 
 __webpack_require__(35);
+=======
+// bootstrap
+__webpack_require__(9);
 
-// window.Vue = require('vue');
-//
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
+$(document).ready(function () {
+>>>>>>> hovdev1401
+
+  //стартовый скрипт
+  __webpack_require__(35);
+  //объект Ajax, тут хранятся ajax методы
+  __webpack_require__(36);
+  //роуты приложения для javascript кода, как web.php для php кода
+  __webpack_require__(37);
+
+  Api.prepare();
+});
 
 /***/ }),
 /* 9 */
@@ -824,6 +833,67 @@ if (token) {
 // });
 
 /***/ }),
+<<<<<<< HEAD
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+window._ = __webpack_require__(10);
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+  window.$ = window.jQuery = __webpack_require__(13);
+
+  __webpack_require__(14);
+} catch (e) {}
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+window.axios = __webpack_require__(15);
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+
+// import Echo from 'laravel-echo'
+
+// window.Pusher = require('pusher-js');
+
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'your-pusher-key'
+// });
+
+/***/ }),
+=======
+>>>>>>> hovdev1401
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31696,38 +31766,350 @@ module.exports = function spread(callback) {
 /***/ }),
 /* 35 */
 /***/ (function(module, exports) {
-
-$(document).ready(function () {
-
-    $('#signup-button').click(function () {
-        Api.signup();
-    });
-
-    $('#signin-button').click(function () {
-        Api.signin();
-    });
-});
+<<<<<<< HEAD
+=======
 
 Api = {
 
-    signin: function signin() {
-        $('.login-container').hide();
-        $('.register-container').show();
+    prepare: function prepare() {
+        Api.boot();
+    },
+>>>>>>> hovdev1401
+
+    boot: function boot() {
+
+        //--------------------Auth Header Buttons--------------------------//
+        $('#signup-button').click(function () {
+            Api.showSignup();
+        });
+
+        $('#signin-button').click(function () {
+            Api.showSignin();
+        });
+
+        $('#signout-button').click(function () {
+            Api.makeSignout();
+        });
+        //--------------------Auth Header Buttons--------------------------//
+
+
+        //--------------------Auth Form Buttons----------------------------//
+        $('#signin-submit-button').click(function () {
+            Api.makeSignin();
+        });
+
+        $('#signup-submit-button').click(function () {
+            Api.makeSignup();
+        });
+
+        //-------------------Auth Form Buttons----------------------------//
+
+
+        //-------------------- User Evemts ----------------------------//
+        $("#chits-add-button").click(function () {
+            Api.addChits();
+        });
+
+        $("#chits-group-button").click(function () {
+            Api.addGroup();
+        });
+
+        // (если элементы динамически обновляются на странице ) надо добавлять
+        // $(document).on к началу события
+        // делегирование
+
+        $(document).on('click', '.chits-delete-button', function () {
+            //находим id поста, который надо удалить
+            var id = $(this).closest('div.chits-column-parent').attr('id');
+            Api.deleteChits(id);
+        });
+
+        $(document).on('click', '.chits-group-delete-button', function () {
+            //находим id поста, который надо удалить
+            var id = $(this).closest('div.panel-group').attr('id');
+            Api.deleteChitsGroup(id);
+        });
+
+        $('.button-upload-profile-image').click(function () {
+            $('#input-upload-profile-image').click();
+        });
+
+        $('#input-upload-profile-image').change(function (e) {
+
+            var formData = new FormData($("form[name='uploader']")[0]);
+
+            alert($("form[name='uploader'").attr('id'));
+
+            $.ajax({
+                headers: Route.header,
+                url: Route.uploadProfileImage,
+                type: "POST",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (data) {
+                alert(data.msg);
+            });
+
+            e.preventDefault();
+
+            //     var image = new FormData(this.file[0]);
+            //
+            //     $.ajax({
+            //         header: Route.headerImage,
+            //         url: Route.uploadProfileImage,
+            //         type: 'POST',
+            //         data: {
+            //             image : image,
+            //         },
+            //         cache: false,
+            //         processData: false
+            //    });
+
+        });
     },
 
-    signup: function signup() {
-        $('.register-container').hide();
-        $('.login-container').show();
-    }
+    //-------------------- User Evemts ----------------------------//
 
-};
+    //-------------------- FUNCTIONS  ----------------------------//
 
+<<<<<<< HEAD
 /***/ }),
 /* 36 */,
 /* 37 */,
 /* 38 */
 /***/ (function(module, exports) {
 
+=======
+
+    addChits: function addChits() {
+        var chitsAddress = $("#chits-address-input").val();
+        var chitsGroupId = $('#select-group').children(':selected').attr('id');
+
+        if (chitsAddress == "") {
+            alert("address not be empty");
+        }
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.addChits,
+            data: {
+                chitsAddress: chitsAddress,
+                chitsGroupId: chitsGroupId
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                $('.chits-list').html(data.html);
+            }
+        });
+
+        return false;
+    },
+
+    addGroup: function addGroup() {
+        var chitsGroup = $("#chits-group-input").val();
+        if (chitsGroup == "") {
+            alert("group name not be empty");
+        }
+
+        // alert(chitsGroup);
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.addGroup,
+            data: {
+                chitsGroup: chitsGroup
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                $('.chits-list').html(data.html);
+                $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
+            }
+        });
+
+        return false;
+    },
+
+    deleteChits: function deleteChits(chitsId) {
+
+        if (chitsId == "") {
+            alert("deleted item not be empty");
+        }
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.deleteChits,
+            data: {
+                chitsId: chitsId
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                $('.chits-list').html(data.html);
+            }
+        });
+        return false;
+    },
+
+    deleteChitsGroup: function deleteChitsGroup(groupId) {
+
+        if (groupId == "") {
+            alert("deleted item not be empty");
+        }
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.deleteChitsGroup,
+            data: {
+                groupId: groupId
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                $('.chits-list').html(data.html);
+            }
+        });
+        return false;
+    },
+
+    showSignin: function showSignin() {
+        $('.signup-container').hide();
+        $('.signin-container').show();
+    },
+
+    showSignup: function showSignup() {
+        $('.signin-container').hide();
+        $('.signup-container').show();
+    },
+
+    makeSignup: function makeSignup() {
+
+        userEmail = $('.signup-container #signup-email').val();
+        userPassword = $('.signup-container #signup-password').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signUp,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                window.location.replace("/");
+            }
+        });
+    },
+
+    makeSignin: function makeSignin() {
+
+        userEmail = $('.signin-container #signin-email').val();
+        userPassword = $('.signin-container #signin-password').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signIn,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                window.location.replace("/");
+            }
+        });
+    },
+
+    makeSignout: function makeSignout() {
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signOut
+        }).done(function (data) {
+            if (data.status == 1) {
+                window.location.replace("/");
+            }
+        });
+    },
+
+    uploadProfileImage: function uploadProfileImage() {
+        // var formData = new FormData(this.files[0]);
+
+        alert('test');
+    }
+
+};
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+Ajax = {
+
+    sendSignup: function sendSignup() {
+
+        userEmail = $('.signup-container #signup-email').val();
+        userPassword = $('.signup-container #signup-password').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signUp,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+
+            Api.makeSignup(data);
+        });
+    },
+
+    sendSignin: function sendSignin() {
+
+        userEmail = $('.signin-container #signin-email').val();
+        userPassword = $('.signin-container #signin-password').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.signIn,
+            data: {
+                userEmail: userEmail,
+                userPassword: userPassword
+            }
+        }).done(function (data) {
+            Api.makeSignin(data);
+        });
+    }
+};
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+Route = {
+  host: '/',
+  header: {
+    "Accept": "application/json",
+    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+  },
+
+  signIn: '/api/auth/signIn', // Api/Auth/SignInController@signIn
+  signUp: '/api/auth/signUp', // Api/Auth/SignUpController@signUp
+  signOut: '/api/auth/signOut', //signOut
+
+  addChits: '/api/user/addChits', //add new Chits
+  addGroup: '/api/user/addGroup', //add new Group
+  deleteChits: '/api/user/deleteChits', //delete Chits
+  deleteChitsGroup: '/api/user/deleteChitsGroup',
+  showChits: '/api/user/showChits', //show Chits
+  uploadProfileImage: '/user/actions/uploadProfileImage' //upload profile image on user page
+};
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+>>>>>>> hovdev1401
 // removed by extract-text-webpack-plugin
 
 /***/ })

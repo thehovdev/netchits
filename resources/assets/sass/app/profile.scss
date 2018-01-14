@@ -1,0 +1,182 @@
+a {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+
+.chits-list {
+    text-align: center;
+    height: auto;
+}
+
+.chits-list div {
+    // background: gray;
+    // height: 150px;
+}
+
+.chits-column-block {
+    height: 100px !important;
+    background: #757575;
+}
+
+
+.chits-column-parent{
+    margin-left: 7%;
+    // margin: 5px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+.chits-column-image{
+    height: 150px !important;
+}
+
+
+// .chits-column a {
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+// }
+
+.chits-add-row {
+    padding: 10px 0;
+    height: auto !important;
+}
+
+.chits-add-group-row {
+    padding: 10px 0;
+    height: auto !important;
+}
+
+.chits-add-column {
+    margin-left: 5%;
+}
+
+.chits-child {
+    // padding-top:50px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color:white;
+}
+
+
+.button-delete {
+    margin-top:10px;
+}
+
+ .button-delete-group {
+    background: black !important;
+    border-color:black;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.fa-delete-group {
+    color: #cecece !important;
+    font-size: 15px !important;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+        color: red !important;
+    }
+}
+
+.fa-delete-chits {
+    color: #334957 !important;
+    font-size: 20px !important;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+        color: red !important;
+    }
+}
+
+
+
+ // OPG
+
+ .opg_title {
+     display: block;
+     margin:auto;
+     padding-top:15px;
+     padding-left: 2px;
+     padding-right: 2px;
+     font-size: 0.7em;
+     width: 100%;
+     height: 40px !important;
+     color:white;
+
+
+ }
+
+.opg_sitename {
+    display: block;
+    margin:auto;
+    padding-top:10px;
+    width: 80%;
+    height: 40px !important;
+    color:white;
+}
+
+.opg-image {
+    display: block;
+    float:left;
+    width: 20%;
+    height: 40%;
+}
+
+
+.row-group {
+    display: block;
+    height: 60px !important;
+    margin: 50px auto;
+}
+
+
+.row-chits-list {
+    display: block;
+    height: auto !important;
+}
+
+.group-column {
+    display: block;
+    height: 40px !important;
+    line-height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-group {
+    width: 40% !important;
+    margin: auto;
+}
+
+
+.row-user-profile {
+    .col-user-profile-image {
+        .div-user-image {
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            .user-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+    .col-user-profile-actions {
+        margin-top: 5px;
+        .div-upload-image {
+            margin: auto;
+            text-align: center;
+        }
+    }
+
+}
