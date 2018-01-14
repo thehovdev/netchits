@@ -8376,6 +8376,14 @@ a:visited {
   text-decoration: none;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.block {
+  display: block;
+}
+
 .chits-list {
   text-align: center;
   height: auto;
@@ -8520,5 +8528,10 @@ a:visited {
 .row-user-profile .col-user-profile-actions .div-upload-image {
   margin: auto;
   text-align: center;
+}
+
+.row-user-profile .col-user-profile-actions .div-user-info {
+  margin: auto;
+  width: 20%;
 }
 
