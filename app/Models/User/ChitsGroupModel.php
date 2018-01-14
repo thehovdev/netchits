@@ -26,6 +26,23 @@ class ChitsGroupModel extends Model
         return $this->result;
     }
 
+    public function remove($user, $groupId) {
+
+        // dd($groupId);
+        // dd($user->id);
+
+        $userGroups = $this->where([
+            ['user_id', '=', $user->id],
+            ['id', '=', $groupId]
+        ])->delete();
+
+
+        $this->result['status'] = 1;
+        $this->result['msg'] = 'success';
+        return $this->result;
+    }
+
+
     public function getUserGroups($user) {
 
         $userGroups = $this->where([
@@ -44,6 +61,32 @@ class ChitsGroupModel extends Model
         }
 
         return $groups;
+    }
+
+
+    public function is_usergroup($user, $groupId) {
+
+        // dd($user);
+        // dd($groupId);
+
+
+        $userGroup = $this->where([
+            ['user_id', '=', $user['id']],
+            ['id', '=', $groupId]
+        ])->first();
+
+
+        if(is_null($userGroup)) {
+            $this->result['status'] = 0;
+            $this->result['msg'] = 'group with this id and userid not found';
+            return $this->result;
+        }
+
+
+        $this->result['status'] = 1;
+        $this->result['msg'] = 'success';
+        return $this->result;
+
     }
 
 }

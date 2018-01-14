@@ -31753,15 +31753,63 @@ Api = {
             var id = $(this).closest('div.chits-column-parent').attr('id');
             Api.deleteChits(id);
         });
+
+        $(document).on('click', '.chits-group-delete-button', function () {
+            //находим id поста, который надо удалить
+            var id = $(this).closest('div.panel-group').attr('id');
+            Api.deleteChitsGroup(id);
+        });
+
+        $('.button-upload-profile-image').click(function () {
+            $('#input-upload-profile-image').click();
+        });
+
+        $('#input-upload-profile-image').change(function (e) {
+
+            var formData = new FormData($("form[name='uploader']")[0]);
+
+            alert($("form[name='uploader'").attr('id'));
+
+            $.ajax({
+                headers: Route.header,
+                url: Route.uploadProfileImage,
+                type: "POST",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (data) {
+                alert(data.msg);
+            });
+
+            e.preventDefault();
+
+            //     var image = new FormData(this.file[0]);
+            //
+            //     $.ajax({
+            //         header: Route.headerImage,
+            //         url: Route.uploadProfileImage,
+            //         type: 'POST',
+            //         data: {
+            //             image : image,
+            //         },
+            //         cache: false,
+            //         processData: false
+            //    });
+
+        });
     },
 
     //-------------------- User Evemts ----------------------------//
 
+    //-------------------- FUNCTIONS  ----------------------------//
 
-    // Api = {
 
     addChits: function addChits() {
         var chitsAddress = $("#chits-address-input").val();
+        var chitsGroupId = $('#select-group').children(':selected').attr('id');
+
         if (chitsAddress == "") {
             alert("address not be empty");
         }
@@ -31770,7 +31818,8 @@ Api = {
             headers: Route.header,
             url: Route.addChits,
             data: {
-                chitsAddress: chitsAddress
+                chitsAddress: chitsAddress,
+                chitsGroupId: chitsGroupId
             }
         }).done(function (data) {
             if (data.status == 1) {
@@ -31797,8 +31846,8 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                alert(data.status);
-                // $('.chits-list').html(data.html);
+                $('.chits-list').html(data.html);
+                $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
             }
         });
 
@@ -31816,6 +31865,26 @@ Api = {
             url: Route.deleteChits,
             data: {
                 chitsId: chitsId
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                $('.chits-list').html(data.html);
+            }
+        });
+        return false;
+    },
+
+    deleteChitsGroup: function deleteChitsGroup(groupId) {
+
+        if (groupId == "") {
+            alert("deleted item not be empty");
+        }
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.deleteChitsGroup,
+            data: {
+                groupId: groupId
             }
         }).done(function (data) {
             if (data.status == 1) {
@@ -31849,7 +31918,6 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                // $('.parent').html(data.html);
                 window.location.replace("/");
             }
         });
@@ -31869,7 +31937,6 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                // $('.parent').html(data.html);
                 window.location.replace("/");
             }
         });
@@ -31882,10 +31949,15 @@ Api = {
             url: Route.signOut
         }).done(function (data) {
             if (data.status == 1) {
-                // $('.parent').html(data.html);
                 window.location.replace("/");
             }
         });
+    },
+
+    uploadProfileImage: function uploadProfileImage() {
+        // var formData = new FormData(this.files[0]);
+
+        alert('test');
     }
 
 };
@@ -31950,7 +32022,9 @@ Route = {
   addChits: '/api/user/addChits', //add new Chits
   addGroup: '/api/user/addGroup', //add new Group
   deleteChits: '/api/user/deleteChits', //delete Chits
-  showChits: '/api/user/showChits' //show Chits
+  deleteChitsGroup: '/api/user/deleteChitsGroup',
+  showChits: '/api/user/showChits', //show Chits
+  uploadProfileImage: '/user/actions/uploadProfileImage' //upload profile image on user page
 };
 
 /***/ }),

@@ -17,6 +17,53 @@ use App\Models\User\ChitsGroupModel;
 
 class DeleteChitsController extends Controller
 {
+
+    public function deleteChitsGroup(Request $request) {
+    // SECTİON : Models
+        $usersModel = new UsersModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+    // SECTION : Request
+        $groupId = $request->groupId;
+    // SECTION : Logics
+        $user = $usersModel->getUser();
+
+
+        $is_usergroup = $chitsGroupModel->is_usergroup($user, $groupId);
+
+
+        if($is_usergroup['status'] == 0) {
+            return $is_usergroup;
+        }
+
+        //
+
+        $deleteGroups = $chitsGroupModel->remove($user, $groupId);
+
+        if($deleteGroups['status'] == 0) {
+            return $deleteGroups;
+        }
+
+
+        $userChits = $chitsModel->getUserChits($user);
+        $userGroups = $chitsGroupModel->getUserGroups($user);
+
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        $result['html'] = view('user.chits.chits-list')
+            ->with("user", $user)
+            ->with("userChits", @$userChits)
+            ->with("userGroups", @$userGroups)
+            ->render();
+
+
+        return response()->json($result);
+
+
+
+    }
+
     public function deleteChits(Request $request) {
 
         // SECTION : Models

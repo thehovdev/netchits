@@ -12,5 +12,7 @@ Route = {
     addChits : '/api/user/addChits', //add new Chits
     addGroup : '/api/user/addGroup', //add new Group
     deleteChits : '/api/user/deleteChits', //delete Chits
+    deleteChitsGroup : '/api/user/deleteChitsGroup',
     showChits : '/api/user/showChits', //show Chits
+    uploadProfileImage : '/user/actions/uploadProfileImage', //upload profile image on user page
 }

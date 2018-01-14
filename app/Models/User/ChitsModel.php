@@ -15,7 +15,7 @@ class ChitsModel extends Model
     public $timestamps = true;
     public $result = [];
 
-    public function addNew($user, $chitsAddress) {
+    public function addNew($user, $chitsAddress, $chitsGroupId) {
 
         $graph = OpenGraph::fetch($chitsAddress);
         $opg = [];
@@ -31,9 +31,12 @@ class ChitsModel extends Model
         }
 
 
+
+
         // insert to database
         $this->userid = $user['id'];
         $this->address = $chitsAddress;
+        $this->group_id = $chitsGroupId;
         $this->opg_sitename = @$opg["site_name"];
         $this->opg_title = @$opg["title"];
         $this->opg_image = @$opg["image"];
@@ -43,6 +46,8 @@ class ChitsModel extends Model
         $this->result['status'] = 1;
         $this->result['msg'] = 'success';
         $this->result['chitsAddress'] = $chitsAddress;
+
+
 
         return $this->result;
     }
@@ -63,20 +68,9 @@ class ChitsModel extends Model
     public function getUserChits($user) {
         $userChits = $this->where([
             ['userid', '=', $user['id']],
-        ])->get();
+        ])->latest()->get();
 
         return $userChits;
-
-        // $chits = [];
-        // foreach ($userChits as $userChit) {
-        //     $chits[$userChit->id]['id'] = $userChit->id;
-        //     $chits[$userChit->id]['user_id'] = $userChit->userid;
-        //     $chits[$userChit->id]['group_id'] = $userChit->group_id;
-        //     $chits[$userChit->id]['opg_sitename'] = $userChit->opg_sitename;
-        //     $chits[$userChit->id]['opg_title'] = $userChit->opg_title;
-        //     $chits[$userChit->id]['opg_image'] = $userChit->opg_image;
-        // }
-        // return $chits;
     }
 
 
@@ -114,10 +108,10 @@ class ChitsModel extends Model
     }
 
     public function has_default_chits($user) {
-    
+
         $userChits = $this->where([
             ['userid', '=', $user['id']],
-            ['group_id', '=', NULL]
+            ['group_id', '=', 0]
         ])->first();
 
         if(is_null($userChits)) {
@@ -126,6 +120,7 @@ class ChitsModel extends Model
 
         return true;
     }
+
 
 
     public function is_userchits($user, $chitsId) {

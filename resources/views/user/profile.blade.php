@@ -3,24 +3,7 @@
 @section('content')
     <page class="profilePage"></page>
 
-    <section class="nav-container">
-        <nav class="navbar">
-            <div class="container-fluid">
-
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">NetChits</a>
-                </div>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="pointer"><span>{{ $user->email}}</span></a></li>
-                    <li><a class="pointer" id="signout-button"><span>Sign Out</span></a></li>
-                    <!-- <li><a id="signin-button" style="cursor:pointer;"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li> -->
-                </ul>
-
-            </div>
-        </nav>
-    </section>
-
+    @include('layouts.includes.navbar')
 
     <section class="chits-container">
 
@@ -35,15 +18,8 @@
                       <input type="text" class="form-control" id="chits-address-input" placeholder="https://netchits.com">
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2">
-                    <div class="form-group">
-                      <select class="form-control" id="select-group">
-                              <option id="default">Default</option>
-                          @foreach($userGroups as $userGroup)
-                              <option id="{{ $userGroup['id'] }}">{{ $userGroup['name']}}</option>
-                          @endforeach
-                      </select>
-                    </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 chitsgroup-select-column">
+                    @include('layouts.includes.chitsgroup-select')
                 </div>
             </div>
 

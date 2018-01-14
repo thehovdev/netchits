@@ -4,3 +4,4 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 <script src="{{ asset('/js/app.js') }}"></script>
+<script src="https://use.fontawesome.com/cf9930871a.js"></script>

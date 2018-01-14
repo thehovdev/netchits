@@ -8387,13 +8387,13 @@ a:visited {
 }
 
 .chits-column-parent {
-  margin-left: 6%;
+  margin-left: 7%;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
 .chits-column-image {
-  height: 100px !important;
+  height: 150px !important;
 }
 
 .chits-add-row {
@@ -8419,6 +8419,35 @@ a:visited {
 
 .button-delete {
   margin-top: 10px;
+}
+
+.button-delete-group {
+  background: black !important;
+  border-color: black;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.fa-delete-group {
+  color: #cecece !important;
+  font-size: 15px !important;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.fa-delete-group:hover {
+  color: red !important;
+}
+
+.fa-delete-chits {
+  color: #334957 !important;
+  font-size: 20px !important;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.fa-delete-chits:hover {
+  color: red !important;
 }
 
 .opg_title {
@@ -8469,7 +8498,27 @@ a:visited {
 }
 
 .panel-group {
-  width: 10% !important;
+  width: 40% !important;
   margin: auto;
+}
+
+.row-user-profile .col-user-profile-image .div-user-image {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+}
+
+.row-user-profile .col-user-profile-image .div-user-image .user-image {
+  width: 100px;
+  height: 100px;
+}
+
+.row-user-profile .col-user-profile-actions {
+  margin-top: 5px;
+}
+
+.row-user-profile .col-user-profile-actions .div-upload-image {
+  margin: auto;
+  text-align: center;
 }
 

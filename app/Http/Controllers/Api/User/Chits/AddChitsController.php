@@ -31,23 +31,21 @@ class AddChitsController extends Controller
         $dataController = new DataController;
     // SECTION : Request
         $chitsAddress = $request->chitsAddress;
+        $chitsGroupId = $request->chitsGroupId;
     // SECTION : Logics
         $user = $usersModel->getUser();
 
-        // return $user;
-
-        $chits = $chitsModel->addNew($user, $chitsAddress);
-
+        $chits = $chitsModel->addNew($user, $chitsAddress, $chitsGroupId);
         if($chits['status'] !== 1) {
             return $chits;
         }
 
 
+
+    // SECTION : Result
+
         $userChits = $chitsModel->getUserChits($user);
         $userGroups = $chitsGroupModel->getUserGroups($user);
-
-
-
 
         $result['status'] = 1;
         $result['msg'] = 'success';
@@ -56,7 +54,6 @@ class AddChitsController extends Controller
             ->with("userChits", @$userChits)
             ->with("userGroups", @$userGroups)
             ->render();
-
 
         return response()->json($result);
 

@@ -25,12 +25,27 @@ class GroupController extends Controller
         $chitsGroup = $request->chitsGroup;
 
     // SECTION : Logics
-
         $user = $usersModel->getUser();
         $addGroup = $chitsGroupModel->addGroup($chitsGroup, $user);
-        // $userChitsGroups = $chitsGroupModel->getUserGroups($user);
 
-        return $userChitsGroups;
+    // SECTION : Result
+        $userGroups = $chitsGroupModel->getUserGroups($user);
+        $userChits = $chitsModel->getUserChits($user);
+
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+
+        $result['html_chitsgroup_select'] = view('layouts.includes.chitsgroup-select')
+            ->with("userGroups", @$userGroups)
+            ->render();
+        $result['html'] = view('user.chits.chits-list')
+            ->with("user", $user)
+            ->with("userChits", @$userChits)
+            ->with("userGroups", @$userGroups)
+            ->render();
+
+        return response()->json($result);
 
 
     }
