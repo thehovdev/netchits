@@ -31760,6 +31760,10 @@ Api = {
             Api.deleteChitsGroup(id);
         });
 
+        $('.button-update-profile').click(function () {
+            Api.updateProfile();
+        });
+
         $('.button-upload-profile-image').click(function () {
             $('#input-upload-profile-image').click();
         });
@@ -31768,7 +31772,7 @@ Api = {
 
             var formData = new FormData($("form[name='uploader']")[0]);
 
-            alert($("form[name='uploader'").attr('id'));
+            // alert($("form[name='uploader'").attr('id'));
 
             $.ajax({
                 headers: Route.header,
@@ -31780,24 +31784,15 @@ Api = {
                 contentType: false,
                 processData: false
             }).done(function (data) {
-                alert(data.msg);
+                // alert(data.msg);
+                location.reload();
             });
 
             e.preventDefault();
+        });
 
-            //     var image = new FormData(this.file[0]);
-            //
-            //     $.ajax({
-            //         header: Route.headerImage,
-            //         url: Route.uploadProfileImage,
-            //         type: 'POST',
-            //         data: {
-            //             image : image,
-            //         },
-            //         cache: false,
-            //         processData: false
-            //    });
-
+        $("#input-navbar-search").keyup(function () {
+            Api.searchBar();
         });
     },
 
@@ -31908,13 +31903,15 @@ Api = {
 
         userEmail = $('.signup-container #signup-email').val();
         userPassword = $('.signup-container #signup-password').val();
+        userHashTag = $('.signup-container #signup-hashtag').val();
 
         $.ajax({
             headers: Route.header,
             url: Route.signUp,
             data: {
                 userEmail: userEmail,
-                userPassword: userPassword
+                userPassword: userPassword,
+                userHashTag: userHashTag
             }
         }).done(function (data) {
             if (data.status == 1) {
@@ -31954,10 +31951,29 @@ Api = {
         });
     },
 
+    updateProfile: function updateProfile() {
+        var hashtag = $('.div-user-info #hashtag').val();
+        // alert(hashtag);
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.updateProfile,
+            data: {
+                hashtag: hashtag
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                location.reload();
+            }
+        });
+    },
+
+    searchBar: function searchBar() {
+        alert('t');
+    },
+
     uploadProfileImage: function uploadProfileImage() {
         // var formData = new FormData(this.files[0]);
-
-        alert('test');
     }
 
 };
@@ -32024,7 +32040,8 @@ Route = {
   deleteChits: '/api/user/deleteChits', //delete Chits
   deleteChitsGroup: '/api/user/deleteChitsGroup',
   showChits: '/api/user/showChits', //show Chits
-  uploadProfileImage: '/user/actions/uploadProfileImage' //upload profile image on user page
+  uploadProfileImage: '/user/actions/uploadProfileImage', //upload profile image on user page
+  updateProfile: '/user/actions/updateProfile'
 };
 
 /***/ }),
