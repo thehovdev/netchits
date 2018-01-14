@@ -18,6 +18,32 @@ a:visited {
 }
 
 
+.navbar-netchits {
+    background: #FFFFFF;
+}
+
+.navbar-default .navbar-nav li a {
+    color: #2579A9;
+}
+
+.navbar-default .navbar-brand {
+    color: #2579A9;
+}
+
+.navbar-search {
+    width: 40%;
+    margin: 10px;
+}
+
+
+.signin-container {
+    margin-top: 80px;
+}
+
+.signup-container {
+    margin-top: 80px;
+}
+
 .chits-list {
     text-align: center;
     height: auto;
@@ -54,6 +80,7 @@ a:visited {
 // }
 
 .chits-add-row {
+    margin-top: 80px;
     padding: 10px 0;
     height: auto !important;
 }
@@ -169,6 +196,7 @@ a:visited {
 
 
 .row-user-profile {
+    margin-top: 80px;
     .col-user-profile-image {
         .div-user-image {
             margin: auto;
@@ -188,8 +216,14 @@ a:visited {
         }
 
         .div-user-info {
-            margin: auto;
+            margin: 5px auto;
             width: 20%;
+
+            .button-update-profile {
+                display: block;
+                margin: auto;
+                text-align: center;
+            }
         }
     }
 

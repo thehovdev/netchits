@@ -3,12 +3,13 @@
 @section('content')
 
 @include('layouts.includes.navbar')
+
 <div class="container">
     <div class="row row-user-profile">
 
         <div class="col-sm-12 col-user-profile-image">
             <div class="div-user-image">
-                <img src="/images/{{ $user->image_id }}.png" class="user-image"/>
+                <img src="/storage/user-profile-images/{{ $user->image_id }}" class="user-image img-circle"/>
             </div>
         </div>
 
@@ -20,14 +21,16 @@
                     <input type="submit" id="upload_submit" value="Send">
                     <input type="hidden" value="{{ csrf_token() }}" name="_token"   />
                 </form>
-                <button class="btn btn-default button-upload-profile-image">Choose File</button>
+                <button class="btn btn-default button-upload-profile-image">Update Photo</button>
             </div>
 
             <div class="div-user-info">
                 <div class="form-group">
-                  <label for="email" class="text-center block">#hashtag</label>
-                  <input type="email" class="form-control" id="email">
+                  <label for="hashtag" class="text-center block">#hashtag</label>
+                  <input type="text" class="form-control" id="hashtag" value="{{ $user->hashtag }}">
                 </div>
+
+                <button class="btn btn-default button-update-profile">Update Info</button>
             </div>
 
         </div>

@@ -31,9 +31,35 @@ class UserController extends Controller
             ->with('user', $user);
     }
 
+
+    public function updateProfile(Request $request) {
+        // SECTION : Models
+        $usersModel = new UsersModel;
+
+        // SECTION : Request
+        $hashtag = $request->hashtag;
+
+        // SECTION : Logics
+        if(is_null($hashtag)) {
+            $result['status'] = 0;
+            $result['msg'] = 'hashtag not be empty';
+            return $result;
+        }
+
+        $hashtagUpdate = $usersModel->hashtagUpdate($hashtag);
+
+        return $hashtagUpdate;
+    }
+
     public function uploadProfileImage(Request $request) {
 
 
+        // SECTION : Models
+        $usersModel = new UsersModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+
+        // SECTION : Logics
 
         $this->validate(request(), [
             'image' => 'required|image|mimes:jpg,jpeg,png,gif'
@@ -51,6 +77,12 @@ class UserController extends Controller
 
             $destinationPath = storage_path('/app/public/user-profile-images/');
             $image->move($destinationPath, $image_id);
+
+
+            $updateImage =$usersModel->updateImage($image_id);
+
+
+
 
             $result = [];
             $result['status'] = 1;

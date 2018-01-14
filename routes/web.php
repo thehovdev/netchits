@@ -33,6 +33,7 @@ Route::any('/user/{id}', 'Api\User\Actions\UserController@showUserProfile');
 
 Route::any('/user/actions/uploadProfileImage', 'Api\User\Actions\UserController@uploadProfileImage');
 
+Route::any('/user/actions/updateProfile', 'Api\User\Actions\UserController@updateProfile');
 // --------------- CHITS ------------------- //
 // Add New Chits
 Route::any('/api/user/addChits', 'Api\User\Chits\AddChitsController@addChits');

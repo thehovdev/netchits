@@ -15,4 +15,5 @@ Route = {
     deleteChitsGroup : '/api/user/deleteChitsGroup',
     showChits : '/api/user/showChits', //show Chits
     uploadProfileImage : '/user/actions/uploadProfileImage', //upload profile image on user page
+    updateProfile : '/user/actions/updateProfile',
 }

@@ -13,16 +13,17 @@ class UsersModel extends Model
 
     public function checkSignUp($protectedData) {
         $email = $protectedData['email'];
-
-        $checkUser = $this->where([
-            ['email', '=', $email],
-        ])->first();
+        $hashtag = $protectedData['hashtag'];
+        $checkUser = $this
+            ->where('email', $email)
+            ->orWhere('hashtag', $hashtag)
+            ->first();
 
 
         // -----------------RESULT ----------------//
         if(!is_null($checkUser)) {
             $this->result['status'] = 0;
-            $this->result['msg'] = "user with this $email already exists";
+            $this->result['msg'] = "user with this $email or $hashtag already exists";
             return $this->result;
         }
 
@@ -77,6 +78,7 @@ class UsersModel extends Model
 
         // insert to database
         $this->email = $usersData['email'];
+        $this->hashtag = $usersData['hashtag'];
         $this->password = $usersData['password'];
         $this->secret = $usersData['secret'];
         $this->save();
@@ -102,5 +104,48 @@ class UsersModel extends Model
 
         return $user;
     }
-    
+
+    public function updateImage($image_id) {
+
+        if(is_null($image_id)) {
+            $result['status'] = 0;
+            $result['msg'] = 'Image id not be empty';
+            return $result;
+        }
+
+        $user = $this->where([
+            ['email', '=', $this->getUser()->email],
+            ['secret', '=', $this->getUser()->secret]
+        ])->first();
+
+        $user->image_id = $image_id;
+        $user->save();
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+
+        return $result;
+    }
+
+    public function hashtagUpdate($hashtag) {
+        if(is_null($hashtag)) {
+            $result['status'] = 0;
+            $result['msg'] = 'hashtag id not be empty';
+            return $result;
+        }
+
+        $user = $this
+            ->where('email', $this->getUser()->email)
+            ->where('secret', $this->getUser()->secret)
+            ->first();
+
+        $user->hashtag = $hashtag;
+        $user->save();
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+
+    }
+
 }

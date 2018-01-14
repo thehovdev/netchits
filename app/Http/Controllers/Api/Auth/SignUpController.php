@@ -30,6 +30,8 @@ class SignUpController extends Controller
         $userData = [];
         $userData['email'] = $request->userEmail;
         $userData['password'] = $request->userPassword;
+        $userData['hashtag'] = $request->userHashTag;
+
 
     // SECTION : Logics
 
@@ -43,9 +45,9 @@ class SignUpController extends Controller
 
         $protectedData = [];
         $protectedData['email'] = $userData['email'];
+        $protectedData['hashtag'] = $userData['hashtag'];
         $protectedData['password'] = $hash;
         $protectedData['secret'] = $secret;
-
 
         // Step 1 : Check if User Exists
         $result = $usersModel->checkSignUp($protectedData);
