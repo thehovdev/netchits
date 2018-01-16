@@ -27,7 +27,7 @@
             <div class="div-user-info">
                 <div class="form-group">
                   <label for="hashtag" class="text-center block">#hashtag</label>
-                  <input type="text" class="form-control" id="hashtag" value="{{ $user->hashtag }}">
+                  <input type="text" class="form-control" id="hashtag" value="{{ @$user->hashtag }}">
                 </div>
 
                 <button class="btn btn-default button-update-profile">Update Info</button>
