@@ -31704,6 +31704,7 @@ Api = {
 
     prepare: function prepare() {
         Api.boot();
+        Api.timeout = 1;
     },
 
     boot: function boot() {
@@ -31792,7 +31793,8 @@ Api = {
         });
 
         $("#input-navbar-search").keyup(function () {
-            Api.searchBar();
+            Api.searchTimeoutStop();
+            Api.searchTimeout();
         });
     },
 
@@ -31968,8 +31970,21 @@ Api = {
         });
     },
 
+    // Search Bar
+
+    searchTimeout: function searchTimeout() {
+        Api.timeout = setTimeout(function () {
+            Api.searchBar();
+        }, 3000);
+    },
+
+    searchTimeoutStop: function searchTimeoutStop() {
+        clearTimeout(Api.timeout);
+    },
+
     searchBar: function searchBar() {
-        alert('t');
+        var search = $('#input-navbar-search').val();
+        // alert(search);
     },
 
     uploadProfileImage: function uploadProfileImage() {

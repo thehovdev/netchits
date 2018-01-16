@@ -6,8 +6,18 @@
     @include('layouts.includes.navbar')
 
     <section class="chits-container">
-
         <div class="container">
+
+            <div class="margin-top80"></div>
+
+            <div class="row search-result-row" style="display:none;">
+                <div class="col-sm-12 search-result-col">
+                    <div class="search-result-parent">
+                        <img src="/storage/user-profile-images/{{ $user->image_id }}" class="search-user-image img-circle"/>
+                        <button class="btn btn-success">Add Friend</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="row chits-add-row">
                 <div class="col-lg-2 col-md-2 col-sm-2 chits-add-column">
@@ -35,7 +45,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="row chits-row">
 

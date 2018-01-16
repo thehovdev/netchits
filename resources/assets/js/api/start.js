@@ -2,6 +2,7 @@ Api = {
 
     prepare:function() {
         Api.boot();
+        Api.timeout = 1;
     },
 
     boot:function() {
@@ -101,7 +102,8 @@ Api = {
 
 
     $("#input-navbar-search").keyup(function(){
-        Api.searchBar();
+        Api.searchTimeoutStop();
+        Api.searchTimeout();
     });
 
 
@@ -290,13 +292,34 @@ Api = {
         });
     },
 
-    searchBar : function() {
-        alert('t');
+
+    // Search Bar
+
+    searchTimeout : function() {
+        Api.timeout = setTimeout(function(){
+             Api.searchBar();
+         }, 3000);
     },
+
+    searchTimeoutStop : function() {
+        clearTimeout(Api.timeout);
+    },
+
+    searchBar : function() {
+        var search = $('#input-navbar-search').val();
+        // alert(search);
+    },
+
+
+
+
+
+
+
 
 
     uploadProfileImage : function() {
         // var formData = new FormData(this.files[0]);
-    }
+    },
 
 }

@@ -79,8 +79,27 @@ a:visited {
 //     height: 100%;
 // }
 
+.margin-top80 {
+    margin-top:80px;
+}
+
+
+
+
+.search-result-parent {
+    width: 20%;
+    margin: auto;
+    .search-user-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.search-result-col {
+
+}
+
 .chits-add-row {
-    margin-top: 80px;
     padding: 10px 0;
     height: auto !important;
 }

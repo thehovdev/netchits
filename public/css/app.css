@@ -8429,8 +8429,21 @@ a:visited {
   height: 150px !important;
 }
 
-.chits-add-row {
+.margin-top80 {
   margin-top: 80px;
+}
+
+.search-result-parent {
+  width: 20%;
+  margin: auto;
+}
+
+.search-result-parent .search-user-image {
+  width: 40px;
+  height: 40px;
+}
+
+.chits-add-row {
   padding: 10px 0;
   height: auto !important;
 }
