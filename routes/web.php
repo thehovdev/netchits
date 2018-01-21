@@ -28,12 +28,23 @@ Route::any('/api/auth/signIn', 'Api\Auth\SignInController@signIn');
 // Sign Out
 Route::any('/api/auth/signOut', 'Api\Auth\SignOutController@signOut');
 
-// User padding-left
+
+// Search
+Route::any('/api/user/search', 'Api\Search\SearchController@search');
+
+// User Actions
 Route::any('/user/{id}', 'Api\User\Actions\UserController@showUserProfile');
 
 Route::any('/user/actions/uploadProfileImage', 'Api\User\Actions\UserController@uploadProfileImage');
 
 Route::any('/user/actions/updateProfile', 'Api\User\Actions\UserController@updateProfile');
+
+Route::any('/user/actions/addFriend', 'Api\User\Actions\FriendsController@addFriend');
+
+Route::any('/user/actions/deleteFriend', 'Api\User\Actions\FriendsController@deleteFriend');
+
+Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
+
 // --------------- CHITS ------------------- //
 // Add New Chits
 Route::any('/api/user/addChits', 'Api\User\Chits\AddChitsController@addChits');
@@ -43,6 +54,8 @@ Route::any('/api/user/deleteChits', 'Api\User\Chits\DeleteChitsController@delete
 Route::any('/api/user/deleteChitsGroup', 'Api\User\Chits\DeleteChitsController@deleteChitsGroup');
 // Show Chits
 Route::any('/api/user/showChits', 'Api\User\Chits\ShowChitsController@showChits');
+
+
 // --------------- CHITS ------------------- //
 
 // --------------- GROUPS ------------------- //

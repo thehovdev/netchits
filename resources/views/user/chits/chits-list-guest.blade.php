@@ -3,9 +3,9 @@ use App\Models\User\ChitsModel;
 $chitsModel = new ChitsModel;
 @endphp
 
-{{-- Если пользователь текущий пользователь --}}
+{{-- Если пользователь гость на странице пользователя --}}
 
-    @if($chitsModel->has_default_chits($user))
+    @if($chitsModel->has_default_chits($userprofile))
         <div class="row row-group">
                 <div class="panel panel-default panel-group">
                   <div class="panel-body">Default</div>
@@ -23,8 +23,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i>
-
+                                    {{-- <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
                                 </div>
                             </div>
                         @else
@@ -39,8 +38,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i>
-                                    <!-- <button type="button" class="btn btn-danger button-delete chits-delete-button">Delete</button> -->
+                                {{--  <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
                                 </div>
                             </div>
                         @endif
@@ -54,32 +52,24 @@ $chitsModel = new ChitsModel;
             <div class="panel panel-default panel-group" id="{{ $userGroup['id'] }}">
               <div class="panel-body">
                   {{ $userGroup['name'] }}
-                  <i class="fa fa-window-close fa-delete-group chits-group-delete-button" aria-hidden="true"></i>
+                  {{-- <i class="fa fa-window-close fa-delete-group chits-group-delete-button" aria-hidden="true"></i> --}}
               </div>
             </div>
         </div>
-            @if($chitsByGroup = $chitsModel->getChitsByGroup($user, $userGroup['id']))
+            @if($chitsByGroup = $chitsModel->getChitsByGroup($userprofile, $userGroup['id']))
                 <div class="row row-chits-list">
                     @foreach ($chitsByGroup as $chits)
                         @if( is_youtube($chits->address) == 'yes')
                             <div class="chits-column-parent col-md-3 col-sm-3 col-xs-3" id="{{ $chits->id }}">
                                 <div class="chits-column-image">
-                                    <!-- <a href="{{ $chits->address }}" target="_blank">
-                                        <img src="http://img.youtube.com/vi/{{ getcode_youtube($chits->address) }}/mqdefault.jpg"
-                                             width="100%" height="100%" />
-                                    </a> -->
-
                                     <a>
                                         <iframe width="100%" height="100%" src="http://www.youtube.com/embed/{{ getcode_youtube($chits->address) }}?controls=2"
                                         frameborder="0" allowfullscreen></iframe>
                                     </a>
-
-
                                 </div>
                                 <div class="chits-events">
-                                    <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i>
-
-                                    <!-- <button type="button" class="btn btn-danger button-delete chits-delete-button">Delete</button> -->
+                                    {{--
+                                    <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
                                 </div>
                             </div>
                         @else
@@ -94,7 +84,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i>
+                                    {{-- <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
                                 </div>
                             </div>
                         @endif

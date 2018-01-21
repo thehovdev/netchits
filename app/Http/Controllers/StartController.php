@@ -35,6 +35,8 @@ class StartController extends Controller
             $userChits = $chitsModel->getUserChits($user);
 
 
+
+
             return view("user.profile")
                 ->with("user", $user)
                 ->with("userChits", @$userChits)

@@ -18,16 +18,63 @@ a:visited {
 }
 
 
+.sidebar-parent {
+    background: #404448;
+    height: 101%;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    width: 150px;
+    // border: 2px solid #FF0000;
+    border: 2px solid #F1F1F1;
+    .sidebar-content {
+        position: absolute;
+        width: 100%;
+        top: 80px;
+
+        .sidebar-list{
+            .sidebar-item {
+                text-align: center;
+                border: none;
+                background: #FF0000;
+                // background: #4267B2;
+                padding: 10px 5px;
+                margin: 15px 5px;
+                border-radius:5px;
+                color: white;
+                font-weight: bold;
+                .sidebar-item-text{
+                    // background: #FF0000;
+                    // padding: 5px;
+                    // border-radius:5px;
+                    // color: white;
+                    // width: 50px;
+                }
+            }
+        }
+    }
+
+
+}
+
 .navbar-netchits {
-    background: #FFFFFF;
+    background: #404448;
+    border: none;
 }
 
 .navbar-default .navbar-nav li a {
-    color: #2579A9;
+    color: white;
+    &:hover {
+        color: white;
+    }
 }
 
 .navbar-default .navbar-brand {
-    color: #2579A9;
+    color: #FF0000;
+    font-weight: bold;
+    &:hover {
+        color: #FF0000;
+    }
 }
 
 .navbar-search {
@@ -61,10 +108,10 @@ a:visited {
 
 
 .chits-column-parent{
-    margin-left: 7%;
+    // margin-left: 10px;
     // margin: 5px;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
 
@@ -93,6 +140,14 @@ a:visited {
         width: 40px;
         height: 40px;
     }
+    .search-user-hashtag {
+        font-weight: bold;
+    }
+
+    .button-add-friend {
+
+    }
+
 }
 
 .search-result-col {
@@ -211,6 +266,35 @@ a:visited {
 .panel-group {
     width: 40% !important;
     margin: auto;
+}
+
+
+.row-friends {
+    padding-left: 0px;
+    padding-right: 0px;
+    .friends-parent {
+        background: #FF0000;
+        display: block;
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+    }
+    .friends-list {
+        padding: 10px;
+        .friend-item {
+            display: inline-block;
+            text-align: center;
+            width: 100px;
+
+            .user-hashtag {
+                font-weight: bold;
+                color: #404448;
+            }
+        }
+    }
 }
 
 

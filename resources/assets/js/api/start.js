@@ -36,20 +36,9 @@ Api = {
 
 
 
-//-------------------- User Evemts ----------------------------//
-    $("#chits-add-button").click(function () {
-        Api.addChits();
-    });
+//-------------------- User Events ----------------------------//
 
-    $("#chits-group-button").click(function() {
-        Api.addGroup();
-    });
-
-
-    // (если элементы динамически обновляются на странице ) надо добавлять
-    // $(document).on к началу события
     // делегирование
-
     $(document).on('click', '.chits-delete-button', function() {
         //находим id поста, который надо удалить
         var id = $(this).closest('div.chits-column-parent').attr('id')
@@ -65,15 +54,58 @@ Api = {
 
 
 
+    $("#chits-add-button").click(function () {
+        Api.addChits();
+    });
+
+    $("#chits-group-button").click(function() {
+        Api.addGroup();
+    });
+
+
+
+
+    $("#button-sidebar-add-chits").click(function() {
+        Api.showAddChitsPanel();
+    })
+
+    $("#button-sidebar-add-groups").click(function() {
+        Api.showGroupsPanel();
+    })
+
+    $("#button-sidebar-show-chits").click(function() {
+        Api.showChitsPanel();
+    })
+
+    $("#button-sidebar-show-groups").click(function() {
+        Api.showGroupsPanel();
+    })
+
+    $("#button-sidebar-show-friends").click(function() {
+        Api.showFriendsPanel();
+    })
+
+
+
+
+
+
     $('.button-update-profile').click(function() {
         Api.updateProfile();
+    });
+
+    $('.button-add-friend').click(function() {
+        Api.addFriend();
+    });
+
+    $('.button-delete-friend').click(function() {
+        Api.deleteFriend();
     });
 
 
     $('.button-upload-profile-image').click(function() {
         $('#input-upload-profile-image').click();
     });
-
 
 
     $('#input-upload-profile-image').change(function(e) {
@@ -294,8 +326,9 @@ Api = {
 
 
     // Search Bar
-
     searchTimeout : function() {
+        $('.search-result-row').hide();
+
         Api.timeout = setTimeout(function(){
              Api.searchBar();
          }, 3000);
@@ -307,13 +340,87 @@ Api = {
 
     searchBar : function() {
         var search = $('#input-navbar-search').val();
-        // alert(search);
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.search,
+          data: {
+            search: search,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                var image_path = '/storage/user-profile-images/';
+                var image = image_path + data.image_id;
+
+                $('.search-user-image').attr('src', image);
+                $('.search-user-hashtag').text(data.hashtag);
+
+                $('.search-result-row').show();
+                // location.reload();
+            }
+        });
+    },
+
+    addFriend : function() {
+        var hashtag = $('#search-user-hashtag').text();
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.addFriend,
+          data: {
+            hashtag: hashtag,
+            }
+        }).done(function(data) {
+            alert(data.status);
+        });
+
+    },
+
+    deleteFriend : function() {
+        var hashtag = $('.div-user-info #hashtag').val();
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.deleteFriend,
+          data: {
+            hashtag: hashtag,
+            }
+        }).done(function(data) {
+            alert(data.status);
+            window.location.replace("/");
+        });
+
     },
 
 
 
+    showAddChitsPanel : function() {
+        $('.chits-add-row').toggle();
+    },
 
+    showChitsPanel : function() {
+        $('.chits-row').toggle();
+    },
 
+    showGroupsPanel : function() {
+        $('.chits-add-group-row').toggle();
+    },
+
+    showFriendsPanel : function() {
+        var loadStage = $('.row-friends').data('load');
+        if(loadStage == 0) {
+            $.ajax({
+              headers: Route.header,
+              url: Route.showFriends,
+            }).done(function(data) {
+                if(data.status == 1) {
+                    $('.friends-list').html(data.html);
+                    $('.row-friends').data('load', '1');
+                }
+            });
+        }
+        $('.row-friends').toggle();
+    },
 
 
 

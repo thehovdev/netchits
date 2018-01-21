@@ -15,6 +15,16 @@ class ChitsModel extends Model
     public $timestamps = true;
     public $result = [];
 
+
+    public function user() {
+        return $this->belongsTo('App\Models\Auth\UsersModel', 'userid');
+    }
+
+    // public function userMany() {
+    //     return $this->belongsToMany('App\Models\Auth\UsersModel', 'chits_group', 'user_id', 'id');
+    // }
+
+
     public function addNew($user, $chitsAddress, $chitsGroupId) {
 
         $graph = OpenGraph::fetch($chitsAddress);

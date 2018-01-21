@@ -8384,16 +8384,53 @@ a:visited {
   display: block;
 }
 
+.sidebar-parent {
+  background: #404448;
+  height: 101%;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  width: 150px;
+  border: 2px solid #F1F1F1;
+}
+
+.sidebar-parent .sidebar-content {
+  position: absolute;
+  width: 100%;
+  top: 80px;
+}
+
+.sidebar-parent .sidebar-content .sidebar-list .sidebar-item {
+  text-align: center;
+  border: none;
+  background: #FF0000;
+  padding: 10px 5px;
+  margin: 15px 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
 .navbar-netchits {
-  background: #FFFFFF;
+  background: #404448;
+  border: none;
 }
 
 .navbar-default .navbar-nav li a {
-  color: #2579A9;
+  color: white;
+}
+
+.navbar-default .navbar-nav li a:hover {
+  color: white;
 }
 
 .navbar-default .navbar-brand {
-  color: #2579A9;
+  color: #FF0000;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #FF0000;
 }
 
 .navbar-search {
@@ -8420,9 +8457,8 @@ a:visited {
 }
 
 .chits-column-parent {
-  margin-left: 7%;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .chits-column-image {
@@ -8441,6 +8477,10 @@ a:visited {
 .search-result-parent .search-user-image {
   width: 40px;
   height: 40px;
+}
+
+.search-result-parent .search-user-hashtag {
+  font-weight: bold;
 }
 
 .chits-add-row {
@@ -8547,6 +8587,37 @@ a:visited {
 .panel-group {
   width: 40% !important;
   margin: auto;
+}
+
+.row-friends {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.row-friends .friends-parent {
+  background: #FF0000;
+  display: block;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.row-friends .friends-list {
+  padding: 10px;
+}
+
+.row-friends .friends-list .friend-item {
+  display: inline-block;
+  text-align: center;
+  width: 100px;
+}
+
+.row-friends .friends-list .friend-item .user-hashtag {
+  font-weight: bold;
+  color: #404448;
 }
 
 .row-user-profile {

@@ -31736,19 +31736,9 @@ Api = {
         //-------------------Auth Form Buttons----------------------------//
 
 
-        //-------------------- User Evemts ----------------------------//
-        $("#chits-add-button").click(function () {
-            Api.addChits();
-        });
+        //-------------------- User Events ----------------------------//
 
-        $("#chits-group-button").click(function () {
-            Api.addGroup();
-        });
-
-        // (если элементы динамически обновляются на странице ) надо добавлять
-        // $(document).on к началу события
         // делегирование
-
         $(document).on('click', '.chits-delete-button', function () {
             //находим id поста, который надо удалить
             var id = $(this).closest('div.chits-column-parent').attr('id');
@@ -31761,8 +31751,44 @@ Api = {
             Api.deleteChitsGroup(id);
         });
 
+        $("#chits-add-button").click(function () {
+            Api.addChits();
+        });
+
+        $("#chits-group-button").click(function () {
+            Api.addGroup();
+        });
+
+        $("#button-sidebar-add-chits").click(function () {
+            Api.showAddChitsPanel();
+        });
+
+        $("#button-sidebar-add-groups").click(function () {
+            Api.showGroupsPanel();
+        });
+
+        $("#button-sidebar-show-chits").click(function () {
+            Api.showChitsPanel();
+        });
+
+        $("#button-sidebar-show-groups").click(function () {
+            Api.showGroupsPanel();
+        });
+
+        $("#button-sidebar-show-friends").click(function () {
+            Api.showFriendsPanel();
+        });
+
         $('.button-update-profile').click(function () {
             Api.updateProfile();
+        });
+
+        $('.button-add-friend').click(function () {
+            Api.addFriend();
+        });
+
+        $('.button-delete-friend').click(function () {
+            Api.deleteFriend();
         });
 
         $('.button-upload-profile-image').click(function () {
@@ -31971,8 +31997,9 @@ Api = {
     },
 
     // Search Bar
-
     searchTimeout: function searchTimeout() {
+        $('.search-result-row').hide();
+
         Api.timeout = setTimeout(function () {
             Api.searchBar();
         }, 3000);
@@ -31984,7 +32011,82 @@ Api = {
 
     searchBar: function searchBar() {
         var search = $('#input-navbar-search').val();
-        // alert(search);
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.search,
+            data: {
+                search: search
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                var image_path = '/storage/user-profile-images/';
+                var image = image_path + data.image_id;
+
+                $('.search-user-image').attr('src', image);
+                $('.search-user-hashtag').text(data.hashtag);
+
+                $('.search-result-row').show();
+                // location.reload();
+            }
+        });
+    },
+
+    addFriend: function addFriend() {
+        var hashtag = $('#search-user-hashtag').text();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.addFriend,
+            data: {
+                hashtag: hashtag
+            }
+        }).done(function (data) {
+            alert(data.status);
+        });
+    },
+
+    deleteFriend: function deleteFriend() {
+        var hashtag = $('.div-user-info #hashtag').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.deleteFriend,
+            data: {
+                hashtag: hashtag
+            }
+        }).done(function (data) {
+            alert(data.status);
+            window.location.replace("/");
+        });
+    },
+
+    showAddChitsPanel: function showAddChitsPanel() {
+        $('.chits-add-row').toggle();
+    },
+
+    showChitsPanel: function showChitsPanel() {
+        $('.chits-row').toggle();
+    },
+
+    showGroupsPanel: function showGroupsPanel() {
+        $('.chits-add-group-row').toggle();
+    },
+
+    showFriendsPanel: function showFriendsPanel() {
+        var loadStage = $('.row-friends').data('load');
+        if (loadStage == 0) {
+            $.ajax({
+                headers: Route.header,
+                url: Route.showFriends
+            }).done(function (data) {
+                if (data.status == 1) {
+                    $('.friends-list').html(data.html);
+                    $('.row-friends').data('load', '1');
+                }
+            });
+        }
+        $('.row-friends').toggle();
     },
 
     uploadProfileImage: function uploadProfileImage() {
@@ -32056,7 +32158,11 @@ Route = {
   deleteChitsGroup: '/api/user/deleteChitsGroup',
   showChits: '/api/user/showChits', //show Chits
   uploadProfileImage: '/user/actions/uploadProfileImage', //upload profile image on user page
-  updateProfile: '/user/actions/updateProfile'
+  updateProfile: '/user/actions/updateProfile', // update profile infor
+  search: '/api/user/search', // search on navbar
+  addFriend: '/user/actions/addFriend', //add friend
+  deleteFriend: '/user/actions/deleteFriend', //add friend
+  showFriends: '/user/actions/showFriends' //show friends
 };
 
 /***/ }),

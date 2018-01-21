@@ -11,6 +11,16 @@ class UsersModel extends Model
     public $timestamps = false;
     public $result = [];
 
+    public function chits()
+    {
+        return $this->hasOne('App\Models\User\ChitsModel', 'userid');
+    }
+
+    public function friends()
+    {
+        return $this->hasMany('App\Models\Friends\FriendsModel', 'user_id');
+    }
+
     public function checkSignUp($protectedData) {
         $email = $protectedData['email'];
         $hashtag = $protectedData['hashtag'];
@@ -96,14 +106,23 @@ class UsersModel extends Model
 
         $email = $_COOKIE['email'];
         $secret = $_COOKIE['secret'];
-
-        $user = $this->where([
-            ['email', '=', $email],
-            ['secret', '=', $secret]
-        ])->first();
+        $user = $this
+            ->where('email', $email)
+            ->where('secret', $secret)
+            ->first();
 
         return $user;
     }
+
+    public function getFriend($hashtag) {
+        $friend = $this
+            ->where('hashtag', $hashtag)
+            ->first();
+        return $friend;
+    }
+
+
+
 
     public function updateImage($image_id) {
 
@@ -145,6 +164,27 @@ class UsersModel extends Model
         $result['status'] = 1;
         $result['msg'] = 'success';
         return $result;
+
+    }
+
+    public function search($search) {
+        $user = $this
+            ->where('hashtag', $search)
+            ->first();
+
+        if(is_null($user)) {
+            $result['status'] = 0;
+            $result['msg'] = "user with hashtag $search not found";
+            return $result;
+        }
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        $result['hashtag'] = $user->hashtag;
+        $result['image_id'] = $user->image_id;
+        return $result;
+
+
 
     }
 

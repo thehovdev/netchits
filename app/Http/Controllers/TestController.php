@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 
 //-------------------App Controllers---------------------//
 use App\Http\Controllers\Api\Data\DataController;
@@ -12,77 +10,51 @@ use App\Http\Controllers\Api\Data\DataController;
 //-------------------App Models---------------------//
 use App\Models\Auth\UsersModel;
 use App\Models\User\ChitsModel;
+use App\Models\User\ChitsGroupModel;
+use App\Models\Friends\FriendsModel;
 //-------------------App Models---------------------//
-
-use App\Http\Lib\OpenGraph;
-
-
 
 
 class TestController extends Controller
 {
     public function test() {
 
+        $chitsModel = new ChitsModel;
+        $usersModel = new UsersModel;
 
-        $graph = OpenGraph::fetch('https://facebook.com');
+        // $address = UsersModel::find(38)->userid;
+        // dd($address);
 
+        // один к одному
 
-
-        // var_dump($graph->keys());
-        // var_dump($graph->schema);
-
-        // dd($graph);
-        // die();
-
-        $result = [];
-
-        foreach ($graph as $key => $value) {
-            $result[$key] = $value;
-            // echo "$key => $value" . "<br />";
-        }
-
-        return $result;
-
-
-
+        // $users = $usersModel->all();
         //
-        // $o = OpenGraph::fetch(
-        //   'https://www.facebook.com'
-        // );
-        //
-        // dd($o);
-        // die();
-        //
-        // $this->assertType('OpenGraph', $o);
+        // foreach ($users as $user) {
+        //     dd($user->chits);
+        // }
 
+        // один к одному обратное
 
-        // $usersModel = new UsersModel;
-        // $chitsModel = new ChitsModel;
+        // $chits = $chitsModel->all();
         //
-        //
-        // $user = $usersModel->getUser();
-        //
-        // $userChits = $chitsModel->getUserChits($user);
-        // return $userChits;
+        // foreach ($chits as $chit) {
+        //     dd($chit->user);
+        // }
 
+        // один ко многим
 
-        // $time = time() + 604800;
-        //
-        // setcookie("email", "halilov.lib@gmail.com", time() + 604800);
-        //
-        //
-        // if(isset($_COOKIE["email"])) {
-        //     return $_COOKIE["email"];
-        // };
+        // $users = $usersModel->all();
+        // foreach ($users as $user) {
+        //     dd($user->chitsMany);
+        // }
 
+        // многие ко многим
 
+        // $chits = $chitsModel->all();
+        //
+        // foreach ($chits as $chit) {
+        //     dd($chit->userMany);
+        // }
 
-        // $dataController = new DataController;
-        //
-        // $openData = 'exampletext';
-        //
-        // $encryptedData = $dataController->encryptOpenssl($openData);
-        //
-        // return $encryptedData;
     }
 }
