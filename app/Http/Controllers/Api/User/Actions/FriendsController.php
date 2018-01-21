@@ -50,6 +50,7 @@ class FriendsController extends Controller
 
         $deleteFriend = $friendsModel->deleteFriend($user, $friend);
 
+
         return $deleteFriend;
     }
 
