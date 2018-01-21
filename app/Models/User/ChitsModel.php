@@ -16,14 +16,56 @@ class ChitsModel extends Model
     public $result = [];
 
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('App\Models\Auth\UsersModel', 'userid');
+    }
+
+
+    public function group()
+    {
+        return $this->hasOne('App\Models\User\ChitsGroupModel', 'id', 'group_id');
     }
 
     // public function userMany() {
     //     return $this->belongsToMany('App\Models\Auth\UsersModel', 'chits_group', 'user_id', 'id');
     // }
 
+    public function copyFromGroup($user, $chits, $group) {
+
+
+        foreach ($chits as $chit) {
+            $this->userid = $user->id;
+            $this->address = $chit->address;
+            $this->group_id = $group->id;
+            $this->opg_sitename = @$chit["site_name"];
+            $this->opg_title = @$chit["title"];
+            $this->opg_image = @$chit["image"];
+            $this->save();
+        }
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+
+    }
+
+    public function copy($user, $chitId) {
+
+        $chit = $this->where('id', $chitId)->first();
+        $this->userid = $user->id;
+        $this->address = $chit->address;
+        $this->group_id = '0';
+        $this->opg_sitename = @$chit["site_name"];
+        $this->opg_title = @$chit["title"];
+        $this->opg_image = @$chit["image"];
+        $this->save();
+
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+    }
 
     public function addNew($user, $chitsAddress, $chitsGroupId) {
 
@@ -39,8 +81,6 @@ class ChitsModel extends Model
                 $opg[$key] = "null";
             }
         }
-
-
 
 
         // insert to database

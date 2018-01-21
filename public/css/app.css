@@ -8537,6 +8537,28 @@ a:visited {
   color: red !important;
 }
 
+.fa-copy-chits {
+  color: #50e573 !important;
+  font-size: 30px !important;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.fa-copy-chits:hover {
+  color: #50e573 !important;
+}
+
+.fa-copy-group {
+  color: #50e573 !important;
+  font-size: 30px !important;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.fa-copy-group:hover {
+  color: #50e573 !important;
+}
+
 .opg_title {
   display: block;
   margin: auto;

@@ -31710,6 +31710,7 @@ Api = {
     boot: function boot() {
 
         //--------------------Auth Header Buttons--------------------------//
+
         $('#signup-button').click(function () {
             Api.showSignup();
         });
@@ -31738,11 +31739,28 @@ Api = {
 
         //-------------------- User Events ----------------------------//
 
+
+        $(document).on('click', 'iframe', function () {
+            alert('test');
+        });
+
         // делегирование
         $(document).on('click', '.chits-delete-button', function () {
             //находим id поста, который надо удалить
             var id = $(this).closest('div.chits-column-parent').attr('id');
             Api.deleteChits(id);
+        });
+
+        $(document).on('click', '.chits-copy-button', function () {
+            //находим id поста, который надо удалить
+            var id = $(this).closest('div.chits-column-parent').attr('id');
+            Api.copyChits(id);
+        });
+
+        $(document).on('click', '.chits-group-copy-button', function () {
+            //находим id поста, который надо удалить
+            var id = $(this).closest('div.panel-group').attr('id');
+            Api.copyGroup(id);
         });
 
         $(document).on('click', '.chits-group-delete-button', function () {
@@ -31828,6 +31846,43 @@ Api = {
 
     //-------------------- FUNCTIONS  ----------------------------//
 
+
+    copyGroup: function copyGroup(groupId) {
+        if (groupId == "") {
+            alert("group id not be empty");
+        }
+        var hashtag = $('input#hashtag').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.copyGroup,
+            data: {
+                groupId: groupId,
+                hashtag: hashtag
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                alert(data.msg);
+            }
+        });
+    },
+
+    copyChits: function copyChits(chitId) {
+        if (chitId == "") {
+            alert("chit id not be empty");
+        }
+        $.ajax({
+            headers: Route.header,
+            url: Route.copyChits,
+            data: {
+                chitId: chitId
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                alert(data.msg);
+            }
+        });
+    },
 
     addChits: function addChits() {
         var chitsAddress = $("#chits-address-input").val();
@@ -32152,14 +32207,16 @@ Route = {
   signUp: '/api/auth/signUp', // Api/Auth/SignUpController@signUp
   signOut: '/api/auth/signOut', //signOut
 
+  search: '/api/user/search', // search on navbar
   addChits: '/api/user/addChits', //add new Chits
+  copyChits: '/api/user/copyChits', // copy Chits
+  copyGroup: '/api/user/copyGroup', // copy Group
   addGroup: '/api/user/addGroup', //add new Group
   deleteChits: '/api/user/deleteChits', //delete Chits
   deleteChitsGroup: '/api/user/deleteChitsGroup',
   showChits: '/api/user/showChits', //show Chits
   uploadProfileImage: '/user/actions/uploadProfileImage', //upload profile image on user page
   updateProfile: '/user/actions/updateProfile', // update profile infor
-  search: '/api/user/search', // search on navbar
   addFriend: '/user/actions/addFriend', //add friend
   deleteFriend: '/user/actions/deleteFriend', //add friend
   showFriends: '/user/actions/showFriends' //show friends

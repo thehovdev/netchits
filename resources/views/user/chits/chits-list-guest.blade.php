@@ -23,7 +23,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    {{-- <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
+                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
                                 </div>
                             </div>
                         @else
@@ -38,7 +38,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                {{--  <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
+                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
                                 </div>
                             </div>
                         @endif
@@ -52,7 +52,7 @@ $chitsModel = new ChitsModel;
             <div class="panel panel-default panel-group" id="{{ $userGroup['id'] }}">
               <div class="panel-body">
                   {{ $userGroup['name'] }}
-                  {{-- <i class="fa fa-window-close fa-delete-group chits-group-delete-button" aria-hidden="true"></i> --}}
+                   <i class="fa fa-cloud-download fa-copy-group chits-group-copy-button" aria-hidden="true"></i>
               </div>
             </div>
         </div>
@@ -68,8 +68,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    {{--
-                                    <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
+                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
                                 </div>
                             </div>
                         @else
@@ -84,7 +83,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    {{-- <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i> --}}
+                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
                                 </div>
                             </div>
                         @endif

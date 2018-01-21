@@ -45,20 +45,25 @@ Route::any('/user/actions/deleteFriend', 'Api\User\Actions\FriendsController@del
 
 Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
 
+Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
+
 // --------------- CHITS ------------------- //
 // Add New Chits
 Route::any('/api/user/addChits', 'Api\User\Chits\AddChitsController@addChits');
+// Copy Chits
+Route::any('/api/user/copyChits', 'Api\User\Chits\AddChitsController@copyChits');
 // Delete Chits
 Route::any('/api/user/deleteChits', 'Api\User\Chits\DeleteChitsController@deleteChits');
-// Delete Chits Group
-Route::any('/api/user/deleteChitsGroup', 'Api\User\Chits\DeleteChitsController@deleteChitsGroup');
 // Show Chits
 Route::any('/api/user/showChits', 'Api\User\Chits\ShowChitsController@showChits');
-
 
 // --------------- CHITS ------------------- //
 
 // --------------- GROUPS ------------------- //
 // Add New group
 Route::any('/api/user/addGroup', 'Api\User\Chits\GroupController@addGroup');
+// Copy Group
+Route::any('/api/user/copyGroup', 'Api\User\Chits\GroupController@copyGroup');
+// Delete Chits Group
+Route::any('/api/user/deleteChitsGroup', 'Api\User\Chits\DeleteChitsController@deleteChitsGroup');
 // --------------- GROUPS ------------------- //

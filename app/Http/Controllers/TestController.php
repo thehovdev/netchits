@@ -20,7 +20,41 @@ class TestController extends Controller
     public function test() {
 
         $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
         $usersModel = new UsersModel;
+
+        $user = $usersModel->getUser();
+
+        return view('test')->with('user', $user);
+
+        // $group = $chitsGroupModel->find(22);
+        // dd($group->chits->all());
+
+
+        // $user = $usersModel->find(38);
+        // dd($user->groups->all());
+
+        // $group = $chitsGroupModel->find(22);
+
+        // $chits = $group->chits;
+        // foreach ($chits as $chit) {
+        //     dd($chit->group);
+        // }
+
+
+
+
+
+        // $chits = $chitsModel->all();
+        // foreach ($chits as $chit) {
+        //     dd($chit->group);
+        // }
+
+
+
+
+
+
 
         // $address = UsersModel::find(38)->userid;
         // dd($address);
@@ -28,7 +62,6 @@ class TestController extends Controller
         // один к одному
 
         // $users = $usersModel->all();
-        //
         // foreach ($users as $user) {
         //     dd($user->chits);
         // }

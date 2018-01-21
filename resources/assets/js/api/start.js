@@ -9,6 +9,7 @@ Api = {
 
 
 //--------------------Auth Header Buttons--------------------------//
+
     $('#signup-button').click(function() {
         Api.showSignup();
     });
@@ -38,11 +39,32 @@ Api = {
 
 //-------------------- User Events ----------------------------//
 
+
+    $(document).on('click', 'iframe', function() {
+        alert('test');
+    });
+
+
+
     // делегирование
     $(document).on('click', '.chits-delete-button', function() {
         //находим id поста, который надо удалить
         var id = $(this).closest('div.chits-column-parent').attr('id')
         Api.deleteChits(id);
+    });
+
+
+    $(document).on('click', '.chits-copy-button', function() {
+        //находим id поста, который надо удалить
+        var id = $(this).closest('div.chits-column-parent').attr('id')
+        Api.copyChits(id);
+    });
+
+
+    $(document).on('click', '.chits-group-copy-button', function() {
+        //находим id поста, который надо удалить
+        var id = $(this).closest('div.panel-group').attr('id');
+        Api.copyGroup(id);
     });
 
 
@@ -148,6 +170,47 @@ Api = {
 //-------------------- FUNCTIONS  ----------------------------//
 
 
+    copyGroup : function (groupId) {
+        if(groupId == "") {
+            alert("group id not be empty");
+        }
+        var hashtag = $('input#hashtag').val();
+
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.copyGroup,
+          data: {
+            groupId : groupId,
+            hashtag : hashtag
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                alert(data.msg);
+            }
+        });
+
+    },
+
+    copyChits : function (chitId) {
+        if(chitId == "") {
+            alert("chit id not be empty");
+        }
+        $.ajax({
+          headers: Route.header,
+          url: Route.copyChits,
+          data: {
+            chitId : chitId,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                alert(data.msg);
+            }
+        });
+
+
+    },
+
     addChits : function () {
         var chitsAddress = $("#chits-address-input").val();
         var chitsGroupId = $('#select-group').children(':selected').attr('id');
@@ -166,6 +229,7 @@ Api = {
         }).done(function(data) {
             if(data.status == 1) {
                 $('.chits-list').html(data.html);
+
             }
         });
 

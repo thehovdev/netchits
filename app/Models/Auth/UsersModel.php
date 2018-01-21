@@ -16,6 +16,11 @@ class UsersModel extends Model
         return $this->hasOne('App\Models\User\ChitsModel', 'userid');
     }
 
+    public function groups()
+    {
+        return $this->hasMany('App\Models\User\ChitsGroupModel', 'user_id');
+    }
+
     public function friends()
     {
         return $this->hasMany('App\Models\Friends\FriendsModel', 'user_id');

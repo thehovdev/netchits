@@ -11,6 +11,22 @@ class ChitsGroupModel extends Model
     public $timestamps = true;
     public $result = [];
 
+    // relations
+
+    public function chits()
+    {
+        return $this->hasMany('App\Models\User\ChitsModel', 'group_id');
+    }
+    
+
+    public function copyGroup($user, $group) {
+        $this->user_id = $user->id;
+        $this->name = $group->name;
+        $this->save();
+        return $this;
+    }
+
+
     public function addGroup($chitsGroup, $user) {
 
         // insert to database
