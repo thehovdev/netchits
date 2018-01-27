@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+//  Route::get('/', function () {
+//      return view('welcome');
+//  });
 
 // Testing
 Route::any('/api/test', 'TestController@test');
