@@ -3,7 +3,6 @@
 namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
-
 use App\Http\Lib\OpenGraph;
 use App\Http\Controllers\Api\Data\DataController;
 
@@ -69,6 +68,14 @@ class ChitsModel extends Model
 
     public function addNew($user, $chitsAddress, $chitsGroupId) {
 
+        // $html = file_get_contents('https://www.youtube.com/watch?v=UuCq8mtK8J4');
+        // $dom = new \DomDocument();
+        // $ies = libxml_use_internal_errors(true);
+        // $dom->loadHTML('<?xml encoding="UTF-8">' . $html);
+        // libxml_use_internal_errors($ies);
+        // dd($dom);
+
+
         $graph = OpenGraph::fetch($chitsAddress);
         $opg = [];
 
@@ -76,10 +83,16 @@ class ChitsModel extends Model
             foreach ($graph as $key => $value) {
                 $opg[$key] = $value;
             }
-        }  else {
-            foreach ($graph as $key => $value) {
-                $opg[$key] = "null";
-            }
+        } else {
+
+            // FOR YOUTUBE
+
+            $videoId = getcode_youtube($chitsAddress);
+            $tags = get_meta_tags('https://www.youtube.com/watch?v=' . $videoId);
+
+            $opg["site_name"] = 'youtube';
+            $opg['title'] = $tags['title'];
+            $opg['image'] = "//img.youtube.com/vi/" . getcode_youtube($chitsAddress) . "/mqdefault.jpg";
         }
 
 

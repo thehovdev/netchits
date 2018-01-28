@@ -18,8 +18,110 @@ a:visited {
 }
 
 
+
+
+
+// dev
+
+
+
+.chits-events-area {
+    margin-top: 2px;
+    height: 40px;
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 2px 10px;
+    text-overflow: clip;
+    overflow: hidden;
+    background: #bfbfbf;
+}
+
+.chits-description-area {
+    margin-top: 2px;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 2px 10px;
+    text-overflow: clip;
+    overflow: hidden;
+    background: #FF0000;
+}
+
+.playerpreview-text {
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+
+}
+
+.chits-player {
+    // float:left;
+    // margin: auto;
+    height: 150px;
+    width: 100%;
+    padding: 0px !important;
+    background:yellow;
+    cursor:pointer;
+}
+
+.chits-events {
+    height: 200px;
+}
+
+.chits-column-parent{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 250px;
+    height: 350px;
+    padding: 2.5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    // height: 150px;
+}
+
+
+.chits-column-block {
+    height: 150px !important;
+    background: #757575;
+}
+
+
+.chits-column-image{
+    height: 150px !important;
+}
+
+// dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .sidebar-parent {
-    background: #404448;
+    background: #d3d3d3;
     height: 101%;
     overflow: hidden;
     position: fixed;
@@ -58,14 +160,14 @@ a:visited {
 }
 
 .navbar-netchits {
-    background: #404448;
+    background: #d3d3d3;
     border: none;
 }
 
 .navbar-default .navbar-nav li a {
-    color: white;
+    color: black;
     &:hover {
-        color: white;
+        color: black;
     }
 }
 
@@ -101,23 +203,8 @@ a:visited {
     // height: 150px;
 }
 
-.chits-column-block {
-    height: 100px !important;
-    background: #757575;
-}
 
 
-.chits-column-parent{
-    // margin-left: 10px;
-    // margin: 5px;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-}
-
-
-.chits-column-image{
-    height: 150px !important;
-}
 
 
 // .chits-column a {

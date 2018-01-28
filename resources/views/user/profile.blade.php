@@ -97,7 +97,7 @@
                     </div>
                     <div class="row chits-row">
                         <div class="chits-list">
-                            @include("user.chits.chits-list")
+                           @include("user.chits.chits-list")
                         </div>
                     </div>
                 </div>

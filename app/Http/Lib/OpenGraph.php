@@ -34,6 +34,7 @@ class OpenGraph implements \Iterator
    * @param $URI    URI to page to parse for Open Graph data
    * @return OpenGraph
    */
+
 	static public function fetch($URI) {
         $curl = curl_init($URI);
 
