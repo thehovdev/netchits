@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\Data\DataController;
 use App\Models\Auth\UsersModel;
 use App\Models\User\ChitsModel;
 use App\Models\User\ChitsGroupModel;
+use App\Models\Friends\FriendsModel;
 
 //-------------------App Models---------------------//
 
@@ -33,12 +34,14 @@ class StartController extends Controller
             $user = $usersModel->getUser();
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
+            $friends = $user->friends; // laravel relations (отношения)
 
 
 
 
             return view("user.profile")
                 ->with("user", $user)
+                // ->with("friends", $friends)
                 ->with("userChits", @$userChits)
                 ->with("userGroups", @$userGroups);
         }

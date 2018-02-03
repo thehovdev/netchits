@@ -8384,6 +8384,25 @@ a:visited {
   display: block;
 }
 
+.margin-sidebar {
+  margin-left: 160px;
+}
+
+.action-navbar {
+  text-align: center;
+  position: fixed;
+  width: 85%;
+  z-index: 10;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.action-navbar .item {
+  padding: 5px;
+  background: #FF0000;
+}
+
 .chits-events-area {
   margin-top: 2px;
   height: 40px;
@@ -8393,7 +8412,7 @@ a:visited {
   padding: 2px 10px;
   text-overflow: clip;
   overflow: hidden;
-  background: #bfbfbf;
+  background: #E8E8E8;
 }
 
 .chits-description-area {
@@ -8408,7 +8427,25 @@ a:visited {
   background: #FF0000;
 }
 
+.chits-description-area-basic {
+  margin-top: 2px;
+  height: 50px;
+  width: 100%;
+  position: relative;
+  float: left;
+  padding: 2px 10px;
+  text-overflow: clip;
+  overflow: hidden;
+  background: #303030;
+}
+
 .playerpreview-text {
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+}
+
+.preview-text {
   font-weight: bold;
   font-size: 1em;
   color: white;
@@ -8418,85 +8455,138 @@ a:visited {
   height: 150px;
   width: 100%;
   padding: 0px !important;
-  background: yellow;
   cursor: pointer;
 }
 
 .chits-events {
-  height: 200px;
+  height: 150px;
 }
 
 .chits-column-parent {
   margin-left: 5px;
   margin-right: 5px;
-  width: 250px;
-  height: 350px;
-  padding: 2.5px;
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 250px;
+  height: 250px;
+  padding: 2.5px;
 }
 
 .chits-column-block {
   height: 150px !important;
-  background: #757575;
+  background: #BFBFBF;
 }
 
 .chits-column-image {
   height: 150px !important;
 }
 
-.sidebar-parent {
-  background: #d3d3d3;
-  height: 101%;
-  overflow: hidden;
+.sidenav {
+  height: 100%;
+  width: 160px;
   position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  width: 150px;
-  border: 2px solid #F1F1F1;
+  background-color: #d3d3d3;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.sidebar-parent .sidebar-content {
+.sidenav .sidenav-body {
   position: absolute;
-  width: 100%;
-  top: 80px;
+  top: 15%;
+  left: 0;
 }
 
-.sidebar-parent .sidebar-content .sidebar-list .sidebar-item {
-  text-align: center;
-  border: none;
-  background: #FF0000;
-  padding: 10px 5px;
-  margin: 15px 5px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
 }
 
 .navbar-netchits {
-  background: #d3d3d3;
+  background: #E8E8E8;
   border: none;
 }
 
 .navbar-default .navbar-nav li a {
   color: black;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .navbar-default .navbar-nav li a:hover {
   color: black;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .navbar-default .navbar-brand {
-  color: #FF0000;
+  color: black;
   font-weight: bold;
+  border-bottom: 2px solid red;
+  margin-left: 5px !important;
+  margin-right: 10px !important;
+  padding-bottom: 2px !important;
+  height: 40px;
 }
 
 .navbar-default .navbar-brand:hover {
-  color: #FF0000;
+  color: black;
 }
 
 .navbar-search {
   width: 40%;
   margin: 10px;
+}
+
+.second-navbar-parent .navbar {
+  min-height: 30px !important;
+}
+
+.second-navbar-parent .navbar-nav {
+  float: none;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.second-navbar-parent .navbar-nav li a {
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.second-navbar-parent .navbar-nav li a:hover {
+  background: none !important;
+}
+
+.second-navbar-parent .navbar-nav li a:link {
+  background: none !important;
+}
+
+.second-navbar-parent .navbar-nav > li {
+  display: inline-block;
+  float: none;
+}
+
+.second-navbar-parent .navbar-nav > li > a,
+.second-navbar-parent .navbar-brand {
+  padding-top: 5px !important;
+  padding-bottom: 0 !important;
+  height: 30px !important;
+}
+
+.second-navbar-parent .second-navbar {
+  margin-top: 55px;
+  background: #FF0000;
 }
 
 .signin-container {
@@ -8514,6 +8604,10 @@ a:visited {
 
 .margin-top80 {
   margin-top: 80px;
+}
+
+.margin-top100 {
+  margin-top: 100px;
 }
 
 .search-result-parent {
@@ -8551,6 +8645,13 @@ a:visited {
   color: white;
 }
 
+.button-add-chits {
+  font-size: 1.1em;
+  font-weight: bold;
+  background: #FF0000 !important;
+  border-color: #FF0000 !important;
+}
+
 .button-delete {
   margin-top: 10px;
 }
@@ -8586,7 +8687,7 @@ a:visited {
 
 .fa-copy-chits {
   color: #50e573 !important;
-  font-size: 30px !important;
+  font-size: 20px !important;
   margin: 10px;
   cursor: pointer;
 }
@@ -8664,12 +8765,13 @@ a:visited {
 }
 
 .row-friends .friends-parent {
-  background: #FF0000;
+  background: #E8E8E8;
   display: block;
   margin: auto;
   width: 100%;
   text-align: center;
-  color: white;
+  color: black;
+  font-size: 1.1em;
   font-weight: bold;
   padding: 5px;
 }

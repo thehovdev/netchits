@@ -17,9 +17,24 @@ a:visited {
     display: block;
 }
 
+.margin-sidebar {
+    margin-left: 160px;
+}
 
 
-
+.action-navbar {
+    text-align: center;
+    position: fixed;
+    width: 85%;
+    z-index: 10;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    .item {
+        padding: 5px;
+        background: #FF0000;
+    }
+}
 
 // dev
 
@@ -34,7 +49,7 @@ a:visited {
     padding: 2px 10px;
     text-overflow: clip;
     overflow: hidden;
-    background: #bfbfbf;
+    background: #E8E8E8;
 }
 
 .chits-description-area {
@@ -46,15 +61,40 @@ a:visited {
     padding: 2px 10px;
     text-overflow: clip;
     overflow: hidden;
+    // background: #4BBB17;
     background: #FF0000;
+    // background: #303030;
+    // border-top: 3px solid #00FF66;
 }
+
+.chits-description-area-basic {
+    margin-top: 2px;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 2px 10px;
+    text-overflow: clip;
+    overflow: hidden;
+    // background: #0c2172;
+    background: #303030;
+    // border-top: 3px solid #0066FF;
+
+}
+
 
 .playerpreview-text {
     font-weight: bold;
     font-size: 1em;
     color: white;
-
 }
+
+.preview-text {
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+}
+
 
 .chits-player {
     // float:left;
@@ -62,29 +102,35 @@ a:visited {
     height: 150px;
     width: 100%;
     padding: 0px !important;
-    background:yellow;
+    // background:yellow;
     cursor:pointer;
 }
 
 .chits-events {
-    height: 200px;
+    height: 150px;
 }
 
 .chits-column-parent{
     margin-left: 5px;
     margin-right: 5px;
-    width: 250px;
-    height: 350px;
-    padding: 2.5px;
     margin-top: 20px;
     margin-bottom: 20px;
-    // height: 150px;
+    width: 250px;
+    height: 250px;
+    padding: 2.5px;
+
 }
+
+
+
+
+
 
 
 .chits-column-block {
     height: 150px !important;
-    background: #757575;
+    background: #BFBFBF;
+    // background: #303030;
 }
 
 
@@ -108,74 +154,119 @@ a:visited {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-.sidebar-parent {
-    background: #d3d3d3;
-    height: 101%;
-    overflow: hidden;
+.sidenav {
+    height: 100%;
+    width: 160px;
     position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
-    width: 150px;
-    // border: 2px solid #FF0000;
-    border: 2px solid #F1F1F1;
-    .sidebar-content {
-        position: absolute;
-        width: 100%;
-        top: 80px;
+    background-color: #d3d3d3;
+    overflow-x: hidden;
+    padding-top: 20px;
 
-        .sidebar-list{
-            .sidebar-item {
-                text-align: center;
-                border: none;
-                background: #FF0000;
-                // background: #4267B2;
-                padding: 10px 5px;
-                margin: 15px 5px;
-                border-radius:5px;
-                color: white;
-                font-weight: bold;
-                .sidebar-item-text{
-                    // background: #FF0000;
-                    // padding: 5px;
-                    // border-radius:5px;
-                    // color: white;
-                    // width: 50px;
-                }
-            }
+    .sidenav-body {
+        position: absolute;
+        top: 15%;
+        left: 0;
+    }
+    a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+
+        &:hover {
+            color: #f1f1f1;
         }
     }
-
-
 }
 
+
+
+
+
+
+
+
+// .sidebar {
+//     height: 100%;
+// }
+//
+//
+// .sidebar-parent {
+//     background: #d3d3d3;
+//     height: 101%;
+//     overflow: hidden;
+//     position: fixed;
+//     left: 0;
+//     width: 150px;
+//     // border: 2px solid #FF0000;
+//     border: 2px solid #F1F1F1;
+//     .sidebar-content {
+//         position: absolute;
+//         width: 100%;
+//         top: 80px;
+//
+//         .sidebar-list{
+//             .sidebar-item {
+//                 text-align: center;
+//                 border: none;
+//                 background: #FF0000;
+//                 // background: #4267B2;
+//                 padding: 10px 5px;
+//                 margin: 15px 5px;
+//                 border-radius:5px;
+//                 color: white;
+//                 font-weight: bold;
+//                 .sidebar-item-text{
+//                     // background: #FF0000;
+//                     // padding: 5px;
+//                     // border-radius:5px;
+//                     // color: white;
+//                     // width: 50px;
+//                 }
+//             }
+//         }
+//     }
+//
+//
+// }
+
+
+
 .navbar-netchits {
-    background: #d3d3d3;
+    // background: #E8E8E8;
+    background: #E8E8E8;
     border: none;
 }
 
 .navbar-default .navbar-nav li a {
     color: black;
+    font-weight: bold;
+    font-size: 1.1em;
     &:hover {
         color: black;
+        font-weight: bold;
+        font-size: 1.1em;
     }
 }
 
 .navbar-default .navbar-brand {
-    color: #FF0000;
+    color: black;
     font-weight: bold;
+
+    border-bottom: 2px solid red;
+    margin-left: 5px !important;
+    margin-right: 10px !important;
+    padding-bottom: 2px !important;
+    height: 40px;
+
+
+
     &:hover {
-        color: #FF0000;
+        color: black;
     }
 }
 
@@ -183,6 +274,70 @@ a:visited {
     width: 40%;
     margin: 10px;
 }
+
+
+
+
+.second-navbar-parent {
+    .navbar {
+        min-height:30px !important;
+    }
+    .navbar-nav {
+        float:none;
+        margin:0 auto;
+        display: block;
+        text-align: center;
+
+        li {
+            a {
+                color: white;
+                font-size: 1.1em;
+                font-weight: bold;
+                &:hover {
+                    background: none !important;
+                }
+
+                &:link {
+                    background: none !important;
+                }
+            }
+        }
+    }
+
+    .navbar-nav > li {
+        display: inline-block;
+        float:none;
+    }
+
+
+    .navbar-nav > li > a, .navbar-brand {
+        padding-top:5px !important; padding-bottom:0 !important;
+        height: 30px !important;
+    }
+
+    .second-navbar {
+        margin-top:55px;
+        background: #FF0000;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .signin-container {
@@ -217,6 +372,9 @@ a:visited {
     margin-top:80px;
 }
 
+.margin-top100 {
+    margin-top:100px;
+}
 
 
 
@@ -246,6 +404,7 @@ a:visited {
     height: auto !important;
 }
 
+
 .chits-add-group-row {
     padding: 10px 0;
     height: auto !important;
@@ -263,6 +422,12 @@ a:visited {
     color:white;
 }
 
+.button-add-chits {
+    font-size: 1.1em;
+    font-weight: bold;
+    background: #FF0000 !important;
+    border-color: #FF0000 !important;
+}
 
 .button-delete {
     margin-top:10px;
@@ -298,7 +463,7 @@ a:visited {
 
 .fa-copy-chits {
     color: #50e573 !important;
-    font-size: 30px !important;
+    font-size: 20px !important;
     margin: 10px;
     cursor: pointer;
     &:hover {
@@ -381,12 +546,13 @@ a:visited {
     padding-left: 0px;
     padding-right: 0px;
     .friends-parent {
-        background: #FF0000;
+        background: #E8E8E8;
         display: block;
         margin: auto;
         width: 100%;
         text-align: center;
-        color: white;
+        color: black;
+        font-size: 1.1em;
         font-weight: bold;
         padding: 5px;
     }

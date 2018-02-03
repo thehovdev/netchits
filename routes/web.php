@@ -49,7 +49,7 @@ Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@show
 
 // --------------- CHITS ------------------- //
 // Add New Chits
-Route::any('/api/user/addChits', 'Api\User\Chits\AddChitsController@addChits');
+Route::any('/api/user/addChits', 'Api\User\Chits\ChitsController@addChits');
 // Copy Chits
 Route::any('/api/user/copyChits', 'Api\User\Chits\AddChitsController@copyChits');
 // Delete Chits

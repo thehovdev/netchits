@@ -33,15 +33,20 @@ class ChitsModel extends Model
     public function copyFromGroup($user, $chits, $group) {
 
 
+
+
         foreach ($chits as $chit) {
-            $this->userid = $user->id;
-            $this->address = $chit->address;
-            $this->group_id = $group->id;
-            $this->opg_sitename = @$chit["site_name"];
-            $this->opg_title = @$chit["title"];
-            $this->opg_image = @$chit["image"];
-            $this->save();
+            $insert = new ChitsModel;
+            $insert->userid = $user->id;
+            $insert->address = $chit->address;
+            $insert->group_id = $group->id;
+            $insert->opg_sitename = @$chit["site_name"];
+            $insert->opg_title = @$chit["title"];
+            $insert->opg_image = @$chit["image"];
+            $insert->save();
         }
+
+
 
         $result['status'] = 1;
         $result['msg'] = 'success';
@@ -105,14 +110,8 @@ class ChitsModel extends Model
         $this->opg_image = @$opg["image"];
         $this->save();
 
-        // return result
-        $this->result['status'] = 1;
-        $this->result['msg'] = 'success';
-        $this->result['chitsAddress'] = $chitsAddress;
 
-
-
-        return $this->result;
+        return $this;
     }
 
     public function remove($user, $chitsId) {

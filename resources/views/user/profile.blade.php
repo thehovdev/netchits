@@ -3,45 +3,30 @@
 @section('content')
     <page class="profilePage"></page>
 
-    @include('layouts.includes.navbar')
+
+    <!--Main Navbar-->
+        @include('layouts.includes.navbar')
+    <!--Second Navbar-->
+    <div class="second-navbar-parent">
+        <nav class="navbar navbar-fixed-top second-navbar">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a style="cursor:pointer" id="button-sidebar-show-friends">Friends</a></li>
+                    <li><a style="cursor:pointer" id="button-sidebar-show-chits">Chits</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
 
     <section class="chits-container">
         <div class="container">
-
             <div class="row">
-                <!--Sidebar-->
-                <div class="col-sm-2">
-                    <div class="sidebar-parent">
-                        <div class="sidebar-content">
-                            <ul class="list-group sidebar-list">
-                                <li class="list-group-item sidebar-item btn" id="button-sidebar-add-chits">
-                                    <span class="sidebar-item-text">Add Chits</span>
-                                </li>
-                                <li class="list-group-item sidebar-item btn" id="button-sidebar-add-groups">
-                                    <span class="sidebar-item-text">Add Group</span>
-                                </li>
-                                <li class="list-group-item sidebar-item btn" id="button-sidebar-show-chits">
-                                    <span class="sidebar-item-text">Chits</span>
-                                </li>
-                                <li class="list-group-item sidebar-item btn" id="button-sidebar-show-groups">
-                                    <span class="sidebar-item-text">Groups</span>
-                                </li>
-                                <li class="list-group-item sidebar-item btn" id="button-sidebar-show-friends">
-                                    <span class="sidebar-item-text">Friends</span>
-                                </li>
-                                <li class="list-group-item sidebar-item btn">
-                                    <span class="sidebar-item-text">Respecs</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div class="col-sm-11 col-sm-offset-1">
-
+                <div class="col-sm-12 col-md-12">
                     <!-- Margin TOP FROM FIXED NAVBAR -->
-                    <div class="margin-top80"></div>
+                    <div class="margin-top100"></div>
                     <div class="row search-result-row" style="display:none;">
                         <div class="col-sm-12 search-result-col">
                             <div class="search-result-parent">
@@ -52,8 +37,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="row row-friends" data-load="0" style="display:none;">
                         <div class="col-sm-12">
                             <div class="friends-parent">
@@ -66,13 +49,9 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    <div class="row chits-add-row" style="display:none;">
+                    <div class="row chits-add-row">
                         <div class="col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                            <button type="button" class="btn btn-success" id="chits-add-button">Add New</button>
+                            <button type="button" class="btn btn-success button-add-chits" id="chits-add-button">Add New</button>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group">
@@ -83,7 +62,7 @@
                             @include('layouts.includes.chitsgroup-select')
                         </div>
                     </div>
-                    <div class="row chits-add-group-row" style="display:none;">
+                    <div class="row chits-add-group-row">
                         <div class="chits-category">
                             <div class="col-lg-2 col-md-2 col-sm-2 chits-add-column">
                                 <button type="button" class="btn btn-primary" id="chits-group-button">Add Group</button>
@@ -96,9 +75,9 @@
                         </div>
                     </div>
                     <div class="row chits-row">
-                        <div class="chits-list">
-                           @include("user.chits.chits-list")
-                        </div>
+                            <div class="chits-list">
+                                @include("user.chits.chits-list")
+                            </div>
                     </div>
                 </div>
             </div>

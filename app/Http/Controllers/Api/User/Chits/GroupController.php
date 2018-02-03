@@ -33,6 +33,8 @@ class GroupController extends Controller
 
             // relations
             $chits = $group->chits->all();
+
+            
             // $chits = $chitsModel->where('group_id', $groupId)->get();
 
             $copyGroup = $chitsGroupModel->copyGroup($user, $group);

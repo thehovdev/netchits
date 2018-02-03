@@ -31778,11 +31778,11 @@ Api = {
         });
 
         $("#button-sidebar-add-chits").click(function () {
-            Api.showAddChitsPanel();
+            // Api.showAddChitsPanel();
         });
 
         $("#button-sidebar-add-groups").click(function () {
-            Api.showGroupsPanel();
+            // Api.showGroupsPanel();
         });
 
         $("#button-sidebar-show-chits").click(function () {
@@ -31790,7 +31790,7 @@ Api = {
         });
 
         $("#button-sidebar-show-groups").click(function () {
-            Api.showGroupsPanel();
+            // Api.showGroupsPanel();
         });
 
         $("#button-sidebar-show-friends").click(function () {
@@ -31884,7 +31884,31 @@ Api = {
         });
     },
 
+    addToList: function addToList(data) {
+
+        // $result['status'] = 1;
+        // $result['msg'] = 'success';
+        // $result['chit']['id'] = $chit->id;
+        // $result['chit']['group_id'] = $chit->group_id;
+        // $result['chit']['address'] = $chit->address;
+        // $result['chit']['code'] = getcode_youtube($chit->address);
+        // $result['chit']['title'] = $chit->opg_title;
+        // $result['chit']['image'] = $chit->opg_image;
+        // $result['chit']['sitename'] = $chit->opg_sitename;
+        // var group_id = data.chit.group_id;
+
+
+        var list = $('.chits-list').find('#group-id-' + data.chit.group_id + '-list');
+
+        console.info(data.html);
+
+        $(data.html).prependTo(list);
+
+        Api.playerMoove();
+    },
+
     addChits: function addChits() {
+
         var chitsAddress = $("#chits-address-input").val();
         var chitsGroupId = $('#select-group').children(':selected').attr('id');
 
@@ -31900,8 +31924,9 @@ Api = {
                 chitsGroupId: chitsGroupId
             }
         }).done(function (data) {
+
             if (data.status == 1) {
-                $('.chits-list').html(data.html);
+                Api.addToList(data);
             }
         });
 
@@ -31924,8 +31949,9 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                $('.chits-list').html(data.html);
-                $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
+                location.reload();
+                // $('.chits-list').html(data.html);
+                // $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
             }
         });
 
@@ -31946,7 +31972,8 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                $('.chits-list').html(data.html);
+                location.reload();
+                // $('.chits-list').html(data.html);
             }
         });
         return false;
@@ -31966,7 +31993,8 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                $('.chits-list').html(data.html);
+                location.reload();
+                // $('.chits-list').html(data.html);
             }
         });
         return false;
@@ -32117,19 +32145,29 @@ Api = {
     },
 
     showAddChitsPanel: function showAddChitsPanel() {
+        $('.chits-list').toggle();
         $('.chits-add-row').toggle();
     },
 
-    showChitsPanel: function showChitsPanel() {
-        $('.chits-row').toggle();
+    showGroupsPanel: function showGroupsPanel() {
+        $('.chits-list').toggle();
+        $('.chits-add-group-row').toggle();
     },
 
-    showGroupsPanel: function showGroupsPanel() {
-        $('.chits-add-group-row').toggle();
+    showChitsPanel: function showChitsPanel() {
+        $('.row-friends').hide();
+
+        $('.chits-row').show();
+        $('.row.chits-list').show();
+        $('.row.chits-add-row').show();
+        $('.row.chits-add-group-row').show();
+
+        Api.playerMoove();
     },
 
     showFriendsPanel: function showFriendsPanel() {
         var loadStage = $('.row-friends').data('load');
+
         if (loadStage == 0) {
             $.ajax({
                 headers: Route.header,
@@ -32141,11 +32179,27 @@ Api = {
                 }
             });
         }
-        $('.row-friends').toggle();
+        $('.row-friends').show();
+        $('.row.chits-list').hide();
+        $('.row.chits-add-row').hide();
+        $('.row.chits-add-group-row').hide();
+        $('.row.chits-row').hide();
     },
 
     uploadProfileImage: function uploadProfileImage() {
         // var formData = new FormData(this.files[0]);
+    },
+
+    playerMoove: function playerMoove() {
+        var videoId = $('.playlist').val();
+        var position = $('.chit-code-' + videoId).position();
+
+        $("#player").css({
+            "position": "absolute",
+            "top": position.top + 23,
+            "left": position.left + 6,
+            "z-index": "9"
+        });
     }
 
 };

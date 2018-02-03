@@ -22,34 +22,18 @@ use App\Http\Lib\OpenGraph;
 class AddChitsController extends Controller
 {
 
-    public function copyChits(Request $request) {
-    // SECTION : Models & Controllers
-        $usersModel = new UsersModel;
-        $chitsModel = new ChitsModel;
-        $chitsGroupModel = new ChitsGroupModel;
-    // SECTION : Request
-        $chitId = $request->chitId;
-
-    // SECTION : Logics
-        $user = $usersModel->getUser();
-
-        $chit = $chitsModel->copy($user, $chitId);
-
-        return $chit;
-    }
-
     public function addChits(Request $request) {
 
-    // SECTION : Models & Controllers
+        // SECTION : Models & Controllers
         $usersModel = new UsersModel;
         $chitsModel = new ChitsModel;
         $chitsGroupModel = new ChitsGroupModel;
 
         $dataController = new DataController;
-    // SECTION : Request
+        // SECTION : Request
         $chitsAddress = $request->chitsAddress;
         $chitsGroupId = $request->chitsGroupId;
-    // SECTION : Logics
+        // SECTION : Logics
         $user = $usersModel->getUser();
 
         $chits = $chitsModel->addNew($user, $chitsAddress, $chitsGroupId);
@@ -59,7 +43,7 @@ class AddChitsController extends Controller
 
 
 
-    // SECTION : Result
+        // SECTION : Result
 
         $userChits = $chitsModel->getUserChits($user);
         $userGroups = $chitsGroupModel->getUserGroups($user);
@@ -75,4 +59,22 @@ class AddChitsController extends Controller
         return response()->json($result);
 
     }
+
+
+    public function copyChits(Request $request) {
+        // SECTION : Models & Controllers
+        $usersModel = new UsersModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+        // SECTION : Request
+        $chitId = $request->chitId;
+
+        // SECTION : Logics
+        $user = $usersModel->getUser();
+
+        $chit = $chitsModel->copy($user, $chitId);
+
+        return $chit;
+    }
+
 }
