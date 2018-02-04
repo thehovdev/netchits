@@ -20,6 +20,24 @@ use App\Http\Lib\OpenGraph;
 
 class ChitsController extends Controller
 {
+
+    public function copyChits(Request $request) {
+        // SECTION : Models & Controllers
+        $usersModel = new UsersModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+        // SECTION : Request
+        $chitId = $request->chitId;
+
+        // SECTION : Logics
+        $user = $usersModel->getUser();
+
+        $chit = $chitsModel->copy($user, $chitId);
+
+        return $chit;
+    }
+
+
     public function addChits(Request $request) {
 
         // SECTION : Models & Controllers
@@ -42,25 +60,9 @@ class ChitsController extends Controller
             $result['msg'] = 'error, chit not added';
         }
 
-
-
-        // SECTION : Result
-
-        // $result['status'] = 1;
-        // $result['msg'] = 'success';
-        // $result['chit']['id'] = $chit->id;
-        // $result['chit']['group_id'] = $chit->group_id;
-        // $result['chit']['address'] = $chit->address;
-        // $result['chit']['code'] = getcode_youtube($chit->address);
-        // $result['chit']['title'] = $chit->opg_title;
-        // $result['chit']['image'] = $chit->opg_image;
-        // $result['chit']['sitename'] = $chit->opg_sitename;
-
-
         $result['status'] = 1;
         $result['msg'] = 'success';
         $result['chit']['group_id'] = $chit->group_id;
-
 
         if($chit->opg_sitename == 'youtube') {
             $result['html'] = view('user.chits.includes.video-list')
@@ -72,28 +74,43 @@ class ChitsController extends Controller
                 ->render();
         }
 
-
-
         return response()->json($result);
 
 
-
-
-
-
-
-        // $userChits = $chitsModel->getUserChits($user);
-        // $userGroups = $chitsGroupModel->getUserGroups($user);
-        //
-        // $result['status'] = 1;
-        // $result['msg'] = 'success';
-        // $result['html'] = view('user.chits.chits-list')
-        //     ->with("user", $user)
-        //     ->with("userChits", @$userChits)
-        //     ->with("userGroups", @$userGroups)
-        //     ->render();
-        //
-        // return response()->json($result);
-
     }
+
+    public function deleteChits(Request $request) {
+            // SECTION : Models
+            $usersModel = new UsersModel;
+            $chitsModel = new ChitsModel;
+            $chitsGroupModel = new ChitsGroupModel;
+            // SECTION : Request
+            $chitsId = $request->chitsId;
+            // SECTION : Logics
+            $user = $usersModel->getUser();
+            $is_userchits = $chitsModel->is_userchits($user, $chitsId);
+
+            if($is_userchits['status'] == 0) {
+                return $is_userchits;
+            }
+
+            $deleted = $chitsModel->remove($user, $chitsId);
+
+            if(is_null($deleted)) {
+                return 'error delete chits';
+            }
+
+            $result['status'] = 1;
+            $result['msg'] = 'success';
+            $result['chit']['group_id'] = $deleted->group_id;
+            $result['chit']['id'] = $deleted->id;
+            // $result['html'] = view('user.chits.chits-list')
+            //     ->with("user", $user)
+            //     ->with("userChits", @$userChits)
+            //     ->with("userGroups", @$userGroups)
+            //     ->render();
+
+            return response()->json($result);
+    }
+
 }

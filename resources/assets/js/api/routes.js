@@ -15,7 +15,7 @@ Route = {
     copyGroup : '/api/user/copyGroup', // copy Group
     addGroup : '/api/user/addGroup', //add new Group
     deleteChits : '/api/user/deleteChits', //delete Chits
-    deleteChitsGroup : '/api/user/deleteChitsGroup',
+    deleteGroup : '/api/user/deleteGroup',
     showChits : '/api/user/showChits', //show Chits
     uploadProfileImage : '/user/actions/uploadProfileImage', //upload profile image on user page
     updateProfile : '/user/actions/updateProfile', // update profile infor

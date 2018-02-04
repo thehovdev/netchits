@@ -17,7 +17,7 @@ class ChitsGroupModel extends Model
     {
         return $this->hasMany('App\Models\User\ChitsModel', 'group_id');
     }
-    
+
 
     public function copyGroup($user, $group) {
         $this->user_id = $user->id;
@@ -25,7 +25,6 @@ class ChitsGroupModel extends Model
         $this->save();
         return $this;
     }
-
 
     public function addGroup($chitsGroup, $user) {
 
@@ -35,29 +34,23 @@ class ChitsGroupModel extends Model
         $this->save();
 
         // return result
-        $this->result['status'] = 1;
-        $this->result['msg'] = 'success';
-        $this->result['chitsGroup'] = $chitsGroup;
-
-        return $this->result;
+        return $this;
     }
 
     public function remove($user, $groupId) {
 
-        // dd($groupId);
-        // dd($user->id);
+        $group = $this
+            ->where('user_id', $user->id)
+            ->where('id', $groupId)
+            ->first();
 
-        $userGroups = $this->where([
-            ['user_id', '=', $user->id],
-            ['id', '=', $groupId]
-        ])->delete();
+        $this
+            ->where('user_id', $user->id)
+            ->where('id', $groupId)
+            ->delete();
 
-
-        $this->result['status'] = 1;
-        $this->result['msg'] = 'success';
-        return $this->result;
+        return $group;
     }
-
 
     public function getUserGroups($user) {
 
@@ -79,17 +72,12 @@ class ChitsGroupModel extends Model
         return $groups;
     }
 
-
     public function is_usergroup($user, $groupId) {
 
-        // dd($user);
-        // dd($groupId);
-
-
-        $userGroup = $this->where([
-            ['user_id', '=', $user['id']],
-            ['id', '=', $groupId]
-        ])->first();
+        $userGroup = $this
+            ->where('user_id', $user['id'])
+            ->where('id', $groupId)
+            ->first();
 
 
         if(is_null($userGroup)) {

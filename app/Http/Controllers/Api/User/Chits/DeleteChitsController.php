@@ -19,13 +19,13 @@ class DeleteChitsController extends Controller
 {
 
     public function deleteChitsGroup(Request $request) {
-    // SECTİON : Models
+        // SECTİON : Models
         $usersModel = new UsersModel;
         $chitsModel = new ChitsModel;
         $chitsGroupModel = new ChitsGroupModel;
-    // SECTION : Request
+        // SECTION : Request
         $groupId = $request->groupId;
-    // SECTION : Logics
+        // SECTION : Logics
         $user = $usersModel->getUser();
 
 

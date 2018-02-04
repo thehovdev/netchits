@@ -34,7 +34,7 @@ class GroupController extends Controller
             // relations
             $chits = $group->chits->all();
 
-            
+
             // $chits = $chitsModel->where('group_id', $groupId)->get();
 
             $copyGroup = $chitsGroupModel->copyGroup($user, $group);
@@ -47,37 +47,84 @@ class GroupController extends Controller
 
     public function addGroup(Request $request) {
 
-    // SECTION : Models & Controllers
+        // SECTION : Models & Controllers
         $usersModel = new UsersModel;
         $chitsModel = new ChitsModel;
         $chitsGroupModel = new ChitsGroupModel;
 
-    // SECTION : Request
+        // SECTION : Request
         $chitsGroup = $request->chitsGroup;
 
-    // SECTION : Logics
+        // SECTION : Logics
         $user = $usersModel->getUser();
-        $addGroup = $chitsGroupModel->addGroup($chitsGroup, $user);
+        $group = $chitsGroupModel->addGroup($chitsGroup, $user);
 
-    // SECTION : Result
+        // SECTION : Result
         $userGroups = $chitsGroupModel->getUserGroups($user);
-        $userChits = $chitsModel->getUserChits($user);
+        // $userChits = $chitsModel->getUserChits($user);
+
+        if(is_null($group)) {
+            $result['status'] = 0;
+            $result['msg'] = 'error when adding group';
+            return $result;
+        }
 
 
         $result['status'] = 1;
         $result['msg'] = 'success';
-
+        $result['group']['id'] = $group->id;
+        $result['group']['name'] = $group->name;
+        $result['html'] = view('user.chits.includes.group-list')
+            ->with('group', $group)
+            ->render();
         $result['html_chitsgroup_select'] = view('layouts.includes.chitsgroup-select')
-            ->with("userGroups", @$userGroups)
-            ->render();
-        $result['html'] = view('user.chits.chits-list')
-            ->with("user", $user)
-            ->with("userChits", @$userChits)
-            ->with("userGroups", @$userGroups)
-            ->render();
+        ->with("userGroups", @$userGroups)
+        ->render();
+
 
         return response()->json($result);
 
+        // $result['html'] = view('user.chits.chits-list')
+        //     ->with("user", $user)
+        //     ->with("userChits", @$userChits)
+        //     ->with("userGroups", @$userGroups)
+        //     ->render();
+        //
+        // return response()->json($result);
 
     }
+
+    public function deleteGroup(Request $request) {
+        // SECTİON : Models
+        $usersModel = new UsersModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+        // SECTION : Request
+        $groupId = $request->groupId;
+        // SECTION : Logics
+        $user = $usersModel->getUser();
+
+        $is_usergroup = $chitsGroupModel->is_usergroup($user, $groupId);
+
+        if($is_usergroup['status'] == 0) {
+            return $is_usergroup;
+        }
+
+        $deleted = $chitsGroupModel->remove($user, $groupId);
+
+        if(is_null($deleted)) {
+            $result['status'] = 0;
+            $result['msg'] = 'error deleting group';
+        }
+
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        $result['group']['id'] = $deleted->id;
+
+        return $result;
+
+
+    }
+
 }

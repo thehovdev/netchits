@@ -14,12 +14,10 @@ class ChitsModel extends Model
     public $timestamps = true;
     public $result = [];
 
-
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\UsersModel', 'userid');
     }
-
 
     public function group()
     {
@@ -116,15 +114,17 @@ class ChitsModel extends Model
 
     public function remove($user, $chitsId) {
 
-        $userChits = $this->where([
-            ['userid', '=', $user['id']],
-            ['id', '=', $chitsId]
-        ])->delete();
+        $userChits = $this
+            ->where('userid', $user['id'])
+            ->where('id', $chitsId)
+            ->first();
 
-        $this->result['status'] = 1;
-        $this->result['msg'] = 'success';
-        return $this->result;
+        $this
+            ->where('userid', $user['id'])
+            ->where('id', $chitsId)
+            ->delete();
 
+        return $userChits;
     }
 
     public function getUserChits($user) {
@@ -135,7 +135,6 @@ class ChitsModel extends Model
         return $userChits;
     }
 
-
     public function getChitsByGroup($user, $id) {
         $chitsByGroup = $this->where([
             ['userid', '=', $user['id']],
@@ -144,7 +143,6 @@ class ChitsModel extends Model
 
         return $chitsByGroup;
     }
-
 
     public function getUserChitsByGroup($user, $userGroups) {
 
@@ -183,8 +181,6 @@ class ChitsModel extends Model
         return true;
     }
 
-
-
     public function is_userchits($user, $chitsId) {
 
         $userChits = $this->where([
@@ -197,7 +193,6 @@ class ChitsModel extends Model
             $this->result['msg'] = 'post with this id and userid not found';
             return $this->result;
         }
-
 
         $this->result['status'] = 1;
         $this->result['msg'] = 'success';

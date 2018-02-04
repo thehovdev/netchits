@@ -31884,27 +31884,60 @@ Api = {
         });
     },
 
+    hideFromList: function hideFromList(data) {
+        var list = $('.chits-list').find('#group-id-' + data.chit.group_id + '-list');
+        // текущее проигрываемое видео
+        var playlist = $('.playlist').val();
+        // видео в удаляемом блоке
+        var listvideId = $('.chits-column-parent#' + data.chit.id).find('.playerblock').data('video');
+
+        $(list).find('.chits-column-parent#' + data.chit.id).remove();
+
+        if (playlist == listvideId) {
+            $("#player").hide();
+            player.stopVideo();
+        }
+
+        Api.playerMoove();
+    },
+
+    hideFromListGroup: function hideFromListGroup(data) {
+        var groupList = $('.chits-list').find('#group-id-' + data.group.id + '-list');
+        var group = $('.chits-list').find('#group-id-' + data.group.id);
+
+        // текущее проигрываемое видео
+        var playlist = $('.playlist').val();
+        // видео в удаляемом блоке
+        var listvideId = $(groupList).find('.playerblock#player-id-' + playlist).data('video');
+
+        if (playlist == listvideId) {
+            $("#player").hide();
+            player.stopVideo();
+        }
+
+        $(groupList).remove();
+        $(group).remove();
+
+        Api.playerMoove();
+    },
+
     addToList: function addToList(data) {
-
-        // $result['status'] = 1;
-        // $result['msg'] = 'success';
-        // $result['chit']['id'] = $chit->id;
-        // $result['chit']['group_id'] = $chit->group_id;
-        // $result['chit']['address'] = $chit->address;
-        // $result['chit']['code'] = getcode_youtube($chit->address);
-        // $result['chit']['title'] = $chit->opg_title;
-        // $result['chit']['image'] = $chit->opg_image;
-        // $result['chit']['sitename'] = $chit->opg_sitename;
-        // var group_id = data.chit.group_id;
-
 
         var list = $('.chits-list').find('#group-id-' + data.chit.group_id + '-list');
 
-        console.info(data.html);
+        console.info(list);
 
         $(data.html).prependTo(list);
 
         Api.playerMoove();
+    },
+
+    addToListGroup: function addToListGroup(data) {
+        var list = $('.chits-list');
+
+        console.info(list);
+
+        $(data.html).appendTo(list);
     },
 
     addChits: function addChits() {
@@ -31949,9 +31982,11 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                location.reload();
+                // location.reload();
+                Api.addToListGroup(data);
+
                 // $('.chits-list').html(data.html);
-                // $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
+                $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
             }
         });
 
@@ -31972,8 +32007,7 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                location.reload();
-                // $('.chits-list').html(data.html);
+                Api.hideFromList(data);
             }
         });
         return false;
@@ -31987,13 +32021,13 @@ Api = {
 
         $.ajax({
             headers: Route.header,
-            url: Route.deleteChitsGroup,
+            url: Route.deleteGroup,
             data: {
                 groupId: groupId
             }
         }).done(function (data) {
             if (data.status == 1) {
-                location.reload();
+                Api.hideFromListGroup(data);
                 // $('.chits-list').html(data.html);
             }
         });
@@ -32267,7 +32301,7 @@ Route = {
   copyGroup: '/api/user/copyGroup', // copy Group
   addGroup: '/api/user/addGroup', //add new Group
   deleteChits: '/api/user/deleteChits', //delete Chits
-  deleteChitsGroup: '/api/user/deleteChitsGroup',
+  deleteGroup: '/api/user/deleteGroup',
   showChits: '/api/user/showChits', //show Chits
   uploadProfileImage: '/user/actions/uploadProfileImage', //upload profile image on user page
   updateProfile: '/user/actions/updateProfile', // update profile infor
