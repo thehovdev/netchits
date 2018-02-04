@@ -47,7 +47,14 @@ $(".playlist").change(function(){
         }, 1000);
 });
 
-$(document).on('click', '.chits-player', function() {
+
+window.onload = function() {
+    $('.chits-list').css('visibility', 'visible');
+}
+
+
+
+    $(document).on('click', '.chits-player', function() {
 
     var playerblockId = $(this).find("div.playerblock").attr('id');
     var playerVideoId = $(this).find("div.playerblock").data('video');
@@ -69,6 +76,7 @@ $(document).on('click', '.chits-player', function() {
         "z-index" : "9",
     });
 })
+
 
 function onPlayerReady(event) {
   //

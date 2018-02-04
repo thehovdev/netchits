@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="row chits-row">
-                            <div class="chits-list">
+                            <div class="chits-list" style="visibility:hidden;">
                                 @include("user.chits.chits-list")
                             </div>
                     </div>
