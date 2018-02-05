@@ -22,6 +22,24 @@ a:visited {
 }
 
 
+.search-progress-bar {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    // margin-top:-40px;
+
+    .progress {
+        margin-bottom: 5px;
+        height: 10px;
+    }
+
+    .progress-bar {
+        // background-color: #FF0000 !important;
+        height: 10px;
+    }
+}
+
+
 .action-navbar {
     text-align: center;
     position: fixed;

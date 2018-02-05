@@ -108,7 +108,6 @@ class UsersModel extends Model
     }
 
     public function getUser() {
-
         $email = $_COOKIE['email'];
         $secret = $_COOKIE['secret'];
         $user = $this
@@ -118,6 +117,12 @@ class UsersModel extends Model
 
         return $user;
     }
+
+    public function allUsers() {
+        $allUsers = $this->paginate(20);
+        return $allUsers;
+    }
+
 
     public function getFriend($hashtag) {
         $friend = $this

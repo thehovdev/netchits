@@ -15,10 +15,10 @@
 //      return view('welcome');
 //  });
 
+
+Route::any('/engine/superuser/', 'SuperUser\SuperUserController@index');
 // Testing
 Route::any('/api/test', 'TestController@test');
-
-
 // Home
 Route::any('/', 'StartController@homePage');
 // Sign Up

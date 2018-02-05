@@ -10,12 +10,19 @@ Api = {
 
 //--------------------Auth Header Buttons--------------------------//
 
+    $('.back-submit-button').click(function() {
+        location.reload();
+    });
+
     $('#signup-button').click(function() {
         Api.showSignup();
+        $('.alpha-container .actions').hide();
     });
 
     $('#signin-button').click(function() {
         Api.showSignin();
+        $('.alpha-container .actions').hide();
+
     });
 
     $('#signout-button').click(function() {
@@ -453,11 +460,14 @@ Api = {
 
     // Search Bar
     searchTimeout : function() {
-        $('.search-result-row').hide();
+        $('.search-result-row').css('visibility', 'hidden');
+        $('.search-progress-bar').css('visibility', 'visible');
+
+
 
         Api.timeout = setTimeout(function(){
              Api.searchBar();
-         }, 3000);
+         }, 2000);
     },
 
     searchTimeoutStop : function() {
@@ -474,6 +484,8 @@ Api = {
             search: search,
             }
         }).done(function(data) {
+            $('.search-progress-bar').css('visibility', 'hidden');
+
             if(data.status == 1) {
                 var image_path = '/storage/user-profile-images/';
                 var image = image_path + data.image_id;
@@ -481,7 +493,7 @@ Api = {
                 $('.search-user-image').attr('src', image);
                 $('.search-user-hashtag').text(data.hashtag);
 
-                $('.search-result-row').show();
+                $('.search-result-row').css('visibility', 'visible');
                 // location.reload();
             }
         });

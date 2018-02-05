@@ -1,0 +1,72 @@
+.pointer {
+    cursor: pointer;
+}
+
+
+
+.alpha-container {
+    .alpha-block {
+        // background: white;
+        height: auto;
+        text-align: center;
+
+        .welcome-div {
+            margin-top: 60px;
+
+            .welcome-text {
+                color: black;
+                font-size: 1.2em;
+
+            }
+
+        }
+
+        .brand-name {
+            color: black;
+            font-weight: bold;
+            font-size: 1em;
+            border-bottom: 2px solid #FF0000;
+            padding: 5px 20px;
+        }
+
+
+
+        .actions {
+            height: auto;
+            margin-top: 60px;
+            padding: 5px;
+            // background: #FF0000;
+            text-align: center;
+
+            .alpha-key {
+                background: #FF0000;
+                width: 200px;
+                height: 200px;
+                border:2px solid #FF0000;
+                border-radius: 50%;
+                line-height:200px !important;
+                word-wrap: break-word;
+                font-size: 30px;
+                font-weight:bold;
+                color: white;
+            }
+
+
+
+
+            .register {
+                background: #FF0000;
+                width: 200px;
+                height: 200px;
+                border:2px solid #FF0000;
+                border-radius: 50%;
+                line-height: 200px !important;
+                word-wrap: break-word;
+                font-size: 30px;
+                font-weight:bold;
+                color: white;
+            }
+        }
+
+    }
+}

@@ -27,7 +27,15 @@
                 <div class="col-sm-12 col-md-12">
                     <!-- Margin TOP FROM FIXED NAVBAR -->
                     <div class="margin-top100"></div>
-                    <div class="row search-result-row" style="display:none;">
+
+                    <div class="bar search-progress-bar" style="visibility:hidden;">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: 100%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row search-result-row" style="visibility:hidden;">
                         <div class="col-sm-12 search-result-col">
                             <div class="search-result-parent">
                                 <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
