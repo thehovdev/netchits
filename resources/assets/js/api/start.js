@@ -3,12 +3,27 @@ Api = {
     prepare:function() {
         Api.boot();
         Api.timeout = 1;
+        Api.ytimeout = 1;
     },
 
     boot:function() {
 
 
 //--------------------Auth Header Buttons--------------------------//
+
+    // $(window).load(function() {
+    //     $("#chits-address-input").val("AC/DC");
+    //     keyWordsearch();
+    // });
+
+
+    $(window).on('load', function() {
+        $("#chits-address-input").val("AC/DC");
+        keyWordsearch();
+    });
+
+
+
 
     $('.back-submit-button').click(function() {
         location.reload();
@@ -167,7 +182,18 @@ Api = {
         Api.searchTimeout();
     });
 
+    $("#chits-address-input").keyup(function() {
 
+
+        $('.button-add-chits').prop('disabled', true);
+        $('.button-add-chits').text('Search Bar');
+        $('.button-add-chits').removeClass('button-add-chits-color');
+        $('.button-add-chits').addClass('button-add-chits-search-color');
+
+
+        Api.ysearchTimeoutStop();
+        Api.ysearchTimeout();
+    });
 },
 
 
@@ -459,11 +485,20 @@ Api = {
 
 
     // Search Bar
+
+    ysearchTimeout : function() {
+        Api.ytimeout = setTimeout(function(){
+            keyWordsearch();
+         }, 2000);
+    },
+
+    ysearchTimeoutStop : function() {
+        clearTimeout(Api.ytimeout);
+    },
+
     searchTimeout : function() {
         $('.search-result-row').css('visibility', 'hidden');
         $('.search-progress-bar').css('visibility', 'visible');
-
-
 
         Api.timeout = setTimeout(function(){
              Api.searchBar();

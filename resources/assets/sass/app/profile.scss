@@ -443,9 +443,21 @@ a:visited {
 .button-add-chits {
     font-size: 1.1em;
     font-weight: bold;
+    // background: #FF0000 !important;
+    // border-color: #FF0000 !important;
+}
+
+.button-add-chits-color {
     background: #FF0000 !important;
     border-color: #FF0000 !important;
 }
+
+.button-add-chits-search-color {
+    background:#3097D1 !important;
+    border-color: #3097D1 !important;
+}
+
+
 
 .button-delete {
     margin-top:10px;
@@ -623,3 +635,23 @@ a:visited {
     }
 
 }
+
+
+
+.chits-search-result {
+    background: #E8E8E8;
+    height:150px;
+}
+
+.search-item-title {
+    white-space: nowrap;
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+  }
+
+  .search-item-img {
+      width: 150px;
+      height: 100px;
+  }

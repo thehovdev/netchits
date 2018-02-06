@@ -24,6 +24,9 @@ function onYouTubePlayerAPIReady() {
 
 function enableAutoPlay(videoId) {
 
+
+    // alert(videoId);
+
     var position = $('.chits-list').find('div.chit-code-' + videoId).position();
     // alert(position.top);
 
