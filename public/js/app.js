@@ -31787,6 +31787,12 @@ Api = {
             Api.deleteChitsGroup(id);
         });
 
+        $(document).on('click', '.btn-loveit', function () {
+            var videoId = $(this).closest('div.search-item').attr('id');
+
+            Api.addChits(videoId);
+        });
+
         $("#chits-add-button").click(function () {
             Api.addChits();
         });
@@ -31813,6 +31819,18 @@ Api = {
 
         $("#button-sidebar-show-friends").click(function () {
             Api.showFriendsPanel();
+        });
+
+        $("#button-forgotpass").click(function () {
+            Api.showForgotPass();
+        });
+
+        $("#button-resetpass").click(function () {
+            Api.makeResetPass();
+        });
+
+        $("#button-sendcode").click(function () {
+            Api.sendResetCode();
         });
 
         $('.button-update-profile').click(function () {
@@ -31861,10 +31879,19 @@ Api = {
 
         $("#chits-address-input").keyup(function () {
 
-            $('.button-add-chits').prop('disabled', true);
-            $('.button-add-chits').text('Search Bar');
-            $('.button-add-chits').removeClass('button-add-chits-color');
-            $('.button-add-chits').addClass('button-add-chits-search-color');
+            var search = $(this).val();
+
+            if (search.indexOf('http://') != -1 || search.indexOf('https://') != -1) {
+                $('.button-add-chits').prop('disabled', false);
+                $('.button-add-chits').text('Add New');
+                $('.button-add-chits').addClass('button-add-chits-color');
+                $('.button-add-chits').removeClass('button-add-chits-search-color');
+            } else {
+                $('.button-add-chits').prop('disabled', true);
+                $('.button-add-chits').text('Search Bar');
+                $('.button-add-chits').removeClass('button-add-chits-color');
+                $('.button-add-chits').addClass('button-add-chits-search-color');
+            }
 
             Api.ysearchTimeoutStop();
             Api.ysearchTimeout();
@@ -31970,13 +31997,22 @@ Api = {
     },
 
     addChits: function addChits() {
+        var searchdataid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '0';
 
-        var chitsAddress = $("#chits-address-input").val();
+
+        //
+        if (searchdataid != '0') {
+            var chitsAddress = 'https://www.youtube.com/watch?v=' + searchdataid;
+        } else {
+            var chitsAddress = $("#chits-address-input").val();
+        }
+
         var chitsGroupId = $('#select-group').children(':selected').attr('id');
-
         if (chitsAddress == "") {
             alert("address not be empty");
         }
+
+        $('.search-progress-bar').css('visibility', 'visible');
 
         $.ajax({
             headers: Route.header,
@@ -31986,6 +32022,7 @@ Api = {
                 chitsGroupId: chitsGroupId
             }
         }).done(function (data) {
+            $('.search-progress-bar').css('visibility', 'hidden');
 
             if (data.status == 1) {
                 Api.addToList(data);
@@ -32073,6 +32110,12 @@ Api = {
         $('.signup-container').show();
     },
 
+    showForgotPass: function showForgotPass() {
+        $('.signin-container').hide();
+        $("#button-sendcode").show();
+        $('.forgotpass-container').show();
+    },
+
     makeSignup: function makeSignup() {
 
         userEmail = $('.signup-container #signup-email').val();
@@ -32125,6 +32168,43 @@ Api = {
         });
     },
 
+    sendResetCode: function sendResetCode() {
+        userEmail = $('#forgotpass-email').val();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.sendResetCode,
+            data: {
+                userEmail: userEmail
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                Api.makeResetPass();
+            }
+        });
+    },
+
+    makeResetPass: function makeResetPass() {
+        // userEmail
+
+        alert('makeResetPass');
+        die();
+
+        Api.showForgotPass();
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.forgotPass,
+            data: {
+                userEmail: userEmail
+            }
+        }).done(function (data) {
+            if (data.status == 1) {
+                alert(data.status);
+            }
+        });
+    },
+
     updateProfile: function updateProfile() {
         var hashtag = $('.div-user-info #hashtag').val();
         // alert(hashtag);
@@ -32145,6 +32225,8 @@ Api = {
     // Search Bar
 
     ysearchTimeout: function ysearchTimeout() {
+        $('.search-progress-bar').css('visibility', 'visible');
+
         Api.ytimeout = setTimeout(function () {
             keyWordsearch();
         }, 2000);
@@ -32238,6 +32320,7 @@ Api = {
         $('.row.chits-list').show();
         $('.row.chits-add-row').show();
         $('.row.chits-add-group-row').show();
+        $('.chits-search-result').show();
 
         Api.playerMoove();
     },
@@ -32261,6 +32344,7 @@ Api = {
         $('.row.chits-add-row').hide();
         $('.row.chits-add-group-row').hide();
         $('.row.chits-row').hide();
+        $('.chits-search-result').hide();
     },
 
     uploadProfileImage: function uploadProfileImage() {
@@ -32350,7 +32434,9 @@ Route = {
   updateProfile: '/user/actions/updateProfile', // update profile infor
   addFriend: '/user/actions/addFriend', //add friend
   deleteFriend: '/user/actions/deleteFriend', //add friend
-  showFriends: '/user/actions/showFriends' //show friends
+  showFriends: '/user/actions/showFriends', //show friends
+
+  sendResetCode: '/user/actions/sendResetCode' //send reset pass code
 };
 
 /***/ }),

@@ -4,6 +4,14 @@
     <page class="profilePage"></page>
 
 
+    <div class="bar search-progress-bar" style="visibility:hidden;">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: 100%">
+            </div>
+        </div>
+    </div>
+
+
     <!--Main Navbar-->
     @include('layouts.includes.navbar')
     <!--Second Navbar-->
@@ -27,12 +35,6 @@
                 <div class="col-sm-12 col-md-12">
                     <!-- Margin TOP FROM FIXED NAVBAR -->
                     <div class="margin-top100"></div>
-                    <div class="bar search-progress-bar" style="visibility:hidden;">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: 100%">
-                            </div>
-                        </div>
-                    </div>
                     <div class="row search-result-row" style="visibility:hidden;">
                         <div class="col-sm-12 search-result-col">
                             <div class="search-result-parent">
@@ -83,14 +85,16 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="chits-group-input" placeholder="https://netchits.com">
+                                    <input type="text" class="form-control" id="chits-group-input" placeholder="AC/DC Playlist">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row chits-search-result">
-                        <div id="results"></div>
+                        <div class="results-parent">
+                            <div id="results"></div>
+                        </div>
                     </div>
 
 
@@ -112,6 +116,7 @@
         gapi.client.setApiKey('AIzaSyAnZa7brkDqvxkCDFMa2jrddqbFS44GMYE');
         gapi.client.load('youtube', 'v3', function(){
                 makeRequest();
+
         });
         }
         function makeRequest(){
@@ -119,7 +124,7 @@
         var request = gapi.client.youtube.search.list({
                 q: q,
                 part: 'snippet',
-                maxResults: 5
+                maxResults: 6
         });
         request.execute(function(response)  {
                 $('#results').empty()
@@ -141,16 +146,23 @@
 
 
                 $('#results').append(
-                    '<div class="col-sm-2 search-item" id="' + videoId + '">' +
+                    '<div class="col-sm-4 col-md-2 search-item" id="' + videoId + '">' +
                     '<div class="search-item-img-block">' +
                     vidThumbimg +
                     '</div>' +
                     '<div class="search-item-title">' +
                     vidTitle +
                     '</div>' +
+                    '<div class="search-item-actions">' +
+                    '<button class="btn btn-default btn-loveit">' +
+                    '<i class="fa fa-heart fa-love"></i>ilove' +
+                    '</button>' +
+                    '</div>' +
+                    '</div>' +
                     '</div>'
                 );
 
+                $('.search-progress-bar').css('visibility', 'hidden');
 
 
 

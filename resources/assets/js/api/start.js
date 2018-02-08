@@ -96,6 +96,13 @@ Api = {
         Api.deleteChitsGroup(id);
     });
 
+    $(document).on('click', '.btn-loveit', function() {
+        var videoId = $(this).closest('div.search-item').attr('id');
+
+        Api.addChits(videoId);
+
+    });
+
 
 
     $("#chits-add-button").click(function () {
@@ -105,9 +112,6 @@ Api = {
     $("#chits-group-button").click(function() {
         Api.addGroup();
     });
-
-
-
 
     $("#button-sidebar-add-chits").click(function() {
         // Api.showAddChitsPanel();
@@ -129,10 +133,17 @@ Api = {
         Api.showFriendsPanel();
     })
 
+    $("#button-forgotpass").click(function() {
+        Api.showForgotPass();
+    })
 
+    $("#button-resetpass").click(function() {
+        Api.makeResetPass();
+    })
 
-
-
+    $("#button-sendcode").click(function() {
+        Api.sendResetCode();
+    })
 
     $('.button-update-profile').click(function() {
         Api.updateProfile();
@@ -146,11 +157,9 @@ Api = {
         Api.deleteFriend();
     });
 
-
     $('.button-upload-profile-image').click(function() {
         $('#input-upload-profile-image').click();
     });
-
 
     $('#input-upload-profile-image').change(function(e) {
 
@@ -176,7 +185,6 @@ Api = {
             e.preventDefault();
     });
 
-
     $("#input-navbar-search").keyup(function(){
         Api.searchTimeoutStop();
         Api.searchTimeout();
@@ -184,11 +192,20 @@ Api = {
 
     $("#chits-address-input").keyup(function() {
 
+        var search = $(this).val();
 
-        $('.button-add-chits').prop('disabled', true);
-        $('.button-add-chits').text('Search Bar');
-        $('.button-add-chits').removeClass('button-add-chits-color');
-        $('.button-add-chits').addClass('button-add-chits-search-color');
+        if ((search.indexOf('http://') != -1) || (search.indexOf('https://') != -1)) {
+            $('.button-add-chits').prop('disabled', false);
+            $('.button-add-chits').text('Add New');
+            $('.button-add-chits').addClass('button-add-chits-color');
+            $('.button-add-chits').removeClass('button-add-chits-search-color');
+        } else {
+            $('.button-add-chits').prop('disabled', true);
+            $('.button-add-chits').text('Search Bar');
+            $('.button-add-chits').removeClass('button-add-chits-color');
+            $('.button-add-chits').addClass('button-add-chits-search-color');
+        }
+
 
 
         Api.ysearchTimeoutStop();
@@ -304,14 +321,23 @@ Api = {
         $(data.html).appendTo(list);
     },
 
-    addChits : function () {
+    addChits : function (searchdataid = '0') {
 
-        var chitsAddress = $("#chits-address-input").val();
+        //
+        if(searchdataid != '0') {
+            var chitsAddress = 'https://www.youtube.com/watch?v=' + searchdataid;
+        } else {
+            var chitsAddress = $("#chits-address-input").val();
+        }
+
+
         var chitsGroupId = $('#select-group').children(':selected').attr('id');
-
         if(chitsAddress == "") {
             alert("address not be empty");
         }
+
+        $('.search-progress-bar').css('visibility', 'visible');
+
 
         $.ajax({
           headers: Route.header,
@@ -321,6 +347,7 @@ Api = {
             chitsGroupId : chitsGroupId,
             }
         }).done(function(data) {
+            $('.search-progress-bar').css('visibility', 'hidden');
 
             if(data.status == 1) {
                 Api.addToList(data);
@@ -413,6 +440,12 @@ Api = {
         $('.signup-container').show();
     },
 
+    showForgotPass : function() {
+        $('.signin-container').hide();
+        $("#button-sendcode").show();
+        $('.forgotpass-container').show();
+    },
+
 
     makeSignup : function() {
 
@@ -466,6 +499,50 @@ Api = {
         });
     },
 
+    sendResetCode : function() {
+        userEmail = $('#forgotpass-email').val();
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.sendResetCode,
+          data: {
+            userEmail: userEmail,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                Api.makeResetPass();
+            }
+        });
+
+    },
+
+    makeResetPass : function() {
+        // userEmail
+
+        alert('makeResetPass');
+        die();
+
+
+        Api.showForgotPass();
+
+
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.forgotPass,
+          data: {
+            userEmail: userEmail,
+            }
+        }).done(function(data) {
+            if(data.status == 1) {
+                alert(data.status);
+            }
+        });
+
+
+    },
+
+
     updateProfile : function() {
         var hashtag = $('.div-user-info #hashtag').val();
         // alert(hashtag);
@@ -487,6 +564,8 @@ Api = {
     // Search Bar
 
     ysearchTimeout : function() {
+        $('.search-progress-bar').css('visibility', 'visible');
+
         Api.ytimeout = setTimeout(function(){
             keyWordsearch();
          }, 2000);
@@ -572,12 +651,10 @@ Api = {
         $('.chits-add-row').toggle();
     },
 
-
     showGroupsPanel : function() {
         $('.chits-list').toggle();
         $('.chits-add-group-row').toggle();
     },
-
 
     showChitsPanel : function() {
         $('.row-friends').hide();
@@ -586,7 +663,7 @@ Api = {
         $('.row.chits-list').show();
         $('.row.chits-add-row').show();
         $('.row.chits-add-group-row').show();
-
+        $('.chits-search-result').show();
 
         Api.playerMoove();
     },
@@ -610,10 +687,10 @@ Api = {
         $('.row.chits-add-row').hide();
         $('.row.chits-add-group-row').hide();
         $('.row.chits-row').hide();
+        $('.chits-search-result').hide();
 
 
     },
-
 
     uploadProfileImage : function() {
         // var formData = new FormData(this.files[0]);

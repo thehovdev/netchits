@@ -8350,20 +8350,21 @@ button.close {
   }
 }
 
-.signin-container {
-  display: none;
+.signin-container,
+.signup-container,
+.forgotpass-container {
   margin-top: 0px !important;
   margin-bottom: 10px;
   padding: 10px;
   width: 30%;
 }
 
+.signin-container {
+  display: none;
+}
+
 .signup-container {
   display: none;
-  margin-top: 0px !important;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 30%;
 }
 
 .pointer {
@@ -8395,13 +8396,14 @@ a:visited {
 }
 
 .search-progress-bar {
-  position: relative;
+  position: fixed;
+  top: 87px;
+  left: 0px;
   width: 100%;
-  margin: auto;
+  z-index: 9999;
 }
 
 .search-progress-bar .progress {
-  margin-bottom: 5px;
   height: 10px;
 }
 
@@ -8681,6 +8683,31 @@ a:visited {
   border-color: #3097D1 !important;
 }
 
+.btn-loveit {
+  background: #FF0000;
+  color: white;
+  font-weight: bold;
+  outline: 0;
+}
+
+.btn-loveit:hover {
+  color: white !important;
+  background: #FF0000 !important;
+  outline: 0;
+}
+
+.btn-loveit:focus {
+  color: white !important;
+  background: #FF0000 !important;
+  outline: 0;
+}
+
+.btn-loveit:active {
+  color: white !important;
+  background: #FF0000 !important;
+  outline: 0;
+}
+
 .button-delete {
   margin-top: 10px;
 }
@@ -8690,6 +8717,11 @@ a:visited {
   border-color: black;
   font-size: 0.8em;
   margin-left: 5px;
+}
+
+.fa-love {
+  color: white !important;
+  padding: 5px;
 }
 
 .fa-delete-group {
@@ -8856,8 +8888,14 @@ a:visited {
 }
 
 .chits-search-result {
-  background: #E8E8E8;
-  height: 150px;
+  background: #F0F0F0;
+  min-height: 180px;
+  height: auto;
+}
+
+.search-item {
+  margin-top: 5px;
+  padding: 0px;
 }
 
 .search-item-title {
@@ -8887,7 +8925,8 @@ a:visited {
 
 .alpha-container .alpha-block .welcome-div .welcome-text {
   color: black;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  line-height: 80px;
 }
 
 .alpha-container .alpha-block .brand-name {
@@ -8907,8 +8946,9 @@ a:visited {
 
 .alpha-container .alpha-block .actions .alpha-key {
   background: #FF0000;
-  width: 200px;
+  width: 205px;
   height: 200px;
+  margin: auto;
   border: 2px solid #FF0000;
   border-radius: 50%;
   line-height: 200px !important;
@@ -8920,8 +8960,9 @@ a:visited {
 
 .alpha-container .alpha-block .actions .register {
   background: #FF0000;
-  width: 200px;
+  width: 205px;
   height: 200px;
+  margin: auto;
   border: 2px solid #FF0000;
   border-radius: 50%;
   line-height: 200px !important;

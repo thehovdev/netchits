@@ -26,7 +26,8 @@ class UsersModel extends Model
         return $this->hasMany('App\Models\Friends\FriendsModel', 'user_id');
     }
 
-    public function checkSignUp($protectedData) {
+    public function checkSignUp($protectedData)
+    {
         $email = $protectedData['email'];
         $hashtag = $protectedData['hashtag'];
         $checkUser = $this
@@ -51,8 +52,8 @@ class UsersModel extends Model
 
     }
 
-
-    public function checkSignIn($userData) {
+    public function checkSignIn($userData)
+    {
         $email = $userData['email'];
         $password = $userData['password'];
 
@@ -87,9 +88,8 @@ class UsersModel extends Model
 
     }
 
-
-
-    public function addUser($usersData) {
+    public function addUser($usersData)
+    {
 
         // insert to database
         $this->email = $usersData['email'];
@@ -107,7 +107,8 @@ class UsersModel extends Model
         return $this->result;
     }
 
-    public function getUser() {
+    public function getUser()
+    {
         $email = $_COOKIE['email'];
         $secret = $_COOKIE['secret'];
         $user = $this
@@ -118,23 +119,22 @@ class UsersModel extends Model
         return $user;
     }
 
-    public function allUsers() {
+    public function allUsers()
+    {
         $allUsers = $this->paginate(20);
         return $allUsers;
     }
 
-
-    public function getFriend($hashtag) {
+    public function getFriend($hashtag)
+    {
         $friend = $this
             ->where('hashtag', $hashtag)
             ->first();
         return $friend;
     }
 
-
-
-
-    public function updateImage($image_id) {
+    public function updateImage($image_id)
+    {
 
         if(is_null($image_id)) {
             $result['status'] = 0;
@@ -156,7 +156,8 @@ class UsersModel extends Model
         return $result;
     }
 
-    public function hashtagUpdate($hashtag) {
+    public function hashtagUpdate($hashtag)
+    {
         if(is_null($hashtag)) {
             $result['status'] = 0;
             $result['msg'] = 'hashtag id not be empty';
@@ -177,25 +178,39 @@ class UsersModel extends Model
 
     }
 
-    public function search($search) {
+    public function search($search)
+    {
         $user = $this
             ->where('hashtag', $search)
             ->first();
-
         if(is_null($user)) {
             $result['status'] = 0;
             $result['msg'] = "user with hashtag $search not found";
             return $result;
         }
-
         $result['status'] = 1;
         $result['msg'] = 'success';
         $result['hashtag'] = $user->hashtag;
         $result['image_id'] = $user->image_id;
         return $result;
-
-
-
     }
+
+    public function searchByEmail($email)
+    {
+        $user = $this
+            ->where('email', $email)
+            ->first();
+
+        if(is_null($user)) {
+            $result['status'] = 0;
+            $result['msg'] = "user with email $email not found";
+            return $result;
+        }
+
+        $result['status'] = 1;
+        $result['msg'] = 'user exists';
+        return $result;
+    }
+
 
 }

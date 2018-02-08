@@ -28,7 +28,6 @@ Route::any('/api/auth/signIn', 'Api\Auth\SignInController@signIn');
 // Sign Out
 Route::any('/api/auth/signOut', 'Api\Auth\SignOutController@signOut');
 
-
 // Search
 Route::any('/api/user/search', 'Api\Search\SearchController@search');
 
@@ -46,6 +45,9 @@ Route::any('/user/actions/deleteFriend', 'Api\User\Actions\FriendsController@del
 Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
 
 Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
+
+// Send Reset Code
+Route::any('/user/actions/sendResetCode', 'Api\User\Actions\ResetPassController@sendResetCode');
 
 // --------------- CHITS ------------------- //
 // Add New Chits

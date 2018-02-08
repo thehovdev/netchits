@@ -38,7 +38,7 @@
                                 <h1><span class="brand-name">NetChits</span></h1>
                             </div>
                             <div class="welcome-div">
-                                <h1><span class="welcome-text">Welcome To Open Alpha</span></h1>
+                                <h1><span class="welcome-text">Welcome To Opening <br> Beta Test</span></h1>
                             </div>
 
                             <div class="actions">
@@ -80,6 +80,7 @@
 
                 <button type="submit" class="btn btn-default" id="signin-submit-button">Log In</button>
                 <button type="submit" class="btn btn-default back-submit-button">Back</button>
+                <button type="submit" class="btn btn-default" id="button-forgotpass">Forgot Password</button>
 
         </div>
 
@@ -100,6 +101,23 @@
                 <button type="submit" class="btn btn-default back-submit-button">Back</button>
         </div>
 
+        <div class="container forgotpass-container" style="display:none;">
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="forgotpass-email">
+                </div>
+                <div class="form-group" style="display:none;">
+                    <label for="pwd">Insert Code</label>
+                    <input type="password" class="form-control" id="forgotpass-code">
+                </div>
+
+                <button style="display:none;" type="submit" class="btn btn-default" id="button-sendcode">
+                    Send Code
+                </button>
+                <button style="display:none;" type="submit" class="btn btn-default" id="button-resetpass">
+                    Reset Pass
+                </button>
+        </div>
 
 
     </section>

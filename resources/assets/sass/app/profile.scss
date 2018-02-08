@@ -23,18 +23,23 @@ a:visited {
 
 
 .search-progress-bar {
-    position: relative;
+
+    position: fixed;
+    top:87px;
+    left:0px;
     width: 100%;
-    margin: auto;
-    // margin-top:-40px;
+    z-index:9999;
+
+    // position: relative;
+    // width: 100%;
+    // margin: auto;
 
     .progress {
-        margin-bottom: 5px;
+        // margin-bottom: 5px;
         height: 10px;
     }
 
     .progress-bar {
-        // background-color: #FF0000 !important;
         height: 10px;
     }
 }
@@ -457,6 +462,29 @@ a:visited {
     border-color: #3097D1 !important;
 }
 
+.btn-loveit {
+    background: #FF0000;
+    color: white;
+    font-weight: bold;
+    outline:0;
+    &:hover {
+        color:white !important;
+        background: #FF0000 !important;
+        outline:0;
+
+    }
+    &:focus {
+        color:white !important;
+        background: #FF0000 !important;
+        outline:0;
+
+    }
+    &:active {
+        color:white !important;
+        background: #FF0000 !important;
+        outline:0;
+    }
+}
 
 
 .button-delete {
@@ -468,6 +496,11 @@ a:visited {
     border-color:black;
     font-size: 0.8em;
     margin-left: 5px;
+}
+
+.fa-love {
+    color:white !important;
+    padding: 5px;
 }
 
 .fa-delete-group {
@@ -490,7 +523,6 @@ a:visited {
     }
 }
 
-
 .fa-copy-chits {
     color: #50e573 !important;
     font-size: 20px !important;
@@ -500,7 +532,6 @@ a:visited {
         color: #50e573 !important;
     }
 }
-
 
 .fa-copy-group {
     color: #50e573 !important;
@@ -545,13 +576,11 @@ a:visited {
     height: 40%;
 }
 
-
 .row-group {
     display: block;
     height: 60px !important;
     margin: 50px auto;
 }
-
 
 .row-chits-list {
     display: block;
@@ -570,7 +599,6 @@ a:visited {
     width: 40% !important;
     margin: auto;
 }
-
 
 .row-friends {
     padding-left: 0px;
@@ -600,7 +628,6 @@ a:visited {
         }
     }
 }
-
 
 .row-user-profile {
     margin-top: 80px;
@@ -636,12 +663,24 @@ a:visited {
 
 }
 
-
-
 .chits-search-result {
-    background: #E8E8E8;
-    height:150px;
+    background: #F0F0F0;
+    min-height: 180px;
+    height:auto;
+
+    .results-parent {
+        // margin-left: 7%;
+    }
+
 }
+
+.search-item {
+    margin-top: 5px;
+    padding: 0px;
+    // margin-left: 10px;
+    // margin-right: 10px;
+}
+
 
 .search-item-title {
     white-space: nowrap;
