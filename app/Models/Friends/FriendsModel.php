@@ -23,6 +23,13 @@ class FriendsModel extends Model
             ->where('friend_id', $friend->id)
             ->first();
 
+        if($user->id == $friend->id) {
+            $result['status'] = 0;
+            $result['msg'] = 'You Cannot follow yourself';
+            return $result;
+        }
+
+
         if(!is_null($is_friends)) {
             $result['status'] = 0;
             $result['msg'] = 'You Already Friends';

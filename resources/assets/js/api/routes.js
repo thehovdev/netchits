@@ -24,4 +24,5 @@ Route = {
     showFriends: '/user/actions/showFriends', //show friends
 
     sendResetCode : '/user/actions/sendResetCode', //send reset pass code
+    resetPass : '/user/actions/resetPass',
 }

@@ -31,6 +31,7 @@ class ResetPassController extends Controller
         // вставляем код в базу
         $data['resetCode'] = $resetCode;
         $data['userEmail'] = $userEmail;
+        $data['user_id'] = $usersModel->getUserIdByEmail($userEmail);
         $addCode = $resetPassModel->addCode($data);
 
         if(is_null($addCode)) {
@@ -44,9 +45,10 @@ class ResetPassController extends Controller
         $subject = 'NetChits - Are You Forgot Password ?';
         $message = 'Password Reset Code: ' . $resetCode;
         $headers = 'From: noreply@netchits.com';
+        $to = $data['userEmail'];
 
         // if(mail($userEmail, $subject, $message, $headers)) {
-        if(mail('halilov.lib@gmail.com', 'My Subject', $message)) {
+        if(mail($to, $subject, $message, $headers)) {
             $result['status'] = 1;
             $result['msg'] = 'code send succesfully';
         } else {
@@ -54,10 +56,52 @@ class ResetPassController extends Controller
             $result['msg'] = 'code send fails';
         }
 
-        // print phpinfo();
-
 
         return $result;
+
+    }
+
+    public function resetPass(Request $request) {
+        $usersModel = new UsersModel;
+        $resetPassModel = new ResetPassModel;
+
+        $data['userEmail'] = $request->userEmail;
+        $data['code'] = $request->code;
+        $data['newpass'] = $request->newpass;
+        $data['repass'] = $request->repass;
+
+        if($data['newpass'] !== $data['repass']) {
+            $result['status'] = 0;
+            $result['msg'] = 'passwords not equals';
+            return $result;
+        }
+
+
+
+        $user = $usersModel->getUserByEmail($data['userEmail']);
+        if(is_null($user)) {
+            $result['status'] = 1;
+            $result['msg'] = 'user not exists';
+            return $result;
+        }
+        $data['user_id'] = $user->id;
+
+
+        $checkCode = $resetPassModel->checkCode($data['code'], $user->id);
+        if($checkCode['status'] != 1) {
+            return $checkCode;
+        }
+
+
+        $resetPass = $usersModel->resetPass($data);
+        if($resetPass['status'] !=1) {
+            return $resetPass;
+        }
+
+        $result['status'] = 1;
+        $result['msg'] = 'password update successfully';
+        return $result;
+
 
     }
 }

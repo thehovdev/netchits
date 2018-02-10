@@ -5,8 +5,14 @@
 @include('layouts.includes.navbar')
 
 <div class="container">
+
+    <div class="margin-top100"></div>
+
+
     @if($user->permission != 'guest')
+
         <div class="row row-user-profile">
+
             <div class="col-sm-12 col-user-profile-image">
                 <div class="div-user-image">
                     <img src="/storage/user-profile-images/{{ $user->image_id }}" class="user-image img-circle"/>
@@ -28,6 +34,13 @@
                       <label for="hashtag" class="text-center block">#hashtag</label>
                       <input type="text" class="form-control" id="hashtag" value="{{ @$user->hashtag }}">
                     </div>
+
+                    @if($user->status == 0)
+                    <div class="form-group">
+                        <label for="code" class="text-center block">Confirm Code</label>
+                        <input type="text" class="form-control input-confirm-code" id="confirmcode" placeholder="insert code from e-mail">
+                    </div>
+                    @endif
 
                     <button class="btn btn-default button-update-profile">Update Info</button>
                 </div>

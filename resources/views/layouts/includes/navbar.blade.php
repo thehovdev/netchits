@@ -6,7 +6,7 @@
                 <a class="navbar-brand" href="/">NetChits</a>
             </div>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right first-navbar-ul">
                 <li>
                     <a class="pointer" href="/user/{{ $user->id }}" target="_blank">
                         <img src="/storage/user-profile-images/{{ $user->image_id }}" class="img-circle" width="30px" height="30px"/>

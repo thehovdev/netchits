@@ -8,7 +8,7 @@ class UsersModel extends Model
 {
     protected $table = 'users';
     protected $guarded = ['id'];
-    public $timestamps = false;
+    public $timestamps = true;
     public $result = [];
 
     public function chits()
@@ -88,6 +88,52 @@ class UsersModel extends Model
 
     }
 
+    public function checkConfrim($id)
+    {
+        $user = $this->find($id);
+
+        $currentDate = strtotime(date('Y-m-d H:i:s'));
+        $confirmDate = $user->created_at;
+        $confirmDate = strtotime("+2 week", strtotime($confirmDate));
+
+        if($currentDate > $confirmDate) {
+            $result['status'] = 0;
+            $result['msg'] = 'account will be removed';
+            return $result;
+        }
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+
+
+    }
+
+    public function deleteUser($id)
+    {
+        $user = $this->find($id);
+        $user->delete();
+
+
+        \Cookie::forget('email');
+        \Cookie::forget('secret');
+        \Cookie::forget('auth');
+
+        $result['status'] = 1;
+        $result['msg'] = 'user deleted, because not confirm email in 14 days';
+        return $result;
+
+        // unset($_COOKIE['email']);
+        // unset($_COOKIE['secret']);
+        // unset($_COOKIE['auth']);
+        // setcookie("auth", null , $cookieTime, $cookieDir);
+        // setcookie("email", null, $cookieTime, $cookieDir);
+        // setcookie("secret",  null, $cookieTime, $cookieDir);
+
+
+    }
+
+
     public function addUser($usersData)
     {
 
@@ -96,6 +142,8 @@ class UsersModel extends Model
         $this->hashtag = $usersData['hashtag'];
         $this->password = $usersData['password'];
         $this->secret = $usersData['secret'];
+        $this->confirmcode = $usersData['confirmcode'];
+        $this->status = 0;
         $this->save();
 
         // return result
@@ -114,6 +162,24 @@ class UsersModel extends Model
         $user = $this
             ->where('email', $email)
             ->where('secret', $secret)
+            ->first();
+
+        return $user;
+    }
+
+    public function getUserIdByEmail($email)
+    {
+        $user = $this
+            ->where('email', $email)
+            ->first();
+        return $user->id;
+    }
+
+    public function getUserByEmail($email)
+    {
+
+        $user = $this
+            ->where('email', $email)
             ->first();
 
         return $user;
@@ -156,7 +222,7 @@ class UsersModel extends Model
         return $result;
     }
 
-    public function hashtagUpdate($hashtag)
+    public function updateProfile($hashtag, $confirmcode)
     {
         if(is_null($hashtag)) {
             $result['status'] = 0;
@@ -168,6 +234,18 @@ class UsersModel extends Model
             ->where('email', $this->getUser()->email)
             ->where('secret', $this->getUser()->secret)
             ->first();
+
+
+        // подтверждение e-mail адреса
+        if($user->status == 0) {
+
+            if(!is_null($confirmcode) && $user->confirmcode == $confirmcode) {
+                $user->status = 1;
+            }
+        }
+
+
+
 
         $user->hashtag = $hashtag;
         $user->save();
@@ -183,15 +261,22 @@ class UsersModel extends Model
         $user = $this
             ->where('hashtag', $search)
             ->first();
+
+
         if(is_null($user)) {
             $result['status'] = 0;
             $result['msg'] = "user with hashtag $search not found";
             return $result;
         }
+
+
+
+
         $result['status'] = 1;
         $result['msg'] = 'success';
         $result['hashtag'] = $user->hashtag;
         $result['image_id'] = $user->image_id;
+        $result['id'] = $user->id;
         return $result;
     }
 
@@ -212,5 +297,16 @@ class UsersModel extends Model
         return $result;
     }
 
+    public function resetPass($data) {
+
+
+        $user = $this->find($data['user_id']);
+        $user->password = password_hash($data['newpass'], PASSWORD_DEFAULT);
+        $user->save();
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+    }
 
 }

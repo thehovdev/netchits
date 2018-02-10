@@ -5,6 +5,9 @@ $chitsModel = new ChitsModel;
 
 {{-- Если пользователь гость на странице пользователя --}}
 
+<input class="playlist" type="text" style="display:none;"/>
+<div id="player" style="display:none;"></div>
+
     @if($chitsModel->has_default_chits($userprofile))
         <div class="row row-group">
                 <div class="panel panel-default panel-group">
@@ -209,3 +212,5 @@ $chitsModel = new ChitsModel;
                 </div>
             @endif
     @endforeach
+
+    <script src="http://localhost:8000/js/youtube.js"></script>

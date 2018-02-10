@@ -62,13 +62,13 @@ class UserController extends Controller
 
     }
 
-
     public function updateProfile(Request $request) {
         // SECTION : Models
         $usersModel = new UsersModel;
 
         // SECTION : Request
         $hashtag = $request->hashtag;
+        $confirmcode = $request->confirmcode;
 
         // SECTION : Logics
         if(is_null($hashtag)) {
@@ -77,7 +77,9 @@ class UserController extends Controller
             return $result;
         }
 
-        $hashtagUpdate = $usersModel->hashtagUpdate($hashtag);
+        $hashtagUpdate = $usersModel->updateProfile($hashtag, $confirmcode);
+
+
 
         return $hashtagUpdate;
     }

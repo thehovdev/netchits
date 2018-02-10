@@ -102,21 +102,40 @@
         </div>
 
         <div class="container forgotpass-container" style="display:none;">
-                <div class="form-group">
+                <div class="form-group form-sendcode">
                     <label for="email">Email address:</label>
                     <input type="email" class="form-control" id="forgotpass-email">
                 </div>
-                <div class="form-group" style="display:none;">
-                    <label for="pwd">Insert Code</label>
-                    <input type="password" class="form-control" id="forgotpass-code">
-                </div>
-
                 <button style="display:none;" type="submit" class="btn btn-default" id="button-sendcode">
                     Send Code
                 </button>
-                <button style="display:none;" type="submit" class="btn btn-default" id="button-resetpass">
-                    Reset Pass
-                </button>
+
+
+                <div class="form-resetpass" style="display:none;">
+                    <div class="form-group">
+                        <label for="pwd">Insert Code</label>
+                        <input type="password" class="form-control" id="forgotpass-code">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">New Password</label>
+                        <input type="password" class="form-control" id="forgotpass-newpass">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Retry Password</label>
+                        <input type="password" class="form-control" id="forgotpass-repass">
+                    </div>
+                </div>
+
+                <button style="display:none;" type="submit" class="btn btn-default" id="button-resetpass">Reset Pass</button>
+
+                <div class="alert alert-success resetpass-success" style="display:none;margin-top:10px;">
+                  <strong>Success!</strong> Password Changed, Login to your Account
+                </div>
+
+                <div class="alert alert-danger resetpass-error" style="display:none;margin-top:10px;">
+                  <strong>Success!</strong> Password Changed, Login to your Account
+                </div>
+
         </div>
 
 

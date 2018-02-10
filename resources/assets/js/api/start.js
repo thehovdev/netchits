@@ -23,6 +23,9 @@ Api = {
     });
 
 
+    $(window).resize(function(){
+        Api.playerMoove();
+    });
 
 
     $('.back-submit-button').click(function() {
@@ -62,9 +65,6 @@ Api = {
 //-------------------- User Events ----------------------------//
 
 
-    $(document).on('click', 'iframe', function() {
-        alert('test');
-    });
 
 
 
@@ -501,6 +501,8 @@ Api = {
 
     sendResetCode : function() {
         userEmail = $('#forgotpass-email').val();
+        $("#button-sendcode").prop('disabled', true);
+
 
         $.ajax({
           headers: Route.header,
@@ -510,32 +512,45 @@ Api = {
             }
         }).done(function(data) {
             if(data.status == 1) {
-                Api.makeResetPass();
+
+                $('.form-resetpass').show();
+                $("#button-resetpass").show()
+                $("#button-sendcode").hide();
+
             }
         });
 
     },
 
+
+
     makeResetPass : function() {
-        // userEmail
-
-        alert('makeResetPass');
-        die();
-
-
-        Api.showForgotPass();
-
+        var userEmail = $('#forgotpass-email').val();
+        var code = $("#forgotpass-code").val();
+        var newpass = $("#forgotpass-newpass").val();
+        var repass = $("#forgotpass-repass").val();
 
 
         $.ajax({
           headers: Route.header,
-          url: Route.forgotPass,
+          url: Route.resetPass,
           data: {
             userEmail: userEmail,
+            code: code,
+            newpass : newpass,
+            repass : repass,
             }
         }).done(function(data) {
             if(data.status == 1) {
-                alert(data.status);
+                $('.resetpass-error').hide();
+                $('.resetpass-success').show();
+                setTimeout(function(){
+                    location.reload();
+                }, 2000);
+            } else {
+                $('.resetpass-error').show();
+                $('.resetpass-error').text(data.msg);
+
             }
         });
 
@@ -545,6 +560,7 @@ Api = {
 
     updateProfile : function() {
         var hashtag = $('.div-user-info #hashtag').val();
+        var confirmcode = $("#confirmcode").val();
         // alert(hashtag);
 
         $.ajax({
@@ -552,6 +568,7 @@ Api = {
           url: Route.updateProfile,
           data: {
             hashtag: hashtag,
+            confirmcode: confirmcode,
             }
         }).done(function(data) {
             if(data.status == 1) {
@@ -606,8 +623,16 @@ Api = {
 
                 $('.search-user-image').attr('src', image);
                 $('.search-user-hashtag').text(data.hashtag);
-
                 $('.search-result-row').css('visibility', 'visible');
+
+                if(data.is_friends == 1) {
+                    $('.button-add-friend').hide();
+                    $('.button-is-friends').show();
+                } else {
+                    $('.button-is-friends').hide();
+                    $('.button-add-friend').show();
+                }
+
                 // location.reload();
             }
         });
@@ -697,15 +722,43 @@ Api = {
     },
 
     playerMoove : function() {
+        // var videoId = $('.playlist').val();
+        // var position = $('.chit-code-' + videoId).position();
+        // var deviceWidth = $(window).width();
+        //
+        // $("#player").css({
+        //     "position": "absolute",
+        //     "top" : position.top + 23,
+        //     "left" : position.left + 6,
+        //     "z-index" : "9",
+        // });
+
+
         var videoId = $('.playlist').val();
         var position = $('.chit-code-' + videoId).position();
+        var deviceWidth = $(window).width();
 
-        $("#player").css({
-            "position": "absolute",
-            "top" : position.top + 23,
-            "left" : position.left + 6,
-            "z-index" : "9",
-        });
+
+        if(deviceWidth < 400) {
+            $("#player").css({
+                "position": "absolute",
+                "top" : position.top + 53,
+                "left" : position.left + 20,
+                "z-index" : "9",
+            });
+        } else {
+            $("#player").css({
+                "position": "absolute",
+                "top" : position.top + 23,
+                "left" : position.left + 6,
+                "z-index" : "9",
+            });
+        }
+
+
+
+
+
     }
 
 }

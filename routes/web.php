@@ -48,6 +48,11 @@ Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@show
 
 // Send Reset Code
 Route::any('/user/actions/sendResetCode', 'Api\User\Actions\ResetPassController@sendResetCode');
+// Reset Code
+Route::any('/user/actions/resetPass', 'Api\User\Actions\ResetPassController@resetPass');
+
+
+
 
 // --------------- CHITS ------------------- //
 // Add New Chits

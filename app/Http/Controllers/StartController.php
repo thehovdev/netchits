@@ -26,22 +26,31 @@ class StartController extends Controller
         $chitsModel = new ChitsModel;
         $chitsGroupModel = new ChitsGroupModel;
 
+        $user = @$usersModel->getUser();
+
         // SECTION : Logics
-        if(!isset($_COOKIE['auth']) && @$_COOKIE['auth'] !== 'success') {
-                return view("layouts.start");
+        if(is_null($user)) {
+            return view("layouts.start");
         } else {
 
-            $user = $usersModel->getUser();
+
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
             $friends = $user->friends; // laravel relations (отношения)
+
+
+            $checkConfirm = $usersModel->checkConfrim($user->id);
+            if($checkConfirm['status'] == 0) {
+                $deleteUser = $usersModel->deleteUser($user->id);
+                return redirect('/');
+            }
 
 
 
 
             return view("user.profile")
                 ->with("user", $user)
-                // ->with("friends", $friends)
+                ->with("friends", @$friends)
                 ->with("userChits", @$userChits)
                 ->with("userGroups", @$userGroups);
         }

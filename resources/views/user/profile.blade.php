@@ -35,16 +35,39 @@
                 <div class="col-sm-12 col-md-12">
                     <!-- Margin TOP FROM FIXED NAVBAR -->
                     <div class="margin-top100"></div>
+
+                    @if($user->status == 0)
+                        <div class="row account-confirm-row">
+                            <div class="col-sm-12">
+                                <a href="/user/{{ $user->id }}">
+                                    <div class="alert alert-info">
+                                        <strong>Attention!</strong>
+                                        <p>
+                                            Please click to confirm you account, otherwise it will be closed after 14 days.
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="row search-result-row" style="visibility:hidden;">
                         <div class="col-sm-12 search-result-col">
                             <div class="search-result-parent">
                                 <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
-                                <button class="btn btn-primary button-add-friend">
-                                    Add Friend <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
+
+                                <button style="display:none;" class="btn btn-primary button-add-friend">
+                                    Follow <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
                                 </button>
+
+                                <button style="display:none;" class="btn btn-primary button-is-friends">
+                                    You Already Follow <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
+                                </button>
+
                             </div>
                         </div>
                     </div>
+
                     <div class="row row-friends" data-load="0" style="display:none;">
                         <div class="col-sm-12">
                             <div class="friends-parent">
@@ -57,11 +80,12 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row chits-add-row">
-                        <div class="col-lg-2 col-md-2 col-sm-2 chits-add-column">
+                        <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
                             <button type="button" class="btn btn-success button-add-chits button-add-chits-color" id="chits-add-button">Add New</button>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-xs-3 col-lg-6 col-md-6 col-sm-6 chits-address-column">
                             <div class="form-group">
 
 
@@ -74,16 +98,17 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 chitsgroup-select-column">
+                        <div class="col-xs-3 col-lg-2 col-md-2 col-sm-2 chitsgroup-select-column">
                             @include('layouts.includes.chitsgroup-select')
                         </div>
                     </div>
+
                     <div class="row chits-add-group-row">
                         <div class="chits-category">
-                            <div class="col-lg-2 col-md-2 col-sm-2 chits-add-column">
+                            <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
                                 <button type="button" class="btn btn-primary" id="chits-group-button">Add Group</button>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-xs-3 col-lg-6 col-md-6 col-sm-6 groupselect-column">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="chits-group-input" placeholder="AC/DC Playlist">
                                 </div>
@@ -96,7 +121,6 @@
                             <div id="results"></div>
                         </div>
                     </div>
-
 
                     <div class="row chits-row">
                             <div class="chits-list" style="visibility:hidden;">
@@ -146,7 +170,7 @@
 
 
                 $('#results').append(
-                    '<div class="col-sm-4 col-md-2 search-item" id="' + videoId + '">' +
+                    '<div class="col-xs-4 col-sm-4 col-md-2 search-item" id="' + videoId + '">' +
                     '<div class="search-item-img-block">' +
                     vidThumbimg +
                     '</div>' +

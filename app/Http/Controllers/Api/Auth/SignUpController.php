@@ -39,8 +39,15 @@ class SignUpController extends Controller
         $hash = password_hash($userData['password'], PASSWORD_DEFAULT);
 
         // generate unique secret from hash + time
-        $secretOpen = $hash . time();
-        $secret = $dataController->encryptOpenssl($secretOpen);
+        // $secretOpen = $hash . microtime(true);
+        $secretOpen = md5($hash) . time();
+        $secret = uniqid($secretOpen);
+
+        // $secret = $dataController->encryptOpenssl($secretOpen);
+
+        $confirmcode = encrypt(md5('confirmcode' . time()));
+        $confirmcode = substr($confirmcode, 0, 11);
+
 
 
         $protectedData = [];
@@ -48,6 +55,7 @@ class SignUpController extends Controller
         $protectedData['hashtag'] = $userData['hashtag'];
         $protectedData['password'] = $hash;
         $protectedData['secret'] = $secret;
+        $protectedData['confirmcode'] = $confirmcode;
 
         // Step 1 : Check if User Exists
         $result = $usersModel->checkSignUp($protectedData);
@@ -63,6 +71,22 @@ class SignUpController extends Controller
         if($result['status'] !== 1) {
             return $result;
         }
+
+
+
+        // send confirm code
+        $subject = 'NetChits - Confirm Account ';
+        $message = 'Please Confirm You Account,
+        insert this code on you profile page: ' . $confirmcode;
+        $headers = 'From: noreply@netchits.com';
+        $to = $userData['email'];
+        if(!mail($to, $subject, $message, $headers)) {
+            $result['status'] = 0;
+            $result['msg'] = 'error send account confirm mail';
+            return $result;
+        }
+
+
 
 
         // Step 3 : Auth User

@@ -31723,6 +31723,10 @@ Api = {
             keyWordsearch();
         });
 
+        $(window).resize(function () {
+            Api.playerMoove();
+        });
+
         $('.back-submit-button').click(function () {
             location.reload();
         });
@@ -31757,10 +31761,6 @@ Api = {
 
         //-------------------- User Events ----------------------------//
 
-
-        $(document).on('click', 'iframe', function () {
-            alert('test');
-        });
 
         // делегирование
         $(document).on('click', '.chits-delete-button', function () {
@@ -32170,6 +32170,7 @@ Api = {
 
     sendResetCode: function sendResetCode() {
         userEmail = $('#forgotpass-email').val();
+        $("#button-sendcode").prop('disabled', true);
 
         $.ajax({
             headers: Route.header,
@@ -32179,41 +32180,54 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                Api.makeResetPass();
+
+                $('.form-resetpass').show();
+                $("#button-resetpass").show();
+                $("#button-sendcode").hide();
             }
         });
     },
 
     makeResetPass: function makeResetPass() {
-        // userEmail
-
-        alert('makeResetPass');
-        die();
-
-        Api.showForgotPass();
+        var userEmail = $('#forgotpass-email').val();
+        var code = $("#forgotpass-code").val();
+        var newpass = $("#forgotpass-newpass").val();
+        var repass = $("#forgotpass-repass").val();
 
         $.ajax({
             headers: Route.header,
-            url: Route.forgotPass,
+            url: Route.resetPass,
             data: {
-                userEmail: userEmail
+                userEmail: userEmail,
+                code: code,
+                newpass: newpass,
+                repass: repass
             }
         }).done(function (data) {
             if (data.status == 1) {
-                alert(data.status);
+                $('.resetpass-error').hide();
+                $('.resetpass-success').show();
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            } else {
+                $('.resetpass-error').show();
+                $('.resetpass-error').text(data.msg);
             }
         });
     },
 
     updateProfile: function updateProfile() {
         var hashtag = $('.div-user-info #hashtag').val();
+        var confirmcode = $("#confirmcode").val();
         // alert(hashtag);
 
         $.ajax({
             headers: Route.header,
             url: Route.updateProfile,
             data: {
-                hashtag: hashtag
+                hashtag: hashtag,
+                confirmcode: confirmcode
             }
         }).done(function (data) {
             if (data.status == 1) {
@@ -32267,8 +32281,16 @@ Api = {
 
                 $('.search-user-image').attr('src', image);
                 $('.search-user-hashtag').text(data.hashtag);
-
                 $('.search-result-row').css('visibility', 'visible');
+
+                if (data.is_friends == 1) {
+                    $('.button-add-friend').hide();
+                    $('.button-is-friends').show();
+                } else {
+                    $('.button-is-friends').hide();
+                    $('.button-add-friend').show();
+                }
+
                 // location.reload();
             }
         });
@@ -32352,15 +32374,37 @@ Api = {
     },
 
     playerMoove: function playerMoove() {
+        // var videoId = $('.playlist').val();
+        // var position = $('.chit-code-' + videoId).position();
+        // var deviceWidth = $(window).width();
+        //
+        // $("#player").css({
+        //     "position": "absolute",
+        //     "top" : position.top + 23,
+        //     "left" : position.left + 6,
+        //     "z-index" : "9",
+        // });
+
+
         var videoId = $('.playlist').val();
         var position = $('.chit-code-' + videoId).position();
+        var deviceWidth = $(window).width();
 
-        $("#player").css({
-            "position": "absolute",
-            "top": position.top + 23,
-            "left": position.left + 6,
-            "z-index": "9"
-        });
+        if (deviceWidth < 400) {
+            $("#player").css({
+                "position": "absolute",
+                "top": position.top + 53,
+                "left": position.left + 20,
+                "z-index": "9"
+            });
+        } else {
+            $("#player").css({
+                "position": "absolute",
+                "top": position.top + 23,
+                "left": position.left + 6,
+                "z-index": "9"
+            });
+        }
     }
 
 };
@@ -32436,7 +32480,8 @@ Route = {
   deleteFriend: '/user/actions/deleteFriend', //add friend
   showFriends: '/user/actions/showFriends', //show friends
 
-  sendResetCode: '/user/actions/sendResetCode' //send reset pass code
+  sendResetCode: '/user/actions/sendResetCode', //send reset pass code
+  resetPass: '/user/actions/resetPass'
 };
 
 /***/ }),

@@ -59,11 +59,13 @@ window.onload = function() {
 
     $(document).on('click', '.chits-player', function() {
 
+
     var playerblockId = $(this).find("div.playerblock").attr('id');
     var playerVideoId = $(this).find("div.playerblock").data('video');
 
     // var playerpreview = $(this).find("div.playerpreview").hide();
     var playerpreviewId = $(this).find("div.playerpreview").attr('id');
+    // var position = $(this).closest('.chits-column-parent').position();
     var position = $(this).closest('.chits-column-parent').position();
 
 
@@ -72,12 +74,38 @@ window.onload = function() {
 
     player.loadVideoById(playerVideoId);
 
-    $("#player").css({
-        "position": "absolute",
-        "top" : position.top + 23,
-        "left" : position.left + 6,
-        "z-index" : "9",
-    });
+
+    var deviceWidth = $(window).width();
+
+
+    if(deviceWidth < 400) {
+        $("#player").css({
+            "position": "absolute",
+            "top" : position.top + 53,
+            "left" : position.left + 20,
+            "z-index" : "9",
+        });
+    } else {
+        $("#player").css({
+            "position": "absolute",
+            "top" : position.top + 23,
+            "left" : position.left + 6,
+            "z-index" : "9",
+        });
+    }
+
+
+
+
+    //
+    // $("#player").css({
+    //     "position": "absolute",
+    //     "top" : position.top + 23,
+    //     "left" : position.left + 6,
+    //     "z-index" : "9",
+    // });
+
+
 })
 
 
