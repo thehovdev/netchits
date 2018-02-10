@@ -138,6 +138,10 @@
 
         </div>
 
+        <div class="author">
+            &copy;NetChits <br>
+            CEO & Founder - Afgan Khalilov
+        </div>
 
     </section>
 

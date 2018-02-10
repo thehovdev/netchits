@@ -18,7 +18,7 @@
 
 
         <div class="chits-events-area">
-            <i class="fa fa-trash-o fa-delete-chits chits-delete-button" aria-hidden="true"></i>
+            <i class="fa fa-archive fa-delete-chits chits-delete-button" aria-hidden="true"></i>
         </div>
     </div>
 </div>
