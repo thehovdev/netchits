@@ -49,7 +49,7 @@ $chitsModel = new ChitsModel;
                                     </div>
 
 
-                                    <div class="chits-events-area">
+                                    <div class="chits-events-area" data-toggle="tooltip" title="{{ $chits->opg_title }}">
                                         <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@ $chitsModel = new ChitsModel;
                                 </div>
                                 <div class="chits-events">
 
-                                    <div class="chits-description-area-basic">
+                                    <div class="chits-description-area-basic" data-toggle="tooltip" title="{{ $chits->opg_title }}">
                                         <div class="preview-text">{{ $chits->opg_title }}</div>
                                     </div>
 
@@ -160,7 +160,7 @@ $chitsModel = new ChitsModel;
 
                                 <div class="chits-events">
 
-                                    <div class="chits-description-area">
+                                    <div class="chits-description-area" data-toggle="tooltip" title="{{ $chits->opg_title }}">
                                         <div class="playerpreview-text">{{ $chits->opg_title }}</div>
                                     </div>
 
@@ -187,7 +187,7 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
+                                    <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
                                 </div>
                             </div> -->
 
@@ -202,11 +202,17 @@ $chitsModel = new ChitsModel;
                                     </a>
                                 </div>
                                 <div class="chits-events">
-                                    <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
+
+                                    <div class="chits-description-area-basic" data-toggle="tooltip" title="{{ $chits->opg_title }}">
+                                        <div class="preview-text">{{ $chits->opg_title }}</div>
+                                    </div>
+
+
+                                    <div class="chits-events-area">
+                                        <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
-
-
                         @endif
                     @endforeach
                 </div>

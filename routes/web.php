@@ -52,6 +52,26 @@ Route::any('/user/actions/sendResetCode', 'Api\User\Actions\ResetPassController@
 Route::any('/user/actions/resetPass', 'Api\User\Actions\ResetPassController@resetPass');
 
 
+// -------------- LANG ----------------------//
+
+Route::get('/user/setlocale/{locale}', 'Api\User\Actions\LocaleController@setLocale');
+
+// Route::get('setlocale/{locale}', function ($locale) {
+//
+//     # Проверяем, что у пользователя выбран доступный язык
+//     if (in_array($locale, \Config::get('app.locales'))) {
+//          # И устанавливаем его в сессии под именем locale
+//     	Session::put('locale', $locale);
+//     }
+//
+//     return redirect()->back();
+//
+// });
+
+// -------------- LANG ----------------------//
+
+
+
 
 
 // --------------- CHITS ------------------- //

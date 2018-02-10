@@ -31718,6 +31718,8 @@ Api = {
         // });
 
 
+        $('[data-toggle="tooltip"]').tooltip();
+
         $(window).on('load', function () {
             $("#chits-address-input").val("AC/DC");
             keyWordsearch();
@@ -32390,21 +32392,53 @@ Api = {
         var position = $('.chit-code-' + videoId).position();
         var deviceWidth = $(window).width();
 
-        if (deviceWidth < 400) {
-            $("#player").css({
-                "position": "absolute",
-                "top": position.top + 53,
-                "left": position.left + 20,
-                "z-index": "9"
-            });
-        } else {
-            $("#player").css({
-                "position": "absolute",
-                "top": position.top + 23,
-                "left": position.left + 6,
-                "z-index": "9"
-            });
+        switch (true) {
+
+            case deviceWidth < 400 && deviceWidth > 300:
+                $("#player").css({
+                    "position": "absolute",
+                    "top": position.top + 53,
+                    "left": position.left + 84,
+                    "z-index": "9"
+                });
+                break;
+
+            case deviceWidth < 400:
+                $("#player").css({
+                    "position": "absolute",
+                    "top": position.top + 53,
+                    "left": position.left + 24,
+                    "z-index": "9"
+                });
+                break;
+
+            default:
+                $("#player").css({
+                    "position": "absolute",
+                    "top": position.top + 23,
+                    "left": position.left + 6,
+                    "z-index": "9"
+                });
+                break;
+
         }
+
+        // if(deviceWidth < 400) {
+        //     $("#player").css({
+        //         "position": "absolute",
+        //         "top" : position.top + 53,
+        //         "left" : position.left + 24,
+        //         "z-index" : "9",
+        //     });
+        // } else {
+        //     $("#player").css({
+        //         "position": "absolute",
+        //         "top" : position.top + 23,
+        //         "left" : position.left + 6,
+        //         "z-index" : "9",
+        //     });
+        // }
+
     }
 
 };

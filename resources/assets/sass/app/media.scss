@@ -1,6 +1,6 @@
 
 
-@media screen and (min-width: 200px) and (max-width: 399px) {
+@media screen and (min-width: 200px) and (max-width: 319px) {
     body {
         overflow-x: hidden;
     }
@@ -55,8 +55,69 @@
 
 }
 
+@media screen and (min-width: 320px) and (max-width: 420px) {
+    body {
+        overflow-x: hidden;
+    }
+    .first-navbar-ul {
+        margin-top: 50px;
+        text-align: center;
+    }
+    .navbar-search {
+        margin: 5px auto;
+    }
+    .margin-top100 {
+        margin-top: 300px;
+    }
 
-@media screen and (min-width: 400px) and (max-width: 767px) {
+    .chits-add-column {
+        margin-bottom: 10px;
+    }
+    .chitsgroup-select-column {
+        min-width: 90%;
+    }
+    .chits-address-column {
+        min-width: 200px;
+    }
+
+    .groupselect-column {
+        min-width: 200px;
+    }
+
+    .search-item {
+         min-width: 150px;
+         margin-left: 5px;
+         margin-right: 5px;
+    }
+
+
+    .chits-column-parent {
+        margin-top: 50px;
+        margin-left: 80px;
+        // width: 90%;
+        .chits-player {
+            // width: 100%;
+            // height: 200px;
+        }
+
+        .playerpreview {
+            img {
+                // height: 200px;
+            }
+        }
+    }
+
+        .results-parent {
+            #results {
+                width: 320px;
+                margin: auto;
+            }
+        }
+
+
+}
+
+@media screen and (min-width: 421px) and (max-width: 767px) {
 
     .first-navbar-ul {
         margin-top: 50px;

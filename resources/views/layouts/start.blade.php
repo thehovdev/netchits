@@ -38,7 +38,7 @@
                                 <h1><span class="brand-name">NetChits</span></h1>
                             </div>
                             <div class="welcome-div">
-                                <h1><span class="welcome-text">Welcome To Opening <br> Beta Test</span></h1>
+                                <h1><span class="welcome-text">@lang('main.startwelcome')</span></h1>
                             </div>
 
                             <div class="actions">
@@ -48,13 +48,13 @@
                                             <div class="col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
                                                 <div class="alpha-key pointer" id="signin-button">
                                                     <span class="alpha-text">
-                                                        Log in
+                                                        @lang('main.login')
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-4">
                                                 <div class="register pointer" id="signup-button">
-                                                    <span class="register-text">Sign up</span>
+                                                    <span class="register-text">@lang('main.signup')</span>
                                                 </div>
                                             </div>
                                         </div>

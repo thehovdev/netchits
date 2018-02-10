@@ -19,7 +19,7 @@
                 </li>
                 <li>
                     <a class="pointer" id="signout-button">
-                        <span>Sign Out</span>
+                        <span>@lang('main.signout')</span>
                     </a>
                 </li>
             </ul>

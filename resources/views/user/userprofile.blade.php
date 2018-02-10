@@ -26,23 +26,30 @@
                         <input type="submit" id="upload_submit" value="Send">
                         <input type="hidden" value="{{ csrf_token() }}" name="_token"   />
                     </form>
-                    <button class="btn btn-default button-upload-profile-image">Update Photo</button>
+                    <button class="btn btn-default button-upload-profile-image">@lang('main.updatephoto')</button>
                 </div>
 
                 <div class="div-user-info">
                     <div class="form-group">
-                      <label for="hashtag" class="text-center block">#hashtag</label>
-                      <input type="text" class="form-control" id="hashtag" value="{{ @$user->hashtag }}">
+                          <label for="hashtag" class="text-center block">#hashtag</label>
+                          <input type="text" class="form-control" id="hashtag" value="{{ @$user->hashtag }}">
+                    </div>
+
+                    <div class="form-group text-center">
+                          <label for="locale" class="text-center block">@lang('main.setlocale')</label>
+                          <a href="/user/setlocale/en" class="btn btn-default">EN</a>
+                          <a href="/user/setlocale/ru" class="btn btn-default">RU</a>
+                          <a href="/user/setlocale/az" class="btn btn-default">AZ</a>
                     </div>
 
                     @if($user->status == 0)
                     <div class="form-group">
-                        <label for="code" class="text-center block">Confirm Code</label>
+                        <label for="code" class="text-center block">@lang('main.confirmcode')</label>
                         <input type="text" class="form-control input-confirm-code" id="confirmcode" placeholder="insert code from e-mail">
                     </div>
                     @endif
 
-                    <button class="btn btn-default button-update-profile">Update Info</button>
+                    <button class="btn btn-default button-update-profile">@lang('main.updateinfo')</button>
                 </div>
             </div>
         </div>
@@ -71,7 +78,7 @@
                   <input type="text" class="form-control" id="hashtag" value="{{ @$userprofile->hashtag }}" readonly>
                 </div>
 
-                <button class="btn btn-default button-delete-friend">Delete Friend</button>
+                <button class="btn btn-default button-delete-friend">@lang('main.deletefriend')</button>
             </div>
         </div>
     </div>

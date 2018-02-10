@@ -19,9 +19,9 @@
         <nav class="navbar navbar-fixed-top second-navbar">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a style="cursor:pointer" id="button-sidebar-show-friends">Friends</a></li>
-                    <li><a style="cursor:pointer" id="button-sidebar-show-chits">Chits</a></li>
+                    <li><a href="/">@lang('main.home')</a></li>
+                    <li><a style="cursor:pointer" id="button-sidebar-show-friends">@lang('main.friends')</a></li>
+                    <li><a style="cursor:pointer" id="button-sidebar-show-chits">@lang('main.chits')</a></li>
                 </ul>
             </div>
         </nav>
@@ -41,9 +41,9 @@
                             <div class="col-sm-12">
                                 <a href="/user/{{ $user->id }}">
                                     <div class="alert alert-info">
-                                        <strong>Attention!</strong>
+                                        <strong>@lang('main.attention')</strong>
                                         <p>
-                                            Please click to confirm you account, otherwise it will be closed after 14 days.
+                                            @lang('main.confirmaccount');
                                         </p>
                                     </div>
                                 </a>
@@ -57,11 +57,11 @@
                                 <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
 
                                 <button style="display:none;" class="btn btn-primary button-add-friend">
-                                    Follow <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
+                                    @lang('main.follow') <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
                                 </button>
 
                                 <button style="display:none;" class="btn btn-primary button-is-friends">
-                                    You Already Follow <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
+                                    @lang('main.followed') <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
                                 </button>
 
                             </div>
@@ -71,7 +71,7 @@
                     <div class="row row-friends" data-load="0" style="display:none;">
                         <div class="col-sm-12">
                             <div class="friends-parent">
-                                Friends
+                                @lang('main.friends')
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -83,7 +83,7 @@
 
                     <div class="row chits-add-row">
                         <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                            <button type="button" class="btn btn-success button-add-chits button-add-chits-color" id="chits-add-button">Add New</button>
+                            <button type="button" class="btn btn-success button-add-chits button-add-chits-color" id="chits-add-button">@lang('main.addchit')</button>
                         </div>
                         <div class="col-xs-3 col-lg-6 col-md-6 col-sm-6 chits-address-column">
                             <div class="form-group">
@@ -106,7 +106,7 @@
                     <div class="row chits-add-group-row">
                         <div class="chits-category">
                             <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                                <button type="button" class="btn btn-primary" id="chits-group-button">Add Group</button>
+                                <button type="button" class="btn btn-primary" id="chits-group-button">@lang('main.addgroup')</button>
                             </div>
                             <div class="col-xs-3 col-lg-6 col-md-6 col-sm-6 groupselect-column">
                                 <div class="form-group">

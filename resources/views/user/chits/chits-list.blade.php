@@ -25,14 +25,17 @@ $chitsModel = new ChitsModel;
                             </div>
                             <!-- Превью -->
                             <div class="playerpreview" id="playerpreview">
+                                <div class="previewplayimg">
+                                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                </div>
                                 <img src="//img.youtube.com/vi/{{ getcode_youtube($chits->address) }}/mqdefault.jpg" width="100%" height="150px">
                             </div>
                         </div>
 
                         <div class="chits-events">
 
-                            <div class="chits-description-area">
-                                <div class="playerpreview-text">{{ $chits->opg_title }}</div>
+                            <div class="chits-description-area" data-toggle="tooltip" title="{{ $chits->opg_title }}">
+                                <div class="playerpreview-text" >{{ $chits->opg_title }}</div>
                             </div>
 
 
@@ -54,7 +57,7 @@ $chitsModel = new ChitsModel;
                             </div>
                             <div class="chits-events">
 
-                                <div class="chits-description-area-basic">
+                                <div class="chits-description-area-basic" data-toggle="tooltip" title="{{ $chits->opg_title }}">
                                     <div class="preview-text">{{ $chits->opg_title }}</div>
                                 </div>
 
@@ -98,7 +101,7 @@ $chitsModel = new ChitsModel;
 
                             <div class="chits-events">
 
-                                <div class="chits-description-area">
+                                <div class="chits-description-area" data-toggle="tooltip" title="{{ $chits->opg_title }}">
                                     <div class="playerpreview-text">{{ $chits->opg_title }}</div>
                                 </div>
 
@@ -109,7 +112,34 @@ $chitsModel = new ChitsModel;
                             </div>
                         </div>
                     @else
-                        <div class="chits-column-parent col-lg-3 col-md-3 col-sm-3" id="{{ $chits->id }}">
+
+
+                    <div class="chits-column-parent col-lg-3 col-md-3 col-sm-3" id="{{ $chits->id }}">
+                        <div class="chits-column-block">
+                            <a class="chits-child" href="{{ $chits->address }}" target="_blank">
+                                <div>
+                                    <img src="{{ $chits->opg_image }}" class="opg-image"/>
+                                    <div class="opg_sitename">{{ $chits->opg_sitename }}</div>
+                                    <div class="opg_title"><b>{{ $chits->opg_title }}</b></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="chits-events">
+
+                            <div class="chits-description-area-basic" data-toggle="tooltip" title="{{ $chits->opg_title }}">
+                                <div class="preview-text">{{ $chits->opg_title }}</div>
+                            </div>
+
+
+                            <div class="chits-events-area">
+                                <i class="fa fa-archive fa-delete-chits chits-delete-button" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                        <!-- <div class="chits-column-parent col-lg-3 col-md-3 col-sm-3" id="{{ $chits->id }}">
                             <div class="chits-column-block">
                                 <a class="chits-child" href="{{ $chits->address }}" target="_blank">
                                     <div>
@@ -122,7 +152,7 @@ $chitsModel = new ChitsModel;
                             <div class="chits-events">
                                 <i class="fa fa-archive fa-delete-chits chits-delete-button" aria-hidden="true"></i>
                             </div>
-                        </div>
+                        </div> -->
                     @endif
                 @endforeach
             </div>
