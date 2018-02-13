@@ -73,7 +73,7 @@ window.onload = function() {
     $('#player').show();
 
     player.loadVideoById(playerVideoId);
-
+    player.playVideo();
 
     var deviceWidth = $(window).width();
 
