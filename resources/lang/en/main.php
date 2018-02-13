@@ -31,7 +31,7 @@ return [
     'startwelcome' => 'Welcome to Opening <br> Beta Test',
     'login' => 'Log in',
     'signup' => 'Sign up',
-
+    'search' => 'Search',
 
 ];
 

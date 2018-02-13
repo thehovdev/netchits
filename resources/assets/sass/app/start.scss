@@ -1,3 +1,28 @@
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+
+.fa-start-heart {
+    font-size:25px;
+    color:red;
+}
+
+.fa-start-coffee {
+    font-size:25px;
+    color:#c68400;
+}
+
+.alert-password-incorrect {
+    margin:5px;
+}
+
+
 %hidden-form-container {
     margin-top: 0px !important;
     margin-bottom: 10px;
@@ -31,6 +56,6 @@
     text-align: center;
     font-weight: bold;
     font-size: 0.9em;
-    margin-top: 8%;
+    margin-top: 6%;
     // color: black;
 }

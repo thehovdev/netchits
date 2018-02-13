@@ -12,6 +12,7 @@
 
     <section class="mainPage">
 
+
         <!-- <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
             <div class="container-fluid">
 
@@ -82,6 +83,11 @@
                 <button type="submit" class="btn btn-default back-submit-button">Back</button>
                 <button type="submit" class="btn btn-default" id="button-forgotpass">Forgot Password</button>
 
+                <div class="alert alert-danger alert-password-incorrect" style="display:none;">
+                  <strong>Password is incorrect..
+                </div>
+
+
         </div>
 
         <div class="container signup-container">
@@ -140,7 +146,12 @@
 
         <div class="author">
             &copy;NetChits <br>
-            CEO & Founder - Afgan Khalilov
+            <!-- CEO & Founder - Afgan Khalilov -->
+            CEO / Founder Afgan Khalilov <br>
+            Created with <i class="fa fa-heart fa-start-heart"></i> &
+            <i class="fa fa-coffee fa-start-coffee"></i>
+
+
         </div>
 
     </section>

@@ -25,8 +25,8 @@ class TestController extends Controller
 
         $user = $usersModel->getUser();
 
-        // return view('test')->with('user', $user);
-        return view('test2')->with('user', $user);
+        return view('test')->with('user', $user);
+        // return view('test2')->with('user', $user);
 
 
 

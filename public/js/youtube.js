@@ -11,6 +11,21 @@ function onYouTubePlayerAPIReady() {
     var width = $('.chits-column-parent .chits-player').width();
     var height = $('.chits-column-parent .chits-player').height();
 
+
+        // проверить, если это iphone то, иначе
+    	// if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+        //
+    	// } else {
+        //
+    	// }
+
+
+
+
+
+
+
+
     player = new YT.Player('player', {
       height: height,
       width: width,
@@ -20,6 +35,10 @@ function onYouTubePlayerAPIReady() {
           'onPlayerReady': onPlayerReady
       }
     });
+
+
+
+
 }
 
 function enableAutoPlay(videoId) {
@@ -73,7 +92,6 @@ window.onload = function() {
     $('#player').show();
 
     player.loadVideoById(playerVideoId);
-    player.playVideo();
 
     var deviceWidth = $(window).width();
 

@@ -32008,13 +32008,17 @@ Api = {
             var search = $(this).val();
 
             if (search.indexOf('http://') != -1 || search.indexOf('https://') != -1) {
+                $('.bar-add-text').show();
+                $('.bar-search-text').hide();
+
                 $('.button-add-chits').prop('disabled', false);
-                $('.button-add-chits').text('Add New');
                 $('.button-add-chits').addClass('button-add-chits-color');
                 $('.button-add-chits').removeClass('button-add-chits-search-color');
             } else {
+                $('.bar-search-text').show();
+                $('.bar-add-text').hide();
+
                 $('.button-add-chits').prop('disabled', true);
-                $('.button-add-chits').text('Search Bar');
                 $('.button-add-chits').removeClass('button-add-chits-color');
                 $('.button-add-chits').addClass('button-add-chits-search-color');
             }
@@ -32267,6 +32271,7 @@ Api = {
 
         userEmail = $('.signin-container #signin-email').val();
         userPassword = $('.signin-container #signin-password').val();
+        $('.alert-password-incorrect').hide();
 
         $.ajax({
             headers: Route.header,
@@ -32278,6 +32283,8 @@ Api = {
         }).done(function (data) {
             if (data.status == 1) {
                 window.location.replace("/");
+            } else {
+                $('.alert-password-incorrect').show();
             }
         });
     },
@@ -32348,6 +32355,8 @@ Api = {
         var confirmcode = $("#confirmcode").val();
         // alert(hashtag);
 
+        $('.alert-hashtag').hide();
+
         $.ajax({
             headers: Route.header,
             url: Route.updateProfile,
@@ -32358,6 +32367,8 @@ Api = {
         }).done(function (data) {
             if (data.status == 1) {
                 location.reload();
+            } else {
+                $('.alert-hashtag').show();
             }
         });
     },
@@ -32424,6 +32435,7 @@ Api = {
 
     addFriend: function addFriend() {
         var hashtag = $('#search-user-hashtag').text();
+        $('.button-add-friend').removeClass('button-friend-added');
 
         $.ajax({
             headers: Route.header,
@@ -32432,7 +32444,8 @@ Api = {
                 hashtag: hashtag
             }
         }).done(function (data) {
-            alert(data.status);
+            $('.button-add-friend').prop('disabled', true);
+            $('.button-add-friend').addClass('button-friend-added');
         });
     },
 

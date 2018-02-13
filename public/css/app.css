@@ -8350,6 +8350,30 @@ button.close {
   }
 }
 
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+
+.fa-start-heart {
+  font-size: 25px;
+  color: red;
+}
+
+.fa-start-coffee {
+  font-size: 25px;
+  color: #c68400;
+}
+
+.alert-password-incorrect {
+  margin: 5px;
+}
+
 .signin-container,
 .signup-container,
 .forgotpass-container {
@@ -8376,7 +8400,7 @@ button.close {
   text-align: center;
   font-weight: bold;
   font-size: 0.9em;
-  margin-top: 8%;
+  margin-top: 6%;
 }
 
 a {
@@ -8389,6 +8413,15 @@ a:link {
 
 a:visited {
   text-decoration: none;
+}
+
+.button-friend-added {
+  background: green !important;
+  border-color: green !important;
+}
+
+.alert-hashtag {
+  margin-top: 10px;
 }
 
 .text-center {

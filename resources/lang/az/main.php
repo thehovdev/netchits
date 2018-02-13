@@ -31,6 +31,7 @@ return [
     'startwelcome' => 'Beta Test Mərhələsinə <br> Hoş Gəlmişsiniz',
     'login' => 'Daxil Olmaq',
     'signup' => 'Geydiyyatdan Keçmək',
+    'search' => 'Axtarış',
 ];
 
 

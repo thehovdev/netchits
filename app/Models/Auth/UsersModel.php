@@ -222,6 +222,31 @@ class UsersModel extends Model
         return $result;
     }
 
+    public function checkHashtag($hashtaginput, $user) {
+
+        $userhashtag = $user->hashtag;
+
+        $hashtag = $this
+            ->where('hashtag', $hashtaginput)
+            ->first();
+
+
+            if(!is_null($hashtag) && $userhashtag != $hashtaginput) {
+                $result['status'] = 0;
+                $result['msg'] = 'this hashtag already exists';
+                return $result;
+            } else {
+                $result['status'] = 1;
+                $result['msg'] = 'success';
+                return $result;
+
+            }
+
+
+
+
+}
+
     public function updateProfile($hashtag, $confirmcode)
     {
         if(is_null($hashtag)) {

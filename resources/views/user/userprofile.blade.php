@@ -43,13 +43,17 @@
                     </div>
 
                     @if($user->status == 0)
-                    <div class="form-group">
-                        <label for="code" class="text-center block">@lang('main.confirmcode')</label>
-                        <input type="text" class="form-control input-confirm-code" id="confirmcode" placeholder="insert code from e-mail">
-                    </div>
+                        <div class="form-group">
+                            <label for="code" class="text-center block">@lang('main.confirmcode')</label>
+                            <input type="text" class="form-control input-confirm-code" id="confirmcode" placeholder="insert code from e-mail">
+                        </div>
                     @endif
 
                     <button class="btn btn-default button-update-profile">@lang('main.updateinfo')</button>
+
+                    <div class="alert alert-danger alert-hashtag" style="display:none;">
+                      <strong>Not updated</strong> Sorry, this hashtag already exists
+                    </div>
                 </div>
             </div>
         </div>
