@@ -218,5 +218,5 @@ $chitsModel = new ChitsModel;
                 </div>
             @endif
     @endforeach
-
-    <script src="http://localhost:8000/js/youtube.js"></script>
+    <!-- <script src="https://localhost:8000/js/youtube.js"></script> -->
+    <script type="text/javascript" src="{{ URL::asset('js/youtube.js') }}"></script>
