@@ -7,7 +7,7 @@
 <meta property="og:url" content="https://www.netchits.com" />
 <meta property="og:tyoe" content="article" />
 
-<meta property="og:image" content="https://www.netchits.com/public/images/opg/opgimage.png" />
+<meta property="og:image" content="https://www.netchits.com/images/opg/opgimage.png" />
 <meta property="og:image:type" content="image/png" />
 
 <meta property="og:locale" content="en_US" />
