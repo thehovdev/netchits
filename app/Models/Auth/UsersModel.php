@@ -137,14 +137,30 @@ class UsersModel extends Model
     public function addUser($usersData)
     {
 
+
+
+        $ishashtag = substr($usersData['hashtag'], 0, 1);
+
+        if($ishashtag != '#') {
+            $hashtag = "#" . $usersData['hashtag'];
+        } else {
+            $hashtag = $usersData['hashtag'];
+        }
+
+
+
+
         // insert to database
         $this->email = $usersData['email'];
-        $this->hashtag = $usersData['hashtag'];
+        $this->hashtag = $hashtag;
         $this->password = $usersData['password'];
         $this->secret = $usersData['secret'];
         $this->confirmcode = $usersData['confirmcode'];
         $this->status = 0;
         $this->save();
+
+
+
 
         // return result
         $this->result['status'] = 1;
