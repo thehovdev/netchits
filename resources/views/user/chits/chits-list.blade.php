@@ -49,7 +49,11 @@ $chitsModel = new ChitsModel;
                             <div class="chits-column-block">
                                 <a class="chits-child" href="{{ $chits->address }}" target="_blank">
                                     <div>
-                                        <img src="{{ $chits->opg_image }}" class="opg-image"/>
+                                        @if(!is_null($chits->opg_image))
+                                            <img src="{{ $chits->opg_image }}" class="opg-image"/>
+                                        @else
+                                            <img src="images/web.png" class="opg-image"/>
+                                        @endif
                                         <div class="opg_sitename">{{ $chits->opg_sitename }}</div>
                                         <div class="opg_title"><b>{{ $chits->opg_title }}</b></div>
                                     </div>
@@ -118,7 +122,11 @@ $chitsModel = new ChitsModel;
                         <div class="chits-column-block">
                             <a class="chits-child" href="{{ $chits->address }}" target="_blank">
                                 <div>
-                                    <img src="{{ $chits->opg_image }}" class="opg-image"/>
+                                    @if(!is_null($chits->opg_image))
+                                        <img src="{{ $chits->opg_image }}" class="opg-image"/>
+                                    @else
+                                        <img src="images/web.png" class="opg-image"/>
+                                    @endif
                                     <div class="opg_sitename">{{ $chits->opg_sitename }}</div>
                                     <div class="opg_title"><b>{{ $chits->opg_title }}</b></div>
                                 </div>

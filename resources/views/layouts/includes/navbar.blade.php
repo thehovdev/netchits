@@ -14,7 +14,7 @@
                 </li>
                 <li>
                     <a class="pointer" href="/user/{{ $user->id }}" target="_blank">
-                        <span>{{ $user->email}}</span>
+                        <span>{{ @$user->email}}</span>
                     </a>
                 </li>
                 <li>
