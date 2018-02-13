@@ -47,6 +47,11 @@
                                         </p>
                                     </div>
                                 </a>
+
+                                <div class="alert alert-info" style="margin-top:5px;">
+                                  <strong>Cookie</strong>@lang('main.cookie')
+                                </div>
+
                             </div>
                         </div>
                     @endif

@@ -32,6 +32,7 @@ return [
     'login' => 'Daxil Olmaq',
     'signup' => 'Geydiyyatdan Keçmək',
     'search' => 'Axtarış',
+    'cookie' => 'Bu programı istifadə etdikdə, siz cookie istifadə etmeyinə razılıq verirsiniz',
 ];
 
 

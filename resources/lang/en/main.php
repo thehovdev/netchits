@@ -32,6 +32,7 @@ return [
     'login' => 'Log in',
     'signup' => 'Sign up',
     'search' => 'Search',
+    'cookie' => 'Using this application, you agree to store cookies in your browser',
 
 ];
 
