@@ -108,7 +108,7 @@ class UserController extends Controller
 
             $image_id = md5($image->getClientOriginalName() . time()) . "." . $image->getClientOriginalExtension();
 
-            $destinationPath = storage_path('/app/public/user-profile-images/');
+            $destinationPath = public_path('storage/user-profile-images/');
             $image->move($destinationPath, $image_id);
 
 
