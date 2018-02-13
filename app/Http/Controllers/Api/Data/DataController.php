@@ -33,33 +33,33 @@ class DataController extends Controller
 
 // netchits events for youtube
 
-    public static function is_youtube($address) {
-        // паттер
-        $search = 'youtube';
-        // поиск
-        $find = strpos($address, $search);
-        // результат
-
-        if($find === false) {
-            $result = "yes";
-            return $result;
-        } else {
-            $result = "not";
-            return $result;
-        }
-    }
-
-    public static function getcode_youtube($address) {
-
-        if(strpos($address, "&")) {
-            $videocode = stristr($email, '&', true);
-            return $videocode;
-        }
-
-        $code = strstr($address, 'v=');
-        $videocode = str_replace("v=", "", $code);
-        return $videocode;
-    }
+    // public static function is_youtube($address) {
+    //     // паттер
+    //     $search = 'youtube';
+    //     // поиск
+    //     $find = strpos($address, $search);
+    //     // результат
+    //
+    //     if($find === false) {
+    //         $result = "yes";
+    //         return $result;
+    //     } else {
+    //         $result = "not";
+    //         return $result;
+    //     }
+    // }
+    //
+    // public static function getcode_youtube($address) {
+    //
+    //     if(strpos($address, "&")) {
+    //         $videocode = stristr($email, '&', true);
+    //         return $videocode;
+    //     }
+    //
+    //     $code = strstr($address, 'v=');
+    //     $videocode = str_replace("v=", "", $code);
+    //     return $videocode;
+    // }
 
     public function test() {
         $result = "test";
