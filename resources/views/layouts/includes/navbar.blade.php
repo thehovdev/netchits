@@ -25,7 +25,7 @@
             </ul>
 
               <div class="input-group navbar-search">
-                <input type="text" class="form-control" placeholder="Search Friend" id="input-navbar-search">
+                <input type="text" class="form-control" placeholder="follow by typing #hovdev" id="input-navbar-search">
                 <div class="input-group-btn">
                   <button class="btn btn-default" type="submit">
                     <i class="glyphicon glyphicon-search"></i>
