@@ -15,6 +15,7 @@ class SuperUserController extends Controller
         $admins = [
             '1' => 'halilov.lib@gmail.com',
             '2' => 'hov-dev@protonmail.ch',
+            '3' => 'mrcat323@gmail.com',
         ];
 
         // если не админ, досвидания
@@ -22,7 +23,10 @@ class SuperUserController extends Controller
             return redirect('/');
         }
 
-
+        // если каким то способом обойдет редирект, всеравно досвидания
+        if(!in_array($user->email, $admins)) {
+            return false;
+        }
 
 
 

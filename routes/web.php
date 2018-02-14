@@ -34,6 +34,12 @@ Route::any('/api/user/search', 'Api\Search\SearchController@search');
 // User Actions
 Route::any('/user/{id}', 'Api\User\Actions\UserController@showUserProfile');
 
+// User Follows detail
+Route::any('/user/follows/detail/{id}', 'Api\User\Actions\UserController@detailFollows');
+// User Followers detail
+// Route::any('/user/followers/detail/{id}', 'Api\User\Actions\UserController@detailFollowers');
+
+
 Route::any('/user/actions/uploadProfileImage', 'Api\User\Actions\UserController@uploadProfileImage');
 
 Route::any('/user/actions/updateProfile', 'Api\User\Actions\UserController@updateProfile');

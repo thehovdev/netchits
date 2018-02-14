@@ -25,6 +25,9 @@ return [
     'confirmaccount' => 'Please click to confirm you account, otherwise it will be closed after 14 days',
     'follow' => 'Follow',
     'followed' => 'You Already Follow',
+    'ifollow' => 'Follow',
+    'unfollow' => 'Unfollow',
+    'followers' => 'Followers',
     'addchit' => 'Add Chit',
     'defaultgroup' => 'Default',
     'addgroup' => 'Add Group',
@@ -33,6 +36,7 @@ return [
     'signup' => 'Sign up',
     'search' => 'Search',
     'cookie' => 'Using this application, you agree to store cookies in your browser',
+    'peoples' => 'Peoples',
 
 ];
 

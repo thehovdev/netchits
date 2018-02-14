@@ -640,11 +640,18 @@ Api = {
                 $('.search-result-row').css('visibility', 'visible');
 
                 if(data.is_friends == 1) {
-                    $('.button-add-friend').hide();
-                    $('.button-is-friends').show();
+                    $('.search-follow-text').hide();
+                    $('.search-followed-text').show();
+                    $('.button-add-friend').addClass('button-is-friends');
+                    $('.button-add-friend').removeClass('button-add-friend');
+                    $('.button-is-friends').prop('disabled', true);
                 } else {
-                    $('.button-is-friends').hide();
-                    $('.button-add-friend').show();
+                    $('.search-followed-text').hide();
+                    $('.search-follow-text').show();
+                    $('.button-is-friends').addClass('button-add-friend');
+                    $('.button-is-friends').removeClass('button-is-friends');
+                    $('.button-is-friends').prop('disabled', false);
+
                 }
 
                 // location.reload();
@@ -705,6 +712,8 @@ Api = {
         $('.row.chits-add-row').show();
         $('.row.chits-add-group-row').show();
         $('.chits-search-result').show();
+        $('.row-people-list').show();
+
 
         Api.playerMoove();
     },
@@ -729,6 +738,7 @@ Api = {
         $('.row.chits-add-group-row').hide();
         $('.row.chits-row').hide();
         $('.chits-search-result').hide();
+        $('.row-people-list').hide();
 
 
     },

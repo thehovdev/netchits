@@ -25,6 +25,9 @@ return [
     'confirmaccount' => 'Zəhmət olmasa Akkauntu təstiq edin',
     'follow' => 'İzləmək',
     'followed' => 'İzliyirsiz',
+    'followers' => 'İzləyicilərim',
+    'unfollow' => 'İzləməyə bitir',
+    'ifollow' => 'Izləyirəm',
     'addchit' => 'Yeni Yazı',
     'defaultgroup' => 'Kategoriyasız',
     'addgroup' => 'Yeni Grup',
@@ -33,6 +36,7 @@ return [
     'signup' => 'Geydiyyatdan Keçmək',
     'search' => 'Axtarış',
     'cookie' => 'Bu programı istifadə etdikdə, siz cookie istifadə etmeyinə razılıq verirsiniz',
+    'peoples' => 'Adamlar',
 ];
 
 

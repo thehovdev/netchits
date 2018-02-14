@@ -19,6 +19,26 @@ use App\Models\User\ChitsGroupModel;
 class UserController extends Controller
 {
 
+    public function detailFollows($id) {
+        // SECTION : Models
+        $usersModel = new UsersModel;
+        $friendsModel = new FriendsModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+
+        // SECTION : Logics
+        $user = $usersModel->getUser();
+        $userprofile = $usersModel->find($id);
+        $friends = $userprofile->friends; // laravel relations (отношения)
+        $followers = $userprofile->followers; // laravel relations
+
+        return view('user.followsdetail')
+            ->with('user', $user)
+            ->with('userprofile', $userprofile)
+            ->with('friends', $friends)
+            ->with('followers', $followers);
+    }
+
     public function showUserProfile($id) {
 
         // SECTION : Models
@@ -33,6 +53,8 @@ class UserController extends Controller
         $user = $usersModel->getUser();
         // пользователь профиль которого просматриваем
         $userprofile = $usersModel->find($id);
+
+
         if(is_null($userprofile)) {
             return back();
         }
@@ -44,20 +66,35 @@ class UserController extends Controller
 
         if($userprofile->id == $user->id) {
             $user->permission = 'user';
-            return view('user.userprofile')
-                ->with('user', $user);
-        }
-        elseif($userprofile->id != $user->id) {
-            $user->permission = 'guest';
 
-            $userChits = $chitsModel->getUserChits($userprofile);
-            $userGroups = $chitsGroupModel->getUserGroups($userprofile);
+            $friends = $user->friends; // laravel relations (отношения)
+            $followers = $user->followers; // laravel relations
 
             return view('user.userprofile')
                 ->with('user', $user)
+                ->with('friends', $friends)
+                ->with('followers', $followers);
+        }
+        elseif($userprofile->id != $user->id) {
+            $user->permission = 'guest';
+            $userChits = $chitsModel->getUserChits($userprofile);
+            $userGroups = $chitsGroupModel->getUserGroups($userprofile);
+            $is_friends = $usersModel->is_friend($userprofile->id);
+
+
+
+            $friends = $userprofile->friends->take(5); // laravel relations (отношения)
+            $followers = $userprofile->followers->take(5); // laravel relations
+
+
+            return view('user.userprofile')
+                ->with('user', $user)
+                ->with('is_friends', $is_friends)
                 ->with('userprofile', $userprofile)
                 ->with('userChits', $userChits)
-                ->with('userGroups', $userGroups);
+                ->with('userGroups', $userGroups)
+                ->with('friends', $friends)
+                ->with('followers', $followers);
         }
 
     }

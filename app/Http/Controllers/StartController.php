@@ -36,9 +36,16 @@ class StartController extends Controller
 
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
-            $friends = $user->friends; // laravel relations (отношения)
+
+            // laravel relations (отношения)
+            $friends = $user->friends->take(5);
+            // laravel relations
+            $followers = $user->followers->take(5);
 
 
+
+
+            $peoples = $usersModel->getRandomPeoples();
             $checkConfirm = $usersModel->checkConfrim($user->id);
             if($checkConfirm['status'] == 0) {
                 $deleteUser = $usersModel->deleteUser($user->id);
@@ -49,8 +56,10 @@ class StartController extends Controller
 
 
             return view("user.profile")
-                ->with("user", $user)
+                ->with("user", @$user)
+                ->with("peoples", @$peoples)
                 ->with("friends", @$friends)
+                ->with("followers", @$followers)
                 ->with("userChits", @$userChits)
                 ->with("userGroups", @$userGroups);
         }

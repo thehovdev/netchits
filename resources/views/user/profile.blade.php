@@ -3,7 +3,7 @@
 @section('content')
     <page class="profilePage"></page>
 
-
+    <!--Progress Bar-->
     <div class="bar search-progress-bar" style="visibility:hidden;">
         <div class="progress">
             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: 100%">
@@ -11,24 +11,28 @@
         </div>
     </div>
 
-
     <!--Main Navbar-->
     @include('layouts.includes.navbar')
+
     <!--Second Navbar-->
     <div class="second-navbar-parent">
         <nav class="navbar navbar-fixed-top second-navbar">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="/">@lang('main.home')</a></li>
-                    <li><a style="cursor:pointer" id="button-sidebar-show-friends">@lang('main.friends')</a></li>
+                    <li><a style="cursor:pointer" id="button-sidebar-show-friends">
+                        @lang('main.ifollow')
+                        <span class="follow-count">{{ $friends->count() }}</span>
+                        @lang('main.followers')
+                        <span class="follow-count">{{ $followers->count() }}</span>
+                    </a></li>
                     <li><a style="cursor:pointer" id="button-sidebar-show-chits">@lang('main.chits')</a></li>
                 </ul>
             </div>
         </nav>
     </div>
 
-
-
+    <!--Main Container-->
     <section class="chits-container">
         <div class="container">
             <div class="row">
@@ -61,27 +65,48 @@
                             <div class="search-result-parent">
                                 <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
 
-                                <button style="display:none;" class="btn btn-primary button-add-friend">
+                             <button class="btn btn-primary button-add-friend">
+                                    <span class="search-follow-text">
+                                        @lang('main.follow')
+                                    </span>
+
+                                    <span class="search-followed-text">
+                                        @lang('main.followed')
+                                    </span>
+
+
+
+                                    <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
+                            </button>
+
+
+                                <!-- <button style="display:none;" class="btn btn-primary button-add-friend">
                                     @lang('main.follow') <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
                                 </button>
 
                                 <button style="display:none;" class="btn btn-primary button-is-friends">
                                     @lang('main.followed') <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
-                                </button>
+                                </button> -->
 
                             </div>
                         </div>
                     </div>
-
-                    <div class="row row-friends" data-load="0" style="display:none;">
-                        <div class="col-sm-12">
-                            <div class="friends-parent">
-                                @lang('main.friends')
-                            </div>
-                        </div>
+                    <div class="row row-friends"
+                        data-load="0" style="display:none;">
                         <div class="col-sm-12">
                             <div class="friends-list">
-                                @include('layouts.includes.friends-list');
+                                @include('layouts.includes.friends-list', ['permission' => 'user']);
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row row-people-list">
+                        <div class="col-sm-12">
+                            <div class="people-list">
+                                @include('layouts.includes.people-list')
                             </div>
                         </div>
                     </div>
@@ -147,9 +172,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
+
 
 
 
@@ -214,9 +239,8 @@
         }
     </script>
 
-
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady">
+    </script>
 
 
 

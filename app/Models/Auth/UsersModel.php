@@ -26,6 +26,12 @@ class UsersModel extends Model
         return $this->hasMany('App\Models\Friends\FriendsModel', 'user_id');
     }
 
+    public function followers()
+    {
+        return $this->hasMany('App\Models\Friends\FriendsModel', 'friend_id');
+    }
+
+
     public function checkSignUp($protectedData)
     {
         $email = $protectedData['email'];
@@ -207,12 +213,34 @@ class UsersModel extends Model
         return $allUsers;
     }
 
+    public function is_friend($id) {
+        $user = $this->getUser();
+        $is_friend = $user->friends->where('friend_id', $id)->first();
+
+
+        if(!is_null($is_friend)) {
+            $result['status'] = 1;
+            $result['msg'] = 'friends';
+        } else {
+            $result['status'] = 0;
+            $result['msg'] = 'notfriends';
+        }
+            return $result;
+
+    }
+
     public function getFriend($hashtag)
     {
         $friend = $this
             ->where('hashtag', $hashtag)
             ->first();
         return $friend;
+    }
+
+    public function getRandomPeoples()
+    {
+        $peoples = $this->inRandomOrder()->paginate(10);
+        return $peoples;
     }
 
     public function updateImage($image_id)

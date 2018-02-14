@@ -16,6 +16,11 @@ class FriendsModel extends Model
         return $this->belongsTo('App\Models\Auth\UsersModel', 'friend_id');
     }
 
+    public function follower()
+    {
+        return $this->belongsTo('App\Models\Auth\UsersModel', 'user_id');
+    }
+
 
     public function add($user, $friend) {
         $is_friends = $this
