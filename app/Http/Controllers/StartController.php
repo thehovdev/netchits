@@ -42,9 +42,6 @@ class StartController extends Controller
             // laravel relations
             $followers = $user->followers->take(5);
 
-            dd($followers);
-
-
 
             $peoples = $usersModel->getRandomPeoples();
             $checkConfirm = $usersModel->checkConfrim($user->id);

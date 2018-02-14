@@ -42,7 +42,7 @@
         @foreach($followers as $follower)
             @if(!is_null($follower))
                 <div class="friend-item">
-                    <a class="pointer" href="/user/{{ $follower->follower->id }}" target="_blank">
+                    {{--<a class="pointer" href="/user/{{ $follower->follower->id }}" target="_blank">--}}
                         <div class="user-image">
                             @if(!is_null($follower->follower->image_id))
                                 <img src="/storage/user-profile-images/{{ $follower->follower->image_id }}" class="img-circle" width="80px" height="80px"/>
