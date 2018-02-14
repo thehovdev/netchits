@@ -42,6 +42,7 @@ class StartController extends Controller
             // laravel relations
             $followers = $user->followers->take(5);
 
+            dd($followers);
 
 
 
