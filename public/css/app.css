@@ -8385,10 +8385,6 @@ button.close {
   color: black;
 }
 
-.btn-default {
-  margin: 3px;
-}
-
 .signin-container {
   display: none;
 }
@@ -8399,6 +8395,10 @@ button.close {
 
 .pointer {
   cursor: pointer;
+}
+
+#button-forgotpass {
+  margin-top: 5px;
 }
 
 .author {
