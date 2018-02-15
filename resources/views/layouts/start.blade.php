@@ -4,7 +4,8 @@
 
 <style>
     body {
-        background: #E8E8E8;
+        /*background: #E8E8E8;*/
+        /*background: #c6e9f4;*/
     }
 
 </style>
@@ -12,10 +13,6 @@
 <div class="parent">
 
     <section class="mainPage">
-
-        <video autoplay muted loop id="myVideo">
-          <source src="images/backgrounds/start.mov" type="video/mp4">
-        </video>
 
 
         <!-- <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
