@@ -31,7 +31,7 @@ return [
     'addchit' => 'Add Chit',
     'defaultgroup' => 'Default',
     'addgroup' => 'Add Group',
-    'startwelcome' => 'Welcome to Opening <br> Beta Test',
+    'startwelcome' => 'Follow, share, listen music <br /> with Friends',
     'login' => 'Log in',
     'signup' => 'Sign up',
     'search' => 'Search',

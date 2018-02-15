@@ -26,6 +26,13 @@ class GroupController extends Controller
             $hashtag = $request->hashtag;
         // SECTION : Logics
             $user = $usersModel->getUser();
+
+            if(is_null($user)) {
+                $result['status'] = 0;
+                $result['msg'] = 'redirect';
+                return $result;
+            }
+
             $friend = $user->getFriend($hashtag);
 
 

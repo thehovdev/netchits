@@ -11,11 +11,18 @@
         text-align: center;
 
         .welcome-div {
-            margin-top: 60px;
+            margin: 60px auto 0 auto;
+            padding: 2px;
+            background: rgba(163, 7, 219, 0.9);
+            width: 60%;
+            border-radius: 2px;
 
             .welcome-text {
-                color: black;
-                font-size: 1.5em;
+                color: white;
+                // color: red;
+                font-weight: bold;
+
+                font-size: 1.2em;
                 line-height: 80px;
 
             }
@@ -23,7 +30,7 @@
         }
 
         .brand-name {
-            color: black;
+            color: red;
             font-weight: bold;
             font-size: 1em;
             border-bottom: 2px solid #FF0000;
@@ -34,17 +41,20 @@
 
         .actions {
             height: auto;
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 5px;
             // background: #FF0000;
             text-align: center;
 
             .alpha-key {
-                background: #FF0000;
+                // background: #FF0000;
+                background: rgba(163, 7, 219, 0.9);
                 width: 205px;
                 height: 200px;
-                margin: auto;
-                border:2px solid #FF0000;
+                margin: 5px auto;
+                // border:2px solid #FF0000;
+                border: 2px solid #A307DB;
+
                 border-radius: 50%;
                 line-height:200px !important;
                 word-wrap: break-word;
@@ -57,11 +67,15 @@
 
 
             .register {
-                background: #FF0000;
+                // background: #FF0000;
+                background: rgba(163, 7, 219, 0.9);
+
                 width: 205px;
                 height: 200px;
-                margin: auto;
-                border:2px solid #FF0000;
+                margin: 5px auto;
+                // border:2px solid #FF0000;
+                border: 2px solid #A307DB;
+
                 border-radius: 50%;
                 line-height: 200px !important;
                 word-wrap: break-word;

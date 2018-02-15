@@ -7,21 +7,35 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right first-navbar-ul">
-                <li>
-                    <a class="pointer" href="/user/{{ $user->id }}" target="_blank">
-                        <img src="/storage/user-profile-images/{{ $user->image_id }}" class="img-circle" width="30px" height="30px"/>
-                    </a>
-                </li>
-                <li>
-                    <a class="pointer" href="/user/{{ $user->id }}" target="_blank">
-                        <span>{{ @$user->email}}</span>
-                    </a>
-                </li>
+                @if(!is_null(@$user))
+                    <li>
+                        <a class="pointer" href="/user/{{ $user->id }}" target="_blank">
+                            <img src="/storage/user-profile-images/{{ $user->image_id }}" class="img-circle" width="30px" height="30px"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="pointer" href="/user/{{ $user->id }}" target="_blank">
+                            <span>{{ @$user->email}}</span>
+                        </a>
+                    </li>
+
                 <li>
                     <a class="pointer" id="signout-button">
                         <span>@lang('main.signout')</span>
                     </a>
                 </li>
+                @else
+                <li>
+                    <a class="pointer" id="signin-button" data-option="noauth">
+                        <span>@lang('main.login')</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="pointer" id="signout-button">
+                        <span>@lang('main.signup')</span>
+                    </a>
+                </li>
+                @endif
             </ul>
 
               <div class="input-group navbar-search">
@@ -32,7 +46,6 @@
                   </button>
                 </div>
               </div>
-
 
         </div>
     </nav>

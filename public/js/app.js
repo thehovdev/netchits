@@ -31866,6 +31866,11 @@ Api = {
         });
 
         $('#signin-button').click(function () {
+            var option = $(this).data('option');
+            if (option == 'noauth') {
+                window.location.replace("/");
+            }
+
             Api.showSignin();
             $('.alpha-container .actions').hide();
         });
@@ -32063,6 +32068,7 @@ Api = {
     },
 
     copyChits: function copyChits(chitId) {
+
         if (chitId == "") {
             alert("chit id not be empty");
         }
@@ -32255,7 +32261,7 @@ Api = {
         $('.forgotpass-container').show();
     },
 
-    makeSignup: function makeSignup() {
+    makeSignup: function makeSignup(option) {
 
         userEmail = $('.signup-container #signup-email').val();
         userPassword = $('.signup-container #signup-password').val();
@@ -32452,6 +32458,8 @@ Api = {
 
         if (option == 'main') {
             var hashtag = $('#search-user-hashtag').text();
+        } else if (option == 'noauth') {
+            window.location.replace("/");
         } else {
             var hashtag = $('#hashtag').text();
         }

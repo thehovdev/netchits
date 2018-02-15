@@ -71,12 +71,12 @@
             <div class="col-sm-12 col-user-profile-actions">
                 <div class="div-upload-image">
                     <!-- hidden form -->
-                    <form name="uploader" id="example" action="/user/actions/uploadProfileImage" enctype="multipart/form-data" method="post" hidden>
+                    {{-- <form name="uploader" id="example" action="/user/actions/uploadProfileImage" enctype="multipart/form-data" method="post" hidden>
                         <input type="file" name="image" id="input-upload-profile-image">
                         <input type="submit" id="upload_submit" value="Send">
                         <input type="hidden" value="{{ csrf_token() }}" name="_token"   />
                     </form>
-                    {{-- <button class="btn btn-default button-upload-profile-image">Update Photo</button> --}}
+                     <button class="btn btn-default button-upload-profile-image">Update Photo</button> --}}
                 </div>
 
                 <div class="div-user-info">

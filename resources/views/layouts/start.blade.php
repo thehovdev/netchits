@@ -6,11 +6,16 @@
     body {
         background: #E8E8E8;
     }
+
 </style>
 
 <div class="parent">
 
     <section class="mainPage">
+
+        <video autoplay muted loop id="myVideo">
+          <source src="images/backgrounds/start.mov" type="video/mp4">
+        </video>
 
 
         <!-- <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
@@ -146,10 +151,9 @@
 
         <div class="author">
             &copy;NetChits <br>
-            <!-- CEO & Founder - Afgan Khalilov -->
-            CEO / Founder Afgan Khalilov <br>
-            Created with <i class="fa fa-heart fa-start-heart"></i> &
-            <i class="fa fa-coffee fa-start-coffee"></i>
+            CEO & Founder - <a href="https://www.facebook.com/thehovdev">Afgan Khalilov</a>
+            <!-- CEO / Founder Afgan Khalilov <br> -->
+            <!-- Created with <i class="fa fa-coffee fa-start-coffee"></i> by Afgan Khalilov -->
 
 
         </div>

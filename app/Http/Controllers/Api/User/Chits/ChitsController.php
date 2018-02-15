@@ -32,11 +32,16 @@ class ChitsController extends Controller
         // SECTION : Logics
         $user = $usersModel->getUser();
 
+        if(is_null($user)) {
+            $result['status'] = 0;
+            $result['msg'] = 'redirect';
+            return $result;
+        }
+
         $chit = $chitsModel->copy($user, $chitId);
 
         return $chit;
     }
-
 
     public function addChits(Request $request) {
 

@@ -39,6 +39,33 @@ class UserController extends Controller
             ->with('followers', $followers);
     }
 
+    public function showUserNoAuth($id) {
+        $usersModel = new UsersModel;
+        $friendsModel = new FriendsModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+
+
+        $userprofile = $usersModel->find($id);
+        $userChits = $chitsModel->getUserChits($userprofile);
+        $userGroups = $chitsGroupModel->getUserGroups($userprofile);
+        $friends = $userprofile->friends->take(5); // laravel relations (отношения)
+        $followers = $userprofile->followers->take(5); // laravel relations
+
+
+        return view('user.userprofileNoAuth')
+            ->with('userprofile', $userprofile)
+            ->with('userChits', $userChits)
+            ->with('userGroups', $userGroups)
+            ->with('friends', $friends)
+            ->with('followers', $followers);
+
+
+
+        // return view('test');
+
+    }
+
     public function showUserProfile($id) {
 
         // SECTION : Models
@@ -49,15 +76,41 @@ class UserController extends Controller
 
         // SECTION : Logics
 
+
+
         // пользователь, текущий, который выполнил вход
         $user = $usersModel->getUser();
         // пользователь профиль которого просматриваем
         $userprofile = $usersModel->find($id);
-
-
         if(is_null($userprofile)) {
             return back();
         }
+
+        if(is_null($user)) {
+            // $this->showUserNoAuth($id);
+
+            $userprofile = $usersModel->find($id);
+            $userChits = $chitsModel->getUserChits($userprofile);
+            $userGroups = $chitsGroupModel->getUserGroups($userprofile);
+            $friends = $userprofile->friends->take(5); // laravel relations (отношения)
+            $followers = $userprofile->followers->take(5); // laravel relations
+
+
+            return view('user.userprofileNoAuth')
+                ->with('userprofile', $userprofile)
+                ->with('userChits', $userChits)
+                ->with('userGroups', $userGroups)
+                ->with('friends', $friends)
+                ->with('followers', $followers);
+
+
+
+
+        }
+
+
+
+
 
 
         // если id == id текущего пользователя

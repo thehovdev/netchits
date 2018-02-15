@@ -179,8 +179,8 @@ class UsersModel extends Model
 
     public function getUser()
     {
-        $email = $_COOKIE['email'];
-        $secret = $_COOKIE['secret'];
+        $email = @$_COOKIE['email'];
+        $secret = @$_COOKIE['secret'];
         $user = $this
             ->where('email', $email)
             ->where('secret', $secret)
