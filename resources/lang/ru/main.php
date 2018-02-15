@@ -26,7 +26,7 @@ return [
     'follow' => 'Подписаться',
     'followed' => 'Вы подписаны',
     'ifollow' => 'Подписки',
-    'unfollow' => 'Отменить подписку',
+    'unfollow' => 'Вы подписаны',
     'followers' => 'Подписчики',
     'addchit' => 'Новая Записка',
     'defaultgroup' => 'Без Категории',

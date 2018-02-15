@@ -26,7 +26,7 @@ return [
     'follow' => 'İzləmək',
     'followed' => 'İzliyirsiz',
     'followers' => 'İzləyicilərim',
-    'unfollow' => 'İzləməyə bitir',
+    'unfollow' => 'Siz izləyirsiz',
     'ifollow' => 'Izləyirəm',
     'addchit' => 'Yeni Yazı',
     'defaultgroup' => 'Kategoriyasız',

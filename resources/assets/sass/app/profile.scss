@@ -10,10 +10,14 @@ a:visited {
 }
 
 
+.userprofile-follow-text {
+    color: white;
+    font-weight: bold;
+}
+
 .button-friend-added {
     background: green !important;
     border-color: green !important;
-
 }
 
 .alert-hashtag {
@@ -540,6 +544,10 @@ a:visited {
     margin-top:10px;
 }
 
+.button-delete-friend {
+
+}
+
  .button-delete-group {
     background: black !important;
     border-color:black;
@@ -790,6 +798,6 @@ a:visited {
 }
 
 .follow-count {
-    padding: 5px;
+    padding: 2px;
     font-size: 1em;
 }

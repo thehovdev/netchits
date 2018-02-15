@@ -3,6 +3,7 @@
 @section('content')
 
 @include('layouts.includes.navbar')
+
 <div class="container">
     <div class="margin-top100"></div>
     @if($user->permission != 'guest')
@@ -80,16 +81,16 @@
 
                 <div class="div-user-info">
                     <div class="form-group">
-                      <label for="hashtag" class="text-center block">#hashtag</label>
-                      <input type="text" class="form-control" id="hashtag" value="{{ @$userprofile->hashtag }}" readonly>
+                      <label for="hashtag" class="text-center block" id="hashtag">{{ @$userprofile->hashtag }}</label>
+                      {{--<input type="text" class="form-control" id="hashtag" value="{{ @$userprofile->hashtag }}" readonly>--}}
                     </div>
                     @if($is_friends['status'] == 1)
-                        <button class="btn btn-default button-delete-friend">
-                            @lang('main.unfollow')
+                        <button class="btn btn-success button-delete-friend">
+                            @lang('main.unfollow') {{ @$userprofile->hashtag }}
                         </button>
                     @else
-                        <button class="btn btn-default button-add-friend">
-                            <span class="userprofile-follow-text">@lang('main.follow')</span>
+                        <button class="btn btn-primary button-add-friend" data-option="profile">
+                            <span class="userprofile-follow-text">@lang('main.follow') {{ @$userprofile->hashtag }}</span>
                             <span class="userprofile-followed-text" style="display:none;">@lang('main.followed')</span>
                         </button>
                     @endif

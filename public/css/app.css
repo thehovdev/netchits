@@ -8415,6 +8415,11 @@ a:visited {
   text-decoration: none;
 }
 
+.userprofile-follow-text {
+  color: white;
+  font-weight: bold;
+}
+
 .button-friend-added {
   background: green !important;
   border-color: green !important;
@@ -9034,7 +9039,7 @@ a:visited {
 }
 
 .follow-count {
-  padding: 5px;
+  padding: 2px;
   font-size: 1em;
 }
 
@@ -9115,7 +9120,7 @@ a:visited {
   }
 
   .first-navbar-ul {
-    margin-top: 50px;
+    margin-top: 100px;
     text-align: center;
   }
 
@@ -9166,7 +9171,7 @@ a:visited {
   }
 
   .first-navbar-ul {
-    margin-top: 50px;
+    margin-top: 100px;
     text-align: center;
   }
 

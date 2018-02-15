@@ -20,13 +20,16 @@
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="/">@lang('main.home')</a></li>
-                    <li><a style="cursor:pointer" id="button-sidebar-show-friends">
+                    <li><a class="pointer button-sidebar-show-friends">
                         @lang('main.ifollow')
                         <span class="follow-count">{{ $friends->count() }}</span>
+                    </a></li>
+
+                    <li><a class="pointer button-sidebar-show-friends">
                         @lang('main.followers')
                         <span class="follow-count">{{ $followers->count() }}</span>
                     </a></li>
-                    <li><a style="cursor:pointer" id="button-sidebar-show-chits">@lang('main.chits')</a></li>
+                    <li><a class="pointer" id="button-sidebar-show-chits">@lang('main.chits')</a></li>
                 </ul>
             </div>
         </nav>
@@ -65,7 +68,7 @@
                             <div class="search-result-parent">
                                 <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
 
-                             <button class="btn btn-primary button-add-friend">
+                             <button class="btn btn-primary button-add-friend" data-option="main">
                                     <span class="search-follow-text">
                                         @lang('main.follow')
                                     </span>

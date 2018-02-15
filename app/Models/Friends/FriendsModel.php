@@ -23,6 +23,7 @@ class FriendsModel extends Model
 
 
     public function add($user, $friend) {
+
         $is_friends = $this
             ->where('user_id', $user->id)
             ->where('friend_id', $friend->id)

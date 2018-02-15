@@ -4,6 +4,7 @@ Api = {
         Api.boot();
         Api.timeout = 1;
         Api.ytimeout = 1;
+        Api.searchList = ['Top songs', 'Top Hits', 'Top pop songs', 'Rock n roll'];
     },
 
     boot:function() {
@@ -20,7 +21,9 @@ Api = {
     $('[data-toggle="tooltip"]').tooltip();
 
     $(window).on('load', function() {
-        $("#chits-address-input").val("AC/DC");
+        var search = Api.getRandomSearch();
+
+        $("#chits-address-input").val(search);
         keyWordsearch();
     });
 
@@ -131,7 +134,7 @@ Api = {
         // Api.showGroupsPanel();
     })
 
-    $("#button-sidebar-show-friends").click(function() {
+    $(".button-sidebar-show-friends").click(function() {
         Api.showFriendsPanel();
     })
 
@@ -152,7 +155,8 @@ Api = {
     });
 
     $('.button-add-friend').click(function() {
-        Api.addFriend();
+        var option = $(this).data('option');
+        Api.addFriend(option);
     });
 
     $('.button-delete-friend').click(function() {
@@ -224,6 +228,13 @@ Api = {
 //-------------------- User Evemts ----------------------------//
 
 //-------------------- FUNCTIONS  ----------------------------//
+
+    getRandomSearch : function() {
+        var search = Api.searchList[Math.floor(Math.random() * Api.searchList.length)];
+
+        return search;
+
+    },
 
 
     copyGroup : function (groupId) {
@@ -659,9 +670,19 @@ Api = {
         });
     },
 
-    addFriend : function() {
-        var hashtag = $('#search-user-hashtag').text();
+    addFriend : function(option) {
+
+
+        if(option == 'main') {
+            var hashtag = $('#search-user-hashtag').text();
+        } else {
+            var hashtag = $('#hashtag').text();
+        }
+
+
         $('.button-add-friend').removeClass('button-friend-added');
+
+
 
         $.ajax({
           headers: Route.header,
@@ -677,7 +698,7 @@ Api = {
     },
 
     deleteFriend : function() {
-        var hashtag = $('.div-user-info #hashtag').val();
+        var hashtag = $('.div-user-info #hashtag').text();
 
         $.ajax({
           headers: Route.header,
@@ -686,7 +707,7 @@ Api = {
             hashtag: hashtag,
             }
         }).done(function(data) {
-            alert(data.status);
+            // alert(data.status);
             window.location.replace("/");
         });
 
