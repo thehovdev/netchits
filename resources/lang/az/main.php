@@ -31,7 +31,7 @@ return [
     'addchit' => 'Yeni Yazı',
     'defaultgroup' => 'Kategoriyasız',
     'addgroup' => 'Yeni Grup',
-    'startwelcome' => 'Beta Test Mərhələsinə <br> Hoş Gəlmişsiniz',
+    'startwelcome' => 'İzlə, Paylaş, Musiqi dinlə <br /> dostların ilə',
     'login' => 'Daxil Olmaq',
     'signup' => 'Geydiyyatdan Keçmək',
     'search' => 'Axtarış',
