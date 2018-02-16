@@ -21,6 +21,12 @@ class SignInController extends Controller
 
         $usersModel = new UsersModel;
 
+        $request->validate([
+            'userEmail' => 'required',
+            'userPassword' => 'required',
+        ]);
+
+
         $userData = [];
         $userData['email'] = $request->userEmail;
         $userData['password'] = $request->userPassword;

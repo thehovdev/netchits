@@ -37,6 +37,7 @@ return [
     'search' => 'Search',
     'cookie' => 'Using this application, you agree to store cookies in your browser',
     'peoples' => 'Peoples',
+    'iam18' => 'I am at least 18 years old',
 
 ];
 

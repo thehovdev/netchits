@@ -14,6 +14,10 @@
 
     <section class="mainPage">
 
+        <video autoplay muted loop id="startVideo">
+          <source src="images/backgrounds/start.mp4" type="video/mp4">
+        </video>
+
 
         <!-- <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
             <div class="container-fluid">
@@ -74,16 +78,16 @@
         <div class="container signin-container">
                 <div class="form-group">
                     <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="signin-email">
+                    <input type="email" class="form-control enter-handle" id="signin-email">
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="signin-password">
+                    <input type="password" class="form-control enter-handle" id="signin-password">
                 </div>
 
-                <button type="submit" class="btn btn-default" id="signin-submit-button">Log In</button>
-                <button type="submit" class="btn btn-default back-submit-button">Back</button>
-                <button type="submit" class="btn btn-default" id="button-forgotpass">Forgot Password</button>
+                <button type="submit" class="btn btn-default btn-start" id="signin-submit-button">Log In</button>
+                <button type="submit" class="btn btn-default btn-start back-submit-button">Back</button>
+                <button type="submit" class="btn btn-default btn-start" id="button-forgotpass">Forgot Password</button>
 
                 <div class="alert alert-danger alert-password-incorrect" style="display:none;">
                   <strong>Password is incorrect..
@@ -95,18 +99,26 @@
         <div class="container signup-container">
                 <div class="form-group">
                     <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="signup-email">
+                    <input type="email" class="form-control enter-handle" id="signup-email">
                 </div>
                 <div class="form-group">
                     <label for="signup-hashtag">#hashtag:</label>
-                    <input type="text" class="form-control" id="signup-hashtag">
+                    <input type="text" class="form-control enter-handle" id="signup-hashtag">
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="signup-password">
+                    <input type="password" class="form-control enter-handle" id="signup-password">
                 </div>
-                <button type="submit" class="btn btn-default" id="signup-submit-button">Sign Up</button>
-                <button type="submit" class="btn btn-default back-submit-button">Back</button>
+                <div class="checkbox" style="font-family:arial;font-size:0.9em;">
+                  <label><input id="age" type="checkbox" value="">@lang('main.iam18')</label>
+                </div>
+
+                <div class="alert alert-danger alert-signup-error" style="display:none;">
+                 Sorry! Netchits available only for 18 years old.
+                </div>
+
+                <button type="submit" class="btn btn-default btn-start" id="signup-submit-button">Sign Up</button>
+                <button type="submit" class="btn btn-default btn-start back-submit-button">Back</button>
         </div>
 
         <div class="container forgotpass-container" style="display:none;">
@@ -146,9 +158,14 @@
 
         </div>
 
+        <div style="display:block;height:100px;">
+
+        </div>
+
+
         <div class="author">
-            &copy;NetChits <br>
-            CEO & Founder - <a href="https://www.facebook.com/thehovdev">Afgan Khalilov</a>
+            &copy;NetChits |
+            CEO & Founder - <a style="color:white;" href="https://www.facebook.com/thehovdev">Afgan Khalilov</a>
             <!-- CEO / Founder Afgan Khalilov <br> -->
             <!-- Created with <i class="fa fa-coffee fa-start-coffee"></i> by Afgan Khalilov -->
 

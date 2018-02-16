@@ -143,8 +143,6 @@ class UsersModel extends Model
     public function addUser($usersData)
     {
 
-
-
         $ishashtag = substr($usersData['hashtag'], 0, 1);
 
         if($ishashtag != '#') {
@@ -154,14 +152,13 @@ class UsersModel extends Model
         }
 
 
-
-
         // insert to database
         $this->email = $usersData['email'];
         $this->hashtag = $hashtag;
         $this->password = $usersData['password'];
         $this->secret = $usersData['secret'];
         $this->confirmcode = $usersData['confirmcode'];
+        $this->age = $usersData['age'];
         $this->status = 0;
         $this->save();
 

@@ -27,10 +27,26 @@ class SignUpController extends Controller
         $dataController = new DataController;
 
     // SECTION : Request
+        $request->validate([
+            'userEmail' => 'required',
+            'userPassword' => 'required',
+            'userHashTag' => 'required',
+            'userAge' => 'required',
+        ]);
+
+        if($request->userAge != 'true') {
+            $resut['status'] = 0;
+            $result['msg'] = 'Netchits Available Only For 18 years old';
+            return $result;
+        }
+
+
+
         $userData = [];
         $userData['email'] = $request->userEmail;
         $userData['password'] = $request->userPassword;
         $userData['hashtag'] = $request->userHashTag;
+        $userData['age'] = $request->userAge;
 
 
     // SECTION : Logics
@@ -53,6 +69,7 @@ class SignUpController extends Controller
         $protectedData = [];
         $protectedData['email'] = $userData['email'];
         $protectedData['hashtag'] = $userData['hashtag'];
+        $protectedData['age'] = $userData['age'];
         $protectedData['password'] = $hash;
         $protectedData['secret'] = $secret;
         $protectedData['confirmcode'] = $confirmcode;

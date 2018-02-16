@@ -22,19 +22,22 @@ class SearchController extends Controller
         $usersModel = new UsersModel;
         $friendsModel = new FriendsModel;
 
-
-
         $user = $usersModel->getUser();
+
+        if(is_null($user)) {
+            $result['status'] = 2;
+            $result['msg'] = 'register for search';
+            return $result;
+        }
+
+
         // SECTION : Requests
         $search = $request->search;
-
-
         if($user->hashtag == $search) {
             $result['status'] = 0;
             $result['msg'] = 'You Cannot follow yourself';
             return $result;
         }
-
 
         // SECTION : Logics
         $friend = $usersModel->search($search);
@@ -42,12 +45,10 @@ class SearchController extends Controller
             return $friend;
         }
 
-
-
-
         $is_friends = $user->friends
             ->where('friend_id', $friend['id'])
             ->first();
+
 
         if(!is_null($is_friends)) {
             $result['is_friends'] = 1;
@@ -59,7 +60,7 @@ class SearchController extends Controller
         $result['msg'] = 'success';
         $result['hashtag'] = $friend['hashtag'];
         $result['image_id'] = $friend['image_id'];
-        // $result['id'] = $friend['id'];
+        $result['id'] = $friend['id'];
 
         return $result;
 

@@ -31828,6 +31828,7 @@ Api = {
 
     prepare: function prepare() {
         Api.boot();
+        Api.setTitle();
         Api.timeout = 1;
         Api.ytimeout = 1;
         Api.searchList = ['Top songs', 'Top Hits', 'Top pop songs', 'Rock n roll'];
@@ -32035,11 +32036,50 @@ Api = {
             Api.ysearchTimeoutStop();
             Api.ysearchTimeout();
         });
+
+        // отлавливаем нажатие enter
+
+        // signin
+        $('.enter-handle#signin-email').keydown(function (e) {
+            //если нажали Enter
+            if (e.keyCode == 13) {
+                $(".enter-handle#signin-password").focus();
+            }
+        });
+        $('.enter-handle#signin-password').keydown(function (e) {
+            //если нажали Enter
+            if (e.keyCode == 13) {
+                $('#signin-submit-button').click();
+            }
+        });
+
+        // signup
+        $('.enter-handle#signup-email').keydown(function (e) {
+            //если нажали Enter
+            if (e.keyCode == 13) {
+                $(".enter-handle#signup-hashtag").focus();
+            }
+        });
+        $('.enter-handle#signup-hashtag').keydown(function (e) {
+            //если нажали Enter
+            if (e.keyCode == 13) {
+                $(".enter-handle#signup-password").focus();
+            }
+        });
+        $('.enter-handle#signup-password').keydown(function (e) {
+            //если нажали Enter
+            if (e.keyCode == 13) {
+                $("#signup-submit-button").click();
+            }
+        });
+
+        // отлавливаем нажатие enter
     },
 
     //-------------------- User Evemts ----------------------------//
 
     //-------------------- FUNCTIONS  ----------------------------//
+
 
     getRandomSearch: function getRandomSearch() {
         var search = Api.searchList[Math.floor(Math.random() * Api.searchList.length)];
@@ -32266,6 +32306,16 @@ Api = {
         userEmail = $('.signup-container #signup-email').val();
         userPassword = $('.signup-container #signup-password').val();
         userHashTag = $('.signup-container #signup-hashtag').val();
+        userAge = $('#age').is(":checked");
+        if (userAge === true) {
+            userAge == 'true';
+            $('.alert-signup-error').hide();
+        } else {
+            userAge == 'false';
+            $('.alert-signup-error').show();
+            $('.alert-signup-error').text('Sorry! Netchits available only for 18 years old');
+            return false;
+        }
 
         $.ajax({
             headers: Route.header,
@@ -32273,11 +32323,15 @@ Api = {
             data: {
                 userEmail: userEmail,
                 userPassword: userPassword,
-                userHashTag: userHashTag
+                userHashTag: userHashTag,
+                userAge: userAge
             }
         }).done(function (data) {
             if (data.status == 1) {
                 window.location.replace("/");
+            } else {
+                $('.alert-signup-error').show();
+                $('.alert-signup-error').text(data.msg);
             }
         });
     },
@@ -32427,11 +32481,16 @@ Api = {
         }).done(function (data) {
             $('.search-progress-bar').css('visibility', 'hidden');
 
+            if (data.status == 2) {
+                window.location.replace("/");
+            }
+
             if (data.status == 1) {
                 var image_path = '/storage/user-profile-images/';
                 var image = image_path + data.image_id;
 
                 $('.search-user-image').attr('src', image);
+                $('.search-user-href').attr('href', '/user/' + data.id);
                 $('.search-user-hashtag').text(data.hashtag);
                 $('.search-result-row').css('visibility', 'visible');
 
@@ -32541,6 +32600,15 @@ Api = {
 
     uploadProfileImage: function uploadProfileImage() {
         // var formData = new FormData(this.files[0]);
+    },
+
+    setTitle: function setTitle() {
+        var title = $('#hiddentitle').val();
+        if (title) {
+            document.title = title;
+        } else {
+            document.title = 'NetChits';
+        }
     },
 
     playerMoove: function playerMoove() {

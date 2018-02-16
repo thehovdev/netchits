@@ -1,13 +1,26 @@
-#myVideo {
+#startVideo {
     position: fixed;
     z-index: -999;
-    right: 0;
+    left: 5%;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
 }
 
 /* Add some content at the bottom of the video/page */
+
+#signin-submit-button, #signup-submit-button {
+    background: #a307db;
+    border-color: #a307db;
+    color: white;
+    outline: none;
+}
+
+
+.btn-start {
+    padding: 8px;
+    margin: 5px;
+}
 
 .fa-start-heart {
     font-size:25px;
@@ -54,16 +67,16 @@
     cursor: pointer;
 }
 
-#button-forgotpass {
-    margin-top: 5px;
-}
-
 .author {
-    color:black;
-    position: relative;
-    text-align: center;
-    font-weight: bold;
-    font-size: 0.9em;
-    margin-top: 3%;
-    // color: black;
+    background: rgba(163, 7, 219, 0.9);
+    position: fixed;
+    width: 100%;
+    color: white;
+    text-align:center;
+    bottom: 0;
+    // color:black;
+    // position: relative;
+    // text-align: center;
+    // font-weight: bold;
+    // font-size: 0.9em;
 }
