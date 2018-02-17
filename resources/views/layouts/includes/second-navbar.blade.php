@@ -2,7 +2,7 @@
     <nav class="navbar navbar-fixed-top second-navbar">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="/">@lang('main.home')</a></li>
+                <!-- <li><a href="/">@lang('main.home')</a></li> -->
                 <li><a class="pointer button-sidebar-show-friends">
                     @lang('main.ifollow')
                     <span class="follow-count">{{ $friends->count() }}</span>
