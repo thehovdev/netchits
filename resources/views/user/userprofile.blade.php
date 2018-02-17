@@ -14,7 +14,7 @@
     <nav class="navbar navbar-fixed-top second-navbar">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="/">@lang('main.home')</a></li>
+                <!-- <li><a href="/">@lang('main.home')</a></li> -->
                 <li><a href="/user/follows/detail/{{ $user->id }}" class="pointer button-sidebar-show-friends">
                     @lang('main.ifollow')
                     <span class="follow-count">{{ $friends->count() }}</span>
@@ -29,8 +29,6 @@
         </div>
     </nav>
 </div>
-
-
 
 <!--Progress Bar-->
 <div class="bar search-progress-bar" style="visibility:hidden;">
@@ -61,6 +59,7 @@
             </div>
         </div>
     </div>
+
         <div class="row row-user-profile">
 
             <div class="col-sm-12 col-user-profile-image">
