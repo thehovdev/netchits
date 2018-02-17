@@ -27,7 +27,7 @@ return [
     'followed' => 'You Already Follow',
     'ifollow' => 'Follow',
     'unfollow' => 'Unfollow',
-    'followers' => 'You Follow',
+    'followers' => 'Followers',
     'addchit' => 'Add Chit',
     'defaultgroup' => 'Default',
     'addgroup' => 'Add Group',
