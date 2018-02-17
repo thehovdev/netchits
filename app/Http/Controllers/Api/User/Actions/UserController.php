@@ -167,6 +167,16 @@ class UserController extends Controller
             return $result;
         }
 
+        $hashtagCount = substr_count($hashtag, '#');
+        if($hashtagCount > 1) {
+            $result['status'] = 1;
+            $result['msg'] = 'hashtag symbol can be only 1';
+            return $result;
+        }
+
+
+
+
 
         $hashtagCheck = $usersModel->checkHashtag($hashtag, $user);
 

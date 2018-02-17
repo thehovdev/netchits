@@ -8431,6 +8431,12 @@ a:visited {
   text-decoration: none;
 }
 
+input#hashtag {
+  width: 120px;
+  min-width: 100px;
+  margin: auto;
+}
+
 .userprofile-follow-text {
   color: white;
   font-weight: bold;
@@ -8784,26 +8790,30 @@ a:visited {
   border-color: #3097D1 !important;
 }
 
-.btn-loveit {
+.btn-loveit,
+.btn-channel {
   background: #FF0000;
   color: white;
   font-weight: bold;
   outline: 0;
 }
 
-.btn-loveit:hover {
+.btn-loveit:hover,
+.btn-channel:hover {
   color: white !important;
   background: #FF0000 !important;
   outline: 0;
 }
 
-.btn-loveit:focus {
+.btn-loveit:focus,
+.btn-channel:focus {
   color: white !important;
   background: #FF0000 !important;
   outline: 0;
 }
 
-.btn-loveit:active {
+.btn-loveit:active,
+.btn-channel:active {
   color: white !important;
   background: #FF0000 !important;
   outline: 0;
@@ -8820,7 +8830,8 @@ a:visited {
   margin-left: 5px;
 }
 
-.fa-love {
+.fa-love,
+.fa-search-link {
   color: white !important;
   padding: 5px;
 }
@@ -8996,6 +9007,8 @@ a:visited {
 }
 
 .row-user-profile .col-user-profile-actions .div-user-info .button-update-profile {
+  width: 120px;
+  min-width: 120px;
   display: block;
   margin: auto;
   text-align: center;

@@ -290,11 +290,19 @@ class UsersModel extends Model
 
     public function updateProfile($hashtag, $confirmcode)
     {
-        if(is_null($hashtag)) {
-            $result['status'] = 0;
-            $result['msg'] = 'hashtag id not be empty';
-            return $result;
+        // if(is_null($hashtag)) {
+        //     $result['status'] = 0;
+        //     $result['msg'] = 'hashtag id not be empty';
+        //     return $result;
+        // }
+
+        $ishashtag = substr($hashtag, 0, 1);
+        if($ishashtag != '#') {
+            $hashtag = "#" . $hashtag;
         }
+
+
+
 
         $user = $this
             ->where('email', $this->getUser()->email)
