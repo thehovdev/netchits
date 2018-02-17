@@ -61,7 +61,7 @@ class SignUpController extends Controller
 
         // $secret = $dataController->encryptOpenssl($secretOpen);
 
-        $confirmcode = encrypt(md5('confirmcode' . time()));
+        $confirmcode = md5('confirmcode' . time());
         $confirmcode = substr($confirmcode, 0, 11);
 
 
