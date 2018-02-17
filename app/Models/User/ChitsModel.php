@@ -55,12 +55,20 @@ class ChitsModel extends Model
     public function copy($user, $chitId) {
 
         $chit = $this->where('id', $chitId)->first();
+
+        // dd($chit);
+        // dd($chit['title']);
+
+
+
+
+
         $this->userid = $user->id;
         $this->address = $chit->address;
         $this->group_id = '0';
-        $this->opg_sitename = @$chit["site_name"];
-        $this->opg_title = @$chit["title"];
-        $this->opg_image = @$chit["image"];
+        $this->opg_sitename = @$chit["opg_sitename"];
+        $this->opg_title = @$chit["opg_title"];
+        $this->opg_image = @$chit["opg_image"];
         $this->save();
 
 

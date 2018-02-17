@@ -32122,6 +32122,7 @@ Api = {
         if (chitId == "") {
             alert("chit id not be empty");
         }
+
         $.ajax({
             headers: Route.header,
             url: Route.copyChits,
