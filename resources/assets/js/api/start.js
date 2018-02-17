@@ -5,7 +5,9 @@ Api = {
         Api.setTitle();
         Api.timeout = 1;
         Api.ytimeout = 1;
-        Api.searchList = ['Top songs', 'Top Hits', 'Top pop songs', 'Rock n roll'];
+        // Api.searchList = ['Top songs', 'Top Hits', 'Top pop songs', 'Rock n roll'];
+        Api.searchList = ['Top songs'];
+
     },
 
     boot:function() {
@@ -110,11 +112,8 @@ Api = {
 
     $(document).on('click', '.btn-loveit', function() {
         var videoId = $(this).closest('div.search-item').attr('id');
-
         Api.addChits(videoId);
-
     });
-
 
 
     $("#chits-add-button").click(function () {
@@ -170,9 +169,15 @@ Api = {
         Api.deleteFriend();
     });
 
-    $('.button-upload-profile-image').click(function() {
+    // $('.button-upload-profile-image').click(function() {
+    //     $('#input-upload-profile-image').click();
+    // });
+
+    $('.btn-upload-img').click(function() {
         $('#input-upload-profile-image').click();
     });
+
+
 
     $('#input-upload-profile-image').change(function(e) {
 
@@ -230,6 +235,14 @@ Api = {
     });
 
     // отлавливаем нажатие enter
+    // update info
+    $('.enter-handle#hashtag').keydown(function(e){
+        //если нажали Enter
+      if (e.keyCode == 13) {
+          $('.button-update-profile').click();
+      }
+    });
+
 
     // signin
     $('.enter-handle#signin-email').keydown(function(e){

@@ -184,44 +184,66 @@
                 var srchItems = response.result.items;
                 $.each(srchItems, function(index, item){
 
-                // console.info(item);
+                console.info(item);
 
                 // alert(item.id.videoId);
 
-                // console.info(item);
-
                 videoId = item.id.videoId;
-                vidTitle = item.snippet.title;
-                vidThumburl =  item.snippet.thumbnails.medium.url;
-                vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image  Available." class="search-item-img">';
-
-                // $('#results').append('<div>' + vidTitle + '</div>' + vidThumbimg );
+                channelId = item.snippet.channelId;
 
 
-                $('#results').append(
-                    '<div class="col-xs-4 col-sm-4 col-md-2 search-item" id="' + videoId + '">' +
-                    '<div class="search-item-img-block">' +
-                    vidThumbimg +
-                    '</div>' +
-                    '<div class="search-item-title">' +
-                    vidTitle +
-                    '</div>' +
-                    '<div class="search-item-actions">' +
-                    '<button class="btn btn-default btn-loveit">' +
-                    '<i class="fa fa-heart fa-love"></i>ilove' +
-                    '</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>'
-                );
-
-                $('.search-progress-bar').css('visibility', 'hidden');
+                    vidTitle = item.snippet.title;
+                    vidThumburl =  item.snippet.thumbnails.medium.url;
+                    vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image  Available." class="search-item-img">';
 
 
 
 
-        })
-        })
+                    if(videoId) {
+                        $('#results').append(
+                            '<div class="col-xs-4 col-sm-4 col-md-2 search-item" id="' + videoId + '">' +
+                            '<div class="search-item-img-block">' +
+                            vidThumbimg +
+                            '</div>' +
+                            '<div class="search-item-title">' +
+                            vidTitle +
+                            '</div>' +
+                            '<div class="search-item-actions">' +
+                            '<button class="btn btn-default btn-loveit">' +
+                            '<i class="fa fa-heart fa-love"></i>ilove' +
+                            '</button>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                    } else {
+
+                        var channelUrl = 'https://www.youtube.com/channel/' + channelId;
+
+                        $('#results').append(
+                            '<div class="col-xs-4 col-sm-4 col-md-2 search-item"  id="' + channelId + '">' +
+                            '<div class="search-item-img-block">' +
+                            vidThumbimg +
+                            '</div>' +
+                            '<div class="search-item-title">' +
+                            vidTitle +
+                            '</div>' +
+                            '<div class="search-item-actions">' +
+                            '<a href="' + channelUrl + '" target="_blank">' +
+                            '<button class="btn btn-default btn-channel">' +
+                            '<i class="fa fa-external-link-square fa-search-link"></i>channel' +
+                            '</button>' +
+                            '</a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                    }
+
+
+                    $('.search-progress-bar').css('visibility', 'hidden');
+                })
+            })
         }
     </script>
 

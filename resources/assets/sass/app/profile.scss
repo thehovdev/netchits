@@ -9,6 +9,11 @@ a:visited {
     text-decoration: none;
 }
 
+input#hashtag {
+    width: 120px;
+    min-width: 100px;
+    margin: auto;
+}
 
 .userprofile-follow-text {
     color: white;
@@ -515,7 +520,7 @@ a:visited {
     border-color: #3097D1 !important;
 }
 
-.btn-loveit {
+.btn-loveit, .btn-channel {
     background: #FF0000;
     color: white;
     font-weight: bold;
@@ -555,7 +560,7 @@ a:visited {
     margin-left: 5px;
 }
 
-.fa-love {
+.fa-love, .fa-search-link {
     color:white !important;
     padding: 5px;
 }
@@ -726,6 +731,8 @@ a:visited {
             width: 80%;
 
             .button-update-profile {
+                width: 120px;
+                min-width: 120px;
                 display: block;
                 margin: auto;
                 text-align: center;
