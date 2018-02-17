@@ -401,19 +401,20 @@ Api = {
     },
 
     addChits : function (searchdataid = '0') {
+        if(chitsAddress == "") {
+            alert("address not be empty");
+        }
 
-        //
+        // если добавляем через поиск, иначе
         if(searchdataid != '0') {
             var chitsAddress = 'https://www.youtube.com/watch?v=' + searchdataid;
         } else {
             var chitsAddress = $("#chits-address-input").val();
         }
 
-
         var chitsGroupId = $('#select-group').children(':selected').attr('id');
-        if(chitsAddress == "") {
-            alert("address not be empty");
-        }
+
+        // если пользователь 1 раз добавляет песню без группы, перезагружаем страницу
 
         $('.search-progress-bar').css('visibility', 'visible');
 
@@ -429,6 +430,9 @@ Api = {
             $('.search-progress-bar').css('visibility', 'hidden');
 
             if(data.status == 1) {
+                if(chitsGroupId == 0) {
+                    location.reload(true);
+                }
                 Api.addToList(data);
             }
         });
@@ -499,8 +503,14 @@ Api = {
             }
         }).done(function(data) {
             if(data.status == 1) {
+                if(data.group.hasGroup == 'not') {
+                    location.reload(true);
+                }
+
+                $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
+
+
                 Api.hideFromListGroup(data);
-                // $('.chits-list').html(data.html);
             }
         });
         return false;

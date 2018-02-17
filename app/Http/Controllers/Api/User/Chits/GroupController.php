@@ -15,6 +15,8 @@ use App\Models\User\ChitsGroupModel;
 class GroupController extends Controller
 {
 
+
+
     public function copyGroup(Request $request) {
         // SECTION : Models & Controllers
             $usersModel = new UsersModel;
@@ -35,7 +37,6 @@ class GroupController extends Controller
 
             $friend = $user->getFriend($hashtag);
 
-
             $group = $chitsGroupModel->find($groupId);
 
             // relations
@@ -44,9 +45,9 @@ class GroupController extends Controller
 
             // $chits = $chitsModel->where('group_id', $groupId)->get();
 
-            $copyGroup = $chitsGroupModel->copyGroup($user, $group);
+            $group = $chitsGroupModel->copyGroup($user, $group);
 
-            $copyChit = $chitsModel->copyFromGroup($user, $chits, $copyGroup);
+            $copyChit = $chitsModel->copyFromGroup($user, $chits, $group);
 
 
             return $copyChit;
@@ -117,7 +118,18 @@ class GroupController extends Controller
             return $is_usergroup;
         }
 
+
+        // удаляем все посты из группы перед удалением группы
+
+        $group = $chitsGroupModel->find($groupId);
+        // relations
+        $chits = $group->chits->all();
+
+
+        $deletedChits = $chitsModel->deleteFromGroup($user, $chits, $group);
         $deleted = $chitsGroupModel->remove($user, $groupId);
+
+
 
         if(is_null($deleted)) {
             $result['status'] = 0;
@@ -128,8 +140,23 @@ class GroupController extends Controller
         $result['status'] = 1;
         $result['msg'] = 'success';
         $result['group']['id'] = $deleted->id;
+        $result['group']['hasGroup'] = 'yes';
+        if($deleted->hasGroup == 0) {
+            $result['group']['hasGroup'] = 'not';
+        }
 
-        return $result;
+        $userGroups = $chitsGroupModel->getUserGroups($user);
+
+        $result['html_chitsgroup_select'] = view('layouts.includes.chitsgroup-select')
+        ->with("userGroups", @$userGroups)
+        ->render();
+
+
+        return response()->json($result);
+
+
+
+        // return $result;
 
 
     }
