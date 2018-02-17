@@ -37,6 +37,9 @@ class StartController extends Controller
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
 
+
+
+
             // laravel relations (отношения)
             $friends = $user->friends->take(5);
             // laravel relations

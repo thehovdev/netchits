@@ -55,8 +55,19 @@ class ChitsController extends Controller
         $chitsAddress = $request->chitsAddress;
         $chitsGroupId = $request->chitsGroupId;
 
+
         // SECTION : Logics
         $user = $usersModel->getUser();
+
+
+        // если пользователь не добавил группу, создаем первую группу
+        $hasChits = $chitsModel->hasChits($user);
+
+
+        if($hasChits == 0) {
+            $chitsGroupId = $chitsGroupModel->addDefaultGroup($user)->id;
+        }
+
 
         $chit = $chitsModel->addNew($user, $chitsAddress, $chitsGroupId);
 

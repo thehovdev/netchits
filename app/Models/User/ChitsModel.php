@@ -28,6 +28,26 @@ class ChitsModel extends Model
     //     return $this->belongsToMany('App\Models\Auth\UsersModel', 'chits_group', 'user_id', 'id');
     // }
 
+
+    public function hasChits($user) {
+        $chits = $this
+            ->where('userid', $user['id'])
+            ->count();
+
+        return $chits;
+    }
+
+
+    public function deleteFromGroup($user, $chits, $group) {
+        foreach ($chits as $chit) {
+            $chit->delete();
+        }
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+    }
+
     public function copyFromGroup($user, $chits, $group) {
 
 
@@ -38,9 +58,9 @@ class ChitsModel extends Model
             $insert->userid = $user->id;
             $insert->address = $chit->address;
             $insert->group_id = $group->id;
-            $insert->opg_sitename = @$chit["site_name"];
-            $insert->opg_title = @$chit["title"];
-            $insert->opg_image = @$chit["image"];
+            $insert->opg_sitename = @$chit["opg_site_name"];
+            $insert->opg_title = @$chit["opg_title"];
+            $insert->opg_image = @$chit["opg_image"];
             $insert->save();
         }
 
@@ -134,6 +154,11 @@ class ChitsModel extends Model
 
         return $userChits;
     }
+
+
+
+
+
 
     public function getUserChits($user) {
         $userChits = $this->where([

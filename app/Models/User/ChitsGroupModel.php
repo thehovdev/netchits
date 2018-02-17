@@ -37,36 +37,57 @@ class ChitsGroupModel extends Model
         return $this;
     }
 
+    public function addDefaultGroup($user) {
+
+        // insert to database
+        $this->user_id = $user['id'];
+        $this->name = 'Default Group';
+        $this->save();
+
+        // return result
+        return $this;
+    }
+
     public function remove($user, $groupId) {
 
         $group = $this
             ->where('user_id', $user->id)
             ->where('id', $groupId)
             ->first();
+        // есть ли еще группы кроме этой
+        $group->hasGroup = $this->hasGroup($user, $groupId);
+
 
         $this
             ->where('user_id', $user->id)
             ->where('id', $groupId)
             ->delete();
 
+
         return $group;
+    }
+
+    public function hasGroup($user, $id) {
+        $groups = $this
+            ->where('user_id', $user['id'])
+            ->where('id', '!=', $id)
+            ->count();
+
+        return $groups;
     }
 
     public function getUserGroups($user) {
 
-        $userGroups = $this->where([
-            ['user_id', '=', $user['id']],
-        ])->get();
-
-        // return $userGroups;
+        $userGroups = $this
+            ->where('user_id', $user['id'])
+            ->get();
 
         $groups = [];
         foreach ($userGroups as $userGroup) {
-            $groups[$userGroup->name]['id'] = $userGroup->id;
-            $groups[$userGroup->name]['user_id'] = $userGroup->user_id;
-            $groups[$userGroup->name]['name'] = $userGroup->name;
-            $groups[$userGroup->name]['chits'] = "test";
-
+            $groups[$userGroup->id]['id'] = $userGroup->id;
+            $groups[$userGroup->id]['user_id'] = $userGroup->user_id;
+            $groups[$userGroup->id]['name'] = $userGroup->name;
+            $groups[$userGroup->id]['chits'] = "test";
         }
 
         return $groups;
