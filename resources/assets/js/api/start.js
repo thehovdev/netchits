@@ -562,7 +562,7 @@ Api = {
         } else {
             userAge == 'false';
             $('.alert-signup-error').show();
-            $('.alert-signup-error').text('Sorry! Netchits available only for 18 years old');
+            $('.alert-signup-error').text('Sorry! Netchits available only for 14 years old');
             return false;
         }
 
