@@ -74,7 +74,7 @@ class ChitsModel extends Model
 
         $chit = $this->where('id', $chitId)->first();
         $group = $user->groups
-            ->sortByDesc("id")
+            // ->sortByDesc("id")
             ->first();
 
 
