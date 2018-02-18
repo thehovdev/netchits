@@ -32,6 +32,16 @@ class UsersModel extends Model
     }
 
 
+    // public function setDefaultGroup($id)
+    // {
+    //     $user = $this->getUser();
+    //     $user->default_group = $id;
+    //     $user->save();
+    //
+    //     return $user;
+    //
+    // }
+
     public function checkSignUp($protectedData)
     {
         $email = $protectedData['email'];
@@ -139,7 +149,6 @@ class UsersModel extends Model
 
     }
 
-
     public function addUser($usersData)
     {
 
@@ -210,7 +219,8 @@ class UsersModel extends Model
         return $allUsers;
     }
 
-    public function is_friend($id) {
+    public function is_friend($id)
+    {
         $user = $this->getUser();
         $is_friend = $user->friends->where('friend_id', $id)->first();
 
@@ -263,7 +273,8 @@ class UsersModel extends Model
         return $result;
     }
 
-    public function checkHashtag($hashtaginput, $user) {
+    public function checkHashtag($hashtaginput, $user)
+    {
 
         $userhashtag = $user->hashtag;
 

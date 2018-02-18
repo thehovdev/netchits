@@ -37,7 +37,7 @@ return [
     'search' => 'Axtarış',
     'cookie' => 'Bu programı istifadə etdikdə, siz cookie istifadə etmeyinə razılıq verirsiniz',
     'peoples' => 'Adamlar',
-    'iam18' => 'Menim ən azı 18 yasım var',
+    'iam14' => 'Menim ən azı 14 yasım var',
 
 ];
 

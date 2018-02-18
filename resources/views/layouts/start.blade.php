@@ -110,11 +110,10 @@
                     <input type="password" class="form-control enter-handle" id="signup-password">
                 </div>
                 <div class="checkbox" style="font-family:arial;font-size:0.9em;">
-                  <label><input id="age" type="checkbox" value="">@lang('main.iam18')</label>
+                  <label><input id="age" type="checkbox" value="">@lang('main.iam14')</label>
                 </div>
 
                 <div class="alert alert-danger alert-signup-error" style="display:none;">
-                 Sorry! Netchits available only for 18 years old.
                 </div>
 
                 <button type="submit" class="btn btn-default btn-start" id="signup-submit-button">Sign Up</button>
