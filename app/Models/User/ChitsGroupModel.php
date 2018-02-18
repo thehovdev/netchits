@@ -80,8 +80,8 @@ class ChitsGroupModel extends Model
 
         $userGroups = $this
             ->where('user_id', $user['id'])
-            ->get()
-            ->sortByDesc("id");
+            ->orderByDesc("id")
+            ->get();
 
         $groups = [];
         foreach ($userGroups as $userGroup) {

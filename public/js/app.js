@@ -31907,12 +31907,22 @@ Api = {
         $(document).on('click', '.chits-copy-button', function () {
             //находим id поста, который надо удалить
             var id = $(this).closest('div.chits-column-parent').attr('id');
+
+            // скрываем кнопку закачки и показываем кнопку успешно
+            $(this).hide();
+            $(this).next().show();
+
             Api.copyChits(id);
         });
 
         $(document).on('click', '.chits-group-copy-button', function () {
             //находим id поста, который надо удалить
             var id = $(this).closest('div.panel-group').attr('id');
+
+            // скрываем кнопку закачки и показываем кнопку успешно
+            $(this).hide();
+            $(this).next().show();
+
             Api.copyGroup(id);
         });
 
@@ -32112,7 +32122,7 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                alert(data.msg);
+                // alert(data.msg);
             }
         });
     },
@@ -32131,7 +32141,7 @@ Api = {
             }
         }).done(function (data) {
             if (data.status == 1) {
-                alert(data.msg);
+                // alert(data.msg);
             }
         });
     },
@@ -32187,9 +32197,12 @@ Api = {
     addToListGroup: function addToListGroup(data) {
         var list = $('.chits-list');
 
-        console.info(list);
+        // console.info(list);
 
-        $(data.html).appendTo(list);
+        // $(data.html).appendTo(list);
+        $(data.html).prependTo(list);
+
+        Api.playerMoove();
     },
 
     addChits: function addChits() {
