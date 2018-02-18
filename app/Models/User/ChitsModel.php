@@ -33,10 +33,8 @@ class ChitsModel extends Model
         $chits = $this
             ->where('userid', $user['id'])
             ->count();
-
         return $chits;
     }
-
 
     public function deleteFromGroup($user, $chits, $group) {
         foreach ($chits as $chit) {
@@ -75,17 +73,11 @@ class ChitsModel extends Model
     public function copy($user, $chitId) {
 
         $chit = $this->where('id', $chitId)->first();
-
-        // dd($chit);
-        // dd($chit['title']);
-
-
-
-
+        $group = $user->groups->first();
 
         $this->userid = $user->id;
         $this->address = $chit->address;
-        $this->group_id = '0';
+        $this->group_id = $group->id;
         $this->opg_sitename = @$chit["opg_sitename"];
         $this->opg_title = @$chit["opg_title"];
         $this->opg_image = @$chit["opg_image"];

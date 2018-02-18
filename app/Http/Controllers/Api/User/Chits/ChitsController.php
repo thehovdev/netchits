@@ -38,6 +38,12 @@ class ChitsController extends Controller
             return $result;
         }
 
+
+        $hasChits = $chitsModel->hasChits($user);
+        if($hasChits < 1) {
+            $defaultGroup = $chitsGroupModel->addDefaultGroup($user);
+        }
+
         $chit = $chitsModel->copy($user, $chitId);
 
         return $chit;
