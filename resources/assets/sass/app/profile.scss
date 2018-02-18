@@ -595,6 +595,17 @@ input#hashtag {
     }
 }
 
+.fa-copy-success-small {
+    color: #50e573 !important;
+    font-size: 20px !important;
+    margin: 10px;
+    cursor: pointer;
+    &:hover {
+        color: #50e573 !important;
+    }
+}
+
+
 .fa-copy-group {
     color: #50e573 !important;
     font-size: 30px !important;
@@ -604,6 +615,17 @@ input#hashtag {
         color: #50e573 !important;
     }
 }
+
+.fa-copy-success {
+    color: #50e573 !important;
+    font-size: 30px !important;
+    margin: 10px;
+    cursor: pointer;
+    &:hover {
+        color: #50e573 !important;
+    }
+}
+
 
 
  // OPG

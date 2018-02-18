@@ -13,6 +13,8 @@ $chitsModel = new ChitsModel;
           <div class="panel-body">
               {{ $userGroup['name'] }}
               <i class="fa fa-cloud-download fa-copy-group chits-group-copy-button" aria-hidden="true"></i>
+              <i class="fa fa-check-circle fa-copy-success" style="display:none;"></i>
+
           </div>
         </div>
     </div>
@@ -44,6 +46,8 @@ $chitsModel = new ChitsModel;
 
                                 <div class="chits-events-area">
                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
+                                    <i class="fa fa-check-circle fa-copy-success-small" style="display:none;"></i>
+
                                 </div>
                             </div>
                         </div>
@@ -78,6 +82,8 @@ $chitsModel = new ChitsModel;
 
                                 <div class="chits-events-area">
                                     <i class="fa fa-plus-square fa-copy-chits chits-copy-button" aria-hidden="true"></i>
+                                    <i class="fa fa-check-circle fa-copy-success-small" style="display:none;"></i>
+
                                 </div>
                             </div>
                         </div>

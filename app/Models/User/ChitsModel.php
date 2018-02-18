@@ -73,7 +73,10 @@ class ChitsModel extends Model
     public function copy($user, $chitId) {
 
         $chit = $this->where('id', $chitId)->first();
-        $group = $user->groups->first();
+        $group = $user->groups
+            ->sortByDesc("id")
+            ->first();
+
 
         $this->userid = $user->id;
         $this->address = $chit->address;
@@ -153,18 +156,26 @@ class ChitsModel extends Model
 
 
     public function getUserChits($user) {
-        $userChits = $this->where([
-            ['userid', '=', $user['id']],
-        ])->latest()->get();
+        // $userChits = $this->where([
+        //     ['userid', '=', $user['id']],
+        // ])->latest()->get();
+
+
+        $userChits = $this
+            ->where('userid', $user['id'])
+            ->orderByDesc("id")
+            ->get();
 
         return $userChits;
     }
 
     public function getChitsByGroup($user, $id) {
-        $chitsByGroup = $this->where([
-            ['userid', '=', $user['id']],
-            ['group_id', '=', $id],
-        ])->get();
+
+        $chitsByGroup = $this
+            ->where('userid', $user['id'])
+            ->where('group_id', $id)
+            ->orderByDesc("id")
+            ->get();
 
         return $chitsByGroup;
     }
