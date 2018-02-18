@@ -72,6 +72,7 @@ class ChitsController extends Controller
 
         if($hasChits == 0) {
             $chitsGroupId = $chitsGroupModel->addDefaultGroup($user)->id;
+            // $setDefaultGroup = $usersModel->setDefaultGroup($chitsGroupId)->id;
         }
 
 
