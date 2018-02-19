@@ -669,6 +669,10 @@ input#hashtag {
             width: 100px;
 
             .user-hashtag {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100px;
                 font-weight: bold;
                 color: #404448;
             }
