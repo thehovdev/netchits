@@ -25,36 +25,17 @@ class StartController extends Controller
         $usersModel = new UsersModel;
         $chitsModel = new ChitsModel;
         $chitsGroupModel = new ChitsGroupModel;
-
         $user = @$usersModel->getUser();
 
         // SECTION : Logics
         if(is_null($user)) {
             return view("layouts.start");
         } else {
-
-
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
-
-
-
-
-            // laravel relations (отношения)
             $friends = $user->friends->take(5);
-            // laravel relations
             $followers = $user->followers->take(5);
-
-
             $peoples = $usersModel->getRandomPeoples();
-            $checkConfirm = $usersModel->checkConfrim($user->id);
-            if($checkConfirm['status'] == 0) {
-                $deleteUser = $usersModel->deleteUser($user->id);
-                return redirect('/');
-            }
-
-
-
 
             return view("user.profile")
                 ->with("user", @$user)

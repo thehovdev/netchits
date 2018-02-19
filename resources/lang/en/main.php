@@ -22,7 +22,7 @@ return [
     'friends' => 'Friends',
     'chits' => 'Chits',
     'attention' => 'Attention',
-    'confirmaccount' => 'Please click to confirm you account, otherwise it will be closed after 14 days',
+    'confirmaccount' => 'Please confirm you account to access all the features',
     'follow' => 'Follow',
     'followed' => 'You Already Follow',
     'ifollow' => 'Follow',
