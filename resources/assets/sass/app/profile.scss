@@ -822,6 +822,14 @@ input#hashtag {
             display: inline-block;
             text-align: center;
             width: 100px;
+
+            .user-hashtag {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100px;
+            }
+
         }
     }
 }

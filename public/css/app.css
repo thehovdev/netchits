@@ -9089,6 +9089,13 @@ input#hashtag {
   width: 100px;
 }
 
+.row-people-list .people-list .people-item .user-hashtag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+
 .follow-count {
   padding: 2px;
   font-size: 1em;
