@@ -31,7 +31,6 @@ class UsersModel extends Model
         return $this->hasMany('App\Models\Friends\FriendsModel', 'friend_id');
     }
 
-
     // public function setDefaultGroup($id)
     // {
     //     $user = $this->getUser();
@@ -104,50 +103,20 @@ class UsersModel extends Model
 
     }
 
-    public function checkConfrim($id)
-    {
-        $user = $this->find($id);
-
-        $currentDate = strtotime(date('Y-m-d H:i:s'));
-        $confirmDate = $user->created_at;
-        $confirmDate = strtotime("+2 week", strtotime($confirmDate));
-
-        if($currentDate > $confirmDate) {
-            $result['status'] = 0;
-            $result['msg'] = 'account will be removed';
-            return $result;
-        }
-
-        $result['status'] = 1;
-        $result['msg'] = 'success';
-        return $result;
-
-
-    }
-
-    public function deleteUser($id)
-    {
-        $user = $this->find($id);
-        $user->delete();
-
-
-        \Cookie::forget('email');
-        \Cookie::forget('secret');
-        \Cookie::forget('auth');
-
-        $result['status'] = 1;
-        $result['msg'] = 'user deleted, because not confirm email in 14 days';
-        return $result;
-
-        // unset($_COOKIE['email']);
-        // unset($_COOKIE['secret']);
-        // unset($_COOKIE['auth']);
-        // setcookie("auth", null , $cookieTime, $cookieDir);
-        // setcookie("email", null, $cookieTime, $cookieDir);
-        // setcookie("secret",  null, $cookieTime, $cookieDir);
-
-
-    }
+    // public function deleteUser($id)
+    // {
+    //     $user = $this->find($id);
+    //     $user->delete();
+    //
+    //
+    //     \Cookie::forget('email');
+    //     \Cookie::forget('secret');
+    //     \Cookie::forget('auth');
+    //
+    //     $result['status'] = 1;
+    //     $result['msg'] = 'user deleted, because not confirm email in 14 days';
+    //     return $result;
+    // }
 
     public function addUser($usersData)
     {
@@ -293,11 +262,7 @@ class UsersModel extends Model
                 return $result;
 
             }
-
-
-
-
-}
+        }
 
     public function updateProfile($hashtag, $confirmcode)
     {
@@ -382,7 +347,8 @@ class UsersModel extends Model
         return $result;
     }
 
-    public function resetPass($data) {
+    public function resetPass($data)
+    {
 
 
         $user = $this->find($data['user_id']);

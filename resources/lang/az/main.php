@@ -22,7 +22,7 @@ return [
     'friends' => 'Dostlar',
     'chits' => 'Yazılar',
     'attention' => 'Diqqət',
-    'confirmaccount' => 'Zəhmət olmasa Akkauntu təstiq edin',
+    'confirmaccount' => 'Zəhmət olmasa profili təstiq edin',
     'follow' => 'İzləmək',
     'followed' => 'İzliyirsiz',
     'followers' => 'İzləyicilərim',
