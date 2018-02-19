@@ -32121,8 +32121,8 @@ Api = {
                 hashtag: hashtag
             }
         }).done(function (data) {
-            if (data.status == 1) {
-                // alert(data.msg);
+            if (data.status == 2) {
+                window.location.replace("/");
             }
         });
     },
@@ -32140,8 +32140,8 @@ Api = {
                 chitId: chitId
             }
         }).done(function (data) {
-            if (data.status == 1) {
-                // alert(data.msg);
+            if (data.status == 2) {
+                window.location.replace("/");
             }
         });
     },

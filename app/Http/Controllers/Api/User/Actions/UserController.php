@@ -92,7 +92,7 @@ class UserController extends Controller
             $userprofile = $usersModel->find($id);
             $userChits = $chitsModel->getUserChits($userprofile);
             $userGroups = $chitsGroupModel->getUserGroups($userprofile);
-            $friends = $userprofile->friends->take(5); // laravel relations (отношения)
+            $friends = $userprofile->friends->take(5);
             $followers = $userprofile->followers->take(5); // laravel relations
 
 
@@ -102,9 +102,6 @@ class UserController extends Controller
                 ->with('userGroups', $userGroups)
                 ->with('friends', $friends)
                 ->with('followers', $followers);
-
-
-
 
         }
 
@@ -138,6 +135,7 @@ class UserController extends Controller
 
             $friends = $userprofile->friends->take(5); // laravel relations (отношения)
             $followers = $userprofile->followers->take(5); // laravel relations
+
 
 
             return view('user.userprofile')
