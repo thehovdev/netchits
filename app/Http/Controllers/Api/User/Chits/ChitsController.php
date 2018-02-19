@@ -33,7 +33,7 @@ class ChitsController extends Controller
         $user = $usersModel->getUser();
 
         if(is_null($user)) {
-            $result['status'] = 0;
+            $result['status'] = 2;
             $result['msg'] = 'redirect';
             return $result;
         }
