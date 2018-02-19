@@ -14,7 +14,7 @@
     <!--Main Navbar-->
     @include('layouts.includes.navbar')
     <!--Second Navbar-->
-    @include('layouts.includes.second-navbar');
+    @include('layouts.includes.second-navbar')
 
     <!--Main Container-->
     <section class="chits-container">
@@ -31,7 +31,7 @@
                                     <div class="alert alert-info">
                                         <strong>@lang('main.attention')</strong>
                                         <p>
-                                            @lang('main.confirmaccount');
+                                            @lang('main.confirmaccount')
                                         </p>
                                     </div>
                                 </a>
@@ -81,7 +81,7 @@
                         data-load="0" style="display:none;">
                         <div class="col-sm-12">
                             <div class="friends-list">
-                                @include('layouts.includes.friends-list', ['permission' => 'user']);
+                                @include('layouts.includes.friends-list', ['permission' => 'user'])
                             </div>
                         </div>
                     </div>
