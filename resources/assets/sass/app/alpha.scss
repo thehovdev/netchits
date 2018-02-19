@@ -13,12 +13,14 @@
         .welcome-div {
             margin: 20px auto 0 auto;
             padding: 2px;
-            background: rgba(163, 7, 219, 0.9);
+            // background: rgba(163, 7, 219, 0.9);
+            background: rgba(255, 255, 255, 0.5);
             width: 60%;
             border-radius: 2px;
+            border:2px solid #E8E8E8;
 
             .welcome-text {
-                color: white;
+                color: #4267b2;
                 // color: red;
                 font-weight: bold;
 
@@ -47,13 +49,13 @@
             text-align: center;
 
             .alpha-key {
-                // background: #FF0000;
-                background: rgba(163, 7, 219, 0.9);
+                background: #4267b2;
+                // background: rgba(163, 7, 219, 0.9);
                 width: 205px;
                 height: 200px;
                 margin: 5px auto;
-                // border:2px solid #FF0000;
-                border: 2px solid #A307DB;
+                border:2px solid #4267b2;
+                // border: 2px solid #A307DB;
 
                 border-radius: 50%;
                 line-height:200px !important;
@@ -67,14 +69,14 @@
 
 
             .register {
-                // background: #FF0000;
-                background: rgba(163, 7, 219, 0.9);
+                background: #4267b2;
+                // background: rgba(163, 7, 219, 0.9);
 
                 width: 205px;
                 height: 200px;
                 margin: 5px auto;
-                // border:2px solid #FF0000;
-                border: 2px solid #A307DB;
+                border:2px solid #4267b2;
+                // border: 2px solid #A307DB;
 
                 border-radius: 50%;
                 line-height: 200px !important;
@@ -86,4 +88,97 @@
         }
 
     }
+}
+
+#startVideo {
+    position: fixed;
+    z-index: -999;
+    left: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+
+#signin-submit-button, #signup-submit-button {
+    background: #4267b2;
+    border-color: #4267b2;
+    color: white;
+    outline: none;
+}
+
+.lang-label {
+    color:black;
+}
+.btn-lang {
+    margin: 3px;
+    font-weight: bold;
+    color: black;
+    &:hover, &:active, &:active:focus, &:focus {
+        background: white;
+        font-weight: bold;
+        color: black;
+    }
+}
+.btn-start {
+    padding: 8px;
+    margin: 5px;
+}
+
+.fa-start-heart {
+    font-size:25px;
+    color:red;
+}
+
+.fa-start-coffee {
+    font-size:25px;
+    color:#c68400;
+}
+
+.alert-password-incorrect {
+    margin:5px;
+}
+
+
+%hidden-form-container {
+    margin-top: 0px !important;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 40%;
+    color:black;
+}
+
+.btn-default {
+    // margin:3px;
+}
+
+.signin-container {
+    @extend %hidden-form-container;
+    display: none;
+}
+
+.signup-container {
+    @extend %hidden-form-container;
+    display: none;
+}
+
+.forgotpass-container {
+    @extend %hidden-form-container;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.author {
+    // background: rgba(163, 7, 219, 0.9);
+    background: #294c93;
+    position: fixed;
+    width: 100%;
+    color: white;
+    text-align:center;
+    bottom: 0;
+    font-size: 0.9em;
+
 }

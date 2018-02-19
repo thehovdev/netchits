@@ -14,9 +14,9 @@
 
     <section class="mainPage">
 
-        <video autoplay muted loop id="startVideo">
-          <source src="images/backgrounds/start.mp4" type="video/mp4">
-        </video>
+        <!-- <video autoplay muted loop id="startVideo">
+          <source src="images/backgrounds/start.mov" type="video/mp4">
+        </video> -->
 
 
         <!-- <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
@@ -45,7 +45,19 @@
                                 <h1><span class="brand-name">NetChits</span></h1>
                             </div>
                             <div class="welcome-div">
-                                <h1><span class="welcome-text">@lang('main.startwelcome')</span></h1>
+                                <h1>
+                                    <span class="welcome-text">
+                                        @lang('main.startwelcome')
+                                    </span>
+                                </h1>
+
+                                <div class="form-group text-center" style="margin-top:5px;">
+                                    <label for="locale" class="text-center block lang-label">@lang('main.setlocale')</label>
+                                    <a href="/user/setlocale/en" class="btn btn-default btn-lang">EN</a>
+                                    <a href="/user/setlocale/ru" class="btn btn-default btn-lang">RU</a>
+                                    <a href="/user/setlocale/az" class="btn btn-default btn-lang">AZ</a>
+                                </div>
+
                             </div>
 
                             <div class="actions">
