@@ -8350,75 +8350,6 @@ button.close {
   }
 }
 
-#startVideo {
-  position: fixed;
-  z-index: -999;
-  left: 5%;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
-
-/* Add some content at the bottom of the video/page */
-
-#signin-submit-button,
-#signup-submit-button {
-  background: #a307db;
-  border-color: #a307db;
-  color: white;
-  outline: none;
-}
-
-.btn-start {
-  padding: 8px;
-  margin: 5px;
-}
-
-.fa-start-heart {
-  font-size: 25px;
-  color: red;
-}
-
-.fa-start-coffee {
-  font-size: 25px;
-  color: #c68400;
-}
-
-.alert-password-incorrect {
-  margin: 5px;
-}
-
-.signin-container,
-.signup-container,
-.forgotpass-container {
-  margin-top: 0px !important;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 40%;
-  color: black;
-}
-
-.signin-container {
-  display: none;
-}
-
-.signup-container {
-  display: none;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.author {
-  background: rgba(163, 7, 219, 0.9);
-  position: fixed;
-  width: 100%;
-  color: white;
-  text-align: center;
-  bottom: 0;
-}
-
 a {
   text-decoration: none;
 }
@@ -8503,7 +8434,7 @@ input#hashtag {
 
 .action-navbar .item {
   padding: 5px;
-  background: #FF0000;
+  background: #4267b2;
 }
 
 .chits-events-area {
@@ -8527,7 +8458,7 @@ input#hashtag {
   padding: 2px 10px;
   text-overflow: clip;
   overflow: hidden;
-  background: #FF0000;
+  background: #4267b2;
 }
 
 .chits-description-area-basic {
@@ -8547,7 +8478,7 @@ input#hashtag {
   top: 0px;
   left: 10px;
   font-size: 30px;
-  color: #FF0000;
+  color: #4267b2;
 }
 
 .playerpreview-text {
@@ -8702,7 +8633,7 @@ input#hashtag {
 
 .second-navbar-parent .second-navbar {
   margin-top: 55px;
-  background: #FF0000;
+  background: #4267b2;
 }
 
 .signin-container {
@@ -8781,8 +8712,8 @@ input#hashtag {
 }
 
 .button-add-chits-color {
-  background: #FF0000 !important;
-  border-color: #FF0000 !important;
+  background: #4267b2 !important;
+  border-color: #4267b2 !important;
 }
 
 .button-add-chits-search-color {
@@ -8792,7 +8723,7 @@ input#hashtag {
 
 .btn-loveit,
 .btn-channel {
-  background: #FF0000;
+  background: #4267b2;
   color: white;
   font-weight: bold;
   outline: 0;
@@ -8801,21 +8732,21 @@ input#hashtag {
 .btn-loveit:hover,
 .btn-channel:hover {
   color: white !important;
-  background: #FF0000 !important;
+  background: #4267b2 !important;
   outline: 0;
 }
 
 .btn-loveit:focus,
 .btn-channel:focus {
   color: white !important;
-  background: #FF0000 !important;
+  background: #4267b2 !important;
   outline: 0;
 }
 
 .btn-loveit:active,
 .btn-channel:active {
   color: white !important;
-  background: #FF0000 !important;
+  background: #4267b2 !important;
   outline: 0;
 }
 
@@ -9113,13 +9044,14 @@ input#hashtag {
 .alpha-container .alpha-block .welcome-div {
   margin: 20px auto 0 auto;
   padding: 2px;
-  background: rgba(163, 7, 219, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   width: 60%;
   border-radius: 2px;
+  border: 2px solid #E8E8E8;
 }
 
 .alpha-container .alpha-block .welcome-div .welcome-text {
-  color: white;
+  color: #4267b2;
   font-weight: bold;
   font-size: 1em;
   line-height: 80px;
@@ -9141,11 +9073,11 @@ input#hashtag {
 }
 
 .alpha-container .alpha-block .actions .alpha-key {
-  background: rgba(163, 7, 219, 0.9);
+  background: #4267b2;
   width: 205px;
   height: 200px;
   margin: 5px auto;
-  border: 2px solid #A307DB;
+  border: 2px solid #4267b2;
   border-radius: 50%;
   line-height: 200px !important;
   word-wrap: break-word;
@@ -9155,17 +9087,106 @@ input#hashtag {
 }
 
 .alpha-container .alpha-block .actions .register {
-  background: rgba(163, 7, 219, 0.9);
+  background: #4267b2;
   width: 205px;
   height: 200px;
   margin: 5px auto;
-  border: 2px solid #A307DB;
+  border: 2px solid #4267b2;
   border-radius: 50%;
   line-height: 200px !important;
   word-wrap: break-word;
   font-size: 30px;
   font-weight: bold;
   color: white;
+}
+
+#startVideo {
+  position: fixed;
+  z-index: -999;
+  left: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+
+#signin-submit-button,
+#signup-submit-button {
+  background: #4267b2;
+  border-color: #4267b2;
+  color: white;
+  outline: none;
+}
+
+.lang-label {
+  color: black;
+}
+
+.btn-lang {
+  margin: 3px;
+  font-weight: bold;
+  color: black;
+}
+
+.btn-lang:hover,
+.btn-lang:active,
+.btn-lang:active:focus,
+.btn-lang:focus {
+  background: white;
+  font-weight: bold;
+  color: black;
+}
+
+.btn-start {
+  padding: 8px;
+  margin: 5px;
+}
+
+.fa-start-heart {
+  font-size: 25px;
+  color: red;
+}
+
+.fa-start-coffee {
+  font-size: 25px;
+  color: #c68400;
+}
+
+.alert-password-incorrect {
+  margin: 5px;
+}
+
+.signin-container,
+.signup-container,
+.forgotpass-container {
+  margin-top: 0px !important;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 40%;
+  color: black;
+}
+
+.signin-container {
+  display: none;
+}
+
+.signup-container {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.author {
+  background: #294c93;
+  position: fixed;
+  width: 100%;
+  color: white;
+  text-align: center;
+  bottom: 0;
+  font-size: 0.9em;
 }
 
 .table-users {
@@ -9309,7 +9330,6 @@ input#hashtag {
   }
 
   .welcome-div .welcome-text {
-    line-height: 40px !important;
     font-size: 1em !important;
   }
 
@@ -9324,7 +9344,6 @@ input#hashtag {
   }
 
   .welcome-div .welcome-text {
-    line-height: 40px !important;
     font-size: 1em !important;
   }
 

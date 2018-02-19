@@ -31,7 +31,7 @@ return [
     'addchit' => 'Add Chit',
     'defaultgroup' => 'Default',
     'addgroup' => 'Add Group',
-    'startwelcome' => 'Follow, share, listen music <br /> with Friends',
+    'startwelcome' => 'Follow, Share, Listen music <br /> with friends',
     'login' => 'Log in',
     'signup' => 'Sign up',
     'search' => 'Search',

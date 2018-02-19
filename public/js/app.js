@@ -31831,7 +31831,7 @@ Api = {
         Api.setTitle();
         Api.timeout = 1;
         Api.ytimeout = 1;
-        Api.searchList = ['Top songs'];
+        Api.searchList = ['AC/DC', 'Nirvana', 'Metallica'];
     },
 
     boot: function boot() {

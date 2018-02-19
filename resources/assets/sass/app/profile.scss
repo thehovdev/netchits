@@ -1,3 +1,9 @@
+// variables
+
+$main_theme : #4267b2;
+$old_theme : #FF0000;
+
+
 a {
     text-decoration: none;
 }
@@ -88,7 +94,7 @@ input#hashtag {
     font-size: 1em;
     .item {
         padding: 5px;
-        background: #FF0000;
+        background: $main_theme;
     }
 }
 
@@ -117,10 +123,7 @@ input#hashtag {
     padding: 2px 10px;
     text-overflow: clip;
     overflow: hidden;
-    // background: #4BBB17;
-    background: #FF0000;
-    // background: #303030;
-    // border-top: 3px solid #00FF66;
+    background: $main_theme;
 }
 
 .chits-description-area-basic {
@@ -143,8 +146,7 @@ input#hashtag {
     top: 0px;
     left: 10px;
     font-size: 30px;
-    // color:rgba(255, 0, 0, 0.7);
-    color: #FF0000;
+    color: $main_theme;
 
 }
 
@@ -250,57 +252,6 @@ input#hashtag {
 
 
 
-
-
-
-
-
-// .sidebar {
-//     height: 100%;
-// }
-//
-//
-// .sidebar-parent {
-//     background: #d3d3d3;
-//     height: 101%;
-//     overflow: hidden;
-//     position: fixed;
-//     left: 0;
-//     width: 150px;
-//     // border: 2px solid #FF0000;
-//     border: 2px solid #F1F1F1;
-//     .sidebar-content {
-//         position: absolute;
-//         width: 100%;
-//         top: 80px;
-//
-//         .sidebar-list{
-//             .sidebar-item {
-//                 text-align: center;
-//                 border: none;
-//                 background: #FF0000;
-//                 // background: #4267B2;
-//                 padding: 10px 5px;
-//                 margin: 15px 5px;
-//                 border-radius:5px;
-//                 color: white;
-//                 font-weight: bold;
-//                 .sidebar-item-text{
-//                     // background: #FF0000;
-//                     // padding: 5px;
-//                     // border-radius:5px;
-//                     // color: white;
-//                     // width: 50px;
-//                 }
-//             }
-//         }
-//     }
-//
-//
-// }
-
-
-
 .navbar-netchits {
     // background: #E8E8E8;
     background: #E8E8E8;
@@ -384,7 +335,7 @@ input#hashtag {
 
     .second-navbar {
         margin-top:55px;
-        background: #FF0000;
+        background: $main_theme;
 
     }
 }
@@ -506,13 +457,11 @@ input#hashtag {
 .button-add-chits {
     font-size: 1.1em;
     font-weight: bold;
-    // background: #FF0000 !important;
-    // border-color: #FF0000 !important;
 }
 
 .button-add-chits-color {
-    background: #FF0000 !important;
-    border-color: #FF0000 !important;
+    background: $main_theme !important;
+    border-color: $main_theme !important;
 }
 
 .button-add-chits-search-color {
@@ -521,25 +470,25 @@ input#hashtag {
 }
 
 .btn-loveit, .btn-channel {
-    background: #FF0000;
+    background: $main_theme;
     color: white;
     font-weight: bold;
     outline:0;
     &:hover {
         color:white !important;
-        background: #FF0000 !important;
+        background: $main_theme !important;
         outline:0;
 
     }
     &:focus {
         color:white !important;
-        background: #FF0000 !important;
+        background: $main_theme !important;
         outline:0;
 
     }
     &:active {
         color:white !important;
-        background: #FF0000 !important;
+        background: $main_theme !important;
         outline:0;
     }
 }
