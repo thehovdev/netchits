@@ -32491,7 +32491,7 @@ Api = {
     },
 
     searchTimeout: function searchTimeout() {
-        $('.search-result-row').css('visibility', 'hidden');
+        $('.search-result-row').hide();
         $('.search-progress-bar').css('visibility', 'visible');
 
         Api.timeout = setTimeout(function () {
@@ -32526,7 +32526,7 @@ Api = {
                 $('.search-user-image').attr('src', image);
                 $('.search-user-href').attr('href', '/user/' + data.id);
                 $('.search-user-hashtag').text(data.hashtag);
-                $('.search-result-row').css('visibility', 'visible');
+                $('.search-result-row').show();
 
                 if (data.is_friends == 1) {
                     $('.search-follow-text').hide();

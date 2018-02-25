@@ -16,6 +16,11 @@ class UsersModel extends Model
         return $this->hasOne('App\Models\User\ChitsModel', 'userid');
     }
 
+    public function allchits()
+    {
+        return $this->hasMany('App\Models\User\ChitsModel', 'userid');
+    }
+
     public function groups()
     {
         return $this->hasMany('App\Models\User\ChitsGroupModel', 'user_id');
@@ -215,7 +220,7 @@ class UsersModel extends Model
 
     public function getRandomPeoples()
     {
-        $peoples = $this->inRandomOrder()->paginate(10);
+        $peoples = $this->inRandomOrder()->paginate(5);
         return $peoples;
     }
 

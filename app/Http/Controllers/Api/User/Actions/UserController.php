@@ -54,6 +54,7 @@ class UserController extends Controller
 
 
         return view('user.userprofileNoAuth')
+            ->with('sidebar', 'true')
             ->with('userprofile', $userprofile)
             ->with('userChits', $userChits)
             ->with('userGroups', $userGroups)

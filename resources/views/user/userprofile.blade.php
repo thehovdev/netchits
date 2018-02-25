@@ -9,26 +9,6 @@
 @else
     <input type="hidden" id="hiddentitle" value="Netchits {{ $userprofile->hashtag }} profile"></input>
 @endif
-<!--Second Navbar-->
-<div class="second-navbar-parent">
-    <nav class="navbar navbar-fixed-top second-navbar">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <!-- <li><a href="/">@lang('main.home')</a></li> -->
-                <li><a href="/user/follows/detail/{{ $user->id }}" class="pointer button-sidebar-show-friends">
-                    @lang('main.ifollow')
-                    <span class="follow-count">{{ $user->friends->count() }}</span>
-                </a></li>
-
-                <li><a href="/user/follows/detail/{{ $user->id }}" class="pointer button-sidebar-show-friends">
-                    @lang('main.followers')
-                    <span class="follow-count">{{ $user->followers->count() }}</span>
-                </a></li>
-                <li><a href="/" class="pointer" id="button-sidebar-show-chits">@lang('main.chits')</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
 
 <!--Progress Bar-->
 <div class="bar search-progress-bar" style="visibility:hidden;">
@@ -37,10 +17,10 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="margin-top100"></div>
+<div class="margin-top100"></div>
+<div class="col-sm-12">
     @if($user->permission != 'guest')
-    <div class="row search-result-row" style="visibility:hidden;">
+        <div class="row search-result-row" style="visibility:hidden;">
         <div class="col-sm-12 search-result-col">
             <div class="search-result-parent">
                 <a class="search-user-href" href="#">
@@ -59,9 +39,7 @@
             </div>
         </div>
     </div>
-
         <div class="row row-user-profile">
-
             <div class="col-sm-12 col-user-profile-image">
                 <div class="div-user-image">
                     <img src="/storage/user-profile-images/{{ $user->image_id }}" class="user-image img-circle btn-upload-img pointer" data-toggle="tooltip" title="@lang('main.updatephoto')"/>
@@ -75,11 +53,7 @@
                         <input type="submit" id="upload_submit" value="Send">
                         <input type="hidden" value="{{ csrf_token() }}" name="_token"   />
                     </form>
-                    {{--
-                    <button class="btn btn-default button-upload-profile-image">@lang('main.updatephoto')</button>
-                    --}}
                 </div>
-
                 <div class="div-user-info">
                     <div class="form-group">
                           <label for="hashtag" class="text-center block">#hashtag</label>
@@ -119,30 +93,27 @@
         </div>
     @elseif($user->permission == 'guest')
         <div class="row search-result-row" style="visibility:hidden;">
-    <div class="col-sm-12 search-result-col">
-        <div class="search-result-parent">
-            <a class="search-user-href" href="#">
-                <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
-            </a>
-         <button class="btn btn-primary button-add-friend" data-option="main">
-                <span class="search-follow-text">
-                    @lang('main.follow')
-                </span>
+            <div class="col-sm-12 search-result-col">
+                <div class="search-result-parent">
+                    <a class="search-user-href" href="#">
+                        <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
+                    </a>
+                     <button class="btn btn-primary button-add-friend" data-option="main">
+                            <span class="search-follow-text">
+                                @lang('main.follow')
+                            </span>
 
-                <span class="search-followed-text">
-                    @lang('main.followed')
-                </span>
-
-
-
-                <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
-        </button>
+                            <span class="search-followed-text">
+                                @lang('main.followed')
+                            </span>
 
 
 
+                            <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
         <div class="row row-user-profile">
             <div class="col-sm-12 col-user-profile-image">
                 <div class="div-user-image">

@@ -2,137 +2,97 @@
 
 @section('content')
 
-<style>
-    body {
-        /*background: #E8E8E8;*/
-        /*background: #c6e9f4;*/
-    }
-
-</style>
-
 <div class="parent">
 
     <section class="mainPage">
 
-        <!-- <video autoplay muted loop id="startVideo">
-          <source src="images/backgrounds/start.mov" type="video/mp4">
-        </video> -->
+        <div class="col-sm-12">
+            <div class="alpha-container">
+                <div class="alpha-block">
+                    <div class="brand-div">
+                        <h1><span class="brand-name">NetChits</span></h1>
+                    </div>
+                    <div class="welcome-div">
+                        <h1>
+                            <span class="welcome-text">
+                                @lang('main.startwelcome')
+                            </span>
+                        </h1>
+                        <div class="form-group text-center" style="margin-top:5px;">
+                            <label for="locale" class="text-center block lang-label">@lang('main.setlocale')</label>
+                            <a href="/user/setlocale/en" class="btn btn-default btn-lang">EN</a>
+                            <a href="/user/setlocale/ru" class="btn btn-default btn-lang">RU</a>
+                            <a href="/user/setlocale/az" class="btn btn-default btn-lang">AZ</a>
+                        </div>
+                    </div>
 
-
-        <!-- <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
-            <div class="container-fluid">
-
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">NetChits</a>
-                </div>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a id="signup-button" style="cursor:pointer;"><span class="glyphicon glyphicon-new-window"></span> Sign Up</a></li>
-                    <li><a id="signin-button" style="cursor:pointer;"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
-                </ul>
-
-            </div>
-        </nav> -->
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="alpha-container">
-
-                        <div class="alpha-block">
-                            <div class="brand-div">
-                                <h1><span class="brand-name">NetChits</span></h1>
-                            </div>
-                            <div class="welcome-div">
-                                <h1>
-                                    <span class="welcome-text">
-                                        @lang('main.startwelcome')
-                                    </span>
-                                </h1>
-
-                                <div class="form-group text-center" style="margin-top:5px;">
-                                    <label for="locale" class="text-center block lang-label">@lang('main.setlocale')</label>
-                                    <a href="/user/setlocale/en" class="btn btn-default btn-lang">EN</a>
-                                    <a href="/user/setlocale/ru" class="btn btn-default btn-lang">RU</a>
-                                    <a href="/user/setlocale/az" class="btn btn-default btn-lang">AZ</a>
-                                </div>
-
-                            </div>
-
-                            <div class="actions">
+                    <div class="actions">
+                        <div class="row">
+                            <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
                                 <div class="row">
-                                    <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2">
-                                                <div class="alpha-key pointer" id="signin-button">
-                                                    <span class="alpha-text">
-                                                        @lang('main.login')
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                                <div class="register pointer" id="signup-button">
-                                                    <span class="register-text">@lang('main.signup')</span>
-                                                </div>
-                                            </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2">
+                                        <div class="alpha-key pointer" id="signin-button">
+                                            <span class="alpha-text">
+                                                @lang('main.login')
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <div class="register pointer" id="signup-button">
+                                            <span class="register-text">@lang('main.signup')</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
 
-        <div class="container signin-container">
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control enter-handle" id="signin-email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control enter-handle" id="signin-password">
-                </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="signin-container">
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control enter-handle" id="signin-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control enter-handle" id="signin-password">
+                        </div>
 
-                <button type="submit" class="btn btn-default btn-start" id="signin-submit-button">Log In</button>
-                <button type="submit" class="btn btn-default btn-start back-submit-button">Back</button>
-                <button type="submit" class="btn btn-default btn-start" id="button-forgotpass">Forgot Password</button>
+                        <button type="submit" class="btn btn-default btn-start" id="signin-submit-button">Log In</button>
+                        <button type="submit" class="btn btn-default btn-start back-submit-button">Back</button>
+                        <button type="submit" class="btn btn-default btn-start" id="button-forgotpass">Forgot Password</button>
 
-                <div class="alert alert-danger alert-password-incorrect" style="display:none;">
-                  <strong>Password is incorrect..
-                </div>
+                        <div class="alert alert-danger alert-password-incorrect" style="display:none;">
+                            <strong>Password is incorrect..
+                            </div>
+                        </div>
+                    <div class="signup-container">
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control enter-handle" id="signup-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-hashtag">#hashtag:</label>
+                            <input type="text" class="form-control enter-handle" id="signup-hashtag">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control enter-handle" id="signup-password">
+                        </div>
+                        <div class="checkbox" style="font-family:arial;font-size:0.9em;">
+                            <label><input id="age" type="checkbox" value="">@lang('main.iam14')</label>
+                        </div>
 
+                        <div class="alert alert-danger alert-signup-error" style="display:none;">
+                        </div>
 
-        </div>
-
-        <div class="container signup-container">
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control enter-handle" id="signup-email">
-                </div>
-                <div class="form-group">
-                    <label for="signup-hashtag">#hashtag:</label>
-                    <input type="text" class="form-control enter-handle" id="signup-hashtag">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control enter-handle" id="signup-password">
-                </div>
-                <div class="checkbox" style="font-family:arial;font-size:0.9em;">
-                  <label><input id="age" type="checkbox" value="">@lang('main.iam14')</label>
-                </div>
-
-                <div class="alert alert-danger alert-signup-error" style="display:none;">
-                </div>
-
-                <button type="submit" class="btn btn-default btn-start" id="signup-submit-button">Sign Up</button>
-                <button type="submit" class="btn btn-default btn-start back-submit-button">Back</button>
-        </div>
-
-        <div class="container forgotpass-container" style="display:none;">
+                        <button type="submit" class="btn btn-default btn-start" id="signup-submit-button">Sign Up</button>
+                        <button type="submit" class="btn btn-default btn-start back-submit-button">Back</button>
+                    </div>
+                    <div class="forgotpass-container" style="display:none;">
                 <div class="form-group form-sendcode">
                     <label for="email">Email address:</label>
                     <input type="email" class="form-control" id="forgotpass-email">
@@ -160,34 +120,28 @@
                 <button style="display:none;" type="submit" class="btn btn-default" id="button-resetpass">Reset Pass</button>
 
                 <div class="alert alert-success resetpass-success" style="display:none;margin-top:10px;">
-                  <strong>Success!</strong> Password Changed, Login to your Account
+                    <strong>Success!</strong> Password Changed, Login to your Account
                 </div>
 
                 <div class="alert alert-danger resetpass-error" style="display:none;margin-top:10px;">
-                  <strong>Success!</strong> Password Changed, Login to your Account
+                    <strong>Success!</strong> Password Changed, Login to your Account
                 </div>
 
-        </div>
+            </div>
+                </div>
+            </div>
 
-        <div style="display:block;height:100px;">
-
-        </div>
-
-
-        <div class="author">
-            &copy;NetChits |
-            CEO & Founder - <a style="color:white;" href="https://www.facebook.com/thehovdev">Afgan Khalilov</a>
-            <!-- CEO / Founder Afgan Khalilov <br> -->
-            <!-- Created with <i class="fa fa-coffee fa-start-coffee"></i> by Afgan Khalilov -->
-
+            <div style="display:block;height:100px;"></div>
 
         </div>
 
     </section>
 
-</div>
-
-
-
+    </div>
 
 @endsection
+
+<div class="author">
+    &copy;NetChits |
+    CEO & Founder - <a style="color:white;" href="https://www.facebook.com/thehovdev">Afgan Khalilov</a>
+</div>

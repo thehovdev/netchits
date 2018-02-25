@@ -29,8 +29,14 @@ class StartController extends Controller
 
         // SECTION : Logics
         if(is_null($user)) {
-            return view("layouts.start");
+            $sidebar = 'false';
+
+            return view("layouts.start")
+                ->with('user', $user)
+                ->with('sidebar', $sidebar);
         } else {
+
+
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);
             $friends = $user->friends->take(5);

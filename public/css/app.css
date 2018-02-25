@@ -8408,7 +8408,7 @@ input#hashtag {
 
 .search-progress-bar {
   position: fixed;
-  top: 87px;
+  top: 60px;
   left: 0px;
   width: 100%;
   z-index: 9999;
@@ -8651,6 +8651,10 @@ input#hashtag {
 
 .margin-top80 {
   margin-top: 80px;
+}
+
+.margin-top60 {
+  margin-top: 60px;
 }
 
 .margin-top100 {
@@ -8978,7 +8982,9 @@ input#hashtag {
 }
 
 .search-item {
-  margin-top: 5px;
+  display: inline-block;
+  min-width: 170px;
+  margin: 10px;
   padding: 0px;
 }
 
@@ -8990,8 +8996,8 @@ input#hashtag {
 }
 
 .search-item-img {
-  width: 150px;
-  height: 100px;
+  width: 170px;
+  height: 110px;
 }
 
 .row-people-list {
@@ -9029,6 +9035,12 @@ input#hashtag {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100px;
+}
+
+.chits-count {
+  padding: 2px;
+  font-size: 1em;
+  font-family: arial;
 }
 
 .follow-count {
@@ -9164,10 +9176,9 @@ input#hashtag {
 .signin-container,
 .signup-container,
 .forgotpass-container {
-  margin-top: 0px !important;
-  margin-bottom: 10px;
+  margin-bottom: 10px auto;
   padding: 10px;
-  width: 40%;
+  width: 100%;
   color: black;
 }
 
@@ -9191,6 +9202,7 @@ input#hashtag {
   text-align: center;
   bottom: 0;
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 .table-users {
@@ -9354,5 +9366,107 @@ input#hashtag {
   .actions {
     margin-top: 20px !important;
   }
+}
+
+.user-sidebar-image {
+  margin: 5px;
+}
+
+.user-sidebar-image .user-image {
+  width: 50px;
+  height: 50px;
+}
+
+.user-sidebar-parent {
+  position: fixed;
+  top: 80px;
+  left: 10px;
+  width: 200px;
+}
+
+.user-sidebar-parent .nav-user-sidebar {
+  font-weight: bold;
+  width: 100%;
+  border-right: 1px solid #ddd;
+}
+
+.user-sidebar-parent .nav-user-sidebar a {
+  color: #4267b2;
+  -webkit-transition: all 0.08s linear;
+  transition: all 0.08s linear;
+}
+
+.user-sidebar-parent .nav-user-sidebar .text-overflow a,
+.user-sidebar-parent .nav-user-sidebar .text-overflow .media-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-sidebar-parent .nav-user-sidebar-active {
+  background: #e8e8e8 !important;
+}
+
+.user-sidebar-parent .nav-user-sidebar-active a {
+  color: #4267b2;
+}
+
+.user-sidebar-parent .nav-user-sidebar-active a:hover,
+.user-sidebar-parent .nav-user-sidebar-active a:active,
+.user-sidebar-parent .nav-user-sidebar-active a:active:focus,
+.user-sidebar-parent .nav-user-sidebar-active a:focus {
+  color: #4267b2;
+  background: #e8e8e8 !important;
+}
+
+.bot-sidebar-image {
+  margin: 5px;
+}
+
+.bot-sidebar-image .user-image {
+  width: 50px;
+  height: 50px;
+}
+
+.bot-sidebar-parent {
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  width: 200px;
+}
+
+.bot-sidebar-parent .nav-bot-sidebar {
+  font-weight: bold;
+  width: 100%;
+  border-left: 1px solid #ddd;
+}
+
+.bot-sidebar-parent .nav-bot-sidebar a {
+  color: #4267b2;
+  -webkit-transition: all 0.08s linear;
+  transition: all 0.08s linear;
+}
+
+.bot-sidebar-parent .nav-bot-sidebar .text-overflow a,
+.bot-sidebar-parent .nav-bot-sidebar .text-overflow .media-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bot-sidebar-parent .nav-bot-sidebar-active {
+  background: #e8e8e8 !important;
+}
+
+.bot-sidebar-parent .nav-bot-sidebar-active a {
+  color: #4267b2;
+}
+
+.bot-sidebar-parent .nav-bot-sidebar-active a:hover,
+.bot-sidebar-parent .nav-bot-sidebar-active a:active,
+.bot-sidebar-parent .nav-bot-sidebar-active a:active:focus,
+.bot-sidebar-parent .nav-bot-sidebar-active a:focus {
+  color: #4267b2;
+  background: #e8e8e8 !important;
 }
 

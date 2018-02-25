@@ -62,19 +62,13 @@ input#hashtag {
 
 
 .search-progress-bar {
-
     position: fixed;
-    top:87px;
+    top:60px;
     left:0px;
     width: 100%;
     z-index:9999;
 
-    // position: relative;
-    // width: 100%;
-    // margin: auto;
-
     .progress {
-        // margin-bottom: 5px;
         height: 10px;
     }
 
@@ -388,6 +382,10 @@ input#hashtag {
 
 .margin-top80 {
     margin-top:80px;
+}
+
+.margin-top60 {
+    margin-top: 60px;
 }
 
 .margin-top100 {
@@ -729,7 +727,9 @@ input#hashtag {
 }
 
 .search-item {
-    margin-top: 5px;
+    display: inline-block;
+    min-width: 170px;
+    margin: 10px;
     padding: 0px;
     // margin-left: 10px;
     // margin-right: 10px;
@@ -745,8 +745,8 @@ input#hashtag {
   }
 
   .search-item-img {
-      width: 150px;
-      height: 100px;
+      width: 170px;
+      height: 110px;
   }
 
 
@@ -785,6 +785,12 @@ input#hashtag {
 
         }
     }
+}
+
+.chits-count {
+    padding: 2px;
+    font-size: 1em;
+    font-family: arial;
 }
 
 .follow-count {
