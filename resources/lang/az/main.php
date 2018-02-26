@@ -33,7 +33,7 @@ return [
     'addgroup' => 'Yeni Grup',
     'startwelcome' => 'İzlə, Paylaş, Musiqi dinlə <br /> dostların ilə',
     'login' => 'Daxil Ol',
-    'signup' => 'Geydiyyat',
+    'signup' => 'Profili yaradmaq',
     'search' => 'Axtarış',
     'cookie' => 'Bu programı istifadə etdikdə, siz cookie istifadə etmeyinə razılıq verirsiniz',
     'peoples' => 'Adamlar',

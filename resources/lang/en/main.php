@@ -33,7 +33,7 @@ return [
     'addgroup' => 'Add Group',
     'startwelcome' => 'Follow, Share, Listen music <br /> with friends',
     'login' => 'Log in',
-    'signup' => 'Sign up',
+    'signup' => 'Create Account',
     'search' => 'Search',
     'cookie' => 'Using this application, you agree to store cookies in your browser',
     'peoples' => 'Peoples',

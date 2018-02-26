@@ -8636,14 +8636,6 @@ input#hashtag {
   background: #4267b2;
 }
 
-.signin-container {
-  margin-top: 80px;
-}
-
-.signup-container {
-  margin-top: 80px;
-}
-
 .chits-list {
   text-align: center;
   height: auto;
@@ -9182,12 +9174,29 @@ input#hashtag {
   color: black;
 }
 
-.signin-container {
-  display: none;
+.signin-container h1 {
+  margin-top: 5px !important;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-.signup-container {
-  display: none;
+.signin-container input {
+  height: 30px;
+}
+
+.signin-container button {
+  padding: 5px 15px !important;
+  margin-left: 0px !important;
+  margin-right: 5px !important;
+}
+
+.signup-container h1 {
+  font-weight: bold;
+  margin-top: 10px !important;
+}
+
+.signup-container button {
+  margin-left: 0px !important;
 }
 
 .pointer {
@@ -9203,6 +9212,7 @@ input#hashtag {
   bottom: 0;
   font-size: 0.9em;
   font-weight: bold;
+  z-index: 9999;
 }
 
 .table-users {
