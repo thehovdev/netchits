@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Api\User\Chits;
+namespace NetChits\Http\Controllers\Api\User\Chits;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use NetChits\Http\Controllers\Controller;
 
 //-------------------App Controllers---------------------//
-use App\Http\Controllers\Api\Data\DataController;
+use NetChits\Http\Controllers\Api\Data\DataController;
 //-------------------App Controllers---------------------//
 
 //-------------------App Models---------------------//
-use App\Models\Auth\UsersModel;
-use App\Models\User\ChitsModel;
+use NetChits\Models\Auth\UsersModel;
+use NetChits\Models\User\ChitsModel;
 //-------------------App Models---------------------//
 
 class ShowChitsController extends Controller

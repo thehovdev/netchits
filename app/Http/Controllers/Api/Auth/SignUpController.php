@@ -1,18 +1,18 @@
 <?php
 
 //----------------Laravel--------------------//
-namespace App\Http\Controllers\Api\Auth;
+namespace NetChits\Http\Controllers\Api\Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use NetChits\Http\Controllers\Controller;
 //----------------Laravel--------------------//
 
 //-------------------App Controllers---------------------//
-use App\Http\Controllers\Api\Data\DataController;
+use NetChits\Http\Controllers\Api\Data\DataController;
 //-------------------App Controllers---------------------//
 
 
 //-------------------App Models---------------------//
-use App\Models\Auth\UsersModel;
+use NetChits\Models\Auth\UsersModel;
 //-------------------App Models---------------------//
 
 

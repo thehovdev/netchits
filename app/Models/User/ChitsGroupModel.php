@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\User;
+namespace NetChits\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class ChitsGroupModel extends Model
 
     public function chits()
     {
-        return $this->hasMany('App\Models\User\ChitsModel', 'group_id');
+        return $this->hasMany('NetChits\Models\User\ChitsModel', 'group_id');
     }
 
 

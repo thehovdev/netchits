@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Lib;
+namespace NetChits\Http\Lib;
 
 class OpenGraph implements \Iterator
 {

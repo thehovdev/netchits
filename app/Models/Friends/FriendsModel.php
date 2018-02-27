@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Friends;
+namespace NetChits\Models\Friends;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,12 +13,12 @@ class FriendsModel extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Auth\UsersModel', 'friend_id');
+        return $this->belongsTo('NetChits\Models\Auth\UsersModel', 'friend_id');
     }
 
     public function follower()
     {
-        return $this->belongsTo('App\Models\Auth\UsersModel', 'user_id');
+        return $this->belongsTo('NetChits\Models\Auth\UsersModel', 'user_id');
     }
 
 

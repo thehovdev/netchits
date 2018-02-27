@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'NetChits'),
+    'name' => 'NetChits',
+
+    // 'name' => env('APP_NAME', 'NetChits'),
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +81,7 @@ return [
     */
 
     'locale' => 'en',
-    'locales' => ['ru', 'en', 'az'],      # Указываем, какие языки будем использовать в приложении. 
+    'locales' => ['ru', 'en', 'az'],      # Указываем, какие языки будем использовать в приложении.
 
     /*
     |--------------------------------------------------------------------------
@@ -172,11 +174,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        NetChits\Providers\AppServiceProvider::class,
+        NetChits\Providers\AuthServiceProvider::class,
+        // NetChits\Providers\BroadcastServiceProvider::class,
+        NetChits\Providers\EventServiceProvider::class,
+        NetChits\Providers\RouteServiceProvider::class,
 
     ],
 

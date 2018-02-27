@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Auth;
+namespace NetChits\Models\Auth;
 
 use Illuminate\Database\Eloquent\Model;
 

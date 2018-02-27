@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace NetChits\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
