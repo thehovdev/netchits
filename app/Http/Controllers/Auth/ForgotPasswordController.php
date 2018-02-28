@@ -1,8 +1,8 @@
 <?php
 
-namespace NetChits\Http\Controllers\Auth;
+namespace app\Http\Controllers\Auth;
 
-use NetChits\Http\Controllers\Controller;
+use app\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

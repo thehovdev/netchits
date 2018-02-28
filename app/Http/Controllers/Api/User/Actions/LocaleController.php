@@ -1,9 +1,9 @@
 <?php
 
-namespace NetChits\Http\Controllers\Api\User\Actions;
+namespace app\Http\Controllers\Api\User\Actions;
 
 use Illuminate\Http\Request;
-use NetChits\Http\Controllers\Controller;
+use app\Http\Controllers\Controller;
 
 use Closure;
 use App;

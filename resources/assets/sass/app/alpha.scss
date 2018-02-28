@@ -7,17 +7,21 @@
     font-size: 30px;
     font-weight: bold;
     margin-top: 20px;
-    color:black;
+    color:#383838;
 }
 
 .bname {
     margin-top: 40px;
     max-width: 220px;
-    color: black;
+    color: #4267b2;
     font-weight: bold;
     font-size: 3em;
-    border-bottom: 3px solid #FF0000;
+    border-bottom: 3px solid #4267b2;
     padding: 0 20px;
+    &:hover {
+        color: #4267b2;
+
+    }
 }
 
 .vcenter {
@@ -32,7 +36,7 @@
         height: 50px;
         margin-top: 20px;
         .todo-description {
-            color:black;
+            color:#383838;
             margin: 0 10px;
             font-size: 25px;
             font-weight: bold;
@@ -146,11 +150,23 @@
 
 /* Add some content at the bottom of the video/page */
 
-#signin-submit-button, #signup-submit-button {
+#signin-submit-button {
     background: #4267b2;
     border-color: #4267b2;
     color: white;
+    font-weight: bold;
+    font-size: 1em;
     outline: none;
+}
+
+#signup-submit-button {
+    background: #5e9944;
+    border-color: #5e9944;
+    color: white;
+    font-weight: 800;
+    font-size: 1.3em;
+    outline: none;
+    padding: 5px 20px;
 }
 
 .lang-label {

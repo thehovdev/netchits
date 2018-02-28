@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => NetChits\User::class,
+        'model' => app\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

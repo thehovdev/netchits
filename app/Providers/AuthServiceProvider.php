@@ -1,6 +1,6 @@
 <?php
 
-namespace NetChits\Providers;
+namespace app\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'NetChits\Model' => 'NetChits\Policies\ModelPolicy',
+        'app\Model' => 'app\Policies\ModelPolicy',
     ];
 
     /**

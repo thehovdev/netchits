@@ -1,9 +1,9 @@
 <?php
 
-namespace NetChits\Http\Controllers\Api\Data;
+namespace app\Http\Controllers\Api\Data;
 
 use Illuminate\Http\Request;
-use NetChits\Http\Controllers\Controller;
+use app\Http\Controllers\Controller;
 
 class DataController extends Controller
 {

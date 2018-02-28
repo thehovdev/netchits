@@ -1,6 +1,6 @@
 <?php
 
-namespace NetChits\Providers;
+namespace app\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'NetChits\Events\Event' => [
-            'NetChits\Listeners\EventListener',
+        'app\Events\Event' => [
+            'app\Listeners\EventListener',
         ],
     ];
 

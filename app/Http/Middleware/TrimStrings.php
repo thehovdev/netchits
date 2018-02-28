@@ -1,6 +1,6 @@
 <?php
 
-namespace NetChits\Http\Middleware;
+namespace app\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
 

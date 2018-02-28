@@ -174,11 +174,11 @@ return [
         /*
          * Application Service Providers...
          */
-        NetChits\Providers\AppServiceProvider::class,
-        NetChits\Providers\AuthServiceProvider::class,
-        // NetChits\Providers\BroadcastServiceProvider::class,
-        NetChits\Providers\EventServiceProvider::class,
-        NetChits\Providers\RouteServiceProvider::class,
+        app\Providers\AppServiceProvider::class,
+        app\Providers\AuthServiceProvider::class,
+        // app\Providers\BroadcastServiceProvider::class,
+        app\Providers\EventServiceProvider::class,
+        app\Providers\RouteServiceProvider::class,
 
     ],
 

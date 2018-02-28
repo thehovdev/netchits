@@ -12,7 +12,10 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="bname">{{ config('app.name') }}</div>
+                        <a href="/" class="bname">
+                            {{ config('app.name') }}
+                        </a>
+
                     <div class="description">Follow, Share, Listen with friends</div>
                     <div class="todo-list">
                         <div class="todo-item vcenter">
@@ -50,29 +53,6 @@
                             <strong>Password is incorrect..
                             </div>
                         </div>
-                    <div class="signup-container">
-                        <h1>Sign Up</h1>
-                        <div class="form-group">
-                            <input type="email" class="form-control enter-handle" id="signup-email" placeholder="e-mail">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control enter-handle" id="signup-hashtag" placeholder="#username">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control enter-handle" id="signup-password" placeholder="password">
-                        </div>
-                        <div class="checkbox" style="font-family:arial;font-size:0.9em;">
-                            <label><input id="age" type="checkbox" value="">@lang('main.iam14')</label>
-                        </div>
-                        <div class="alert alert-danger alert-signup-error" style="display:none;">
-                        </div>
-                        <button type="submit" class="btn btn-default btn-start" id="signup-submit-button">@lang('main.signup')</button>
-                    </div>
-
-                </div>
-
-
-
                     <div class="forgotpass-container" style="display:none;">
                         <div class="form-group form-sendcode">
                             <label for="email">Email address:</label>
@@ -108,6 +88,29 @@
                         </div>
 
                     </div>
+                    <div class="signup-container">
+                        <h1>Sign Up</h1>
+                        <div class="form-group">
+                            <input type="email" class="form-control enter-handle" id="signup-email" placeholder="e-mail">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control enter-handle" id="signup-hashtag" placeholder="#username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control enter-handle" id="signup-password" placeholder="password">
+                        </div>
+                        <div class="checkbox" style="font-family:arial;font-size:0.9em;">
+                            <label><input id="age" type="checkbox" value="">@lang('main.iam14')</label>
+                        </div>
+                        <div class="alert alert-danger alert-signup-error" style="display:none;">
+                        </div>
+                        <button type="submit" class="btn btn-default btn-start" id="signup-submit-button">@lang('main.signup')</button>
+                    </div>
+                </div>
+
+
+
+
             </div>
 
         </div>

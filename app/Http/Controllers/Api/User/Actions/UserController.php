@@ -1,20 +1,20 @@
 <?php
 
-namespace NetChits\Http\Controllers\Api\User\Actions;
+namespace app\Http\Controllers\Api\User\Actions;
 
 use Illuminate\Http\Request;
-use NetChits\Http\Controllers\Controller;
+use app\Http\Controllers\Controller;
 
 
 //-------------------App Controllers---------------------//
-use NetChits\Http\Controllers\Api\Data\DataController;
+use app\Http\Controllers\Api\Data\DataController;
 //-------------------App Controllers---------------------//
 
 //-------------------App Models---------------------//
-use NetChits\Models\Auth\UsersModel;
-use NetChits\Models\Friends\FriendsModel;
-use NetChits\Models\User\ChitsModel;
-use NetChits\Models\User\ChitsGroupModel;
+use app\Models\Auth\UsersModel;
+use app\Models\Friends\FriendsModel;
+use app\Models\User\ChitsModel;
+use app\Models\User\ChitsGroupModel;
 
 class UserController extends Controller
 {

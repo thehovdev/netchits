@@ -1,10 +1,10 @@
 <?php
 
-namespace NetChits\Http\Controllers\SuperUser;
+namespace app\Http\Controllers\SuperUser;
 
 use Illuminate\Http\Request;
-use NetChits\Http\Controllers\Controller;
-use NetChits\Models\Auth\UsersModel;
+use app\Http\Controllers\Controller;
+use app\Models\Auth\UsersModel;
 
 class SuperUserController extends Controller
 {

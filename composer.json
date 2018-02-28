@@ -24,7 +24,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "NetChits\\": "app/"
+            "app\\": "app/"
         }
     },
     "autoload-dev": {

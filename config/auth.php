@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => NetChits\User::class,
+            'model' => app\User::class,
         ],
 
         // 'users' => [

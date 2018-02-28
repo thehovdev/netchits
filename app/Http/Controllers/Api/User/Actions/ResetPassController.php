@@ -1,11 +1,11 @@
 <?php
 
-namespace NetChits\Http\Controllers\Api\User\Actions;
+namespace app\Http\Controllers\Api\User\Actions;
 
 use Illuminate\Http\Request;
-use NetChits\Http\Controllers\Controller;
-use NetChits\Models\Auth\UsersModel;
-use NetChits\Models\Auth\ResetPassModel;
+use app\Http\Controllers\Controller;
+use app\Models\Auth\UsersModel;
+use app\Models\Auth\ResetPassModel;
 
 class ResetPassController extends Controller
 {

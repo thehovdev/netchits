@@ -1,15 +1,15 @@
 <?php
 
-namespace NetChits\Http\Controllers\Api\User\Chits;
+namespace app\Http\Controllers\Api\User\Chits;
 
 use Illuminate\Http\Request;
-use NetChits\Http\Controllers\Controller;
+use app\Http\Controllers\Controller;
 
 
 //-------------------App Models---------------------//
-use NetChits\Models\Auth\UsersModel;
-use NetChits\Models\User\ChitsModel;
-use NetChits\Models\User\ChitsGroupModel;
+use app\Models\Auth\UsersModel;
+use app\Models\User\ChitsModel;
+use app\Models\User\ChitsGroupModel;
 //-------------------App Models---------------------//
 
 class GroupController extends Controller

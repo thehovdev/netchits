@@ -1,6 +1,6 @@
 <?php
 
-namespace NetChits\Models\Auth;
+namespace app\Models\Auth;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,27 +13,27 @@ class UsersModel extends Model
 
     public function chits()
     {
-        return $this->hasOne('NetChits\Models\User\ChitsModel', 'userid');
+        return $this->hasOne('app\Models\User\ChitsModel', 'userid');
     }
 
     public function allchits()
     {
-        return $this->hasMany('NetChits\Models\User\ChitsModel', 'userid');
+        return $this->hasMany('app\Models\User\ChitsModel', 'userid');
     }
 
     public function groups()
     {
-        return $this->hasMany('NetChits\Models\User\ChitsGroupModel', 'user_id');
+        return $this->hasMany('app\Models\User\ChitsGroupModel', 'user_id');
     }
 
     public function friends()
     {
-        return $this->hasMany('NetChits\Models\Friends\FriendsModel', 'user_id');
+        return $this->hasMany('app\Models\Friends\FriendsModel', 'user_id');
     }
 
     public function followers()
     {
-        return $this->hasMany('NetChits\Models\Friends\FriendsModel', 'friend_id');
+        return $this->hasMany('app\Models\Friends\FriendsModel', 'friend_id');
     }
 
     // public function setDefaultGroup($id)

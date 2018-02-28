@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(NetChits\User::class, function (Faker $faker) {
+$factory->define(app\User::class, function (Faker $faker) {
     static $password;
 
     return [

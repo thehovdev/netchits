@@ -1,10 +1,10 @@
 <?php
 
-namespace NetChits\Models\User;
+namespace app\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
-use NetChits\Http\Lib\OpenGraph;
-use NetChits\Http\Controllers\Api\Data\DataController;
+use app\Http\Lib\OpenGraph;
+use app\Http\Controllers\Api\Data\DataController;
 
 
 class ChitsModel extends Model
@@ -16,16 +16,16 @@ class ChitsModel extends Model
 
     public function user()
     {
-        return $this->belongsTo('NetChits\Models\Auth\UsersModel', 'userid');
+        return $this->belongsTo('app\Models\Auth\UsersModel', 'userid');
     }
 
     public function group()
     {
-        return $this->hasOne('NetChits\Models\User\ChitsGroupModel', 'id', 'group_id');
+        return $this->hasOne('app\Models\User\ChitsGroupModel', 'id', 'group_id');
     }
 
     // public function userMany() {
-    //     return $this->belongsToMany('NetChits\Models\Auth\UsersModel', 'chits_group', 'user_id', 'id');
+    //     return $this->belongsToMany('app\Models\Auth\UsersModel', 'chits_group', 'user_id', 'id');
     // }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace NetChits\Http;
+namespace app\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -17,10 +17,10 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \NetChits\Http\Middleware\TrimStrings::class,
+        \app\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \NetChits\Http\Middleware\TrustProxies::class,
-        \NetChits\Http\Middleware\Locale::class,
+        \app\Http\Middleware\TrustProxies::class,
+        \app\Http\Middleware\Locale::class,
 
     ];
 
@@ -31,12 +31,12 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \NetChits\Http\Middleware\EncryptCookies::class,
+            \app\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \NetChits\Http\Middleware\VerifyCsrfToken::class,
+            \app\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -58,7 +58,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \NetChits\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \app\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }

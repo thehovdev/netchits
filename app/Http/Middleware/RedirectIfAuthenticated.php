@@ -1,6 +1,6 @@
 <?php
 
-namespace NetChits\Http\Middleware;
+namespace app\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
