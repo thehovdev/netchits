@@ -209,7 +209,7 @@
                             '</div>' +
                             '<div class="search-item-actions">' +
                             '<button class="btn btn-default btn-loveit">' +
-                            '<i class="fa fa-heart fa-love"></i>ilove' +
+                            '<i class="fa fa-plus-square fa-love"></i>Add' +
                             '</button>' +
                             '</div>' +
                             '</div>' +
