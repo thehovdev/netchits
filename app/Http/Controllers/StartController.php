@@ -43,6 +43,7 @@ class StartController extends Controller
             $followers = $user->followers->take(5);
             $peoples = $usersModel->getRandomPeoples();
 
+
             return view("user.profile")
                 ->with("user", @$user)
                 ->with("peoples", @$peoples)

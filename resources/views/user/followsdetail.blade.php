@@ -13,9 +13,9 @@
 </div>
 
 
-<div class="margin-top100"></div>
+<div class="margin-top80"></div>
 
-<div class="row search-result-row" style="visibility:hidden;">
+<div class="row search-result-row" style="display:none;">
     <div class="col-sm-12 search-result-col">
         <div class="search-result-parent">
             <a class="search-user-href" href="#">

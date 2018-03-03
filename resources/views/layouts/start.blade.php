@@ -118,10 +118,8 @@
     </section>
 
     </div>
-
 @endsection
 
 <div class="author">
-    &copy;NetChits |
-    CEO & Founder - <a style="color:white;" href="https://www.facebook.com/thehovdev">Afgan Khalilov</a>
+    &copy;NetChits @php echo date("Y"); @endphp
 </div>

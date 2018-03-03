@@ -31,12 +31,14 @@ class UserController extends Controller
         $userprofile = $usersModel->find($id);
         $friends = $userprofile->friends; // laravel relations (отношения)
         $followers = $userprofile->followers; // laravel relations
+        $peoples = $usersModel->getRandomPeoples();
 
         return view('user.followsdetail')
             ->with('user', $user)
             ->with('userprofile', $userprofile)
             ->with('friends', $friends)
-            ->with('followers', $followers);
+            ->with('followers', $followers)
+            ->with('peoples', $peoples);
     }
 
     public function showUserNoAuth($id) {
@@ -83,6 +85,10 @@ class UserController extends Controller
         $user = $usersModel->getUser();
         // пользователь профиль которого просматриваем
         $userprofile = $usersModel->find($id);
+        $peoples = $usersModel->getRandomPeoples();
+
+
+
         if(is_null($userprofile)) {
             return back();
         }
@@ -95,6 +101,7 @@ class UserController extends Controller
             $userGroups = $chitsGroupModel->getUserGroups($userprofile);
             $friends = $userprofile->friends->take(5);
             $followers = $userprofile->followers->take(5); // laravel relations
+            $peoples = $usersModel->getRandomPeoples();
 
 
             return view('user.userprofileNoAuth')
@@ -102,7 +109,8 @@ class UserController extends Controller
                 ->with('userChits', $userChits)
                 ->with('userGroups', $userGroups)
                 ->with('friends', $friends)
-                ->with('followers', $followers);
+                ->with('followers', $followers)
+                ->with('peoples', $peoples);
 
         }
 
@@ -124,8 +132,11 @@ class UserController extends Controller
             return view('user.userprofile')
                 ->with('user', $user)
                 ->with('friends', $friends)
-                ->with('followers', $followers);
+                ->with('followers', $followers)
+                ->with('peoples', $peoples);
         }
+
+
         elseif($userprofile->id != $user->id) {
             $user->permission = 'guest';
             $userChits = $chitsModel->getUserChits($userprofile);
@@ -146,7 +157,8 @@ class UserController extends Controller
                 ->with('userChits', $userChits)
                 ->with('userGroups', $userGroups)
                 ->with('friends', $friends)
-                ->with('followers', $followers);
+                ->with('followers', $followers)
+                ->with('peoples', $peoples);
         }
 
     }

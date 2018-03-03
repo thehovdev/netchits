@@ -32542,6 +32542,7 @@ Api = {
                     $('.button-is-friends').prop('disabled', false);
                 }
 
+                Api.playerMoove();
                 // location.reload();
             }
         });

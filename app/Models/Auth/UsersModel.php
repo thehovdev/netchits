@@ -220,7 +220,7 @@ class UsersModel extends Model
 
     public function getRandomPeoples()
     {
-        $peoples = $this->inRandomOrder()->paginate(5);
+        $peoples = $this->inRandomOrder()->paginate(10);
         return $peoples;
     }
 

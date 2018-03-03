@@ -771,6 +771,7 @@ Api = {
 
                 }
 
+                Api.playerMoove();
                 // location.reload();
             }
         });

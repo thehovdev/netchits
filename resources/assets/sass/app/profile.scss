@@ -264,19 +264,15 @@ input#hashtag {
 }
 
 .navbar-default .navbar-brand {
-    color: black;
+    color: #4267b2;
     font-weight: bold;
+    font-size: 1.5em;
 
-    border-bottom: 2px solid red;
-    margin-left: 5px !important;
-    margin-right: 10px !important;
-    padding-bottom: 2px !important;
+    // border-bottom: 2px solid red;
     height: 40px;
 
-
-
-    &:hover {
-        color: black;
+    &:hover, &:active, &:active:focus, &:focus {
+        color: #4267b2;
     }
 }
 
@@ -772,4 +768,14 @@ input#hashtag {
 .follow-count {
     padding: 2px;
     font-size: 1em;
+}
+
+.user-sidebar-hashtag {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+    vertical-align: middle;
+
 }

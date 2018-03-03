@@ -22,7 +22,7 @@
             <div class="col-sm-12">
 
                 <!-- Margin TOP FROM FIXED NAVBAR -->
-                <div class="margin-top60"></div>
+                <div class="margin-top80"></div>
 
                 @if($user->status == 0)
                     <div class="row account-confirm-row">
@@ -90,13 +90,13 @@
                 </div>
 
                 <!-- people-list -->
-                <div class="row row-people-list">
+                <!-- <div class="row row-people-list">
                     <div class="col-sm-12">
                         <div class="people-list">
                             @include('layouts.includes.people-list')
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- add chits / group forms -->
                 <div class="row chits-add-row">

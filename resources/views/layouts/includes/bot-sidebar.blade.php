@@ -3,24 +3,24 @@
             <nav class="nav-bot-sidebar">
                 <ul class="nav">
                     <li>
-                        <a href="/">@Marty</a>
-                    </li>
-                    <li class="nav-divider"></li>
-                    <li>
-                        <a href="/">Action1</a>
-                    </li>
-                    <li>
-                        <a href="/">Action2</a>
-                    </li>
-                    <li>
-                        <a href="/">Action3</a>
-                    </li>
-                    <li class="nav-divider"></li>
-                    <li>
-                        <a href="/">Notifications</a>
+                        <a class="pointer">Peoples</a>
                     </li>
                     <li class="nav-divider"></li>
 
+                    @if(isset($peoples) && !is_null(@$peoples))
+                        @foreach($peoples as $people)
+                        <li>
+                            <a href="/user/{{ $people->id }}" target="_blank">
+                                @if(!is_null($people->image_id))
+                                <img src="/storage/user-profile-images/{{ $people->image_id }}" class="img-circle" width="30px" height="30px"/>
+                                @else
+                                <img src="/storage/user-profile-images/user.png" class="img-circle" width="30px" height="30px"/>
+                                @endif
+                                <span class="user-sidebar-hashtag">{{ $people->hashtag }}</span>
+                            </a>
+                        </li>
+                        @endforeach
+                    @endif
 
                 </ul>
             </nav>
