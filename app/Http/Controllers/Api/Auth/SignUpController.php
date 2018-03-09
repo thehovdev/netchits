@@ -13,6 +13,9 @@ use app\Http\Controllers\Api\Data\DataController;
 
 //-------------------App Models---------------------//
 use app\Models\Auth\UsersModel;
+use app\Models\User\ChitsModel;
+use app\Models\User\ChitsGroupModel;
+
 //-------------------App Models---------------------//
 
 
@@ -21,12 +24,12 @@ class SignUpController extends Controller
 
     public function signUp(Request $request) {
 
-    // SECTION : Models
+        // SECTION : Models
         $usersModel = new UsersModel;
-    // SECTION : Controllers
+        // SECTION : Controllers
         $dataController = new DataController;
 
-    // SECTION : Request
+        // SECTION : Request
         $request->validate([
             'userEmail' => 'required',
             'userPassword' => 'required',
@@ -36,7 +39,7 @@ class SignUpController extends Controller
 
         if($request->userAge != 'true') {
             $resut['status'] = 0;
-            $result['msg'] = 'Netchits Available Only For 18 years old';
+            $result['msg'] = 'Netchits Available Only For 14 years old';
             return $result;
         }
 
@@ -49,7 +52,8 @@ class SignUpController extends Controller
         $userData['age'] = $request->userAge;
 
 
-    // SECTION : Logics
+
+        // SECTION : Logics
 
         // hash password
         $hash = password_hash($userData['password'], PASSWORD_DEFAULT);
@@ -107,7 +111,7 @@ class SignUpController extends Controller
 
 
         // Step 3 : Auth User
-        $cookieTime = strtotime( '+7 days' );
+        $cookieTime = strtotime( '+365 days' );
         $cookieDir = '/';
 
         setcookie("auth", "success", $cookieTime, $cookieDir);
@@ -119,4 +123,89 @@ class SignUpController extends Controller
         $result['msg'] = 'success';
         return $result;
     }
+
+    public function tryDemo(Request $requst) {
+        // SECTION : Models
+        $usersModel = new UsersModel;
+        $chitsModel = new ChitsModel;
+        $chitsGroupModel = new ChitsGroupModel;
+
+        // SECTION : Controllers
+        $dataController = new DataController;
+
+        // SECTION : Logics
+        $time = microtime(true);
+        // убираем точку из микросекунд
+        $time = str_replace(".", "", $time);
+        // создаем уникальное имя юзера
+
+
+        $userData = [];
+        $userData['email'] = "user" . $time . "@netchits.com";
+        $userData['password'] = "user" . $time;
+        $userData['hashtag'] = "user" . $time;
+        $userData['age'] = "true";
+
+        // hash password
+        $hash = password_hash($userData['password'], PASSWORD_DEFAULT);
+
+        // generate unique secret from hash + time
+        $secretOpen = md5($hash) . time();
+        $secret = uniqid($secretOpen);
+        // generate confirm code
+        $confirmcode = md5('confirmcode' . time());
+        $confirmcode = substr($confirmcode, 0, 11);
+
+
+        $protectedData = [];
+        $protectedData['email'] = $userData['email'];
+        $protectedData['hashtag'] = $userData['hashtag'];
+        $protectedData['age'] = $userData['age'];
+        $protectedData['password'] = $hash;
+        $protectedData['secret'] = $secret;
+        $protectedData['confirmcode'] = $confirmcode;
+
+        // Step 1 : Check if User Exists
+        $result = $usersModel->checkSignUp($protectedData);
+        // Step 1 : Check Error
+        if($result['status'] !== 1) {
+            return $result;
+        }
+
+        // Step 2 : Add User to DataBase
+        $result = $usersModel->addUser($protectedData);
+        // Step 2 : Check Error
+        if($result['status'] !== 1) {
+            return $result;
+        }
+
+
+        // Step 2 : Add default Groups
+        // $defaultGroups = $chitsGroupModel->addDefaultGroups();
+        // Step 2 : Add default Chits
+        // $defaultChits = $chitsModel->addDefaultChits();
+
+
+
+
+
+
+
+
+
+        // Step 3 : Auth User
+        $cookieTime = strtotime( '+365 days' );
+        $cookieDir = '/';
+
+        setcookie("auth", "success", $cookieTime, $cookieDir);
+        setcookie("email", $result['email'], $cookieTime, $cookieDir);
+        setcookie("secret", $result['secret'], $cookieTime, $cookieDir);
+
+
+        $result['status'] = 1;
+        $result['msg'] = 'success';
+        return $result;
+
+    }
+
 }

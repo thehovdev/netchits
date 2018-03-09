@@ -2,7 +2,6 @@
     cursor: pointer;
 }
 
-
 .description {
     font-size: 30px;
     font-weight: bold;
@@ -49,9 +48,6 @@
     }
 
 }
-
-
-
 
 .alpha-container {
     .alpha-block {
@@ -139,6 +135,9 @@
     }
 }
 
+
+/* Add some content at the bottom of the video/page */
+
 #startVideo {
     position: fixed;
     z-index: -999;
@@ -147,8 +146,6 @@
     min-width: 100%;
     min-height: 100%;
 }
-
-/* Add some content at the bottom of the video/page */
 
 #signin-submit-button {
     background: #4267b2;
@@ -172,6 +169,7 @@
 .lang-label {
     color:black;
 }
+
 .btn-lang {
     margin: 3px;
     font-weight: bold;
@@ -182,6 +180,7 @@
         color: black;
     }
 }
+
 .btn-start {
     padding: 8px;
     margin: 5px;
@@ -201,7 +200,6 @@
     margin:5px;
 }
 
-
 %hidden-form-container {
     margin-bottom: 10px auto;
     padding: 10px;
@@ -212,8 +210,6 @@
 .btn-default {
     // margin:3px;
 }
-
-
 
 .signin-container {
     // margin-top: 10px;

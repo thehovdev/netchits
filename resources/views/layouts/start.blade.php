@@ -17,6 +17,10 @@
                         </a>
 
                     <div class="description">Follow, Share, Listen with friends</div>
+                    <button id="button-trydemo" class="trydemo btn btn-primary">Try without register</button>
+
+
+
                     <div class="todo-list">
                         <div class="todo-item vcenter">
                             <i class="fa fa-fw fa-users fa-todo-icon fa-fw" aria-hidden="true"></i>
@@ -30,7 +34,6 @@
                             <i class="fa fa-fw fa-volume-up fa-todo-icon fa-fw" aria-hidden="true"></i>
                             <span class="todo-description">Listen favorite Music</span>
                         </div>
-
                         <div class="todo-item vcenter">
                             <i class="fa fa-fw fa-play-circle fa-todo-icon fa-fw" aria-hidden="true"></i>
                             <span class="todo-description">Create you Playlists</span>
@@ -118,6 +121,7 @@
     </section>
 
     </div>
+
 @endsection
 
 <div class="author">

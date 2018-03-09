@@ -23,10 +23,13 @@ Route::any('/api/test', 'TestController@test');
 Route::any('/', 'StartController@homePage');
 // Sign Up
 Route::any('/api/auth/signUp', 'Api\Auth\SignUpController@signUp');
+// Try Demo
+Route::any('/api/auth/tryDemo', 'Api\Auth\SignUpController@tryDemo');
 // Sign In
 Route::any('/api/auth/signIn', 'Api\Auth\SignInController@signIn');
 // Sign Out
 Route::any('/api/auth/signOut', 'Api\Auth\SignOutController@signOut');
+
 
 // Search
 Route::any('/api/user/search', 'Api\Search\SearchController@search');

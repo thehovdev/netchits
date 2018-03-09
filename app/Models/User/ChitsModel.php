@@ -70,6 +70,64 @@ class ChitsModel extends Model
 
     }
 
+    public function addDemoChits($user, $demogroups) {
+
+
+
+        
+
+
+        // ------------------------- Записки ----------------------- //
+        // $socialsName = ['google', 'googleplus', 'youtube'];
+        // $socials = [];
+
+        // заполняем массив с нужными значениями через цикл
+        // foreach ($socialsName as $key => $value) {
+        //     $socials[$key]['id'] = null;
+        //     $socials[$key]['group_id'] = $groups[0]['id'];
+        //     $socials[$key]['address'] = config("inc.demochits.$value.address");
+        //     $socials[$key]['opg_sitename'] = config("inc.demochits.$value.sitename");
+        //     $socials[$key]['opg_title'] = config("inc.demochits.$value.title");
+        //     $socials[$key]['opg_image'] = config("inc.demochits.$value.image");
+        // }
+        // foreach ($socials as $key => $social) {
+        //
+        //     $insert = new ChitsModel;
+        //
+        //     $insert->userid = $user['id'];
+        //
+        //     $insert->address = $social['address'];
+        //     $insert->group_id = $social['group_id'];
+        //     $insert->opg_sitename = $social["opg_sitename"];
+        //     $insert->opg_title = $social["opg_title"];
+        //     $insert->opg_image = $social["opg_image"];
+        //     $insert->save();
+        //
+        //     $socials[$key]['id'] = $insert->id;
+        // }
+        // ------------------------- Записки ----------------------- //
+
+
+        // ------------------------- Плейлист  ----------------------- //
+        // $playlistName = ['playlist1'];
+        // $playlist = [];
+        //
+        // foreach ($playlistName as $key => $value) {
+        //     $playlist[$key]['id'] = null;
+        //     $playlist[$key]['group_id'] = $groups[0]['id'];
+        //     $playlist[$key]['address'] = config("inc.demoplaylist.$value.address");
+        //     $playlist[$key]['opg_sitename'] = config("inc.demoplaylist.$value.sitename");
+        //     $playlist[$key]['opg_title'] = config("inc.demoplaylist.$value.title");
+        //     $playlist[$key]['opg_image'] = config("inc.demoplaylist.$value.image");
+        // }
+        //
+        // dd($playlist);
+
+        // ------------------------- Плейлист  ----------------------- //
+
+    }
+
+
     public function copy($user, $chitId) {
 
         $chit = $this->where('id', $chitId)->first();
@@ -117,7 +175,7 @@ class ChitsModel extends Model
             $tags = get_meta_tags('https://www.youtube.com/watch?v=' . $videoId);
 
             $opg["site_name"] = 'youtube';
-            $opg['title'] = $tags['title'];
+            $opg['title'] = @$tags['title'];
             $opg['image'] = "//img.youtube.com/vi/" . getcode_youtube($chitsAddress) . "/mqdefault.jpg";
         }
 

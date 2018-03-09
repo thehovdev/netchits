@@ -5,6 +5,7 @@ Route = {
       "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
     },
 
+    tryDemo : '/api/auth/tryDemo',
     signIn : '/api/auth/signIn', // Api/Auth/SignInController@signIn
     signUp : '/api/auth/signUp', // Api/Auth/SignUpController@signUp
     signOut : '/api/auth/signOut', //signOut

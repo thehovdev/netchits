@@ -31965,6 +31965,10 @@ Api = {
             Api.showFriendsPanel();
         });
 
+        $("#button-trydemo").click(function () {
+            Api.tryDemo();
+        });
+
         $("#button-forgotpass").click(function () {
             Api.showForgotPass();
         });
@@ -32333,6 +32337,21 @@ Api = {
         $('.signin-container').hide();
         $("#button-sendcode").show();
         $('.forgotpass-container').show();
+    },
+
+    tryDemo: function tryDemo() {
+
+        $.ajax({
+            headers: Route.header,
+            url: Route.tryDemo
+        }).done(function (data) {
+            if (data.status == 1) {
+                window.location.replace("/");
+            } else {
+                $('.alert-signup-error').show();
+                $('.alert-signup-error').text(data.msg);
+            }
+        });
     },
 
     makeSignup: function makeSignup(option) {
@@ -32767,6 +32786,7 @@ Route = {
     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
   },
 
+  tryDemo: '/api/auth/tryDemo',
   signIn: '/api/auth/signIn', // Api/Auth/SignInController@signIn
   signUp: '/api/auth/signUp', // Api/Auth/SignUpController@signUp
   signOut: '/api/auth/signOut', //signOut

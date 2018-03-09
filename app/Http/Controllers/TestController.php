@@ -21,11 +21,36 @@ class TestController extends Controller
 
         $chitsModel = new ChitsModel;
         $chitsGroupModel = new ChitsGroupModel;
-        $usersModel = new UsersModel;
 
-        $user = $usersModel->getUser();
+        $user['id'] = 61;
+        $demoGroups = $chitsGroupModel->addDemoGroups($user);
 
-        return view('test')->with('user', $user);
+        $demoChits = $chitsModel->addDemoChits($user, $demoGroups);
+
+
+        //
+        // dd($demoChits);
+
+
+        // $usersModel = new UsersModel;
+        //
+        // $time = microtime(true);
+        // $time = str_replace(".", "", $time);
+        // $user = "user" . $time;
+        //
+        //
+        // dd($user);
+
+
+
+
+        // $chitsModel = new ChitsModel;
+        // $chitsGroupModel = new ChitsGroupModel;
+        // $usersModel = new UsersModel;
+        //
+        // $user = $usersModel->getUser();
+        //
+        // return view('test')->with('user', $user);
         // return view('test2')->with('user', $user);
 
 

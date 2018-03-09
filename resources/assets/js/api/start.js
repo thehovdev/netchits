@@ -152,6 +152,12 @@ Api = {
         Api.showFriendsPanel();
     })
 
+
+
+    $("#button-trydemo").click(function() {
+        Api.tryDemo();
+    })
+
     $("#button-forgotpass").click(function() {
         Api.showForgotPass();
     })
@@ -549,6 +555,26 @@ Api = {
     },
 
 
+    tryDemo : function() {
+
+        $.ajax({
+          headers: Route.header,
+          url: Route.tryDemo,
+        }).done(function(data) {
+            if(data.status == 1) {
+                window.location.replace("/");
+            } else {
+                $('.alert-signup-error').show();
+                $('.alert-signup-error').text(data.msg);
+            }
+        });
+
+
+
+
+
+    },
+
     makeSignup : function(option) {
 
         userEmail = $('.signup-container #signup-email').val();
@@ -583,6 +609,7 @@ Api = {
                 $('.alert-signup-error').text(data.msg);
             }
         });
+
     },
 
     makeSignin : function() {
@@ -642,8 +669,6 @@ Api = {
         });
 
     },
-
-
 
     makeResetPass : function() {
         var userEmail = $('#forgotpass-email').val();

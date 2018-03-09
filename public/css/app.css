@@ -9168,6 +9168,8 @@ input#hashtag {
   color: white;
 }
 
+/* Add some content at the bottom of the video/page */
+
 #startVideo {
   position: fixed;
   z-index: -999;
@@ -9176,8 +9178,6 @@ input#hashtag {
   min-width: 100%;
   min-height: 100%;
 }
-
-/* Add some content at the bottom of the video/page */
 
 #signin-submit-button {
   background: #4267b2;
