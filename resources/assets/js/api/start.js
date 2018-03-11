@@ -476,11 +476,10 @@ Api = {
             }
         }).done(function(data) {
             if(data.status == 1) {
-                // location.reload();
-                Api.addToListGroup(data);
 
-                // $('.chits-list').html(data.html);
                 $('.chitsgroup-select-column').html(data.html_chitsgroup_select);
+
+                Api.addToListGroup(data);
             }
         });
 
