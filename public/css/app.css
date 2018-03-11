@@ -8362,6 +8362,10 @@ a:visited {
   text-decoration: none;
 }
 
+.hidden-user-image {
+  display: none;
+}
+
 .userprofile-follow-text {
   color: white;
   font-weight: bold;
@@ -8580,7 +8584,7 @@ a:visited {
 }
 
 .navbar-search {
-  min-width: 150px;
+  min-width: 130px;
   width: 40%;
   margin: 10px;
 }
@@ -8683,7 +8687,7 @@ a:visited {
 }
 
 .chitsgroup-select-column {
-  min-width: 80px;
+  min-width: 120px;
 }
 
 .chits-address-column {
@@ -9377,11 +9381,43 @@ a:visited {
     margin-top: 50px;
     margin-left: 20px;
   }
+
+  .bot-sidebar-parent {
+    display: none;
+  }
+
+  .user-sidebar-parent {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 420px) {
   body {
     overflow-x: hidden;
+  }
+
+  .nav.navbar-nav.navbar-right.first-navbar-ul {
+    display: none;
+  }
+
+  .navbar-header {
+    width: 45%;
+    float: left;
+  }
+
+  .navbar-search {
+    width: 30% !important;
+    float: left;
+    margin: 5px auto;
+  }
+
+  .hidden-user-image {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .results-parent {
+    text-align: center;
   }
 
   .register,
@@ -9394,10 +9430,6 @@ a:visited {
     text-align: center;
   }
 
-  .navbar-search {
-    margin: 5px auto;
-  }
-
   .margin-top100 {
     margin-top: 300px;
   }
@@ -9407,15 +9439,15 @@ a:visited {
   }
 
   .chitsgroup-select-column {
-    min-width: 90%;
+    width: 100%;
   }
 
   .chits-address-column {
-    min-width: 200px;
+    width: 100%;
   }
 
   .groupselect-column {
-    min-width: 200px;
+    width: 100%;
   }
 
   .search-item {
@@ -9426,16 +9458,55 @@ a:visited {
 
   .chits-column-parent {
     margin-top: 50px;
-    margin-left: 80px;
   }
 
   .results-parent #results {
     width: 320px;
     margin: auto;
   }
+
+  .bot-sidebar-parent {
+    display: none;
+  }
+
+  .user-sidebar-parent {
+    display: none;
+  }
 }
 
-@media screen and (min-width: 421px) and (max-width: 767px) {
+@media screen and (min-width: 421px) and (max-width: 699px) {
+  .chits-address-column {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .chitsgroup-select-column {
+    width: 100%;
+  }
+
+  .groupselect-column {
+    margin-top: 10px;
+    width: 100% !important;
+  }
+
+  .nav.navbar-nav.navbar-right.first-navbar-ul {
+    display: none;
+  }
+
+  .navbar-header {
+    width: 50%;
+    float: left;
+  }
+
+  .navbar-search {
+    float: left;
+  }
+
+  .hidden-user-image {
+    display: inline-block;
+    margin: 5px 10px;
+  }
+
   .first-navbar-ul {
     margin-top: 50px;
     text-align: center;
@@ -9450,12 +9521,68 @@ a:visited {
   }
 
   .chits-column-parent {
-    margin-right: 0px;
+    margin: auto;
+  }
+
+  .user-sidebar-parent {
+    display: none;
+  }
+
+  .bot-sidebar-parent {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 767px) {
+  .nav.navbar-nav.navbar-right.first-navbar-ul {
+    display: none;
+  }
+
+  .navbar-header {
+    display: none;
+  }
+
+  .first-navbar-ul {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .navbar-search {
+    margin: 5px auto;
+  }
+
+  .margin-top100 {
+    margin-top: 300px;
+  }
+
+  .chits-column-parent {
     margin-left: 0px;
   }
 
-  .chits-column-parent:nth-child(2n+1) {
-    margin-left: 20px;
+  .user-sidebar-parent {
+    display: none;
+  }
+
+  .bot-sidebar-parent {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 799px) {
+  .bot-sidebar-parent {
+    width: 50px !important;
+  }
+
+  .bot-sidebar-parent .peoples-label {
+    display: none;
+  }
+
+  .bot-sidebar-parent .user-sidebar-hashtag {
+    display: none;
+  }
+
+  .user-sidebar-parent {
+    width: 15% !important;
   }
 }
 
@@ -9471,9 +9598,44 @@ a:visited {
   .actions {
     margin-top: 20px !important;
   }
+
+  .bot-sidebar-parent {
+    width: 50px !important;
+  }
+
+  .bot-sidebar-parent .peoples-label {
+    display: none;
+  }
+
+  .bot-sidebar-parent .user-sidebar-hashtag {
+    display: none;
+  }
+
+  .user-sidebar-parent {
+    width: 15% !important;
+  }
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1300px) {
+@media screen and (min-width: 1000px) and (max-width: 1099px) {
+  .welcome-div {
+    margin-top: 20px !important;
+  }
+
+  .welcome-div .welcome-text {
+    font-size: 1em !important;
+  }
+
+  .actions {
+    margin-top: 20px !important;
+  }
+
+  .bot-sidebar-parent,
+  .user-sidebar-parent {
+    width: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1300px) {
   .welcome-div {
     margin-top: 20px !important;
   }

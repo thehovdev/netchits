@@ -13,13 +13,11 @@
 
     <!--Main Navbar-->
     @include('layouts.includes.navbar')
-    <!--Second Navbar-->
-    {{-- @include('layouts.includes.second-navbar') --}}
 
     <!--Main Container-->
     <section class="chits-container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-xs-12">
 
                 <!-- Margin TOP FROM FIXED NAVBAR -->
                 <div class="margin-top80"></div>
@@ -65,16 +63,6 @@
 
                                 <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
                         </button>
-
-
-                            <!-- <button style="display:none;" class="btn btn-primary button-add-friend">
-                                @lang('main.follow') <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
-                            </button>
-
-                            <button style="display:none;" class="btn btn-primary button-is-friends">
-                                @lang('main.followed') <span class="search-user-hashtag" id="search-user-hashtag">#user</span>
-                            </button> -->
-
                         </div>
                     </div>
                 </div>
@@ -89,21 +77,9 @@
                     </div>
                 </div>
 
-                <!-- people-list -->
-                <!-- <div class="row row-people-list">
-                    <div class="col-sm-12">
-                        <div class="people-list">
-                            @include('layouts.includes.people-list')
-                        </div>
-                    </div>
-                </div> -->
-
                 <!-- add chits / group forms -->
                 <div class="row chits-add-row">
                     <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                        <!-- <button type="button" class="btn btn-success button-add-chits button-add-chits-color" id="chits-add-button">@lang('main.addchit')
-                        </button> -->
-
                         <button type="button" class="btn btn-success button-add-chits button-add-chits-search-color" id="chits-add-button" disabled>
                             <span class="bar-search-text">
                                 @lang('main.search')

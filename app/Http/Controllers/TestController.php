@@ -19,13 +19,23 @@ class TestController extends Controller
 {
     public function test() {
 
-        $chitsModel = new ChitsModel;
-        $chitsGroupModel = new ChitsGroupModel;
+        $datenow = date('Y-m-d');
+        $datenow = strtotime($datenow);
 
-        $user['id'] = 61;
-        $demoGroups = $chitsGroupModel->addDemoGroups($user);
+        dd($datenow);
 
-        $demoChits = $chitsModel->addDemoChits($user, $demoGroups);
+        // $ads_time = strtotime($value['time_end']);
+        //  if int($datenow) > int($ads_time)
+
+
+
+        // $chitsModel = new ChitsModel;
+        // $chitsGroupModel = new ChitsGroupModel;
+        //
+        // $user['id'] = 61;
+        // $demoGroups = $chitsGroupModel->addDemoGroups($user);
+        //
+        // $demoChits = $chitsModel->addDemoChits($user, $demoGroups);
 
 
 

@@ -3,7 +3,7 @@
             <nav class="nav-bot-sidebar">
                 <ul class="nav">
                     <li>
-                        <a class="pointer">Peoples</a>
+                        <a class="pointer peoples-label">Peoples</a>
                     </li>
                     <li class="nav-divider"></li>
 

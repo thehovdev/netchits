@@ -103,7 +103,8 @@ window.onload = function() {
             $("#player").css({
                 "position": "absolute",
                 "top" : position.top + 53,
-                "left" : position.left + 84,
+                // "left" : position.left + 84,
+                "left" : position.left + 9,
                 "z-index" : "9",
             });
             break;
