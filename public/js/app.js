@@ -31965,7 +31965,7 @@ Api = {
             Api.showFriendsPanel();
         });
 
-        $("#button-trydemo").click(function () {
+        $(".button-trydemo").click(function () {
             Api.tryDemo();
         });
 
@@ -32474,7 +32474,9 @@ Api = {
 
     updateProfile: function updateProfile() {
         var hashtag = $('.div-user-info #hashtag').val();
+        var email = $('.div-user-info #email').val();
         var confirmcode = $("#confirmcode").val();
+        var password = $("#password").val();
         // alert(hashtag);
 
         $('.alert-hashtag').hide();
@@ -32484,7 +32486,9 @@ Api = {
             url: Route.updateProfile,
             data: {
                 hashtag: hashtag,
-                confirmcode: confirmcode
+                email: email,
+                confirmcode: confirmcode,
+                password: password
             }
         }).done(function (data) {
             if (data.status == 1) {

@@ -48,9 +48,6 @@ class ChitsModel extends Model
 
     public function copyFromGroup($user, $chits, $group) {
 
-
-
-
         foreach ($chits as $chit) {
             $insert = new ChitsModel;
             $insert->userid = $user->id;
@@ -62,8 +59,6 @@ class ChitsModel extends Model
             $insert->save();
         }
 
-
-
         $result['status'] = 1;
         $result['msg'] = 'success';
         return $result;
@@ -72,61 +67,28 @@ class ChitsModel extends Model
 
     public function addDemoChits($user, $demogroups) {
 
+        $chits = [];
+        foreach ($demogroups as $key => $demogroup) {
+            $chits = $this->where('group_id', $demogroup['id'])->get();
 
+            foreach ($chits as $chit) {
 
-        
+                $insert = new ChitsModel;
+                $insert->userid = $user['id'];
+                $insert->address = $chit->address;
+                $insert->group_id = $demogroup['new_id'];
+                $insert->opg_sitename = @$chit["opg_site_name"];
+                $insert->opg_title = @$chit["opg_title"];
+                $insert->opg_image = @$chit["opg_image"];
+                $insert->save();
+            }
 
+        }
 
-        // ------------------------- Записки ----------------------- //
-        // $socialsName = ['google', 'googleplus', 'youtube'];
-        // $socials = [];
-
-        // заполняем массив с нужными значениями через цикл
-        // foreach ($socialsName as $key => $value) {
-        //     $socials[$key]['id'] = null;
-        //     $socials[$key]['group_id'] = $groups[0]['id'];
-        //     $socials[$key]['address'] = config("inc.demochits.$value.address");
-        //     $socials[$key]['opg_sitename'] = config("inc.demochits.$value.sitename");
-        //     $socials[$key]['opg_title'] = config("inc.demochits.$value.title");
-        //     $socials[$key]['opg_image'] = config("inc.demochits.$value.image");
-        // }
-        // foreach ($socials as $key => $social) {
-        //
-        //     $insert = new ChitsModel;
-        //
-        //     $insert->userid = $user['id'];
-        //
-        //     $insert->address = $social['address'];
-        //     $insert->group_id = $social['group_id'];
-        //     $insert->opg_sitename = $social["opg_sitename"];
-        //     $insert->opg_title = $social["opg_title"];
-        //     $insert->opg_image = $social["opg_image"];
-        //     $insert->save();
-        //
-        //     $socials[$key]['id'] = $insert->id;
-        // }
-        // ------------------------- Записки ----------------------- //
-
-
-        // ------------------------- Плейлист  ----------------------- //
-        // $playlistName = ['playlist1'];
-        // $playlist = [];
-        //
-        // foreach ($playlistName as $key => $value) {
-        //     $playlist[$key]['id'] = null;
-        //     $playlist[$key]['group_id'] = $groups[0]['id'];
-        //     $playlist[$key]['address'] = config("inc.demoplaylist.$value.address");
-        //     $playlist[$key]['opg_sitename'] = config("inc.demoplaylist.$value.sitename");
-        //     $playlist[$key]['opg_title'] = config("inc.demoplaylist.$value.title");
-        //     $playlist[$key]['opg_image'] = config("inc.demoplaylist.$value.image");
-        // }
-        //
-        // dd($playlist);
-
-        // ------------------------- Плейлист  ----------------------- //
-
+            $result['status'] = 1;
+            $result['msg'] = 'success';
+            return $result;
     }
-
 
     public function copy($user, $chitId) {
 

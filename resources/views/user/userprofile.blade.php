@@ -21,7 +21,7 @@
 <div class="col-sm-12">
     @if($user->permission != 'guest')
         <div class="row search-result-row" style="visibility:hidden;">
-        <div class="col-sm-12 search-result-col">
+            <div class="col-sm-12 search-result-col">
             <div class="search-result-parent">
                 <a class="search-user-href" href="#">
                     <img src="/storage/user-profile-images/" class="search-user-image img-circle"/>
@@ -38,7 +38,7 @@
             </button>
             </div>
         </div>
-    </div>
+        </div>
         <div class="row row-user-profile">
             <div class="col-sm-12 col-user-profile-image">
                 <div class="div-user-image">
@@ -55,19 +55,30 @@
                     </form>
                 </div>
                 <div class="div-user-info">
+                    <!-- hashtag -->
                     <div class="form-group">
                           <label for="hashtag" class="text-center block">#hashtag</label>
                           <input type="text" class="form-control enter-handle" id="hashtag" value="{{ @$user->hashtag }}">
                     </div>
-
+                    <!-- email -->
+                    <div class="form-group">
+                          <label for="email" class="text-center block">E-mail</label>
+                          <input type="text" class="form-control enter-handle" id="email" value="{{ @$user->email }}">
+                    </div>
                     @if($user->status == 0)
                         <div class="form-group">
                             <label for="code" class="text-center block">@lang('main.confirmcode')</label>
                             <input type="text" class="form-control input-confirm-code" id="confirmcode" placeholder="insert code from e-mail">
                         </div>
                     @endif
+                    <!-- password -->
+                    <div class="form-group">
+                          <label for="password" class="text-center block">Password</label>
+                          <input type="password" class="form-control enter-handle" id="password" placeholder="input new password here">
+                    </div>
 
-                    <button class="btn btn-default button-update-profile">@lang('main.updateinfo')</button>
+
+                    <button class="btn btn-primary button-update-profile">@lang('main.updateinfo')</button>
 
                     <div class="form-group text-center" style="margin-top:5px;">
                         <label for="locale" class="text-center block">@lang('main.setlocale')</label>

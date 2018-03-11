@@ -6,7 +6,7 @@
                     <a href="/user/{{ $user->id }}" target="_blank">
                         <div class="user-sidebar-image">
                             <img src="/storage/user-profile-images/{{ $user->image_id }}" class="user-image img-circle btn-upload-img pointer"/>
-                            <span>{{ @$user->hashtag }}</span>
+                            <span class="user-sidebar-hashtag">{{ @$user->hashtag }}</span>
                         </div>
                     </a>
                 @endif

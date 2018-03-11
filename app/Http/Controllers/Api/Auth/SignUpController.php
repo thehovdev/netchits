@@ -173,33 +173,28 @@ class SignUpController extends Controller
         }
 
         // Step 2 : Add User to DataBase
-        $result = $usersModel->addUser($protectedData);
+        $user = $usersModel->addUser($protectedData);
         // Step 2 : Check Error
-        if($result['status'] !== 1) {
-            return $result;
+        if($user['status'] !== 1) {
+            return $user;
         }
-
-
-        // Step 2 : Add default Groups
-        // $defaultGroups = $chitsGroupModel->addDefaultGroups();
-        // Step 2 : Add default Chits
-        // $defaultChits = $chitsModel->addDefaultChits();
-
-
-
-
-
-
-
-
 
         // Step 3 : Auth User
         $cookieTime = strtotime( '+365 days' );
         $cookieDir = '/';
 
         setcookie("auth", "success", $cookieTime, $cookieDir);
-        setcookie("email", $result['email'], $cookieTime, $cookieDir);
-        setcookie("secret", $result['secret'], $cookieTime, $cookieDir);
+        setcookie("email", $user['email'], $cookieTime, $cookieDir);
+        setcookie("secret", $user['secret'], $cookieTime, $cookieDir);
+
+
+
+
+        // Step 4 : Add default Groups
+        $demoGroups = $chitsGroupModel->addDemoGroups($user);
+        // Step 4 : Add default Chits
+        $demoChits = $chitsModel->addDemoChits($user, $demoGroups);
+
 
 
         $result['status'] = 1;

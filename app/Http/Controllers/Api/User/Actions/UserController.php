@@ -170,11 +170,18 @@ class UserController extends Controller
         // SECTION : Request
         $hashtag = $request->hashtag;
         $confirmcode = $request->confirmcode;
+        $email = $request->email;
+        $password = $request->password;
 
         // SECTION : Logics
         if(is_null($hashtag)) {
             $result['status'] = 0;
             $result['msg'] = 'hashtag not be empty';
+            return $result;
+        }
+        if(is_null($email)) {
+            $result['status'] = 0;
+            $result['msg'] = 'email not be empty';
             return $result;
         }
 
@@ -186,18 +193,29 @@ class UserController extends Controller
         }
 
 
-
-
-
         $hashtagCheck = $usersModel->checkHashtag($hashtag, $user);
-
         if($hashtagCheck['status'] == 0) {
             return $hashtagCheck;
         }
+        $emailCheck = $usersModel->checkEmail($email, $user);
+        if($emailCheck['status'] == 0) {
+            return $emailCheck;
+        }
 
-        $hashtagUpdate = $usersModel->updateProfile($hashtag, $confirmcode);
 
-        return $hashtagUpdate;
+        $data = [
+            'hashtag' => $hashtag,
+            'confirmcode' => $confirmcode,
+            'email' => $email,
+            'password' => $password,
+        ];
+
+
+
+        $update = $usersModel->updateProfile($data);
+
+
+        return $update;
     }
 
     public function uploadProfileImage(Request $request) {

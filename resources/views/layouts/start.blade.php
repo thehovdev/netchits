@@ -17,9 +17,9 @@
                         </a>
 
                     <div class="description">Follow, Share, Listen with friends</div>
-                    <button id="button-trydemo" class="trydemo btn btn-primary">Try without register</button>
-
-
+                    <button class="button-trydemo trydemo btn btn-default">
+                        Continue
+                    </button>
 
                     <div class="todo-list">
                         <div class="todo-item vcenter">
@@ -42,6 +42,13 @@
                 </div>
 
                 <div class="col-sm-4 col-sm-offset-2">
+                    <div class="oneclick-signup-container">
+                        <h1>Use without signup</h1>
+
+                        <button class="button-trydemo trydemo-min btn btn-default">
+                            Continue
+                        </button>
+                    </div>
                     <div class="signin-container">
                         <h1>Log in</h1>
                         <div class="form-group">

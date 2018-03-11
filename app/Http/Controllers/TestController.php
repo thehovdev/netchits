@@ -28,6 +28,12 @@ class TestController extends Controller
         $demoChits = $chitsModel->addDemoChits($user, $demoGroups);
 
 
+
+        // $group = $chitsGroupModel->copyGroup($user, $group);
+        // $copyChit = $chitsModel->copyFromGroup($user, $chits, $group);
+
+
+
         //
         // dd($demoChits);
 

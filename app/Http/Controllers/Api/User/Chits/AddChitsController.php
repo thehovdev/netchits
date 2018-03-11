@@ -60,7 +60,6 @@ class AddChitsController extends Controller
 
     }
 
-
     public function copyChits(Request $request) {
         // SECTION : Models & Controllers
         $usersModel = new UsersModel;

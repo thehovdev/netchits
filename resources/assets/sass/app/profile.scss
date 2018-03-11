@@ -15,11 +15,11 @@ a:visited {
     text-decoration: none;
 }
 
-input#hashtag {
-    width: 120px;
-    min-width: 100px;
-    margin: auto;
-}
+// input#hashtag {
+//     width: 120px;
+//     min-width: 100px;
+//     margin: auto;
+// }
 
 .userprofile-follow-text {
     color: white;
@@ -256,6 +256,7 @@ input#hashtag {
     color: black;
     font-weight: bold;
     font-size: 1.1em;
+    font-family: arial;
     &:hover {
         color: black;
         font-weight: bold;
@@ -676,10 +677,10 @@ input#hashtag {
             width: 80%;
 
             .button-update-profile {
-                width: 120px;
-                min-width: 120px;
+                width: 100%;
+                // min-width: 120px;
                 display: block;
-                margin: auto;
+                margin: 50px auto 10px auto;
                 text-align: center;
             }
         }
@@ -775,7 +776,7 @@ input#hashtag {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 80%;
+    width: 70%;
     vertical-align: middle;
 
 }

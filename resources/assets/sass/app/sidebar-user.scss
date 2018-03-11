@@ -16,9 +16,10 @@
     // float: left;
     .nav-user-sidebar {
         font-weight: bold;
+        font-family: sans-serif;
         width: 100%;
-        // padding: 5px;
         border-right: 1px solid #ddd;
+        
         a {
             color: #4267b2;
             -webkit-transition: all 0.08s linear;
@@ -26,6 +27,7 @@
             -o-transition: all 0.08s linear;
             transition: all 0.08s linear;
         }
+
 
         .text-overflow a, .text-overflow .media-body {
             white-space: nowrap;

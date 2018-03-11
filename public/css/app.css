@@ -8362,12 +8362,6 @@ a:visited {
   text-decoration: none;
 }
 
-input#hashtag {
-  width: 120px;
-  min-width: 100px;
-  margin: auto;
-}
-
 .userprofile-follow-text {
   color: white;
   font-weight: bold;
@@ -8562,6 +8556,7 @@ input#hashtag {
   color: black;
   font-weight: bold;
   font-size: 1.1em;
+  font-family: arial;
 }
 
 .navbar-default .navbar-nav li a:hover {
@@ -8960,10 +8955,9 @@ input#hashtag {
 }
 
 .row-user-profile .col-user-profile-actions .div-user-info .button-update-profile {
-  width: 120px;
-  min-width: 120px;
+  width: 100%;
   display: block;
-  margin: auto;
+  margin: 50px auto 10px auto;
   text-align: center;
 }
 
@@ -9045,7 +9039,7 @@ input#hashtag {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 80%;
+  width: 70%;
   vertical-align: middle;
 }
 
@@ -9198,6 +9192,42 @@ input#hashtag {
   padding: 5px 20px;
 }
 
+.trydemo {
+  margin-top: 5px;
+  border-radius: 6px;
+  background: #4267B2;
+  color: white;
+  height: 50px;
+  width: 200px;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.trydemo:hover,
+.trydemo:active,
+.trydemo:active:focus,
+.trydemo:focus {
+  background: #5073b7;
+  color: white;
+}
+
+.trydemo-min {
+  background: #4267B2;
+  color: white;
+  height: 40px;
+  width: 150px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.trydemo-min:hover,
+.trydemo-min:active,
+.trydemo-min:active:focus,
+.trydemo-min:focus {
+  background: #5073b7;
+  color: white;
+}
+
 .lang-label {
   color: black;
 }
@@ -9238,6 +9268,7 @@ input#hashtag {
 
 .signin-container,
 .signup-container,
+.oneclick-signup-container,
 .forgotpass-container {
   margin-bottom: 10px auto;
   padding: 10px;
@@ -9268,6 +9299,12 @@ input#hashtag {
 
 .signup-container button {
   margin-left: 0px !important;
+}
+
+.oneclick-signup-container h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px !important;
 }
 
 .pointer {
@@ -9468,6 +9505,7 @@ input#hashtag {
 
 .user-sidebar-parent .nav-user-sidebar {
   font-weight: bold;
+  font-family: sans-serif;
   width: 100%;
   border-right: 1px solid #ddd;
 }
@@ -9519,6 +9557,7 @@ input#hashtag {
 
 .bot-sidebar-parent .nav-bot-sidebar {
   font-weight: bold;
+  font-family: sans-serif;
   width: 100%;
   border-left: 1px solid #ddd;
 }

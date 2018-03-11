@@ -54,7 +54,6 @@ class FriendsController extends Controller
         return $deleteFriend;
     }
 
-
     public function showFriends(Request $request) {
         // SECTION : Models
         $friendsModel = new FriendsModel;

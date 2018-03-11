@@ -49,45 +49,18 @@ class ChitsGroupModel extends Model
     }
 
     public function addDemoGroups($user) {
-
         $demouser['id'] = config('inc.demouser_id');
-
         $demogroups = $this->getUserGroups($demouser);
 
+
         foreach ($demogroups as $key => $demogroup) {
-
             $insert = new ChitsGroupModel;
-
             $insert->user_id = $user['id'];
             $insert->name = $demogroup['name'];
             $insert->save();
-
             // вставляем в группу ее id в базе
-            $demogroups[$key]['demogroup_id'] = $insert->id;
+            $demogroups[$key]['new_id'] = $insert->id;
         }
-
-
-
-
-
-        // список первоначальных групп
-        // $groups = [];
-        // $groups[0]['name'] = 'Social';
-        // $groups[1]['name'] = 'Playlist';
-        // $i = 0;
-        // foreach ($groups as $group) {
-        //     $insert = new ChitsGroupModel;
-        //     $insert->user_id = $user['id'];
-        //     $insert->name = $group['name'];
-        //     $insert->save();
-        //
-        //     // вставляем в группу ее id в базе
-        //     $groups[$i]['id'] = $insert->id;
-        //
-        //     $i++;
-        // }
-
-
 
         return $demogroups;
     }

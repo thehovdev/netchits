@@ -154,7 +154,7 @@ Api = {
 
 
 
-    $("#button-trydemo").click(function() {
+    $(".button-trydemo").click(function() {
         Api.tryDemo();
     })
 
@@ -706,18 +706,22 @@ Api = {
 
     updateProfile : function() {
         var hashtag = $('.div-user-info #hashtag').val();
+        var email = $('.div-user-info #email').val();
         var confirmcode = $("#confirmcode").val();
+        var password = $("#password").val();
         // alert(hashtag);
 
         $('.alert-hashtag').hide();
 
 
         $.ajax({
-          headers: Route.header,
-          url: Route.updateProfile,
-          data: {
-            hashtag: hashtag,
-            confirmcode: confirmcode,
+          headers : Route.header,
+          url : Route.updateProfile,
+          data : {
+            hashtag : hashtag,
+            email : email,
+            confirmcode : confirmcode,
+            password : password,
             }
         }).done(function(data) {
             if(data.status == 1) {

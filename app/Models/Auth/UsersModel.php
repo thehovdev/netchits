@@ -151,6 +151,8 @@ class UsersModel extends Model
         // return result
         $this->result['status'] = 1;
         $this->result['msg'] = 'success';
+
+        $this->result['id'] = $this->id;
         $this->result['email'] = $usersData['email'];
         $this->result['secret'] = $usersData['secret'];
 
@@ -189,7 +191,7 @@ class UsersModel extends Model
 
     public function allUsers()
     {
-        $allUsers = $this->paginate(20);
+        $allUsers = $this->all();
         return $allUsers;
     }
 
@@ -251,11 +253,9 @@ class UsersModel extends Model
     {
 
         $userhashtag = $user->hashtag;
-
         $hashtag = $this
             ->where('hashtag', $hashtaginput)
             ->first();
-
 
             if(!is_null($hashtag) && $userhashtag != $hashtaginput) {
                 $result['status'] = 0;
@@ -269,21 +269,34 @@ class UsersModel extends Model
             }
         }
 
-    public function updateProfile($hashtag, $confirmcode)
+    public function checkEmail($emailinput, $user)
     {
-        // if(is_null($hashtag)) {
-        //     $result['status'] = 0;
-        //     $result['msg'] = 'hashtag id not be empty';
-        //     return $result;
-        // }
 
-        $ishashtag = substr($hashtag, 0, 1);
-        if($ishashtag != '#') {
-            $hashtag = "#" . $hashtag;
+        $useremail = $user->email;
+        $email = $this
+            ->where('hashtag', $emailinput)
+            ->first();
+
+            if(!is_null($email) && $useremail != $emailinput) {
+                $result['status'] = 0;
+                $result['msg'] = 'this email already exists';
+                return $result;
+            } else {
+                $result['status'] = 1;
+                $result['msg'] = 'success';
+                return $result;
+            }
         }
 
 
 
+    public function updateProfile($data)
+    {
+
+        $ishashtag = substr($data['hashtag'], 0, 1);
+        if($ishashtag != '#') {
+            $data['hashtag'] = "#" . $data['hashtag'];
+        }
 
         $user = $this
             ->where('email', $this->getUser()->email)
@@ -294,15 +307,48 @@ class UsersModel extends Model
         // подтверждение e-mail адреса
         if($user->status == 0) {
 
-            if(!is_null($confirmcode) && $user->confirmcode == $confirmcode) {
+            if(!is_null($data['confirmcode']) && $user->confirmcode == $data['confirmcode']) {
                 $user->status = 1;
             }
         }
 
+        // если введенный e-mail не совпадает с текущим, значит пользователь меняет e-mail
+        if($user->email != $data['email']) {
+
+            // генерируем код подтверждения
+            $confirmcode = md5('confirmcode' . time());
+            $confirmcode = substr($confirmcode, 0, 11);
+
+            // меняем статус пользователя
+            $user->status = 0;
+            $user->email = $data['email'];
+            $user->confirmcode = $confirmcode;
 
 
+            // меняем старые куки почты на новую, так как мы ее поменяли
+            $cookieTime = strtotime( '+365 days' );
+            $cookieDir = '/';
+            setcookie("email", $data['email'], $cookieTime, $cookieDir);
 
-        $user->hashtag = $hashtag;
+
+            // отправляем подтверждение на почту, если поменял почту
+            $subject = 'NetChits - Confirm Email ';
+            $message = 'Please Confirm You new Email,
+            insert this code on you profile page: ' . $confirmcode;
+            $headers = 'From: noreply@netchits.com';
+            $to = $data['email'];
+            // mail($to, $subject, $message, $headers);
+
+        }
+
+        // если пароль пользователя не совпадает с текущим, значит изменился
+        if(!is_null($data['password']) && !password_verify($data['password'], $user->password)) {
+            // хешируем новый пароль пользователя и записываем в бд
+            $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
+
+
+        $user->hashtag = $data['hashtag'];
         $user->save();
 
         $result['status'] = 1;

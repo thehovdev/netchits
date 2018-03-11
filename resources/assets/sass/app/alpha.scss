@@ -166,6 +166,43 @@
     padding: 5px 20px;
 }
 
+.trydemo, {
+    margin-top: 5px;
+    border-radius: 6px;
+    background: #4267B2;
+    color:white;
+    height: 50px;
+    width: 200px;
+    font-size: 1.4em;
+    font-weight: bold;
+    &:hover, &:active, &:active:focus, &:focus {
+        background: #5073b7;
+        color:white;
+
+    }
+}
+
+.trydemo-min, {
+    // margin-top: 15px;
+    // border-radius: 6px;
+    background: #4267B2;
+    color:white;
+    height: 40px;
+    width: 150px;
+    font-size: 1.2em;
+    font-weight: bold;
+    &:hover, &:active, &:active:focus, &:focus {
+        background: #5073b7;
+        color:white;
+
+    }
+}
+
+
+
+
+
+
 .lang-label {
     color:black;
 }
@@ -214,17 +251,14 @@
 .signin-container {
     // margin-top: 10px;
     @extend %hidden-form-container;
-
     h1 {
         margin-top: 5px !important;
         font-size: 30px;
         font-weight: bold;
     }
-
     input {
         height: 30px;
     }
-
     button {
         padding:5px 15px !important;
         margin-left: 0px !important;
@@ -234,17 +268,26 @@
 }
 
 .signup-container {
-    // margin-top: 40px;
     @extend %hidden-form-container;
     h1 {
         font-weight: bold;
         margin-top: 10px !important;
     }
-
     button {
         margin-left: 0px !important;
     }
 }
+
+.oneclick-signup-container {
+    @extend %hidden-form-container;
+    h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 10px !important;
+    }
+}
+
+
 
 .forgotpass-container {
     @extend %hidden-form-container;
