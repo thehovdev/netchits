@@ -110,7 +110,7 @@
                             <input type="password" class="form-control enter-handle" id="signup-password" placeholder="password">
                         </div>
                         <div class="checkbox" style="font-family:arial;font-size:0.9em;">
-                            <label><input id="age" type="checkbox" value="">@lang('main.iam14')</label>
+                            <label><input id="age" type="checkbox" value="" checked>@lang('main.iam14')</label>
                         </div>
                         <div class="alert alert-danger alert-signup-error" style="display:none;">
                         </div>
