@@ -46,11 +46,11 @@
                   </button>
                 </div>
               </div>
-
-              <a class="pointer hidden-user-image" href="/user/{{ $user->id }}" target="_blank">
-                  <img src="/storage/user-profile-images/{{ $user->image_id }}" class="img-circle" width="30px" height="30px"/>
-              </a>
-
+              @if(!is_null(@$user))
+                  <a class="pointer hidden-user-image" href="/user/{{ $user->id }}" target="_blank">
+                      <img src="/storage/user-profile-images/{{ $user->image_id }}" class="img-circle" width="30px" height="30px"/>
+                  </a>
+              @endif
         </div>
     </nav>
 </section>
