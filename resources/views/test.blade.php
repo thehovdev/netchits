@@ -1,37 +1,39 @@
-<!-- @extends('start.init') -->
+Afgan Haqverdi, здравствуйте!
 
-<div class="row">
-    <div class="col-sm-6 col-sm-offset-4">
-        <!-- <a href="/" class="bname">
-            {{ config('app.name') }}
-        </a>
+Компании Hezzl.com симпатизирует ваш профиль на позицию PHP программист (GameDev): https://hh.ru/vacancy/24872097. Условия работы и зарплатная вилка обсуждаются на этапе интервью. Рассматриваем формат штатного или проектного взаимодействия. Удаленка или офис (Москва).
 
-        <div class="description">Follow, Share, Listen with friends</div> -->
-        <div class="margin-top100">
-            
-        </div>
-        <div class="todo-list">
-            <div class="todo-item vcenter">
-                <i class="fa fa-fw fa-users fa-todo-icon fa-fw" aria-hidden="true"></i>
-                <span class="todo-description">Follow your friends</span>
-            </div>
-            <div class="todo-item vcenter">
-                <i class="fa fa-fw fa-newspaper-o fa-todo-icon fa-fw" aria-hidden="true"></i>
-                <span class="todo-description">Share Posts and Notes</span>
-            </div>
-            <div class="todo-item vcenter">
-                <i class="fa fa-fw fa-volume-up fa-todo-icon fa-fw" aria-hidden="true"></i>
-                <span class="todo-description">Listen favorite Music</span>
-            </div>
+Расскажите пожалуйста о своем опыте разработке, были ли опыт работы на PHP7+Symfony+PostgreSQL+Redis и любую полезную информацию, которая позволит нам охарактеризовать более четко ваш профиль, компетенции и зарплатные ожидания. Также подскажите, готовы ли вы выполнить тестовое задание? Задание: https://goo.gl/A8kMLE
 
-            <div class="todo-item vcenter">
-                <i class="fa fa-fw fa-play-circle fa-todo-icon fa-fw" aria-hidden="true"></i>
-                <span class="todo-description">Create you Playlists</span>
-            </div>
-        </div>
-    </div>
-</div>
+Будем признательны за обратную связь.
 
-@section('content')
+С уважением,
+Кристина Агатова
+HR Hezzl Games
 
-@endsection
+
+Здравствуйте Кристина, благодарю за отзыв.
+
+Вот несколько работ из моего портфолио
+- https://insure.az/en
+- https://www.netchits.com/
+- https://play.google.com/store/apps/details?id=agroup.com.healthmobapp
+
+Вот краткая информация обо мне.
+
+Для начала извиняюсь за ответ в столь поздний час, сами понимаете,
+программисты иногда работают по ночам :)
+
+Профессиональный опыт разработки 2 года.
+PHP знаю хорошо, и пишу на нем каждый день.
+Помимо Symfony также использую фреймворк Laravel.
+C PostqreSQL знаком, Redis пока не приходилось использовать.
+
+Вот краткий список остального.
+- Mysql / phpmyadmin
+- Linux / Git
+- Html / Css / Bootstrap
+- JavaScript / Jquery / Vue.js
+- 1С-Bitrix / Wordpress / Opencard
+
+Тестовое задание готов выполнить на выходных.
+Всего доброго Кристина.

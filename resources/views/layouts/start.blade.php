@@ -132,5 +132,5 @@
 @endsection
 
 <div class="author">
-    &copy;NetChits @php echo date("Y"); @endphp
+    &copy;NetChits @php echo date("Y"); @endphp | CEO & Founder - Afgan Khalilov
 </div>
