@@ -31932,11 +31932,10 @@ Api = {
             Api.deleteChitsGroup(id);
         });
 
-        // $(document).on('click', '.btn-loveit', function() {
-        //     var videoId = $(this).closest('div.search-item').attr('id');
-        //     Api.addChits(videoId);
-        // });
-
+        $(document).on('click', '.btn-loveit', function () {
+            var videoId = $(this).closest('div.search-item').attr('id');
+            Api.addChits(videoId);
+        });
 
         $("#chits-add-button").click(function () {
             Api.addChits();
