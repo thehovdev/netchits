@@ -144,6 +144,7 @@
         gapi.client.setApiKey('AIzaSyBwO7p8maeRXUqUO98dqyDQcUl-Ld2eYrM');
         gapi.client.load('youtube', 'v3', function(){
                 makeRequest();
+
         });
         }
         function makeRequest(){
@@ -154,9 +155,6 @@
                 maxResults: 8
         });
         request.execute(function(response)  {
-
-                console.log(response);
-
                 $('#results').empty()
                 var srchItems = response.result.items;
                 $.each(srchItems, function(index, item){

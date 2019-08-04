@@ -31945,8 +31945,20 @@ Api = {
             Api.addGroup();
         });
 
+        $("#button-sidebar-add-chits").click(function () {
+            // Api.showAddChitsPanel();
+        });
+
+        $("#button-sidebar-add-groups").click(function () {
+            // Api.showGroupsPanel();
+        });
+
         $("#button-sidebar-show-chits").click(function () {
             Api.showChitsPanel();
+        });
+
+        $("#button-sidebar-show-groups").click(function () {
+            // Api.showGroupsPanel();
         });
 
         $(".button-sidebar-show-friends").click(function () {
@@ -31981,6 +31993,10 @@ Api = {
         $('.button-delete-friend').click(function () {
             Api.deleteFriend();
         });
+
+        // $('.button-upload-profile-image').click(function() {
+        //     $('#input-upload-profile-image').click();
+        // });
 
         $('.btn-upload-img').click(function () {
             $('#input-upload-profile-image').click();
