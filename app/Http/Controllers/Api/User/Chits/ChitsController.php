@@ -98,8 +98,6 @@ class ChitsController extends Controller
         }
 
         return response()->json($result);
-
-
     }
 
     public function deleteChits(Request $request) {

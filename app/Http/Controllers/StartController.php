@@ -36,6 +36,7 @@ class StartController extends Controller
                 ->with('sidebar', $sidebar);
         } else {
 
+            
 
             $userGroups = $chitsGroupModel->getUserGroups($user);
             $userChits = $chitsModel->getUserChits($user);

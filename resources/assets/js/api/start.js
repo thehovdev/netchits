@@ -118,10 +118,10 @@ Api = {
         Api.deleteChitsGroup(id);
     });
 
-    $(document).on('click', '.btn-loveit', function() {
-        var videoId = $(this).closest('div.search-item').attr('id');
-        Api.addChits(videoId);
-    });
+    // $(document).on('click', '.btn-loveit', function() {
+    //     var videoId = $(this).closest('div.search-item').attr('id');
+    //     Api.addChits(videoId);
+    // });
 
 
     $("#chits-add-button").click(function () {
@@ -132,27 +132,13 @@ Api = {
         Api.addGroup();
     });
 
-    $("#button-sidebar-add-chits").click(function() {
-        // Api.showAddChitsPanel();
-    })
-
-    $("#button-sidebar-add-groups").click(function() {
-        // Api.showGroupsPanel();
-    })
-
     $("#button-sidebar-show-chits").click(function() {
         Api.showChitsPanel();
-    })
-
-    $("#button-sidebar-show-groups").click(function() {
-        // Api.showGroupsPanel();
     })
 
     $(".button-sidebar-show-friends").click(function() {
         Api.showFriendsPanel();
     })
-
-
 
     $(".button-trydemo").click(function() {
         Api.tryDemo();
@@ -183,15 +169,9 @@ Api = {
         Api.deleteFriend();
     });
 
-    // $('.button-upload-profile-image').click(function() {
-    //     $('#input-upload-profile-image').click();
-    // });
-
     $('.btn-upload-img').click(function() {
         $('#input-upload-profile-image').click();
     });
-
-
 
     $('#input-upload-profile-image').change(function(e) {
 

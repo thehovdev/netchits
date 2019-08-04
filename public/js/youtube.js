@@ -57,6 +57,9 @@ function enableAutoPlay(videoId) {
     var nextChitId = $("div.chit-code-" + dataCode).next().attr('id');
 
 
+    if( typeof nextChitId === 'undefined' || nextChitId === null ){
+        var nextChitId = $("div.chits-column-parent").first().attr('id');
+    }
 
     $('#' + nextChitId).find('.chits-player').click();
 
