@@ -32164,6 +32164,10 @@ Api = {
             player.stopVideo();
         }
 
+        var chitsCount = $(list).find('.chits-column-parent').length;
+        // если последняя песня/запись в группе удаляется, то удаляем саму группу тоже
+        if (chitsCount == 0) Api.deleteChitsGroup(data.chit.group_id);
+
         Api.playerMoove();
     },
 
@@ -32190,6 +32194,12 @@ Api = {
     addToList: function addToList(data) {
 
         var list = $('.chits-list').find('#group-id-' + data.chit.group_id + '-list');
+
+        if (typeof list === 'undefined' || list === null) {}
+
+        // $('.chits-list').
+
+        // $("p").append("<b>Appended text</b>");
 
         console.info(list);
 

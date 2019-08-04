@@ -11,20 +11,12 @@ function onYouTubePlayerAPIReady() {
     var width = $('.chits-column-parent .chits-player').width();
     var height = $('.chits-column-parent .chits-player').height();
 
-
-        // проверить, если это iphone то, иначе
-    	// if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-        //
-    	// } else {
-        //
-    	// }
-
-
-
-
-
-
-
+    // проверить, если это iphone то, иначе
+    // if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+    //
+    // } else {
+    //
+    // }
 
     player = new YT.Player('player', {
       height: height,
@@ -56,7 +48,9 @@ function enableAutoPlay(videoId) {
 
     var nextChitId = $("div.chit-code-" + dataCode).next().attr('id');
 
-
+    if( typeof nextChitId === 'undefined' || nextChitId === null ){
+        var nextChitId = $("div.chits-column-parent").first().attr('id');
+    }
 
     $('#' + nextChitId).find('.chits-player').click();
 
