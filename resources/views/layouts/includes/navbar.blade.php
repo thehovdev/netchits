@@ -1,3 +1,4 @@
+@section('navbar')
 <section class="nav-container">
     <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
         <div class="container-fluid">
@@ -54,3 +55,4 @@
         </div>
     </nav>
 </section>
+@show

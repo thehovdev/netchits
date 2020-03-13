@@ -1,24 +1,19 @@
 @extends('layouts.app')
+@section('navbar')
+@show
 @section('content')
-    <div class="parent">
-
-	<!-- @include('layouts.includes.navbar') -->
-
+    <div class="container">
 	<section class="mainPage">
-
             <div class="col-sm-12">
-
 		<div class="row">
                     <div class="col-sm-6">
                         <a href="/" class="bname">
                             {{ config('app.name') }}
                         </a>
-
 			<div class="description">Follow, Share, Listen with friends</div>
 			<button class="button-trydemo trydemo btn btn-default">
                             Continue
 			</button>
-
 			<div class="todo-list">
                             <div class="todo-item vcenter">
 				<i class="fa fa-fw fa-users fa-todo-icon fa-fw" aria-hidden="true"></i>
@@ -38,11 +33,9 @@
                             </div>
 			</div>
                     </div>
-
                     <div class="col-sm-4 col-sm-offset-2">
 			<div class="oneclick-signup-container">
                             <h1>Use without signup</h1>
-
                             <button class="button-trydemo trydemo-min btn btn-default">
 				Continue
                             </button>
@@ -69,7 +62,6 @@
                             <button style="display:none;" type="submit" class="btn btn-default" id="button-sendcode">
 				Send Code
                             </button>
-
                             <div class="form-resetpass" style="display:none;">
 				<div class="form-group">
                                     <label for="pwd">Insert Code</label>
@@ -102,7 +94,6 @@
 				@csrf
 
 				<div class="form-group row">
-				    <div class="col-md-6">
 					<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
 
 						   @error('name')
@@ -110,11 +101,9 @@
                                         <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-				    </div>
 				</div>
 
 				<div class="form-group row">
-				    <div class="col-md-6">
 					<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-Mail" required autocomplete="email">
 
 						   @error('email')
@@ -122,11 +111,9 @@
                                         <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-				    </div>
 				</div>
 
 				<div class="form-group row">
-				    <div class="col-md-6">
 					<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
 						   @error('password')
@@ -134,33 +121,22 @@
                                         <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-				    </div>
 				</div>
 
 				<div class="form-group row">
-				    <div class="col-md-6">
 					<input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password">
 				    </div>
 				</div>
 
 				<div class="form-group row mb-0">
-				    <div class="col-md-6 offset-md-4">
+				    <div class="col-md-6 offset-md-2">
 					<button type="submit" class="btn btn-default btn-start" id="signup-submit-button">@lang('main.signup')</button>
 				    </div>
 				</div>
 			    </form>
-                    </div>
-
-
-
-
+			</div>
+		    </div>
 		</div>
-
-            </div>
-
 	</section>
-
     </div>
-
-
 @endsection
