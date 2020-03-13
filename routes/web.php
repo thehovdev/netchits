@@ -15,9 +15,13 @@ use Illuminate\Support\Arr;
 */
 
 Route::get('/', function () {
+    if (auth()->check())
+        return redirect()->route('home');
     return view('welcome');
 });
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+Route::get('/locale/{locale}', 'LocaleController@set');
