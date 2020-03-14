@@ -9,11 +9,10 @@ class LocaleController extends Controller
 
     public function set($locale)
     {
-        if (in_array($locale, config('app.locales'))) {
-            session(['locale' => $locale]);
-        } else {
-            session(['locale' => 'en']);
-        }
+        $locale = in_array($locale, config('app.locales')) ? $locale : 'en';
+
+        session(['locale' => $locale]);
+        
         return redirect()->back();
     }
 }
