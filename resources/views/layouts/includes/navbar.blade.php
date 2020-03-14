@@ -1,4 +1,7 @@
 @section('navbar')
+    @php
+    $user = Auth::user();
+    @endphp
 <section class="nav-container">
     <nav class="navbar navbar-default navbar-fixed-top navbar-netchits">
         <div class="container-fluid">
@@ -21,9 +24,10 @@
                     </li>
 
                     <li>
-			<a class="pointer" id="signout-button">
-                            <span>@lang('main.signout')</span>
-			</a>
+			<form method="POST" action="{{ route('logout') }}">
+			    @csrf
+			    <button class="btn btn-link">@lang('main.signout')</button>
+			</form>
                     </li>
                 @else
                     <li>
