@@ -42,52 +42,30 @@
 			</div>
 			<div class="signin-container">
                             <h1>Log in</h1>
+			    <form method="POST" action="{{ route('login') }}">
+				@csrf
                             <div class="form-group">
-				<input type="email" class="form-control enter-handle" id="signin-email" placeholder="e-mail">
+				<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail" autofocus>
+
+					   @error('email')
+					   <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
-				<input type="password" class="form-control enter-handle" id="signin-password" placeholder="password">
+				<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password" autocomplete="current-password">
+
+					   @error('password')
+					   <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-default btn-start" id="signin-submit-button">Log in</button>
-                            <button type="submit" class="btn btn-default btn-start" id="button-forgotpass">Forgot Password</button>
-                            <div class="alert alert-danger alert-password-incorrect" style="display:none;">
-				<strong>Password is incorrect..
-                            </div>
+                            <a class="btn btn-info" href="{{ route('password.request') }}">Forgot password</a>
+			    </form>
                         </div>
-			<div class="forgotpass-container" style="display:none;">
-                            <div class="form-group form-sendcode">
-				<label for="email">Email address:</label>
-				<input type="email" class="form-control" id="forgotpass-email">
-                            </div>
-                            <button style="display:none;" type="submit" class="btn btn-default" id="button-sendcode">
-				Send Code
-                            </button>
-                            <div class="form-resetpass" style="display:none;">
-				<div class="form-group">
-                                    <label for="pwd">Insert Code</label>
-                                    <input type="password" class="form-control" id="forgotpass-code">
-				</div>
-				<div class="form-group">
-                                    <label for="pwd">New Password</label>
-                                    <input type="password" class="form-control" id="forgotpass-newpass">
-				</div>
-				<div class="form-group">
-                                    <label for="pwd">Retry Password</label>
-                                    <input type="password" class="form-control" id="forgotpass-repass">
-				</div>
-                            </div>
-
-                            <button style="display:none;" type="submit" class="btn btn-default" id="button-resetpass">Reset Pass</button>
-
-
-                            <div class="alert alert-success resetpass-success" style="display:none;margin-top:10px;">
-				<strong>Success!</strong> Password Changed, Login to your Account
-                            </div>
-                            <div class="alert alert-danger resetpass-error" style="display:none;margin-top:10px;">
-				<strong>Success!</strong> Password Changed, Login to your Account
-                            </div>
-
-			</div>
 			<div class="signup-container">
                             <h1>Sign Up</h1>
                             <form method="POST" action="{{ route('register') }}">
