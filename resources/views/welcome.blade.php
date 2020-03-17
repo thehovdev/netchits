@@ -1,100 +1,120 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
+@section('navbar')
+@show
+@section('content')
+    <div class="container">
+	<section class="mainPage">
+            <div class="col-sm-12">
+		<div class="row">
+                    <div class="col-sm-6">
+                        <a href="/" class="bname">
+                            {{ config('app.name') }}
+                        </a>
+			<div class="description">Follow, Share, Listen with friends</div>
+			<button class="button-trydemo trydemo btn btn-default">
+                            Continue
+			</button>
+			<div class="todo-list">
+                            <div class="todo-item vcenter">
+				<i class="fa fa-fw fa-users fa-todo-icon fa-fw" aria-hidden="true"></i>
+				<span class="todo-description">Follow your friends</span>
+                            </div>
+                            <div class="todo-item vcenter">
+				<i class="fa fa-fw fa-newspaper-o fa-todo-icon fa-fw" aria-hidden="true"></i>
+				<span class="todo-description">Share Posts and Notes</span>
+                            </div>
+                            <div class="todo-item vcenter">
+				<i class="fa fa-fw fa-volume-up fa-todo-icon fa-fw" aria-hidden="true"></i>
+				<span class="todo-description">Listen favorite Music</span>
+                            </div>
+                            <div class="todo-item vcenter">
+				<i class="fa fa-fw fa-play-circle fa-todo-icon fa-fw" aria-hidden="true"></i>
+				<span class="todo-description">Create you Playlists</span>
+                            </div>
+			</div>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-2">
+			<div class="oneclick-signup-container">
+                            <h1>Use without signup</h1>
+                            <button class="button-trydemo trydemo-min btn btn-default">
+				Continue
+                            </button>
+			</div>
+			<div class="signin-container">
+                            <h1>Log in</h1>
+			    <form method="POST" action="{{ route('login') }}">
+				@csrf
+                            <div class="form-group">
+				<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail" autofocus>
 
-        <title>Laravel</title>
+					   @error('email')
+					   <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+				<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password" autocomplete="current-password">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+					   @error('password')
+					   <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-default btn-start" id="signin-submit-button">Log in</button>
+                            <a class="btn btn-info" href="{{ route('password.request') }}">Forgot password</a>
+			    </form>
+                        </div>
+			<div class="signup-container">
+                            <h1>Sign Up</h1>
+                            <form method="POST" action="{{ route('register') }}">
+				@csrf
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+				<div class="form-group row">
+					<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
 
-            .full-height {
-                height: 100vh;
-            }
+						   @error('name')
+						   <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+				</div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+				<div class="form-group row">
+					<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-Mail" required autocomplete="email">
 
-            .position-ref {
-                position: relative;
-            }
+						   @error('email')
+						   <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+				</div>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+				<div class="form-group row">
+					<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
-            .content {
-                text-align: center;
-            }
+						   @error('password')
+						   <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+				</div>
 
-            .title {
-                font-size: 84px;
-            }
+				<div class="form-group row">
+					<input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password">
+				    </div>
+				</div>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+				<div class="form-group row mb-0">
+				    <div class="col-md-6 offset-md-2">
+					<button type="submit" class="btn btn-default btn-start" id="signup-submit-button">@lang('main.signup')</button>
+				    </div>
+				</div>
+			    </form>
+			</div>
+		    </div>
+		</div>
+	</section>
+    </div>
+@endsection
