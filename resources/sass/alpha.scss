@@ -182,7 +182,7 @@
     }
 }
 
-.trydemo-min, {
+.trydemo-min {
     // margin-top: 15px;
     // border-radius: 6px;
     background: #4267B2;
@@ -244,10 +244,6 @@
     color:black;
 }
 
-.btn-default {
-    // margin:3px;
-}
-
 .signin-container {
     // margin-top: 10px;
     @extend %hidden-form-container;
@@ -298,7 +294,6 @@
 }
 
 .author {
-    // background: rgba(163, 7, 219, 0.9);
     background: #294c93;
     position: fixed;
     width: 100%;

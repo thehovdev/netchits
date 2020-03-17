@@ -11097,10 +11097,6 @@ a.text-dark:focus {
   color: #c68400;
 }
 
-.alert-password-incorrect {
-  margin: 5px;
-}
-
 .forgotpass-container,
 .oneclick-signup-container,
 .signup-container,
@@ -11125,21 +11121,6 @@ a.text-dark:focus {
   padding: 5px 15px !important;
   margin-left: 0px !important;
   margin-right: 5px !important;
-}
-
-.signup-container h1 {
-  font-weight: bold;
-  margin-top: 10px !important;
-}
-
-.signup-container button {
-  margin-left: 0px !important;
-}
-
-.oneclick-signup-container h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-top: 10px !important;
 }
 
 .pointer {
@@ -11378,10 +11359,10 @@ a.text-dark:focus {
   margin: 5px;
 }
 
-.signin-container,
-.signup-container,
+.forgotpass-container,
 .oneclick-signup-container,
-.forgotpass-container {
+.signup-container,
+.signin-container {
   margin-bottom: 10px auto;
   padding: 10px;
   width: 100%;

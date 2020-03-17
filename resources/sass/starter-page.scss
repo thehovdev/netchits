@@ -198,11 +198,6 @@
     }
 }
 
-
-
-
-
-
 .lang-label {
     color:black;
 }
@@ -233,19 +228,11 @@
     color:#c68400;
 }
 
-.alert-password-incorrect {
-    margin:5px;
-}
-
 %hidden-form-container {
     margin-bottom: 10px auto;
     padding: 10px;
     width: 100%;
     color:black;
-}
-
-.btn-default {
-    // margin:3px;
 }
 
 .signin-container {
@@ -266,33 +253,6 @@
     }
 
 }
-
-.signup-container {
-    @extend %hidden-form-container;
-    h1 {
-        font-weight: bold;
-        margin-top: 10px !important;
-    }
-    button {
-        margin-left: 0px !important;
-    }
-}
-
-.oneclick-signup-container {
-    @extend %hidden-form-container;
-    h1 {
-        font-size: 28px;
-        font-weight: bold;
-        margin-top: 10px !important;
-    }
-}
-
-
-
-.forgotpass-container {
-    @extend %hidden-form-container;
-}
-
 .pointer {
     cursor: pointer;
 }
