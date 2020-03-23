@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (auth()->check())
-        return redirect()->route('home');
     return view('welcome');
-});
+})->middleware('guest');
 
 Auth::routes(['verify' => true]);
 
@@ -25,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('/settings', 'UserController@settings')->name('settings');
 
+Route::get('/locale/{locale}', 'LocaleController@set')->name('locale');
 
 Route::post('/upload/image', 'UserController@upload')->name('update.picture');
 
