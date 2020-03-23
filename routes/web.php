@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('/settings', 'UserController@settings')->name('settings');
 
-Route::get('/locale/{locale}', 'LocaleController@set');
+
+Route::post('/upload/image', 'UserController@upload')->name('update.picture');
+
