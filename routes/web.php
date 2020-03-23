@@ -28,3 +28,4 @@ Route::get('/settings', 'UserController@settings')->name('settings');
 
 Route::post('/upload/image', 'UserController@upload')->name('update.picture');
 
+Route::post('/settings/update', 'UserController@apply')->name('update.settings');

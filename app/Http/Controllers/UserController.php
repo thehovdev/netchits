@@ -37,5 +37,34 @@ class UserController extends Controller
 
     }
 
+    public function apply(Request $request)
+    {
+        $user = auth()->user();
+        $validated = $request->validate([
+            'name' => 'required',
+            'hashtag' => 'required',
+            'email' => 'required|email',
+            'current_password' => ['nullable', function ($attribute, $value, $fail) use ($user) {
+                if (!Hash::check($value, $user->password)) {
+                    $fail(__('Incorrent current password'));
+                }
+            }],
+            'password' => 'required_with:current_password|confirmed'
+        ]);
+        
+        if ($validated->passes()) {
+            $user->fill([
+                'name' => $request->name,
+                'hashtag' => $request->hashtag,
+                'email' => $request->email,
+                'password' => !is_null($request->password) ? Hash::make($request->password) : $user->password
+            ])->save();
+
+            session(['message' => 'Successfully updated the profile']);
+            
+            return redirect()->back();
+        }
+
+        return redirect()->back()->withErrors($validated);
     }
 }
