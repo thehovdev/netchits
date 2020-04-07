@@ -49,10 +49,10 @@
 			    </div>
 			</div>
 		    </div>
-		    <div class="row row-chits-list" id="group-{{ $group->id }}-list">
+		    <div class="row col-md-12 col-sm-12" id="group-{{ $group->id }}-list">
 			@foreach ($group->chits()->latest()->get() as $chit)
 			    @if(Str::contains($chit->address, 'youtube'))
-				<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-md-3 col-sm-3 col-xs-3" id="chit-{{ $chit->id }}">
+				<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-md-4 col-sm-4 col-xs-12" id="chit-{{ $chit->id }}">
 
 				    <div class="chits-player">
 					<!-- Плеер -->
@@ -79,7 +79,7 @@
 			    @else
 
 
-				<div class="chits-column-parent col-lg-3 col-md-3 col-sm-3" id="chit-{{ $chit->id }}">
+				<div class="chits-column-parent col-lg-3 col-md-4 col-sm-4" id="chit-{{ $chit->id }}">
 				    <div class="chits-column-block">
 					<a class="chits-child" href="{{ $chit->address }}" target="_blank">
 					    <div>
