@@ -26,7 +26,7 @@
 				<option id="select-{{ $group->id }}" value="{{ $group->id }}">{{ $group->name }}</option>
 			    @endforeach
 			@else
-			    <option>Default Group</option>
+			    <option value="0">Default</option>
 			@endif
 		    </select>
                 </div>
