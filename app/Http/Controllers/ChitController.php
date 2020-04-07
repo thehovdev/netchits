@@ -28,12 +28,15 @@ class ChitController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
         $data = OpenGraph::fetch($request->address);
 
+        $group = $user->groups()->firstOrCreate(['id' => $request->groupId], ['name' => 'Default']);
+        
         $data['title'] = $data['title'] ?? (new FetchMetaData($request->address))->getTitle();
         
-        $chit = auth()->user()->chits()->create([
-            'group_id' => $request->groupId,
+        $chit = $user->chits()->create([
+            'group_id' => $group->id,
             'address' => $request->address,
             'title' => $data['title'],
             'image' => $data['image'] ?? 'images/web.png'
@@ -43,7 +46,7 @@ class ChitController extends Controller
             
         return response()->json([
             'status' => 1,
-            'groupId' => $request->groupId,
+            'groupId' => $group->id,
             'html' => view($view, compact('chit'))->render()
         ]);
     }
