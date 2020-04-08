@@ -94,6 +94,9 @@ Api = {
 	}).done(function (res) {
 	    $('#group-' + res.id).remove();
 	    $('#select-' + res.id).remove();
+	    if (!$('select[name="group"]').children().length) {
+		$('select[name="group"]').append('<option value="0">Default</option>');
+	    }
 	    $('#group-' + res.id + '-list').remove();
 	    $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
 	    setTimeout(function () {
