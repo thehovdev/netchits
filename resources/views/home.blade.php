@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 	
-        <div class="col-md-8">
+        <div id="main" class="col-md-8">
 	    <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
                 <button type="button" class="btn btn-success button-add-chits button-add-chits-search-color" id="chits-add-button" disabled>
                     <span class="bar-search-text">
