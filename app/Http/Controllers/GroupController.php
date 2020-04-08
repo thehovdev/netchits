@@ -19,7 +19,7 @@ class GroupController extends Controller
 
         return response()->json([
             'status' => 1,
-            'id' => $group->id,
+            'group' => $group,
             'html' => view('components.default-group', compact('group'))->render(),
             'message' => 'Group successfully has been created!'
         ]);
