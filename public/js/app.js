@@ -37045,6 +37045,122 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/addons.js":
+/*!********************************!*\
+  !*** ./resources/js/addons.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('.btn-upload-img').click(function () {
+  $('#upload-me').click();
+});
+$('#upload-me').change(function () {
+  $('#upload-picture').click();
+});
+$(document).on('click', '#add-chit', function () {
+  var group = $('select[name="group"]').val();
+  var address = $('#chits-address-input').val();
+  Api.addChit(address, group);
+});
+$(document).on('click', '.chits-delete-button', function () {
+  var id = $(this).attr('id');
+  Api.deleteChit(id);
+});
+$(document).on('click', '#add-group', function () {
+  var name = $('#group-name').val();
+  Api.addGroup(name);
+});
+$(document).on('click', '.chits-group-delete-button', function () {
+  var id = $(this).attr('id');
+  Api.deleteGroup(id);
+});
+Api = {
+  headers: {
+    "Accept": "application/json",
+    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+  },
+  addChit: function addChit(address, groupId) {
+    $.ajax({
+      url: '/chits',
+      type: 'POST',
+      headers: Api.headers,
+      data: {
+        address: address,
+        groupId: groupId
+      }
+    }).done(function (res) {
+      if (res.status == 1) {
+        if (!$('#group-' + res.groupId).length) {
+          $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="panel panel-default panel-group"><div class="panel-body">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
+        }
+
+        $('#group-' + res.groupId + '-list').prepend(res.html);
+      } else {
+        $('.alerts').append('<div class="alert alert-danger" id="alert-' + res.id + '">' + res.message + '</div>');
+        setTimeout(function () {
+          $('#alert-' + res.id).remove();
+        }, 2000);
+      }
+    });
+  },
+  deleteChit: function deleteChit(id) {
+    $.ajax({
+      url: '/chits/' + id,
+      type: 'DELETE',
+      headers: Api.headers,
+      data: {
+        chit: id
+      }
+    }).done(function (res) {
+      $('#chit-' + res.id).remove();
+      $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id + '">' + res.message + '</div>');
+      setTimeout(function () {
+        $('#alert-' + res.id).remove();
+      }, 2000);
+    });
+  },
+  addGroup: function addGroup(name) {
+    $.ajax({
+      url: '/groups',
+      type: 'POST',
+      headers: Api.headers,
+      data: {
+        name: name
+      }
+    }).done(function (res) {
+      $('.alerts').after(res.html);
+      $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id + '">' + res.message + '</div>');
+      $('select[name="group"]').append('<option value="' + res.group.id + '">' + res.group.name + '</option>');
+      setTimeout(function () {
+        $('#alert-' + res.id).remove();
+      }, 2000);
+    });
+  },
+  deleteGroup: function deleteGroup(id) {
+    $.ajax({
+      url: '/groups/' + id,
+      type: 'DELETE',
+      headers: Api.headers
+    }).done(function (res) {
+      $('#group-' + res.id).remove();
+      $('#select-' + res.id).remove();
+
+      if (!$('select[name="group"]').children().length) {
+        $('select[name="group"]').append('<option value="0">Default</option>');
+      }
+
+      $('#group-' + res.id + '-list').remove();
+      $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id + '">' + res.message + '</div>');
+      setTimeout(function () {
+        $('#alert-' + res.id).remove();
+      }, 2000);
+    });
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37054,10 +37170,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-$(document).on('click', '.forgot-button', function () {
-  $('.signin-container').hide();
-  $('.forgotpass-container').show();
-});
+__webpack_require__(/*! ./addons */ "./resources/js/addons.js");
 
 /***/ }),
 
