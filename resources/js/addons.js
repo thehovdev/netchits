@@ -79,6 +79,7 @@ Api = {
 	}).done(function (res) {
 	    $('.alerts').after(res.html);
 	    $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
+	    $('select[name="group"]').append('<option value="' + res.group.id + '">' + res.group.name + '</option>')
 	    setTimeout(function () {
 		$('#alert-' + res.id).remove()
 	    }, 2000)
