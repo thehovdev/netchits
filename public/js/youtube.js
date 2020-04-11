@@ -86,274 +86,340 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/querystring-es3/decode.js":
+/*!************************************************!*\
+  !*** ./node_modules/querystring-es3/decode.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+// If obj.hasOwnProperty has been overridden, then calling
+// obj.hasOwnProperty(prop) will break.
+// See: https://github.com/joyent/node/issues/1707
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+module.exports = function(qs, sep, eq, options) {
+  sep = sep || '&';
+  eq = eq || '=';
+  var obj = {};
+
+  if (typeof qs !== 'string' || qs.length === 0) {
+    return obj;
+  }
+
+  var regexp = /\+/g;
+  qs = qs.split(sep);
+
+  var maxKeys = 1000;
+  if (options && typeof options.maxKeys === 'number') {
+    maxKeys = options.maxKeys;
+  }
+
+  var len = qs.length;
+  // maxKeys <= 0 means that we should not limit keys count
+  if (maxKeys > 0 && len > maxKeys) {
+    len = maxKeys;
+  }
+
+  for (var i = 0; i < len; ++i) {
+    var x = qs[i].replace(regexp, '%20'),
+        idx = x.indexOf(eq),
+        kstr, vstr, k, v;
+
+    if (idx >= 0) {
+      kstr = x.substr(0, idx);
+      vstr = x.substr(idx + 1);
+    } else {
+      kstr = x;
+      vstr = '';
+    }
+
+    k = decodeURIComponent(kstr);
+    v = decodeURIComponent(vstr);
+
+    if (!hasOwnProperty(obj, k)) {
+      obj[k] = v;
+    } else if (isArray(obj[k])) {
+      obj[k].push(v);
+    } else {
+      obj[k] = [obj[k], v];
+    }
+  }
+
+  return obj;
+};
+
+var isArray = Array.isArray || function (xs) {
+  return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/querystring-es3/encode.js":
+/*!************************************************!*\
+  !*** ./node_modules/querystring-es3/encode.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+var stringifyPrimitive = function(v) {
+  switch (typeof v) {
+    case 'string':
+      return v;
+
+    case 'boolean':
+      return v ? 'true' : 'false';
+
+    case 'number':
+      return isFinite(v) ? v : '';
+
+    default:
+      return '';
+  }
+};
+
+module.exports = function(obj, sep, eq, name) {
+  sep = sep || '&';
+  eq = eq || '=';
+  if (obj === null) {
+    obj = undefined;
+  }
+
+  if (typeof obj === 'object') {
+    return map(objectKeys(obj), function(k) {
+      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
+      if (isArray(obj[k])) {
+        return map(obj[k], function(v) {
+          return ks + encodeURIComponent(stringifyPrimitive(v));
+        }).join(sep);
+      } else {
+        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
+      }
+    }).join(sep);
+
+  }
+
+  if (!name) return '';
+  return encodeURIComponent(stringifyPrimitive(name)) + eq +
+         encodeURIComponent(stringifyPrimitive(obj));
+};
+
+var isArray = Array.isArray || function (xs) {
+  return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+function map (xs, f) {
+  if (xs.map) return xs.map(f);
+  var res = [];
+  for (var i = 0; i < xs.length; i++) {
+    res.push(f(xs[i], i));
+  }
+  return res;
+}
+
+var objectKeys = Object.keys || function (obj) {
+  var res = [];
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
+  }
+  return res;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/querystring-es3/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/querystring-es3/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.decode = exports.parse = __webpack_require__(/*! ./decode */ "./node_modules/querystring-es3/decode.js");
+exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node_modules/querystring-es3/encode.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/youtube-api-v3-search/src/browser.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/youtube-api-v3-search/src/browser.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const request = __webpack_require__(/*! ./request/browser-request */ "./node_modules/youtube-api-v3-search/src/request/browser-request.js");
+const common = __webpack_require__(/*! ./common */ "./node_modules/youtube-api-v3-search/src/common.js");
+module.exports  = function(key , options , cb){
+  return common(request , key , options , cb);
+}
+
+
+
+/***/ }),
+
+/***/ "./node_modules/youtube-api-v3-search/src/common.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/youtube-api-v3-search/src/common.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+const config = __webpack_require__(/*! ./config */ "./node_modules/youtube-api-v3-search/src/config.js");
+const querystring = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
+
+
+module.exports = function(request, key, options, cb){
+    if(!key && typeof cb === 'function')
+      return cb(new Error('API Key is required'));
+    else if(!key) throw new Error('API Key is required');
+    fillData(key , options);
+    const q = querystring.stringify(config.options);
+  if(typeof cb === 'function')
+    request(config.URL+q).then(res => cb(null,res)).catch(err => cb(err));
+  else
+    return request(config.URL+q);
+}
+
+function fillData(key , options){
+  config.options.key = key;
+  for(let i in options)
+    config.options[i] = options[i];
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/youtube-api-v3-search/src/config.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/youtube-api-v3-search/src/config.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+module.exports.URL = 'https://www.googleapis.com/youtube/v3/search?';
+module.exports.options = {
+  q:'',
+  part:'snippet',
+  type:'video'
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/youtube-api-v3-search/src/request/browser-request.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/youtube-api-v3-search/src/request/browser-request.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+module.exports = function(url){
+    const req  = new XMLHttpRequest();
+    return new Promise(( resolve , reject )=>{
+      req.onreadystatechange = function() {
+        if (this.readyState == 4){
+          if(this.status == 200){
+            let response = JSON.parse(this.response);
+            resolve(response);
+          }else{
+            let err = JSON.parse(this.response);
+            reject(err);
+         }
+       }
+     }
+      req.onerror = function(e){
+        reject(new Error (this.statusText) );
+      }
+      req.open('GET',url,true);
+      req.send(null);
+  });
+
+}
+
+
+/***/ }),
+
 /***/ "./resources/js/youtube.js":
 /*!*********************************!*\
   !*** ./resources/js/youtube.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
+var searchYT = __webpack_require__(/*! youtube-api-v3-search */ "./node_modules/youtube-api-v3-search/src/browser.js");
 
-var player;
-
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('playerf', {
-    height: '360',
-    width: '640',
-    videoId: 'ByHuAUwdbe8',
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-  });
-} // 4. The API will call this function when the video player is ready.
-
-
-function onPlayerReady(event) {
-  event.target.playVideo();
-} // 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-
-
-var done = false;
-
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
+var token = 'AIzaSyAjQp5AOW39IzQ_XJj-ByZi9DxahpjDi7U';
+Youtube = {
+  search: function search(q) {
+    var options = {
+      part: 'snippet',
+      q: q,
+      type: 'video',
+      maxResults: 9
+    };
+    var result = searchYT(token, options);
+    return result;
   }
-}
-
-function stopVideo() {
-  player.stopVideo();
-}
-
-function submitLoadVideoById() {
-  var videoId = document.getElementById("loadVideoById").value;
-  player.loadVideoById({
-    videoId: videoId
-  });
-}
-
-function submitLoadVideoByURL() {
-  var url = document.getElementById("loadVideoByUrl").value;
-  player.loadVideoByUrl({
-    mediaContentUrl: url
-  });
-}
-
-function submitLoadPlaylist() {
-  var playlistString = document.getElementById("loadPlaylist").value;
-  var playlist = playlistString.split(',');
-  player.loadPlaylist({
-    playlist: playlist
-  });
-}
-
-function submitCueVideoById() {
-  var videoId = document.getElementById("cueVideoById").value;
-  player.cueVideoById({
-    videoId: videoId
-  });
-}
-
-function submitCueVideoByURL() {
-  var url = document.getElementById("cueVideoByUrl").value;
-  player.cueVideoByUrl({
-    mediaContentUrl: url
-  });
-}
-
-function submitCuePlaylist() {
-  var playlistString = document.getElementById("cuePlaylist").value;
-  var playlist = playlistString.split(',');
-  player.cuePlaylist({
-    playlist: playlist
-  });
-} // Log state changes
-
-
-function onStateChange(event) {
-  var time = getTime();
-  var state = "undefiend";
-
-  switch (event.data) {
-    case YT.PlayerState.UNSTARTED:
-      state = "unstarted";
-      break;
-
-    case YT.PlayerState.ENDED:
-      state = "ended";
-      break;
-
-    case YT.PlayerState.PLAYING:
-      state = "playing";
-      break;
-
-    case YT.PlayerState.PAUSED:
-      state = "paused";
-      break;
-
-    case YT.PlayerState.BUFFERING:
-      state = "buffering";
-      break;
-
-    case YT.PlayerState.CUED:
-      state = "video cued";
-      break;
-
-    default:
-      state = "unknown (" + event.data + ")";
-  }
-
-  console.log('onStateChange: ' + state);
-  theHistory = state + time + "<br/>" + theHistory;
-  document.getElementById("history_div").innerHTML = theHistory;
-} // Log any errors
-
-
-function onError(event) {
-  var time = getTime();
-  var error = "undefined";
-
-  switch (event.data) {
-    case 2:
-      error = "Invalid parameter value";
-      break;
-
-    case 5:
-      error = "HTML 5 related error";
-      break;
-
-    case 100:
-      error = "Video requested is not found";
-      break;
-
-    case 101:
-      error = "Embedded playback forbidden by ownder";
-      break;
-
-    case 150:
-      error = "Error processing video request";
-      break;
-
-    default:
-      error = "unknown (" + event.data + ")";
-  }
-
-  console.log("onError: " + error + time);
-  theHistory = "<p class='error'>" + error + time + "</p>" + theHistory;
-  document.getElementById("history_div").innerHTML = theHistory;
-}
-
-function getTime() {
-  var d = new Date();
-  var currentTime = d.getTime();
-  if (startTime == -1) startTime = currentTime;
-  var elapsed = currentTime - startTime;
-  var theTime = " (" + elapsed + " ms)";
-  return theTime;
-}
-
-function enableAutoPlay(videoId) {
-  // alert(videoId);
-  var position = $('.chits-list').find('div.chit-code-' + videoId).position(); // alert(position.top);
-
-  var dataBlock = $('.chits-list').find('div#player-id-' + videoId);
-  var dataCode = dataBlock.data('video');
-  var dataBlockId = $(dataBlock).attr('id');
-  var nextChitId = $("div.chit-code-" + dataCode).next().attr('id');
-
-  if (typeof nextChitId === 'undefined' || nextChitId === null) {
-    var nextChitId = $("div.chits-column-parent").first().attr('id');
-  }
-
-  $('#' + nextChitId).find('.chits-player').click();
-}
-
-$(".playlist").change(function () {
-  var videoId = $(".playlist").val();
-  setTimeout(function () {
-    enableAutoPlay(videoId);
-  }, 1000);
-});
-
-window.onload = function () {
-  $('.chits-list').css('visibility', 'visible');
 };
-
-$(document).on('click', '.chits-player', function () {
-  var playerblockId = $(this).find("div.playerblock").attr('id');
-  var playerVideoId = $(this).find("div.playerblock").data('video'); // var playerpreview = $(this).find("div.playerpreview").hide();
-
-  var playerpreviewId = $(this).find("div.playerpreview").attr('id'); // var position = $(this).closest('.chits-column-parent').position();
-
-  var position = $(this).closest('.chits-column-parent').position();
-  $('.playlist').val(playerVideoId);
-  $('#player').show();
-  player.loadVideoById({
-    videoId: playerVideoId
-  });
-  var deviceWidth = $(window).width();
-
-  switch (true) {
-    case deviceWidth < 400 && deviceWidth > 300:
-      $("#player").css({
-        "position": "absolute",
-        "top": position.top + 53,
-        // "left" : position.left + 84,
-        "left": position.left + 9,
-        "z-index": "9"
-      });
-      break;
-
-    case deviceWidth < 400:
-      $("#player").css({
-        "position": "absolute",
-        "top": position.top + 53,
-        "left": position.left + 24,
-        "z-index": "9"
-      });
-      break;
-
-    default:
-      $("#player").css({
-        "position": "absolute",
-        "top": position.top + 23,
-        "left": position.left + 6,
-        "z-index": "9"
-      });
-      break;
-  } // if(deviceWidth < 400) {
-  //     $("#player").css({
-  //         "position": "absolute",
-  //         "top" : position.top + 53,
-  //         "left" : position.left + 24,
-  //         "z-index" : "9",
-  //     });
-  // } else {
-  //     $("#player").css({
-  //         "position": "absolute",
-  //         "top" : position.top + 23,
-  //         "left" : position.left + 6,
-  //         "z-index" : "9",
-  //     });
-  // }
-  //
-  // $("#player").css({
-  //     "position": "absolute",
-  //     "top" : position.top + 23,
-  //     "left" : position.left + 6,
-  //     "z-index" : "9",
-  // });
-
-});
 
 /***/ }),
 

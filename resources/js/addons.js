@@ -64,6 +64,14 @@ $(document).on('click', '#chits-search-button', function () {
 
 })
 
+$(document).on('click', '.btn-loveit', function () {
+    let videoId = $(this).attr('id');
+    let group = $('select[name="group"]').val()
+
+    address = 'https://youtube.com/watch?v=' + videoId;
+
+    Api.addChit(address, group);
+})
 
 Api = {
     headers : {
