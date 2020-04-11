@@ -6,20 +6,16 @@
 	
         <div id="main" class="col-md-8">
 	    <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                <button type="button" class="btn btn-success button-add-chits button-add-chits-search-color" id="chits-add-button" disabled>
+                <button type="button" class="btn btn-success button-add-chits button-add-chits-search-color" id="chits-search-button">
                     <span class="bar-search-text">
                         @lang('main.search')
-                    </span>
-
-                    <span class="bar-add-text" style="display:none;">
-                        @lang('main.addchit')
                     </span>
                 </button>
             </div>
             <div class="col-xs-3 col-lg-6 col-md-6 col-sm-6 chits-address-column">
                 <div class="form-group">
                     <input type="text" class="form-control" id="chits-address-input" placeholder="https://netchits.com">
-		    <button type="button" id="add-chit" class="btn btn-primary">Add Chit</button>
+		    <button type="button" id="add-chit" class="btn btn-primary">@lang('main.addchit')</button>
 		    <select name="group">
 			@if (sizeof($user->groups) > 0)
 			    @foreach ($user->groups as $group)
