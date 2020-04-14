@@ -1,4 +1,4 @@
-<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-md-3 col-sm-3 col-xs-3" id="{{ $chit->id }}">
+<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-md-3 col-sm-3 col-xs-12" id="chit-{{ $chit->id }}">
 
     <div class="chits-player">
         <!-- Плеер -->
@@ -17,7 +17,7 @@
         </div>
 
 
-        <div class="chits-events-area">
+        <div class="chits-events-area text-center">
             <i class="fa fa-archive fa-delete-chits chits-delete-button" id="{{ $chit->id }}" aria-hidden="true"></i>
         </div>
     </div>
