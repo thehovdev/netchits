@@ -11140,6 +11140,10 @@ a.text-dark:focus {
   z-index: 9999;
 }
 
+.forgot-password-button {
+  color: white !important;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -11758,6 +11762,7 @@ a:visited {
 }
 
 .chits-address-column {
+  margin: 0 auto;
   min-width: 150px;
 }
 
