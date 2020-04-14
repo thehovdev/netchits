@@ -28,3 +28,7 @@ Route::get('/locale/{locale}', 'LocaleController@set')->name('locale');
 Route::post('/upload/image', 'UserController@upload')->name('update.picture');
 
 Route::post('/settings/update', 'UserController@apply')->name('update.settings');
+
+Route::resource('chits', 'ChitController', ['except' => ['index']]);
+
+Route::resource('groups', 'GroupController', ['except' => ['index']]);
