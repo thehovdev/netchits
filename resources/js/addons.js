@@ -9,6 +9,8 @@ $('#upload-me').change(function () {
 $(document).on('click', '#add-chit', function () {
     let group = $('select[name="group"]').val()
     let address = $('#chits-address-input').val()
+
+    $('#process-chits').attr('style', false)
     Api.addChit(address, group)
 })
 
@@ -65,6 +67,7 @@ $(document).on('click', '#chits-search-button', function () {
 })
 
 $(document).on('click', '.btn-loveit', function () {
+    $('#process-chits').attr('style', false);
     let videoId = $(this).attr('id');
     let group = $('select[name="group"]').val()
 
@@ -97,6 +100,8 @@ Api = {
 		    $('#alert-' + res.id).remove()
 		}, 2000)
 	    }
+
+	    $('#process-chits').css('display', 'none');
 	    
 	})
     },
