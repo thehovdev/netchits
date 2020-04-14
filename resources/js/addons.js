@@ -47,7 +47,7 @@ $(document).on('click', '#chits-search-button', function () {
 	    $('#inner-yt-results').empty();
 	    let thumbnail = '<img id="thumb" src="'+results[i].snippet.thumbnails.medium.url + '" alt="' + results[i].snippet.title + '" class="search-item-img">';
 	    $('#inner-yt-results').append('<div class="search-item col-sm-3" id="' + results[i].id.videoId + '">' +
-					  '<div class="search-item-img-block">' +
+					  '<div class="search-item-img">' +
 					  thumbnail +
 					  '</div>' +
 					  '<div class="search-item-title">' +
