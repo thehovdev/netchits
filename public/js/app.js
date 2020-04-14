@@ -37373,6 +37373,7 @@ $('#upload-me').change(function () {
 $(document).on('click', '#add-chit', function () {
   var group = $('select[name="group"]').val();
   var address = $('#chits-address-input').val();
+  $('#process-chits').attr('style', false);
   Api.addChit(address, group);
 });
 $(document).on('click', '.chits-delete-button', function () {
@@ -37400,12 +37401,14 @@ $(document).on('click', '#chits-search-button', function () {
     $('#yt-results').append('<div class="row row" id="inner-yt-results"></div>');
 
     for (var i = 0; i < results.length; ++i) {
-      var thumbnail = '<img id="thumb" src="' + results[i].snippet.thumbnails.medium.url + '" alt="No  Image  Available." class="search-item-img">';
-      $('#inner-yt-results').append('<div class="search-item col-sm-3" id="' + results[i].id.videoId + '">' + '<div class="search-item-img-block">' + thumbnail + '</div>' + '<div class="search-item-title">' + results[i].snippet.title + '</div>' + '<div class="search-item-actions">' + '<button class="btn btn-default btn-loveit" id="' + results[i].id.videoId + '">' + '<i class="fa fa-plus-square fa-love"></i>Add' + '</button>' + '</div>' + '</div>' + '</div>');
+      $('#inner-yt-results').empty();
+      var thumbnail = '<img id="thumb" src="' + results[i].snippet.thumbnails.medium.url + '" alt="' + results[i].snippet.title + '" class="search-item-img">';
+      $('#inner-yt-results').append('<div class="search-item col-sm-3" id="' + results[i].id.videoId + '">' + '<div class="search-item-img">' + thumbnail + '</div>' + '<div class="search-item-title">' + results[i].snippet.title + '</div>' + '<div class="search-item-actions">' + '<button class="btn btn-default btn-loveit" id="' + results[i].id.videoId + '">' + '<i class="fa fa-plus-square fa-love"></i>Add' + '</button>' + '</div>' + '</div>' + '</div>');
     }
   });
 });
 $(document).on('click', '.btn-loveit', function () {
+  $('#process-chits').attr('style', false);
   var videoId = $(this).attr('id');
   var group = $('select[name="group"]').val();
   address = 'https://youtube.com/watch?v=' + videoId;
@@ -37438,6 +37441,8 @@ Api = {
           $('#alert-' + res.id).remove();
         }, 2000);
       }
+
+      $('#process-chits').css('display', 'none');
     });
   },
   deleteChit: function deleteChit(id) {
@@ -37566,7 +37571,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 var searchYT = __webpack_require__(/*! youtube-api-v3-search */ "./node_modules/youtube-api-v3-search/src/browser.js");
 
-var token = 'AIzaSyAjQp5AOW39IzQ_XJj-ByZi9DxahpjDi7U';
+var token = 'YOUR TOKEN';
 Youtube = {
   search: function search(q) {
     var options = {

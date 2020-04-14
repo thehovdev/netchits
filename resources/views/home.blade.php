@@ -4,15 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
 	
-        <div id="main" class="col-md-8">
-	    <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 chits-add-column">
-                <button type="button" class="btn btn-success button-add-chits button-add-chits-search-color" id="chits-search-button">
-                    <span class="bar-search-text">
-                        @lang('main.search')
-                    </span>
-                </button>
-            </div>
+        <div id="main" class="container">
             <div class="col-xs-3 col-lg-6 col-md-6 col-sm-6 chits-address-column">
+		<div class="chits-add-column">
+                    <button type="button" class="btn btn-success button-add-chits button-add-chits-search-color" id="chits-search-button">
+			<span class="bar-search-text">
+                            @lang('main.search')
+			</span>
+                    </button>
+		</div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="chits-address-input" placeholder="https://netchits.com">
 		    <button type="button" id="add-chit" class="btn btn-primary">@lang('main.addchit')</button>
@@ -32,23 +32,23 @@
 		    <button type="button" id="add-group" class="btn btn-success">Add Group</button>
 		</div>
             </div>
-	    <div id="player" style="display: none;"></div>
 	    <div class="alerts"></div>
-	    
+	    <input class="playlist" style="display: none;" />
+	    <div id="player" style="display: none;"></div>
 	    @if (sizeof($user->groups) > 0)
 		@foreach ($user->groups as $group)
 		    <div class="row row-group" id="group-{{ $group->id }}">
-			<div class="panel panel-default panel-group">
-			    <div class="panel-body">
+			<div class="card panel-default panel-group">
+			    <div class="card-body text-center">
 				{{ $group->name }}
 				<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="{{ $group->id }}" aria-hidden="true"></i>
 			    </div>
 			</div>
 		    </div>
-		    <div class="row col-md-12 col-sm-12" id="group-{{ $group->id }}-list">
+		    <div class="row chits-list-by-group col-md-12 col-sm-12" id="group-{{ $group->id }}-list">
 			@foreach ($group->chits()->latest()->get() as $chit)
 			    @if(Str::contains($chit->address, 'youtube'))
-				<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-md-4 col-sm-4 col-xs-12" id="chit-{{ $chit->id }}">
+				<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-xs-12" id="chit-{{ $chit->id }}">
 
 				    <div class="chits-player">
 					<!-- Плеер -->
@@ -67,7 +67,7 @@
 					</div>
 
 
-					<div class="chits-events-area">
+					<div class="chits-events-area text-center">
 					    <i class="fa fa-archive fa-delete-chits chits-delete-button" id="{{ $chit->id }}" aria-hidden="true"></i>
 					</div>
 				    </div>
@@ -75,7 +75,7 @@
 			    @else
 
 
-				<div class="chits-column-parent col-lg-3 col-md-4 col-sm-4" id="chit-{{ $chit->id }}">
+				<div class="chits-column-parent xs-12" id="chit-{{ $chit->id }}">
 				    <div class="chits-column-block">
 					<a class="chits-child" href="{{ $chit->address }}" target="_blank">
 					    <div>
@@ -95,7 +95,7 @@
 					</div>
 
 
-					<div class="chits-events-area">
+					<div class="chits-events-area text-center">
 					    <i class="fa fa-archive fa-delete-chits chits-delete-button"  id="{{ $chit->id }}" aria-hidden="true"></i>
 					</div>
 				    </div>
@@ -123,6 +123,7 @@
  function onYouTubeIframeAPIReady() {
      var width = $('.chits-column-parent .chits-player').width();
      var height = $('.chits-column-parent .chits-player').height();
+     
      player = new YT.Player('player', {
 	 height: height,
 	 width: width,
@@ -162,7 +163,7 @@
      // var playerpreview = $(this).find("div.playerpreview").hide();
      var playerpreviewId = $(this).find("div.playerpreview").attr('id');
      // var position = $(this).closest('.chits-column-parent').position();
-     var position = $(this).closest('.chits-column-parent').position();
+     var position = $(this).find('.playerpreview').offset();
 
 
      $('.playlist').val(playerVideoId);
@@ -179,9 +180,9 @@
 	 case (deviceWidth < 400 && deviceWidth > 300):
              $("#player").css({
 		 "position": "absolute",
-		 "top" : position.top + 53,
+		 "top" : position.top,
 		 // "left" : position.left + 84,
-		 "left" : position.left + 9,
+		 "left" : position.left,
 		 "z-index" : "9",
              });
              break;
@@ -189,19 +190,19 @@
 	 case (deviceWidth < 400):
              $("#player").css({
 		 "position": "absolute",
-		 "top" : position.top + 53,
-		 "left" : position.left + 24,
+		 "top" : position.top,
+		 "left" : position.left,
 		 "z-index" : "9",
              });
              break;
 
 	 default :
-             $("#player").css({
-		 "position": "absolute",
-		 "top" : position.top + 23,
-		 "left" : position.left + 6,
-		 "z-index" : "9",
-             });
+	     $('#player').css({
+		 position: "absolute",
+		 top: position.top,
+		 left: position.left,
+		 "z-index": "9",
+	     });
              break;
 
      }

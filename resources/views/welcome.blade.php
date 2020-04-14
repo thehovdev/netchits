@@ -63,7 +63,7 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-default btn-start" id="signin-submit-button">Log in</button>
-                            <a class="btn btn-info" href="{{ route('password.request') }}">Forgot password</a>
+                            <a class="btn btn-success forgot-password-button" href="{{ route('password.request') }}">Forgot password</a>
 			    </form>
                         </div>
 			<div class="signup-container">
