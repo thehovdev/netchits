@@ -36,7 +36,7 @@
 	    <input class="playlist" style="display: none;" />
 	    <div id="player" style="display: none;"></div>
 	    @if (sizeof($user->groups) > 0)
-		@foreach ($user->groups as $group)
+		@foreach ($user->groups()->latest()->get() as $group)
 		    <div class="row row-group" id="group-{{ $group->id }}">
 			<div class="card panel-default panel-group">
 			    <div class="card-body text-center">
