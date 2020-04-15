@@ -407,7 +407,7 @@ module.exports = function(url){
 
 var searchYT = __webpack_require__(/*! youtube-api-v3-search */ "./node_modules/youtube-api-v3-search/src/browser.js");
 
-var token = 'AIzaSyAjQp5AOW39IzQ_XJj-ByZi9DxahpjDi7U';
+var token = 'YOUR TOKEN';
 Youtube = {
   search: function search(q) {
     var options = {
