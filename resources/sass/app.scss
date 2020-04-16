@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// styles of welcome page
+@import 'starter-page';
+
+@import 'alpha';
+
+@import 'profile';
+
+@import 'media';
+
+@import 'sidebar-user';
+
+
+.mt-5 {
+    margin-top: 5px;
+}

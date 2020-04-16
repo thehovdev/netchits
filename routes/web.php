@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,95 +13,22 @@
 |
 */
 
-//  Route::get('/', function () {
-//      return view('welcome');
-//  });
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('guest');
 
+Auth::routes(['verify' => true]);
 
-Route::any('/engine/superuser/', 'SuperUser\SuperUserController@index');
-// Testing
-Route::any('/api/test', 'TestController@test');
-// Home
-Route::any('/', 'StartController@homePage');
-// Sign Up
-Route::any('/api/auth/signUp', 'Api\Auth\SignUpController@signUp');
-// Try Demo
-Route::any('/api/auth/tryDemo', 'Api\Auth\SignUpController@tryDemo');
-// Sign In
-Route::any('/api/auth/signIn', 'Api\Auth\SignInController@signIn');
-// Sign Out
-Route::any('/api/auth/signOut', 'Api\Auth\SignOutController@signOut');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
+Route::get('/settings', 'UserController@settings')->name('settings');
 
-// Search
-Route::any('/api/user/search', 'Api\Search\SearchController@search');
+Route::get('/locale/{locale}', 'LocaleController@set')->name('locale');
 
-// User Actions
-Route::any('/user/{id}', 'Api\User\Actions\UserController@showUserProfile');
+Route::post('/upload/image', 'UserController@upload')->name('update.picture');
 
-// User Follows detail
-Route::any('/user/follows/detail/{id}', 'Api\User\Actions\UserController@detailFollows');
-// User Followers detail
-// Route::any('/user/followers/detail/{id}', 'Api\User\Actions\UserController@detailFollowers');
+Route::post('/settings/update', 'UserController@apply')->name('update.settings');
 
+Route::resource('chits', 'ChitController', ['except' => ['index']]);
 
-Route::any('/user/actions/uploadProfileImage', 'Api\User\Actions\UserController@uploadProfileImage');
-
-Route::any('/user/actions/updateProfile', 'Api\User\Actions\UserController@updateProfile');
-
-Route::any('/user/actions/addFriend', 'Api\User\Actions\FriendsController@addFriend');
-
-Route::any('/user/actions/deleteFriend', 'Api\User\Actions\FriendsController@deleteFriend');
-
-Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
-
-Route::any('/user/actions/showFriends', 'Api\User\Actions\FriendsController@showFriends');
-
-// Send Reset Code
-Route::any('/user/actions/sendResetCode', 'Api\User\Actions\ResetPassController@sendResetCode');
-// Reset Code
-Route::any('/user/actions/resetPass', 'Api\User\Actions\ResetPassController@resetPass');
-
-
-// -------------- LANG ----------------------//
-
-Route::get('/user/setlocale/{locale}', 'Api\User\Actions\LocaleController@setLocale');
-
-// Route::get('setlocale/{locale}', function ($locale) {
-//
-//     # Проверяем, что у пользователя выбран доступный язык
-//     if (in_array($locale, \Config::get('app.locales'))) {
-//          # И устанавливаем его в сессии под именем locale
-//     	Session::put('locale', $locale);
-//     }
-//
-//     return redirect()->back();
-//
-// });
-
-// -------------- LANG ----------------------//
-
-
-
-
-
-// --------------- CHITS ------------------- //
-// Add New Chits
-Route::any('/api/user/addChits', 'Api\User\Chits\ChitsController@addChits');
-// Delete Chits
-Route::any('/api/user/deleteChits', 'Api\User\Chits\ChitsController@deleteChits');
-// Copy Chits
-Route::any('/api/user/copyChits', 'Api\User\Chits\ChitsController@copyChits');
-// Show Chits
-Route::any('/api/user/showChits', 'Api\User\Chits\ShowChitsController@showChits');
-
-// --------------- CHITS ------------------- //
-
-// --------------- GROUPS ------------------- //
-// Add New group
-Route::any('/api/user/addGroup', 'Api\User\Chits\GroupController@addGroup');
-// Copy Group
-Route::any('/api/user/copyGroup', 'Api\User\Chits\GroupController@copyGroup');
-// Delete Chits Group
-Route::any('/api/user/deleteGroup', 'Api\User\Chits\GroupController@deleteGroup');
-// --------------- GROUPS ------------------- //
+Route::resource('groups', 'GroupController', ['except' => ['index']]);

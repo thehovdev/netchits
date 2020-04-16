@@ -1,7 +1,0 @@
-/vendor
-/tests
-/storage
-/node_modules
-/bootstrap
-/resources/assets/js/components
-/app/Http/Controllers/Auth

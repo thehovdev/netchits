@@ -1,0 +1,307 @@
+.pointer {
+    cursor: pointer;
+}
+
+.description {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    color:#383838;
+}
+
+.bname {
+    margin-top: 40px;
+    max-width: 220px;
+    color: #4267b2;
+    font-weight: bold;
+    font-size: 3em;
+    border-bottom: 3px solid #4267b2;
+    padding: 0 20px;
+    &:hover {
+        color: #4267b2;
+
+    }
+}
+
+.vcenter {
+    display: flex;
+    align-items: center;
+}
+
+.todo-list {
+    padding: 30px 0px;
+
+    .todo-item {
+        height: 50px;
+        margin-top: 20px;
+        .todo-description {
+            color:#383838;
+            margin: 0 10px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .fa-todo-icon {
+            font-size: 40px;
+            color:#4267b2;
+        }
+    }
+
+}
+
+.alpha-container {
+    .alpha-block {
+        // background: white;
+        height: auto;
+        text-align: center;
+
+        .welcome-div {
+            margin: 20px auto 0 auto;
+            padding: 2px;
+            // background: rgba(163, 7, 219, 0.9);
+            background: rgba(255, 255, 255, 0.5);
+            width: 60%;
+            border-radius: 2px;
+            border:2px solid #E8E8E8;
+
+            .welcome-text {
+                color: #4267b2;
+                // color: red;
+                font-weight: bold;
+
+                font-size: 1em;
+                line-height: 80px;
+
+            }
+
+        }
+
+        .brand-name {
+            color: black;
+            font-weight: bold;
+            font-size: 1em;
+            border-bottom: 2px solid #FF0000;
+            padding: 5px 20px;
+        }
+
+
+
+        .actions {
+            height: auto;
+            margin-top: 40px;
+            padding: 5px;
+            // background: #FF0000;
+            text-align: center;
+
+            .alpha-key {
+                background: #4267b2;
+                // background: rgba(163, 7, 219, 0.9);
+                width: 205px;
+                height: 200px;
+                margin: 5px auto;
+                border:2px solid #4267b2;
+                // border: 2px solid #A307DB;
+
+                border-radius: 50%;
+                line-height:200px !important;
+                word-wrap: break-word;
+                font-size: 30px;
+                font-weight:bold;
+                color: white;
+            }
+
+
+
+
+            .register {
+                background: #4267b2;
+                // background: rgba(163, 7, 219, 0.9);
+
+                width: 205px;
+                height: 200px;
+                margin: 5px auto;
+                border:2px solid #4267b2;
+                // border: 2px solid #A307DB;
+
+                border-radius: 50%;
+                line-height: 200px !important;
+                word-wrap: break-word;
+                font-size: 30px;
+                font-weight:bold;
+                color: white;
+            }
+        }
+
+    }
+}
+
+
+/* Add some content at the bottom of the video/page */
+
+#startVideo {
+    position: fixed;
+    z-index: -999;
+    left: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#signin-submit-button {
+    background: #4267b2;
+    border-color: #4267b2;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    outline: none;
+}
+
+#signup-submit-button {
+    background: #5e9944;
+    border-color: #5e9944;
+    color: white;
+    font-weight: 800;
+    font-size: 1.3em;
+    outline: none;
+    padding: 5px 20px;
+}
+
+.trydemo, {
+    margin-top: 5px;
+    border-radius: 6px;
+    background: #4267B2;
+    color:white;
+    height: 50px;
+    width: 200px;
+    font-size: 1.4em;
+    font-weight: bold;
+    &:hover, &:active, &:active:focus, &:focus {
+        background: #5073b7;
+        color:white;
+
+    }
+}
+
+.trydemo-min {
+    // margin-top: 15px;
+    // border-radius: 6px;
+    background: #4267B2;
+    color:white;
+    height: 40px;
+    width: 150px;
+    font-size: 1.2em;
+    font-weight: bold;
+    &:hover, &:active, &:active:focus, &:focus {
+        background: #5073b7;
+        color:white;
+
+    }
+}
+
+
+
+
+
+
+.lang-label {
+    color:black;
+}
+
+.btn-lang {
+    margin: 3px;
+    font-weight: bold;
+    color: black;
+    &:hover, &:active, &:active:focus, &:focus {
+        background: white;
+        font-weight: bold;
+        color: black;
+    }
+}
+
+.btn-start {
+    padding: 8px;
+    margin: 5px;
+}
+
+.fa-start-heart {
+    font-size:25px;
+    color:red;
+}
+
+.fa-start-coffee {
+    font-size:25px;
+    color:#c68400;
+}
+
+.alert-password-incorrect {
+    margin:5px;
+}
+
+%hidden-form-container {
+    margin-bottom: 10px auto;
+    padding: 10px;
+    width: 100%;
+    color:black;
+}
+
+.signin-container {
+    // margin-top: 10px;
+    @extend %hidden-form-container;
+    h1 {
+        margin-top: 5px !important;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    input {
+        height: 30px;
+    }
+    button {
+        padding:5px 15px !important;
+        margin-left: 0px !important;
+        margin-right: 5px !important;
+    }
+
+}
+
+.signup-container {
+    @extend %hidden-form-container;
+    h1 {
+        font-weight: bold;
+        margin-top: 10px !important;
+    }
+    button {
+        margin-left: 0px !important;
+    }
+}
+
+.oneclick-signup-container {
+    @extend %hidden-form-container;
+    h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 10px !important;
+    }
+}
+
+
+
+.forgotpass-container {
+    @extend %hidden-form-container;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.author {
+    background: #294c93;
+    position: fixed;
+    width: 100%;
+    color: white;
+    text-align:center;
+    bottom: 0;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: arial;
+    z-index: 9999;
+}
