@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\User;
 use App\Services\ImageUpload;
 
 class UserController extends Controller
@@ -13,7 +14,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        return $this->middleware('auth');
+        return $this->middleware('auth', ['except' => 'continue']);
     }
     public function settings()
     {
@@ -66,5 +67,20 @@ class UserController extends Controller
         }
 
         return redirect()->back()->withErrors($validated);
+    }
+
+    public function continue(User $user, Faker $faker)
+    {
+        $user->fill([
+            'name' => $faker->name,
+            'hashtag' => '#guest' . time(),
+            'email' => $faker->email,
+            'email_verified_at' => now(),
+            'password' => Hash::make($faker->password)
+        ])->save();
+
+        Auth::login($user);
+        
+        return redirect()->route('home');
     }
 }
