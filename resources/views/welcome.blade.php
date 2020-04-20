@@ -11,9 +11,12 @@
                             {{ config('app.name') }}
                         </a>
 			<div class="description">Follow, Share, Listen with friends</div>
-			<button class="button-trydemo trydemo btn btn-default">
-                            Continue
-			</button>
+			<form action="{{ route('without.register') }}" class="oneclick-signup-container" method="post">
+			    @csrf
+                            <button class="button-trydemo trydemo-min btn btn-default">
+				Continue
+                            </button>
+			</form>
 			<div class="todo-list">
                             <div class="todo-item vcenter">
 				<i class="fa fa-fw fa-users fa-todo-icon fa-fw" aria-hidden="true"></i>
@@ -34,12 +37,13 @@
 			</div>
                     </div>
                     <div class="col-sm-4 col-sm-offset-2">
-			<div class="oneclick-signup-container">
+			<form action="{{ route('without.register') }}" class="oneclick-signup-container" method="post">
+			    @csrf
                             <h1>Use without signup</h1>
                             <button class="button-trydemo trydemo-min btn btn-default">
 				Continue
                             </button>
-			</div>
+			</form>
 			<div class="signin-container">
                             <h1>Log in</h1>
 			    <form method="POST" action="{{ route('login') }}">
