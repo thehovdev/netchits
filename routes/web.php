@@ -32,3 +32,5 @@ Route::post('/settings/update', 'UserController@apply')->name('update.settings')
 Route::resource('chits', 'ChitController', ['except' => ['index']]);
 
 Route::resource('groups', 'GroupController', ['except' => ['index']]);
+
+Route::post('/non-sign-up', 'UserController@continue')->name('without.register');

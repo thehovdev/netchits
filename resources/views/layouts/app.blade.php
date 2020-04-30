@@ -27,6 +27,8 @@
         </main>
 	@include('layouts.includes.footer')
     </div>
-    <script src="{{ asset('js/youtube.js') }}"></script>
+    @if (request()->route()->getName() == 'settings')
+	<script src="{{ asset('js/upload.js') }}"></script>
+    @endif
 </body>
 </html>
