@@ -37364,12 +37364,6 @@ module.exports = function(url){
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('.btn-upload-img').click(function () {
-  $('#upload-me').click();
-});
-$('#upload-me').change(function () {
-  $('#upload-picture').click();
-});
 $(document).on('click', '#add-chit', function () {
   var group = $('select[name="group"]').val();
   var address = $('#chits-address-input').val();
@@ -37414,6 +37408,14 @@ $(document).on('click', '.btn-loveit', function () {
   address = 'https://youtube.com/watch?v=' + videoId;
   Api.addChit(address, group);
 });
+$(document).on('click', '.follow', function () {
+  var id = $(this).attr('id');
+  Api.follow(id);
+});
+$(document).on('click', '.unfollow', function () {
+  var id = $(this).attr('id');
+  Api.unFollow(id);
+});
 Api = {
   headers: {
     "Accept": "application/json",
@@ -37431,7 +37433,7 @@ Api = {
     }).done(function (res) {
       if (res.status == 1) {
         if (!$('#group-' + res.groupId).length) {
-          $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="panel panel-default panel-group"><div class="panel-body">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
+          $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="card panel-default panel-group"><div class="card-body text-center">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
         }
 
         $('#group-' + res.groupId + '-list').prepend(res.html);
@@ -37454,11 +37456,13 @@ Api = {
         chit: id
       }
     }).done(function (res) {
-      $('#chit-' + res.id).remove();
-      $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id + '">' + res.message + '</div>');
-      setTimeout(function () {
-        $('#alert-' + res.id).remove();
-      }, 2000);
+      if (res.status == 1) {
+        $('#chit-' + res.id).remove();
+        $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id + '">' + res.message + '</div>');
+        setTimeout(function () {
+          $('#alert-' + res.id).remove();
+        }, 2000);
+      }
     });
   },
   addGroup: function addGroup(name) {
@@ -37496,6 +37500,32 @@ Api = {
       setTimeout(function () {
         $('#alert-' + res.id).remove();
       }, 2000);
+    });
+  },
+  follow: function follow(id) {
+    $.ajax({
+      url: '/follow',
+      type: 'POST',
+      headers: Api.headers,
+      data: {
+        id: id
+      }
+    }).done(function (res) {
+      $('.follow').before('<button class="btn btn-primary unfollow" id="' + res.id + '">Following</div>');
+      $('.follow').remove();
+    });
+  },
+  unFollow: function unFollow(id) {
+    $.ajax({
+      url: '/unfollow',
+      type: 'POST',
+      headers: Api.headers,
+      data: {
+        id: id
+      }
+    }).done(function (res) {
+      $('.unfollow').before('<button class="btn btn-secondary follow" id="' + res.id + '">Follow</button>');
+      $('.unfollow').remove();
     });
   }
 };
