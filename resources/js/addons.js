@@ -68,6 +68,16 @@ $(document).on('click', '.btn-loveit', function () {
     Api.addChit(address, group);
 })
 
+$(document).on('click', '.follow', function () {
+    let id = $(this).attr('id');
+    Api.follow(id);
+})
+
+$(document).on('click', '.unfollow', function () {
+    let id = $(this).attr('id');
+    Api.unFollow(id);
+})
+
 Api = {
     headers : {
       "Accept": "application/json",
@@ -148,5 +158,29 @@ Api = {
 		$('#alert-' + res.id).remove()
 	    }, 2000)
 	}) 
+    },
+
+    follow(id) {
+	$.ajax({
+	    url: '/follow',
+	    type: 'POST',
+	    headers: Api.headers,
+	    data: { id }
+	}).done(function (res) {
+	    $('.follow').before('<button class="btn btn-primary unfollow" id="' + res.id + '">Following</div>');
+	    $('.follow').remove();
+	})
+    },
+
+    unFollow(id) {
+	$.ajax({
+	    url: '/unfollow',
+	    type: 'POST',
+	    headers: Api.headers,
+	    data: { id }
+	}).done(function (res) {
+	    $('.unfollow').before('<button class="btn btn-secondary follow" id="' + res.id + '">Follow</button>');
+	    $('.unfollow').remove();
+	})
     }
 }
