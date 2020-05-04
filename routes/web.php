@@ -34,3 +34,5 @@ Route::resource('chits', 'ChitController', ['except' => ['index']]);
 Route::resource('groups', 'GroupController', ['except' => ['index']]);
 
 Route::post('/non-sign-up', 'UserController@continue')->name('without.register');
+
+Route::get('/user/{user}', 'UserController@show')->name('user.show');
