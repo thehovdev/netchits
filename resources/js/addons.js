@@ -82,7 +82,7 @@ Api = {
 	}).done(function (res) {
 	    if (res.status == 1) {
 		if (!$('#group-' + res.groupId).length) {
-		    $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="panel panel-default panel-group"><div class="panel-body">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
+		    $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="card panel-default panel-group"><div class="card-body text-center">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
 		}
 		$('#group-' + res.groupId + '-list').prepend(res.html);
 		
