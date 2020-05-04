@@ -14,11 +14,16 @@ class UserController extends Controller
 
     public function __construct()
     {
-        return $this->middleware('auth', ['except' => 'continue']);
+        return $this->middleware('auth', ['except' => ['continue', 'show']]);
     }
     public function settings()
     {
         return view('settings')->with('user', auth()->user());
+    }
+
+    public function show(User $user)
+    {
+        return view('profile', compact('user'));
     }
 
     public function upload(Request $request)
@@ -53,21 +58,17 @@ class UserController extends Controller
             'password' => 'required_with:current_password|confirmed'
         ]);
         
-        if ($validated->passes()) {
-            $user->fill([
-                'name' => $request->name,
-                'hashtag' => $request->hashtag,
-                'email' => $request->email,
-                'password' => !is_null($request->password) ? Hash::make($request->password) : $user->password
-            ])->save();
-
-            session(['message' => 'Successfully updated the profile']);
-            
-            return redirect()->back();
-        }
-
-        return redirect()->back()->withErrors($validated);
-    }
+        $user->fill([
+            'name' => $request->name,
+            'hashtag' => $request->hashtag,
+            'email' => $request->email,
+            'password' => !is_null($request->password) ? Hash::make($request->password) : $user->password
+        ])->save();
+        
+        session(['message' => 'Successfully updated the profile']);
+    
+        return redirect()->back();
+}
 
     public function continue(User $user, Faker $faker)
     {

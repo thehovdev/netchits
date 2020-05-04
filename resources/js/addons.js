@@ -82,7 +82,7 @@ Api = {
 	}).done(function (res) {
 	    if (res.status == 1) {
 		if (!$('#group-' + res.groupId).length) {
-		    $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="panel panel-default panel-group"><div class="panel-body">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
+		    $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="card panel-default panel-group"><div class="card-body text-center">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
 		}
 		$('#group-' + res.groupId + '-list').prepend(res.html);
 		
@@ -105,11 +105,13 @@ Api = {
 	    headers: Api.headers,
 	    data: { chit: id }
 	}).done(function (res) {
-	    $('#chit-' + res.id).remove();
-	    $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
-	    setTimeout(function () {
-		$('#alert-' + res.id).remove()
-	    }, 2000)
+	    if (res.status == 1) {
+		$('#chit-' + res.id).remove();
+		$('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
+		setTimeout(function () {
+		    $('#alert-' + res.id).remove()
+		}, 2000)
+	    }
 	})
     },
 

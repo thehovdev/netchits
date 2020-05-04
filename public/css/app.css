@@ -12486,3 +12486,12 @@ a:visited {
   margin-top: 5px;
 }
 
+.center-block {
+  margin: 0 auto;
+  padding-top: 25px;
+}
+
+.center-block .follow {
+  margin: 10px 20px;
+}
+
