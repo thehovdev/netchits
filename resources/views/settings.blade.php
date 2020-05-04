@@ -73,9 +73,13 @@
 
 				    </form>
 				@else
-				    <b class="text-center">{{ $user->name }}</b>
-				    <b class="text-center">{{ $user->email }}</b>
-				    <b class="text-center">{{ $user->hashtag }}</b>
+				    <div class="container mt-5">
+					<ul class="list-group">
+					    <li class="list-group-item">{{ $user->name }}</li>
+					    <li class="list-group-item">{{ $user->email }}</li>
+					    <li class="list-group-item">{{ $user->hashtag }}</li>
+					</ul>
+				    </div>
 				@endif
 				<div class="form-group text-center mt-5">
 					<label for="locale" class="text-center block">@lang('main.setlocale')</label>
