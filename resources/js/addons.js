@@ -105,11 +105,13 @@ Api = {
 	    headers: Api.headers,
 	    data: { chit: id }
 	}).done(function (res) {
-	    $('#chit-' + res.id).remove();
-	    $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
-	    setTimeout(function () {
-		$('#alert-' + res.id).remove()
-	    }, 2000)
+	    if (res.status == 1) {
+		$('#chit-' + res.id).remove();
+		$('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
+		setTimeout(function () {
+		    $('#alert-' + res.id).remove()
+		}, 2000)
+	    }
 	})
     },
 
