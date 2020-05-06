@@ -68,6 +68,21 @@ $(document).on('click', '.btn-loveit', function () {
     Api.addChit(address, group);
 })
 
+$(document).on('click', '.follow', function () {
+    let id = $(this).attr('id');
+    Api.follow(id);
+})
+
+$(document).on('click', '.unfollow', function () {
+    let id = $(this).attr('id');
+    Api.unFollow(id);
+})
+
+$(document).on('click', '.search', function () {
+    let word = $('.friend-search').val();
+    Api.search(word);
+})
+
 Api = {
     headers : {
       "Accept": "application/json",
@@ -148,5 +163,52 @@ Api = {
 		$('#alert-' + res.id).remove()
 	    }, 2000)
 	}) 
+    },
+
+    follow(id) {
+	$.ajax({
+	    url: '/follow',
+	    type: 'POST',
+	    headers: Api.headers,
+	    data: { id }
+	}).done(function (res) {
+	    $('.follow').before('<button class="btn btn-primary unfollow" id="' + res.id + '">Following</div>');
+	    $('.follow').remove();
+	})
+    },
+
+    unFollow(id) {
+	$.ajax({
+	    url: '/unfollow',
+	    type: 'POST',
+	    headers: Api.headers,
+	    data: { id }
+	}).done(function (res) {
+	    $('.unfollow').before('<button class="btn btn-secondary follow" id="' + res.id + '">Follow</button>');
+	    $('.unfollow').remove();
+	})
+    },
+
+    search(word) {
+	$.ajax({
+	    url: '/search',
+	    type: 'GET',
+	    headers: Api.headers,
+	    data: { word }
+	}).done(function (res) {
+	    $('.results').remove();
+	    if (!$('.results .container').length) {
+		$('#process-chits').after('<div class="col-sm-10 offset-sm-2 results"><div class="container" id="search-results"></div></div>');
+	    }
+	    
+	    if (res.results.length) {
+		for (var item in res.results) {
+		    console.log(res.results[item]);
+		    $('#search-results').prepend('<a class="results-item" href="/user/' + res.results[item].id + '" target="_blank"><img class="image img-circle" width="50" height="50" src="/images/' + res.results[item].profile_picture + '" title="' + res.results[item].hashtag + '"></a>');
+		}
+	    } else {
+		$('.results .container').append('<i class="text-center">No results</i>');
+	    }
+	})
     }
 }

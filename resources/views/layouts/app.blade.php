@@ -22,6 +22,12 @@
 <body>
     <div id="app">
 	@include('layouts.includes.navbar')
+	@if (auth()->check())
+	    <div class="left-sidebar">
+		@include('layouts.includes.sidebar')
+	    </div>
+	@endif
+	<div class="clearfix"></div>
         <main class="py-4">
             @yield('content')
         </main>

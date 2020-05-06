@@ -15,6 +15,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "overtrue/laravel-follow": "^2.1",
         "shweshi/opengraph": "^1.0",
         "simplehtmldom/simplehtmldom": "^2.0@RC"
     },
