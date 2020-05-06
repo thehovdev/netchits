@@ -36,6 +36,11 @@
             text-overflow: ellipsis;
         }
 
+	.nav {
+	    float: left;
+	    display: block;
+	}
+
     }
     .nav-user-sidebar-active {
         background: #e8e8e8 !important;
