@@ -34,4 +34,14 @@ class FollowerController extends Controller
             'msg' => 'Success'
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $results = User::where('hashtag', 'like', '%' . $request->word . '%')->get();
+
+        return response()->json([
+            'results' => $results,
+            'msg' => 'success'
+        ]);
+    }
 }

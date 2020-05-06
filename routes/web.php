@@ -35,8 +35,10 @@ Route::resource('groups', 'GroupController', ['except' => ['index']]);
 
 Route::post('/non-sign-up', 'UserController@continue')->name('without.register');
 
-Route::get('/user/{user}', 'UserController@show')->name('user.show');
+Route::get('/user/{user}', 'UserController@show')->name('user');
 
 Route::post('/follow', 'FollowerController@follow')->name('follow');
 
 Route::post('/unfollow', 'FollowerController@unfollow')->name('unfollow');
+
+Route::get('/search', 'FollowerController@search');
