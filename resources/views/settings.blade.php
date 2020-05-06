@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-	<div class="col-sm-12">
+	<div class="col-sm-10 offset-sm-2">
 		<div class="row row-user-profile">
 		    @if (session()->has('message'))
 		    <div class="container">
