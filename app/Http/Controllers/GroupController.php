@@ -33,20 +33,20 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        if (auth()->user()->can('delete', $group)) {
-            $group->delete();
-
+        if (auth()->user()->cant('delete', $group)) {
+            
             return response()->json([
-                'status' => 1,
-                'id' => $group->id,
-                'message' => 'You have successfully deleted a group'
+                'status' => 0,
+                'message' => 'Error'
             ]);
         }
 
+        $group->delete();
+
         return response()->json([
-            'status' => 0,
-            'message' => 'Error'
+            'status' => 1,
+            'id' => $group->id,
+            'message' => 'You have successfully deleted a group'
         ]);
-        
     }
 }

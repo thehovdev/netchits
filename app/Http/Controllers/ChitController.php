@@ -59,19 +59,21 @@ class ChitController extends Controller
      */
     public function destroy(Chit $chit)
     {
-        if (auth()->user()->can('delete', $chit)) {
-            $chit->delete();
+        if (auth()->user()->cant('delete', $chit)) {
 
             return response()->json([
-                'status' => 1,
-                'id' => $chit->id,
-                'message' => 'Successfully deleted!'
+                'status' => 0,
+                'message' => 'Error'
             ]);
+            
         }
 
+        $chit->delete();
+
         return response()->json([
-            'status' => 0,
-            'message' => 'Error'
+            'status' => 1,
+            'id' => $chit->id,
+            'message' => 'Successfully deleted!'
         ]);
 
         
