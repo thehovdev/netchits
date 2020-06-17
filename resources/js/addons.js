@@ -97,7 +97,9 @@ Api = {
 	}).done(function (res) {
 	    if (res.status == 1) {
 		if (!$('#group-' + res.groupId).length) {
-		    $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="card panel-default panel-group"><div class="card-body text-center">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list" id="group-' + res.groupId + '-list"></div>');
+		    $('#main').append('<div class="row row-group" id="group-' + res.groupId + '"><div class="card panel-default panel-group"><div class="card-body text-center">Default<i class="fa fa-window-close fa-delete-group chits-group-delete-button" id="' + res.groupId + '" aria-hidden="true"></i></div></div></div><div class="row row-chits-list col-md-12 offset-sm-1 col-sm-12" id="group-' + res.groupId + '-list"></div>');
+			$('select[name="group"]').empty()
+			$('select[name="group"]').append('<option value="' + res.groupId + '">Default</option>')
 		}
 		$('#group-' + res.groupId + '-list').prepend(res.html);
 		
@@ -122,9 +124,9 @@ Api = {
 	}).done(function (res) {
 	    if (res.status == 1) {
 		$('#chit-' + res.id).remove();
-		$('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
+		$('.alerts').append('<div class="alert alert-success col-md-12 offset-sm-1 col-sm-12" id="alert-' + res.id +'">' + res.message + '</div>');
 		setTimeout(function () {
-		    $('#alert-' + res.id).remove()
+		    $('#alert-' + res.id).remove() 
 		}, 2000)
 	    }
 	})
@@ -138,7 +140,7 @@ Api = {
 	    data: { name }
 	}).done(function (res) {
 	    $('.alerts').after(res.html);
-	    $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
+	    $('.alerts').append('<div class="alert alert-success col-md-12 offset-sm-1 col-sm-12" id="alert-' + res.id +'">' + res.message + '</div>');
 	    $('select[name="group"]').append('<option value="' + res.group.id + '">' + res.group.name + '</option>')
 	    setTimeout(function () {
 		$('#alert-' + res.id).remove()
