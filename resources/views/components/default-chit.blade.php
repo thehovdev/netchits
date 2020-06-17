@@ -1,4 +1,4 @@
-<div class="chits-column-parent col-md-3 col-sm-3" id="chit-{{ $chit->id }}">
+<div class="chits-column-parent col-sm-3 col-md-3 col-xs-12" id="chit-{{ $chit->id }}">
     <div class="chits-column-block">
         <a class="chits-child" href="{{ $chit->address }}" target="_blank">
             <div>

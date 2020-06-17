@@ -6,5 +6,5 @@
     </div>
   </div>
 </div>
-<div class="row row-chits-list" id="group-{{ $group->id }}-list">
+<div class="row row-chits-list col-md-12 offset-sm-1 col-sm-12" id="group-{{ $group->id }}-list">
 </div>

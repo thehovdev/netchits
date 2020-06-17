@@ -27,6 +27,10 @@
 			</li>
 		    @endif
         @else
+		    <div class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2 friend-search" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0 search" type="submit"><i class="fas fa-search"></i></button>
+		    </div>
 		    <li class="nav-item dropdown">
 			<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 			    {{ Auth::user()->name }} <span class="caret"></span>
