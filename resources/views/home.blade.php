@@ -45,7 +45,7 @@
 			    </div>
 			</div>
 		    </div>
-		    <div class="row chits-list-by-group col-md-12  offset-sm-1 col-sm-12" id="group-{{ $group->id }}-list">
+		    <div class="row chits-list-by-group col-md-12 offset-sm-1 col-sm-12" id="group-{{ $group->id }}-list">
 			@foreach ($group->chits()->latest()->get() as $chit)
 			    @if(Str::contains($chit->address, 'youtube'))
 				<div class="chits-column-parent chit-code-{{ Str::after($chit->address, 'v=') }} col-sm-3 col-md-3 col-xs-12" id="chit-{{ $chit->id }}">
