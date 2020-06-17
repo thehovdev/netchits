@@ -102,6 +102,10 @@ Api = {
 			$('select[name="group"]').append('<option value="' + res.groupId + '">Default</option>')
 		}
 		$('#group-' + res.groupId + '-list').prepend(res.html);
+
+		if ($('#group-' + res.groupId + '-list').children().length == 1) {
+			location.reload(true)
+		}
 		
 	    } else {
 		$('.alerts').append('<div class="alert alert-danger" id="alert-' + res.id +'">' + res.message + '</div>');
@@ -110,8 +114,8 @@ Api = {
 		}, 2000)
 	    }
 
-	    $('#process-chits').css('display', 'none');
-	    
+		$('#process-chits').css('display', 'none');
+		
 	})
     },
 
@@ -143,7 +147,7 @@ Api = {
 	    $('.alerts').append('<div class="alert alert-success col-md-12 offset-sm-1 col-sm-12" id="alert-' + res.id +'">' + res.message + '</div>');
 	    $('select[name="group"]').append('<option value="' + res.group.id + '">' + res.group.name + '</option>')
 	    setTimeout(function () {
-		$('#alert-' + res.id).remove()
+			$('#alert-' + res.id).remove()
 	    }, 2000)
 	})
     },
@@ -160,7 +164,7 @@ Api = {
 		$('select[name="group"]').append('<option value="0">Default</option>');
 	    }
 	    $('#group-' + res.id + '-list').remove();
-	    $('.alerts').append('<div class="alert alert-success" id="alert-' + res.id +'">' + res.message + '</div>');
+	    $('.alerts').append('<div class="alert alert-success col-md-12 offset-sm-1 col-sm-12" id="alert-' + res.id +'">' + res.message + '</div>');
 	    setTimeout(function () {
 		$('#alert-' + res.id).remove()
 	    }, 2000)
